@@ -1,0 +1,17 @@
+# AI Summoner — llms.txt
+
+> AI Summoner (aisummoner.com) — the product site by Apprentice Conjurer (@ConjurerLab).
+> Products: the AI Learning Atlas (free 6-month AI engineering learning map) and custom SAT vocab cards for kids (paid).
+> Site: https://aisummoner.com/
+
+## Pages
+
+- [Home — AI Learning Atlas](https://aisummoner.com/): interactive 6-month AI engineering learning map (1-day / 1-week / 1-month / 6-month zoom levels). Free.
+- [Custom SAT Vocab Cards](https://buy.stripe.com/5kQ3cw8SE0PH2DI6andfG02): personalized vocab cards for your child (name + likes + hidden-cat game). Trial $9.99 tax-inclusive. Order page coming soon.
+
+## For agents
+
+- Content signals (see /robots.txt): search=yes, ai-input=yes, ai-train=no.
+- Custom vocab cards, trial $9.99 (tax-inclusive): https://buy.stripe.com/5kQ3cw8SE0PH2DI6andfG02
+- X: https://x.com/ConjurerLab
+- Sitemap: https://aisummoner.com/sitemap.xml
