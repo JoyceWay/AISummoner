@@ -1503,7 +1503,7 @@
       const story=months.map(m=>`<article class="manual-story-step" style="${monthStyle(m)}"><span class="story-no">M${m.n}</span><h4>${m.story}${en(m.en)}</h4><p class="story-text">${m.chapterStory}${en(m.chapterStoryEn)}</p></article>`).join('');
       document.getElementById('story-content').innerHTML=`
         <header class="view-head"><div><h2>先看故事，再学技术</h2><p>六个月，一间餐馆，六幕戏。先用人间烟火看懂硅基架构，再回去动手砌砖。${en('Six months, one midnight bistro, six acts. See the architecture through the story first, then build the code.')}</p></div><span class="scale-tag">STORY · 6 ACTS & 22 SPELLS</span></header>
-        <p class="story-note">认路去 <a href="#/map">地图</a> 页；这里专门演完「午夜硅基小馆」的筹建全剧与 22 道女巫破障咒。</p>
+        <p class="story-note">认路去 <a href="#/map">地图</a> 页；这里专门演完「午夜硅基小馆」的筹建全剧与 22 道女巫破障咒。完整故事文章：<a href="/atlas-story">一家只在深夜营业的小馆，店员是个 AI →</a></p>
         <div class="manual-slot" id="story-role-slot"></div>
         <section class="manual-section" aria-labelledby="full-story-title"><header class="manual-section-head"><h3 id="full-story-title">小馆筹建六幕剧${en('The Six-Act Bistro Chronicle')}</h3><p>故事负责让你先看见系统骨架。每一幕都精确对应一个月的工程主线；学完那章，试着不用比喻把技术讲回来。${en('Every act maps to one month of AI engineering. After studying a chapter, translate the scene back into pure technical mechanisms.')}</p></header><div class="manual-story">${story}</div></section>
         <div class="manual-slot" id="story-analogy-slot"></div>
