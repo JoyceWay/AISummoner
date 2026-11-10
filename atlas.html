@@ -537,14 +537,10 @@
     .home-link:hover{color:var(--route);text-decoration:underline}
     /* ===== dot-matrix strip under topnav: one dot per video, one row ===== */
     .dot-strip{display:flex;align-items:center;gap:12px;padding:9px 20px;border-bottom:1px solid #181C1A;background:#181C1A;overflow-x:auto;scrollbar-width:thin}
-    .dot-grid{display:flex;flex-wrap:nowrap;gap:3px;align-items:center;flex:1 1 auto;min-width:0}
-    .dot{flex:0 0 auto;position:relative;width:12px;height:16px;padding:0;border-radius:6px;border:1px solid rgba(240,230,210,.35);background:rgba(240,230,210,.06);cursor:pointer}
-    .dot::before,.dot::after{content:"";position:absolute;left:50%;transform:translateX(-50%);width:6px;height:2px;border-radius:1px;background:rgba(240,230,210,.35)}
-    .dot::before{top:-2px}
-    .dot::after{bottom:-2px}
-    .dot:hover{transform:scale(1.5);border-color:#F0A832}
-    .dot.done{width:12px;height:16px;background:radial-gradient(ellipse at 50% 50%,#FFF6C9 0%,#FFE66D 32%,#F0A832 64%,#D98A1F 100%);border-color:#FFE66D;box-shadow:0 0 8px 2px rgba(255,230,109,.9),0 0 18px 5px rgba(255,197,61,.55)}
-    .dot.done::before,.dot.done::after{background:#A67C37}
+    .dot-grid{display:flex;flex-wrap:nowrap;gap:2px;align-items:center;flex:1 1 auto;min-width:0}
+    .dot{flex:1 1 0;min-width:4px;width:auto;height:auto;aspect-ratio:3/4;padding:0;border-radius:50%;border:1px solid rgba(240,230,210,.35);background:linear-gradient(to bottom,rgba(240,230,210,.35) 0 14%,rgba(240,230,210,.06) 14% 86%,rgba(240,230,210,.35) 86% 100%);cursor:pointer}
+    .dot:hover{transform:scale(1.6);border-color:#F0A832}
+    .dot.done{border-color:#FFE66D;background:radial-gradient(ellipse at 50% 50%,#FFF6C9 0%,#FFE66D 35%,rgba(240,168,50,.9) 70%),linear-gradient(to bottom,#A67C37 0 14%,#F0A832 14% 86%,#A67C37 86% 100%);box-shadow:0 0 6px 1px rgba(255,230,109,.9),0 0 12px 3px rgba(255,197,61,.5)}
     .dot-count{flex:0 0 auto;font:600 12px/1 var(--mono);color:#E8DFC8;white-space:nowrap}
     .dot-flash{outline:2px solid var(--route-2);outline-offset:3px;border-radius:8px}
     .view{scroll-margin-top:128px}
