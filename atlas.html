@@ -529,6 +529,14 @@
     .topnav-progress{font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap}
     .home-link{font:500 11px/1 var(--mono);color:var(--muted);text-decoration:none;white-space:nowrap}
     .home-link:hover{color:var(--route);text-decoration:underline}
+    /* ===== dot-matrix strip under topnav: one dot per video, one row ===== */
+    .dot-strip{display:flex;align-items:center;gap:12px;padding:9px 20px;border-bottom:1px solid var(--line);background:var(--paper);overflow-x:auto;scrollbar-width:thin}
+    .dot-grid{display:flex;flex-wrap:nowrap;gap:2px;align-items:center;flex:1 1 auto;min-width:0}
+    .dot{flex:0 0 auto;width:6px;height:6px;padding:0;border-radius:50%;border:1px solid var(--muted);background:transparent;cursor:pointer}
+    .dot:hover{transform:scale(1.7);border-color:var(--route)}
+    .dot.done{background:var(--route-2);border-color:var(--route-2)}
+    .dot-count{flex:0 0 auto;font:600 12px/1 var(--mono);color:var(--muted);white-space:nowrap}
+    .dot-flash{outline:2px solid var(--route-2);outline-offset:3px;border-radius:8px}
     .view{scroll-margin-top:84px}
     section{scroll-margin-top:84px}
     .lens-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0 8px;list-style:none;padding:0}
@@ -1020,6 +1028,10 @@
     <a class="home-link" href="https://aisummoner.com" title="Back to AI Summoner home">← aisummoner.com</a>
   </div>
 </header>
+  <div class="dot-strip" id="dot-strip" aria-label="视频打卡点阵 · 一个视频一个点">
+    <div class="dot-grid" id="dot-grid"></div>
+    <span class="dot-count" id="dot-count">—</span>
+  </div>
   <main class="shell">
     
 
@@ -1697,6 +1709,32 @@
     function viewFromHash(){ return HASH2VIEW[location.hash]||'guide'; }
     window.addEventListener('hashchange',()=>activate(viewFromHash(),false));
     activate(viewFromHash(),false);
+    // Dot-matrix click-to-locate: a dot jumps to the view where its video lives.
+    function locateVideo(key){
+      if(!key)return;
+      var box=null;
+      document.querySelectorAll('.item-check').forEach(function(b){ if(!box && b.dataset.key===key)box=b; });
+      if(!box)return;
+      var viewEl=box.closest('[id$="-view"]');
+      if(!viewEl)return;
+      var viewName=viewEl.id.replace(/-view$/,'');
+      var det=box.closest('details'); if(det)det.open=true;
+      activate(viewName,false);
+      var container=box.closest('.video-item, .study-resource, .guide-resource, .resource-item');
+      if(!container)return;
+      setTimeout(function(){
+        container.scrollIntoView({behavior:'smooth',block:'center'});
+        container.classList.add('dot-flash');
+        setTimeout(function(){ container.classList.remove('dot-flash'); },1800);
+      },80);
+    }
+    var dotGridEl=document.getElementById('dot-grid');
+    if(dotGridEl){
+      dotGridEl.addEventListener('click',function(e){
+        var dot=e.target.closest('.dot'); if(!dot)return;
+        locateVideo(dot.dataset.key);
+      });
+    }
     tabs.forEach((btn,index)=>{
       btn.addEventListener('click',()=>activate(btn.dataset.view,false));
       btn.addEventListener('keydown',e=>{
@@ -1812,6 +1850,18 @@
       document.querySelectorAll('.item-check').forEach(function(b){ if(!seen[b.dataset.key]){ seen[b.dataset.key]=true; keys.push(b.dataset.key); } });
       var idn=keys.filter(function(k){ return store.item[k]; }).length;
       setText('count-item', keys.length? (idn+' / '+keys.length) : '—');
+      // Dot-matrix under topnav: one dot per unique video (deduped by key).
+      // A video appearing in several views shares one key, so finishing it
+      // in any view fills its dot (checkbox sync marks it done everywhere).
+      var dotGrid=document.getElementById('dot-grid');
+      var dotCount=document.getElementById('dot-count');
+      if(dotGrid){
+        dotGrid.innerHTML=keys.map(function(k){
+          var t=k.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+          return '<button type="button" class="dot'+(store.item[k]?' done':'')+'" data-key="'+t+'" title="'+t+'" aria-label="'+t+'" tabindex="-1"></button>';
+        }).join('');
+      }
+      if(dotCount){ dotCount.textContent=keys.length? (idn+' / '+keys.length) : '—'; }
       var ib=document.getElementById('bar-item'); if(ib)ib.style.width=(keys.length? Math.round(idn/keys.length*100):0)+'%';
       var unitLabels={day:' 站',week:' 天',month:' 主题',six:' 周'};
       ['day','week','month','six'].forEach(function(g){
