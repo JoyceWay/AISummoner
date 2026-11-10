@@ -531,12 +531,12 @@
     .home-link{font:500 11px/1 var(--mono);color:var(--muted);text-decoration:none;white-space:nowrap}
     .home-link:hover{color:var(--route);text-decoration:underline}
     /* ===== dot-matrix strip under topnav: one dot per video, one row ===== */
-    .dot-strip{display:flex;align-items:center;gap:12px;padding:9px 20px;border-bottom:1px solid var(--line);background:var(--paper);overflow-x:auto;scrollbar-width:thin}
-    .dot-grid{display:flex;flex-wrap:nowrap;gap:2px;align-items:center;flex:1 1 auto;min-width:0}
-    .dot{flex:0 0 auto;width:6px;height:6px;padding:0;border-radius:50%;border:1px solid var(--muted);background:transparent;cursor:pointer}
-    .dot:hover{transform:scale(1.7);border-color:var(--route)}
-    .dot.done{width:7px;height:7px;background:#FFC53D;border-color:#FFC53D;box-shadow:0 0 7px 1px rgba(255,197,61,.75)}
-    .dot-count{flex:0 0 auto;font:600 12px/1 var(--mono);color:var(--muted);white-space:nowrap}
+    .dot-strip{display:flex;align-items:center;gap:12px;padding:9px 20px;border-bottom:1px solid #181C1A;background:#181C1A;overflow-x:auto;scrollbar-width:thin}
+    .dot-grid{display:flex;flex-wrap:nowrap;gap:3px;align-items:center;flex:1 1 auto;min-width:0}
+    .dot{flex:0 0 auto;width:10px;height:8px;padding:0;border-radius:50%;border:1px solid rgba(240,230,210,.35);background:rgba(240,230,210,.06);cursor:pointer}
+    .dot:hover{transform:scale(1.6);border-color:#F0A832}
+    .dot.done{width:10px;height:8px;background:#FFE66D;border-color:#FFE66D;box-shadow:0 0 8px 2px rgba(255,230,109,.9),0 0 18px 5px rgba(255,197,61,.55)}
+    .dot-count{flex:0 0 auto;font:600 12px/1 var(--mono);color:#E8DFC8;white-space:nowrap}
     .dot-flash{outline:2px solid var(--route-2);outline-offset:3px;border-radius:8px}
     .view{scroll-margin-top:120px}
     section{scroll-margin-top:120px}
@@ -1015,7 +1015,6 @@
     <button class="topnav-tab" role="tab" aria-selected="true" aria-controls="guide-view" id="tab-guide" data-view="guide"><strong>导览</strong><small>ORIENTATION</small></button>
     <button class="topnav-tab" role="tab" aria-selected="false" aria-controls="story-view" id="tab-story" data-view="story"><strong>故事</strong><small>STORY</small></button>
     <button class="topnav-tab" role="tab" aria-selected="false" aria-controls="map-view" id="tab-map" data-view="map"><strong>地图</strong><small>MAP</small></button>
-    <button class="topnav-tab" role="tab" aria-selected="false" aria-controls="checkin-view" id="tab-checkin" data-view="checkin"><strong>打卡</strong><small>CHECK-IN</small></button>
     <span class="nav-divider" aria-hidden="true"></span>
     <span class="nav-group-label">四尺度</span>
     <button class="topnav-tab" role="tab" aria-selected="false" aria-controls="day-view" id="tab-day" data-view="day"><strong>1D <span class="tab-name">· 热气球</span></strong><small>HOT AIR BALLOON</small></button>
@@ -1024,7 +1023,6 @@
     <button class="topnav-tab" role="tab" aria-selected="false" aria-controls="six-view" id="tab-six" data-view="six"><strong>6M <span class="tab-name">· 远征</span></strong><small>EXPEDITION</small></button>
   </nav>
   <div class="topnav-side">
-    <a class="rank-pill" href="#/checkin" id="topnav-rank" title="查看我的小馆掌柜头衔与打卡">🔪 见习学徒</a>
     <span class="topnav-progress" id="topnav-progress"></span>
     <button type="button" class="agent-top-btn" id="agent-open-top" title="召唤 AI 家教与复制进度协议">🤖 Agent 伴读</button>
     <a class="home-link" href="https://aisummoner.com" title="Back to AI Summoner home">← aisummoner.com</a>
@@ -1129,33 +1127,6 @@
       <div class="next-step-banner"><span>下一步：去故事页，认清后厨角色与比喻。<span class="en">Next: meet the kitchen crew and the metaphor map.</span></span><a class="next-step-btn" href="#/story">去故事页 → <span class="en">Go to the story</span></a></div>
       </div>
       <div class="view" id="story-view" role="tabpanel" aria-labelledby="tab-story" hidden><div id="story-content"></div></div>
-      <div class="view" id="checkin-view" role="tabpanel" aria-labelledby="tab-checkin" hidden>
-<section class="progress-panel" id="progress-panel" aria-labelledby="progress-title">
-      <h2 id="progress-title">我的学习打卡 <span class="en">My study check-ins</span></h2>
-      <p class="lead">上午学习时点一下“今日打卡”；每完成一站、一天、一周，就在那一站前面打勾。进度实时汇总到下面这张表。注意：打卡只存在这台设备的浏览器里，换设备、清缓存会丢——重要的里程碑还是以你讲回来的验收为准。<span class="en">Check in after your morning study; tick each stop, day, or week as you finish it. Progress rolls up into the table below. Check-ins live only in this device's browser — switching devices or clearing storage loses them. Milestones still count only when you explain them back.</span></p>
-      <div class="checkin-row"><button class="checkin-btn" id="checkin-btn" type="button">今日打卡 ✓ · Check in today</button><span class="checkin-meta" id="checkin-meta"></span></div>
-      <div class="rank-showcase" aria-label="小馆掌柜晋升与月度徽章">
-        <div>
-          <span class="rank-current-title">CURRENT BISTRO RANK · 当前掌柜头衔</span>
-          <div class="rank-name" id="rank-title-display">🔪 见习学徒 · Novice Apprentice</div>
-          <p class="rank-desc" id="rank-desc-display">完成每周建造或每日打卡，逐步从后厨学徒晋升为午夜黑珍珠大厨。</p>
-        </div>
-        <div class="medal-shelf" id="checkin-medal-shelf" aria-label="六个月通关徽章架"></div>
-      </div>
-      <div class="passport-actions"><button type="button" class="mini-btn" id="export-btn">导出打卡 JSON · Export</button><button type="button" class="mini-btn" id="import-btn">导入打卡 JSON · Import</button><input type="file" id="import-file" accept=".json,application/json" hidden><button type="button" class="mini-btn" id="xpost-btn">生成 X 战报 · X report</button><span class="passport-hint" id="passport-hint"></span></div>
-      <div class="overall"><div class="overall-top"><strong>6 月版总进度 · 24 周 · 6-MONTH TOTAL</strong><span id="overall-text"></span></div><div class="progress-bar"><div class="progress-fill" id="overall-fill"></div></div></div>
-      <table class="progress-table" aria-label="学习进度表">
-        <thead><tr><th>地图 · Map</th><th>已完成 · Done</th><th>进度 · Progress</th><th></th></tr></thead>
-        <tbody>
-          <tr><td>1 天版 · 6 站 · 1-day · 6 stops</td><td id="count-day"></td><td class="mini-bar"><div class="progress-bar"><div class="progress-fill" id="bar-day"></div></div></td><td><button class="go-btn" type="button" data-tab="day">去打卡 → Check in</button></td></tr>
-          <tr><td>1 周版 · 7 天侦察 · 1-week scout</td><td id="count-week"></td><td class="mini-bar"><div class="progress-bar"><div class="progress-fill" id="bar-week"></div></div></td><td><button class="go-btn" type="button" data-tab="week">去打卡 → Check in</button></td></tr>
-          <tr><td>1 月版 · 24 主题 · 1-month · 24 topics</td><td id="count-month"></td><td class="mini-bar"><div class="progress-bar"><div class="progress-fill" id="bar-month"></div></div></td><td><button class="go-btn" type="button" data-tab="month">去打卡 → Check in</button></td></tr>
-          <tr><td>6 月版 · 24 周 · 6-month · 24 weeks</td><td id="count-six"></td><td class="mini-bar"><div class="progress-bar"><div class="progress-fill" id="bar-six"></div></div></td><td><button class="go-btn" type="button" data-tab="six">去打卡 → Check in</button></td></tr>
-          <tr><td>资源单项 · 看完即勾 · Resources · tick as done</td><td id="count-item"></td><td class="mini-bar"><div class="progress-bar"><div class="progress-fill" id="bar-item"></div></div></td><td><button class="go-btn" type="button" data-tab="day">去打卡 → Check in</button></td></tr>
-        </tbody>
-      </table>
-    </section>
-      </div>
       <div class="view" id="map-view" role="tabpanel" aria-labelledby="tab-map" hidden>
         <header class="view-head"><div><h2>认路，别赶路</h2><p>地图只回答三件事：在哪、下一站是哪、怎么跳过去。故事在另一页。<span class="en">The map answers three questions: where you are, what's next, and how to jump there. The story lives on its own page.</span></p></div><span class="scale-tag">MAP · NAVIGATION</span></header>
 <section class="expedition" id="expedition" aria-labelledby="exp-title"><div class="exp-intro"><div class="exp-intro-text"><h2 id="exp-title">探险地图 <span class="en">Expedition map</span></h2><p class="lead">点路标直接跳到那一周；勾完一个月的 4 周，拿到当月徽章。<span class="en">Click a waypoint to open that week. Finish a month’s four weeks for its badge.</span></p></div><ul class="exp-legend"><li><span class="exp-dot"></span>路标：一周的学习 <small>waypoint</small></li><li><span class="exp-dot done"></span>已到达 <small>reached</small></li><li><span class="exp-dot next"></span>下一站 <small>next stop</small></li><li><span class="exp-badge-mark">🏅</span>徽章：当月 4 周全完成 <small>district badge</small></li></ul></div>
@@ -1691,8 +1662,8 @@
 
     const tabs=[...document.querySelectorAll('.topnav-tab')];
     const views=[...document.querySelectorAll('.view')];
-    const ROUTES={guide:'#/guide',story:'#/story',checkin:'#/checkin',map:'#/map',day:'#/1d',week:'#/week',month:'#/month',six:'#/6m'};
-    const HASH2VIEW={'#/guide':'guide','#/story':'story','#/checkin':'checkin','#/map':'map','#/1d':'day','#/week':'week','#/month':'month','#/6m':'six'};
+    const ROUTES={guide:'#/guide',story:'#/story',map:'#/map',day:'#/1d',week:'#/week',month:'#/month',six:'#/6m'};
+    const HASH2VIEW={'#/guide':'guide','#/story':'story','#/map':'map','#/1d':'day','#/week':'week','#/month':'month','#/6m':'six'};
     function activate(viewName, moveFocus){
       tabs.forEach(btn=>{
         const on=btn.dataset.view===viewName;
@@ -2123,7 +2094,7 @@
       var itemTotal=Object.keys(itemKeys).length;
       return {st:st, day:{done:n(st.day||{}),total:day}, week:{done:n(st.week||{}),total:week},
         month:{done:n(st.month||{}),total:month}, six:{done:n(st.six||{}),total:six},
-        item:{done:itemDone,total:itemTotal}, checkins:(st.checkins||[]).length};
+        item:{done:itemDone,total:itemTotal}};
     }
     function nextWeek(){
       var st=loadStore();
@@ -2142,9 +2113,9 @@
       var c=counts(), nw=nextWeek();
       return JSON.stringify({atlas:'Midnight Silicon Bistro — 6-Month AI Learning Atlas', lang:'zh-CN + en',
         updated:new Date().toISOString().slice(0,10),
-        progress:{checkin_days:c.checkins, day:c.day, week:c.week, month:c.month, six:c.six, resources:c.item},
+        progress:{day:c.day, week:c.week, month:c.month, six:c.six, resources:c.item},
         next_week:nw?('W'+String(nw).padStart(2,'0')+' · '+nextTitle(nw)):'done',
-        scales:{guide:'#/guide',story:'#/story',checkin:'#/checkin',map:'#/map','1d':'#/1d','1w':'#/week','1m':'#/month','6m':'#/6m'}}, null, 2);
+        scales:{guide:'#/guide',story:'#/story',map:'#/map','1d':'#/1d','1w':'#/week','1m':'#/month','6m':'#/6m'}}, null, 2);
     }
     function payloadLLMS(){
       var c=counts(), nw=nextWeek();
@@ -2155,7 +2126,6 @@
       L.push('## Scales');
       L.push('- Guide #/guide — orient, meet the cast, learn the spells, know the six rules.');
   L.push('- Story #/story — the restaurant story, the cast, and the metaphor map.');
-  L.push('- Check-in #/checkin — daily check-ins, progress, and export.');
   L.push('- Map #/map — waypoints, progress, and the next stop.');
       L.push('- 1D Hot Air Balloon #/1d — 6 stations, one-day overview.');
       L.push('- 1W Scout #/week — 7-day reconnaissance of the six months.');
@@ -2163,7 +2133,6 @@
       L.push('- 6M Expedition #/6m — 24 weeks, build first, verify after.');
       L.push('');
       L.push('## Progress');
-      L.push('- Check-in days: '+c.checkins);
       L.push('- 1D: '+c.day.done+'/'+c.day.total+' · 1W: '+c.week.done+'/'+c.week.total+' · 1M: '+c.month.done+'/'+c.month.total+' · 6M: '+c.six.done+'/'+c.six.total+' · Resources: '+c.item.done+'/'+c.item.total);
       L.push('- Next: '+(nw?('W'+String(nw).padStart(2,'0')+' · '+nextTitle(nw)):'all 24 weeks done'));
       L.push('');
@@ -2176,7 +2145,7 @@
     function payloadTutor(){
       var c=counts(), nw=nextWeek();
       var L=[];
-      L.push('你是「午夜硅基小馆」的总厨兼家教。学生正在按一张六个月 AI 学习地图自学，当前进度：打卡 '+c.checkins+' 天；1 天版 '+c.day.done+'/'+c.day.total+'，1 周版 '+c.week.done+'/'+c.week.total+'，1 月版 '+c.month.done+'/'+c.month.total+'，6 月版 '+c.six.done+'/'+c.six.total+'，资源 '+c.item.done+'/'+c.item.total+'。');
+      L.push('你是「午夜硅基小馆」的总厨兼家教。学生正在按一张六个月 AI 学习地图自学，当前进度：1 天版 '+c.day.done+'/'+c.day.total+'，1 周版 '+c.week.done+'/'+c.week.total+'，1 月版 '+c.month.done+'/'+c.month.total+'，6 月版 '+c.six.done+'/'+c.six.total+'，资源 '+c.item.done+'/'+c.item.total+'。');
       L.push('下一站：'+(nw?('W'+String(nw).padStart(2,'0')+' · '+nextTitle(nw)):'24 周已全部完成，进入作品与收入。'));
       var stuckMap=(loadStore().stuck||{});
       var stuckOrder=[];
@@ -2262,7 +2231,7 @@
     if(xpBtn)xpBtn.addEventListener('click',function(){
       var c=counts(), nw=nextWeek();
       var lines=['🌙 午夜硅基小馆 · 学习战报',
-        '打卡 '+c.checkins+' 天｜6 月版 '+c.six.done+'/'+c.six.total+' 周｜资源 '+c.item.done+'/'+c.item.total,
+        '6 月版 '+c.six.done+'/'+c.six.total+' 周｜资源 '+c.item.done+'/'+c.item.total,
         nw?('下一站：W'+String(nw).padStart(2,'0')+' · '+nextTitle(nw)):'24 周已全部完成 🎉',
         '',
         '地图：午夜硅基小馆 · AI 学习地图册'];
