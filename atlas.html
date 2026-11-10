@@ -319,6 +319,11 @@
     .full-month{margin:0 0 44px}
     .full-month.hidden{display:none}
     .full-title{display:grid;grid-template-columns:68px 1fr;gap:16px;align-items:center;margin:0 0 14px}
+    .month-head-row{display:grid;grid-template-columns:280px minmax(0,1fr);gap:24px;align-items:start;margin:0 0 16px}
+    .month-head-row .full-title{margin:0}
+    .month-head-side{display:flex;flex-direction:column;gap:8px;min-width:0}
+    .month-head-side .month-artifact{margin:0}
+    .month-head-side .revisit-line{margin:0}
     .full-title .big-no{font:500 25px/1 var(--mono);color:var(--accent,var(--route));border-right:1px solid var(--line);padding-right:14px}
     .full-title h3{font:600 24px/1.3 var(--serif);margin:0}
     .week-details{display:grid;gap:10px;margin-left:84px}
@@ -975,6 +980,7 @@
     .story-text .en{font-family:"Source Serif 4","Noto Serif SC",serif}
     #six-view .detail-body > .detail-cell.story-cell.six-cell p{font-family:"ZCOOL KuaiLe","Noto Serif SC",serif;font-size:13px;color:var(--ink)}
     @media (max-width:720px){
+      .month-head-row{grid-template-columns:1fr;gap:12px}
       .month-artifact{display:block}
       .month-artifact .route-kicker{margin-bottom:4px}
       .exp-intro{grid-template-columns:1fr}
@@ -1145,7 +1151,10 @@
   </main>
 <footer class="site-foot">
   <span>午夜硅基小馆 · Midnight Silicon Bistro</span>
-  <button type="button" id="agent-open" class="agent-foot-link">Agent 协议</button>
+  <span style="display:flex;gap:16px;align-items:center">
+    <a class="agent-foot-link" href="https://buy.stripe.com/bJeeVe8SE9md7Y21U7dfG03" target="_blank" rel="noopener" title="小费随缘，默认 $6.66">🪔 续灯油 · $6.66</a>
+    <button type="button" id="agent-open" class="agent-foot-link">Agent 协议</button>
+  </span>
 </footer>
 
   <script>
@@ -1652,7 +1661,7 @@
       const filters=`<div class="filters" aria-label="筛选月份"><button class="month-filter active" data-month="all">全部 · All</button><button class="month-filter" data-month="todo">⏳ 只看未完成 · Todo</button>${months.map(m=>`<button class="month-filter" data-month="${m.n}">M${m.n} ${m.name}</button>`).join('')}</div>`;
       const groups=months.map(m=>{
         const ds=weeks.filter(w=>w.m===m.n).map((w,i)=>`<details style="${monthStyle(m)}"><summary><span class="wk-no">W${String(w.n).padStart(2,'0')}</span><strong>${w.t}${en(w.e)}</strong><span class="wk-res-pill" data-wk-pill="${w.n}">📚 资料</span></summary><div class="detail-body">${detailCell('从零学什么','LEARN',w.aim,'six-cell')}${detailCell('对 AI 的意义','WHY AI',w.ai,'six-cell')}<div class="detail-cell six-cell"><h4>Prompt 在哪用 · PROMPT</h4><div class="prompt-box-wrap"><p>${w.prompt}</p></div></div>${detailCell('这一周做出来','SHIP',w.out,'six-cell')}<div class="detail-cell six-cell"><h4>完成标准 · DONE</h4><p>你能不用术语，用自己的话解释；也能亲手跑通一次，并指出一个失败点。</p></div>${detailCell('餐馆里的这一幕','STORY',w.story+(w.storyEn?en(w.storyEn):''),'story-cell six-cell')}${resourceCell(w.n)}${videoGuideCell(w.n)}</div></details>`).join('');
-        return `<section class="full-month" data-month-group="${m.n}" style="${monthStyle(m)}"><header class="full-title"><span class="big-no">M${m.n}</span><h3>${m.name}${en(m.en)}</h3></header><div class="month-artifact"><span class="route-kicker">月末交付物 · ARTIFACT</span><span>${m.artifact}${en(m.artifactEn)}</span></div>${m.n>1?`<div class="revisit-line"><span class="route-kicker">回访 · REVISIT</span><span>进 M${m.n} 之前，先回 M${m.n-1} 的 SHIP 里挑一个，改一处。</span></div>`:''}<div class="week-details">${ds}</div></section>`;
+        return `<section class="full-month" data-month-group="${m.n}" style="${monthStyle(m)}"><div class="month-head-row"><header class="full-title"><span class="big-no">M${m.n}</span><h3>${m.name}${en(m.en)}</h3></header><div class="month-head-side"><div class="month-artifact"><span class="route-kicker">月末交付物 · ARTIFACT</span><span>${m.artifact}${en(m.artifactEn)}</span></div>${m.n>1?`<div class="revisit-line"><span class="route-kicker">回访 · REVISIT</span><span>进 M${m.n} 之前，先回 M${m.n-1} 的 SHIP 里挑一个，改一处。</span></div>`:''}</div></div><div class="week-details">${ds}</div></section>`;
       }).join('');
       document.getElementById('six-view').innerHTML=`<header class="view-head"><div><h2>六个月，逐周精读、看讲义、动手</h2><p>每周先看不超过 3 个“必看”，其余都是真有需要才打开的“可选项”；再完成动手任务并按标准验收。Week 24 不加新视频，只整合作品。<span class="en">Each week has no more than three required items. Open optional resources only for a real need, then build and verify the result. Week 24 adds no new video and is reserved for portfolio integration.</span></p></div><span class="scale-tag">24 WEEKS · BUILD FIRST</span></header><div class="honest-total"><div><strong>约 26 小时</strong><span>必看视频 · required</span></div><div><strong>约 36 小时</strong><span>可选项视频 · optional</span></div><div><strong>约 155–185 小时</strong><span>含 92–122 小时动手；目标 480 小时，缺口不注水</span></div></div><div class="six-controls"><button type="button" class="mini-btn" id="expand-all-weeks">全部展开</button><button type="button" class="mini-btn" id="collapse-all-weeks">全部收起</button></div>${filters}${groups}`;
     }
