@@ -21,7 +21,7 @@
       linear-gradient(90deg, rgba(20,20,19,0.035) 1px, transparent 1px);
     background-size:28px 28px;
   }
-  .progress{position:fixed; top:0; left:0; height:3px; background:var(--terra); width:5.5%; z-index:50; transition:width .3s}
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--terra); width:11%; z-index:50; transition:width .3s}
   .wrap{max-width:720px; margin:0 auto; padding:0 20px 80px}
   .topbar{display:flex; justify-content:space-between; align-items:center; padding:18px 0 8px;
     font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.14em; color:var(--muted)}
@@ -106,6 +106,16 @@
   footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:14px}
   footer a{color:var(--terra)}
   @media (max-width:560px){ h1{font-size:34px} body{font-size:16px} .map .hook{display:block; margin-top:2px} }
+  /* bookmark: resume bar + floating save button */
+  .resume-bar{display:none; position:sticky; top:0; z-index:55; background:var(--ink); color:var(--paper);
+    border-radius:10px; padding:10px 14px; margin:12px 0; align-items:center; gap:10px; cursor:pointer; font-size:15px}
+  .resume-bar .go{color:var(--amber); font-weight:700; white-space:nowrap}
+  .resume-bar .x{margin-left:auto; background:none; border:none; color:#D8D2C4; font-size:16px; cursor:pointer; padding:0 2px}
+  .bm-fab{position:fixed; right:18px; bottom:18px; z-index:60; width:52px; height:52px; border-radius:50%;
+    background:var(--ink); color:var(--paper); border:none; font-size:22px; cursor:pointer;
+    box-shadow:0 4px 16px rgba(0,0,0,.25)}
+  .bm-fab:hover{background:var(--terra)}
+  .map li.done{cursor:pointer}
 </style>
 </head>
 <body>
@@ -119,7 +129,12 @@
       <button class="lang-btn" data-m="en" onclick="setLang('en')">EN</button>
       <button class="lang-btn" data-m="cn" onclick="setLang('cn')">中文</button>
     </span>
-    <span>NIGHT 1 / 18</span>
+    <span>NIGHT 2 / 18</span>
+  </div>
+
+  <div class="resume-bar" id="resume-bar" onclick="goResume()">
+    <span>📖</span><span id="resume-text"></span><span class="go">继续 →</span>
+    <button class="x" title="清除书签" onclick="event.stopPropagation(); clearBookmark()">✕</button>
   </div>
 
   <div class="kicker">DAVID DEUTSCH · 2011 · A READER'S GUIDE · 中英对照</div>
@@ -128,7 +143,7 @@
   <p class="sub lang-cn">你手里有这本书，却读不下去——<b>不是你的问题</b>。496 页，18 章，零故事，全是抽象论证。这站把书写成十八夜故事，每夜十分钟，读完一夜，你会想知道下一夜发生什么。</p>
   <div class="meta">
     <span class="pill">496 pages</span><span class="pill">18 chapters</span>
-    <span class="pill hot">Night 1 · 今夜可读</span><span class="pill">一夜一章 · 每夜 10 分钟</span>
+    <span class="pill hot">Night 2 · 今夜可读</span><span class="pill">一夜一章 · 每夜 10 分钟</span>
     <span class="pill">中英对照 · EN / 中文</span>
   </div>
   <a class="cta" href="#night1"><span class="lang-en">Start Night 1 ↓</span><span class="lang-cn">开始第一夜 ↓</span></a>
@@ -175,8 +190,8 @@
   <p class="lede lang-en">All 18 chapters, one night each. Only the first lamp is lit tonight.</p>
   <p class="lede lang-cn">全书 18 章，一章一夜。今夜只亮第一盏灯。</p>
   <ol class="map">
-    <li class="done"><span class="no">NIGHT 01</span><span><span class="t">The Reach of Explanations<span class="cn">解释的 reach</span></span><span class="hook lang-en">What does a good explanation look like? A goddess and a tilted axis will tell you.</span><span class="hook-cn lang-cn">好解释长什么样？一个女神和一根倾斜的地轴告诉你。</span></span><span class="st">今夜可读</span></li>
-    <li><span class="no">NIGHT 02</span><span><span class="t">Closer to Reality<span class="cn">更接近实在</span></span><span class="hook lang-en">Explanations are guesses — so how do guesses get closer to being right?</span><span class="hook-cn lang-cn">解释都是猜的，猜怎么会越猜越对？</span></span><span class="st soon">待续</span></li>
+    <li class="done" onclick="location.hash='#night1'"><span class="no">NIGHT 01</span><span><span class="t">The Reach of Explanations<span class="cn">解释的 reach</span></span><span class="hook lang-en">What does a good explanation look like? A goddess and a tilted axis will tell you.</span><span class="hook-cn lang-cn">好解释长什么样？一个女神和一根倾斜的地轴告诉你。</span></span><span class="st">今夜可读</span></li>
+    <li class="done" onclick="location.hash='#night2'"><span class="no">NIGHT 02</span><span><span class="t">Closer to Reality<span class="cn">更接近实在</span></span><span class="hook lang-en">Explanations are guesses — so how do guesses get closer to being right?</span><span class="hook-cn lang-cn">解释都是猜的，猜怎么会越猜越对？</span></span><span class="st">今夜可读</span></li>
     <li><span class="no">NIGHT 03</span><span><span class="t">The Spark<span class="cn">火花</span></span><span class="hook lang-en">What happened the first time humans "explained" the world?</span><span class="hook-cn lang-cn">人类第一次"解释"世界时，发生了什么？</span></span><span class="st soon">待续</span></li>
     <li><span class="no">NIGHT 04</span><span><span class="t">Creation<span class="cn">创造</span></span><span class="hook lang-en">With no creator, how does the universe make new things?</span><span class="hook-cn lang-cn">没有创造者，宇宙怎么造出新东西？</span></span><span class="st soon">待续</span></li>
     <li><span class="no">NIGHT 05</span><span><span class="t">The Reality of Abstractions<span class="cn">抽象实在</span></span><span class="hook lang-en">Are numbers, laws, explanations real things?</span><span class="hook-cn lang-cn">数字、定律、解释，是真实存在的东西吗？</span></span><span class="st soon">待续</span></li>
@@ -340,16 +355,254 @@
     <p class="lang-cn" style="margin:8px 0 0">好解释很难变通——但等等，解释都是人猜出来的。猜，怎么会越猜越对？我们怎么知道自己在接近实在，而不是在编越来越精致的故事？<b>下一夜：更接近实在。</b></p>
   </div>
 
-  <p class="lang-en" style="color:var(--muted); font-size:15px">Night 2 comes after you've read Night 1 and passed the checkpoint. One night, one chapter, no greed.</p>
-  <p class="lang-cn" style="color:var(--muted); font-size:15px">第二夜在你读完第一夜、过了检查点之后写。一夜一章，不贪多。</p>
+  <p style="margin-top:22px"><a class="cta" href="#night2"><span class="lang-en">Night 2 is ready →</span><span class="lang-cn">第二夜已上线 →</span></a></p>
+
+
+  <hr class="sep" id="night2">
+
+  <span class="night-tag">NIGHT 02 · 第二夜</span>
+  <h2 style="margin-top:14px"><span class="en">CHAPTER 2 · CLOSER TO REALITY</span>更接近实在</h2>
+  <p class="lede lang-en">Tonight answers just one question: <b>explanations are guesses — so how do guesses get closer and closer to being right?</b> The answer starts with a student, a photographic plate, and a galaxy that wasn't there.</p>
+  <p class="lede lang-cn">今夜只回答一个问题：<b>解释都是猜的，猜怎么会越猜越对？</b>答案从一个学生、一张底片、一个不存在的星系开始。</p>
+
+  <div class="scene" id="n2-s1">
+    <h3><span class="sc">SCENE 1 · OPENING</span>The student who counted galaxies<span class="h-cn lang-cn">数星系的学生</span></h3>
+    <p class="lang-en">As a graduate student, Deutsch was once shown the Palomar Sky Survey — dramatic photographs of clusters of galaxies, fuzzy shapes against the black, set against the sharp points of nearby stars. The scale was overwhelming: whole galaxies, each holding billions of stars, reduced to smudges on a plate.</p>
+    <p class="lang-cn">做研究生时，Deutsch 有一次看到了帕洛玛巡天（Palomar Sky Survey）的照片——成团的星系，模糊的光斑，对比附近恒星锐利的光点。尺度大得吓人：整个星系，几十亿颗星星，在底片上只剩一团模糊。</p>
+    <p class="lang-en">His job was to catalogue those galaxies — to look at photographic plates, by eye, and decide what was a galaxy and what was not. The tools were rudimentary. The work was slow. And it was, Deutsch says, creative and fun — not mindless toil.</p>
+    <p class="lang-cn">他的工作是给这些星系编目——用肉眼看底片，判断什么是星系、什么不是。工具很原始，工作很慢。但 Deutsch 说，这工作有创造性，而且好玩——不是无脑苦力。</p>
+    <p class="lang-en">Already, a question is hiding in this scene: when you "just look" at a plate, are you seeing reality — or are you already interpreting it?</p>
+    <p class="lang-cn">这个场景里已经藏了一个问题：当你"只是看看"底片时，你看到的是实在，还是已经在解读它了？</p>
+  </div>
+
+  <div class="scene" id="n2-s2">
+    <h3><span class="sc">SCENE 2 · THE STORY</span>The galaxy that wasn't there<span class="h-cn lang-cn">不存在的星系</span></h3>
+    <p class="lang-en">One day, a student mistook a flaw in the photograph for a galaxy. A smudge on the plate — a defect in the emulsion, a speck of dust — looked exactly like a distant galaxy. It was catalogued. For a while, it <i>was</i> a galaxy.</p>
+    <p class="lang-cn">有一天，一个学生把底片上的一个瑕疵当成了星系。底片上的一团污迹——感光层的一个缺陷、一粒灰尘——看起来和一个遥远的星系一模一样。它被编进了目录。有一阵子，它就是一个星系。</p>
+    <p class="lang-en">Whose mistake was it? Not the eyes — the eyes saw the smudge correctly. The mistake was in the theory: the interpretation that said "this smudge is a galaxy." The error lived in the explanation, not in the observation.</p>
+    <p class="lang-cn">这是谁的错？不是眼睛的错——眼睛正确地看到了那团污迹。错在理论里：那个"这团污迹是个星系"的解读。错误住在解释里，不住在观察里。</p>
+    <p class="lang-en">That is the first crack in a very old idea: that knowledge comes from looking. If looking were enough, a smudge could never become a galaxy. But it did — because looking is never just looking.</p>
+    <p class="lang-cn">这就是一个古老想法的第一道裂缝：知识来自"看"。如果"看"就够了，一团污迹永远变不成星系。可它变成了——因为"看"从来不只是"看"。</p>
+    <div class="quote">
+      <div class="en">The growth of knowledge consists of correcting misconceptions in our theories.</div>
+      <div class="cn">知识的增长，就是纠正我们理论中的误解。</div>
+    </div>
+  </div>
+
+  <div class="scene" id="n2-s3">
+    <h3><span class="sc">SCENE 3 · THE TURN</span>You never see anything directly<span class="h-cn lang-cn">你从未直接看到任何东西</span></h3>
+    <p class="lang-en">Here is Deutsch's blunt claim, the sentence this whole night turns on:</p>
+    <p class="lang-cn">下面是 Deutsch 直白的论断，今夜整章都绕着这句话转：</p>
+    <div class="quote">
+      <div class="en">We observe nothing directly anyway. All observation is theory-laden.</div>
+      <div class="cn">反正我们什么都不是直接观察到的。所有的观察都负载着理论。</div>
+    </div>
+    <p class="lang-en"><span class="term">Theory-laden</span>: every observation already carries a theory inside it. Your eyes don't hand you the world raw. They hand you an interpretation — and your brain builds the rest.</p>
+    <p class="lang-cn"><span class="term">Theory-laden（负载理论）</span>：每一次观察里面都已经装着一个理论。你的眼睛递给你的不是原生的世界，而是一个解读——剩下的由你的大脑补完。</p>
+    <div class="quote">
+      <div class="en">We never perceive anything directly. All our external experience is virtual reality... generated by our own brains.</div>
+      <div class="cn">我们从未直接感知任何东西。我们所有的外部经验都是虚拟现实……由我们自己的大脑生成。</div>
+    </div>
+    <p class="lang-en">Read that again: <i>virtual reality</i>. Not as a metaphor for headsets — as a description of ordinary seeing. What you call "seeing the world" is your brain running a simulation, built from signals, corrected by theories you already hold. The world out there is real. But the picture in your head is a construction.</p>
+    <p class="lang-cn">再读一遍：<i>虚拟现实</i>。不是指头盔的比喻，而是对日常"看"的描述。你说的"看到世界"，是大脑在跑一个模拟——用信号搭建，用你已有的理论修正。外面的世界是真实的，但你脑子里的画面是建构出来的。</p>
+    <p class="lang-en">That is why appearances can be deceptive. And it is also why we — and our instruments — can correct for that deceptiveness. A deception you can correct is not a wall. It is a door.</p>
+    <p class="lang-cn">所以表象会骗人。也正因为如此，我们——和我们的仪器——才能纠正这种骗人。能被纠正的欺骗不是一堵墙，而是一扇门。</p>
+    <div class="quote">
+      <div class="en">That is why appearances can be deceptive, and it is also why we, and our instruments, can correct for that deceptiveness.</div>
+      <div class="cn">这就是为什么表象会骗人，也正是为什么我们——和我们的仪器——能够纠正这种骗人。</div>
+    </div>
+  </div>
+
+  <div class="scene" id="n2-s4">
+    <h3><span class="sc">SCENE 4 · THE CONTRAST</span>The telescope brings you closer<span class="h-cn lang-cn">望远镜让你更近</span></h3>
+    <p class="lang-en">Now the obvious worry: if all observation is interpretation, and instruments add even more layers of it — telescopes, detectors, computers processing data — then surely instruments take us <i>farther</i> from reality, not closer. Astronomers don't even look at the sky any more. They stare at data.</p>
+    <p class="lang-cn">现在一个明显的担心来了：如果所有观察都是解读，而仪器又加了更多层解读——望远镜、探测器、电脑处理数据——那仪器岂不是让我们离实在更远，而不是更近？天文学家现在根本不看天了，只盯着数据。</p>
+    <p class="lang-en">Deutsch says: exactly backwards. It may seem strange —</p>
+    <p class="lang-cn">Deutsch 说：正好反了。这听起来很奇怪——</p>
+    <div class="quote">
+      <div class="en">It may seem strange that scientific instruments bring us closer to reality when in purely physical terms they only ever separate us further from it.</div>
+      <div class="cn">科学仪器让我们更接近实在，这听起来可能很奇怪——因为从纯物理的角度说，它们只会让我们离实在更远。</div>
+    </div>
+    <p class="lang-en">But "closer" was never about physical distance. Your naked eye tells you a star is a white dot. A telescope tells you it is a massive nuclear furnace, millions of kilometres across. Which one is closer to reality? The telescope — because it corrects the error your eye makes.</p>
+    <p class="lang-cn">但"更近"从来不是物理距离的问题。你的肉眼告诉你，星星是一个白点。望远镜告诉你，它是一个巨大的核熔炉，直径几百万公里。哪一个更接近实在？望远镜——因为它纠正了你的眼睛犯的错。</p>
+    <div class="quote">
+      <div class="en">Telescopes... are rungs on a ladder of theoretical interpretation which reaches down to the true, unseen reality.</div>
+      <div class="cn">望远镜……是理论解读之梯上的一级，通向真实的、看不见的实在。</div>
+    </div>
+    <p class="lang-en">Think of it as a ladder. Each rung is a better theory. Your eye is one rung. The telescope is a higher rung — a theory built into glass and metal, tested and corrected. You climb the ladder not by getting physically nearer, but by getting the interpretation righter.</p>
+    <p class="lang-cn">把它想成一架梯子。每一级都是一个更好的理论。你的眼睛是一级，望远镜是更高的一级——一个用玻璃和金属造出来的理论，经过检验和修正。你爬梯子靠的不是物理上更近，而是解读得更对。</p>
+    <p class="lang-en">So the astronomer who never looks at the sky is not farther from reality. She is closer — because she is using a better ladder.</p>
+    <p class="lang-cn">所以那个从不看天的天文学家，离实在不是更远，而是更近——因为她用的梯子更好。</p>
+  </div>
+
+  <div class="scene" id="n2-s5">
+    <h3><span class="sc">SCENE 5 · THE RISE</span>Knowledge grows by correcting mistakes<span class="h-cn lang-cn">知识靠纠错生长</span></h3>
+    <p class="lang-en">Put the pieces together and you get the engine of the whole book. Knowledge does not grow by collecting observations. It grows by correcting misconceptions.</p>
+    <p class="lang-cn">把这些拼起来，就是整本书的引擎。知识不是靠收集观察来增长的，而是靠纠正误解来增长的。</p>
+    <div class="quote">
+      <div class="en">The growth of knowledge consists of correcting misconceptions in our theories.</div>
+      <div class="cn">知识的增长，就是纠正我们理论中的误解。</div>
+    </div>
+    <p class="lang-en">Each correction moves the theory a little closer to reality. There is no ceiling to this: reality is comprehensible, and our error-correcting has no built-in stopping point. That is the second layer of "infinity" in the title — our explanations can approach reality without end.</p>
+    <p class="lang-cn">每一次纠正，都让理论离实在近一点。这没有天花板：实在是可以被理解的，而我们的纠错没有内置的终点。这就是书名"无穷"的第二层意思——我们的解释可以无止境地接近实在。</p>
+    <p class="lang-en">And the work itself is not drudgery. Edison said research is "one per cent inspiration and ninety-nine per cent perspiration." Deutsch says that is misleading: people can apply creativity even to tasks that machines do uncreatively. Cataloguing galaxies by eye was repetitive — and it was creative, and fun. The toil can be creative, just as the discovery is.</p>
+    <p class="lang-cn">而且这工作本身不是苦役。爱迪生说，研究是"百分之一的灵感加百分之九十九的汗水"。Deutsch 说，这话误导人：人即使在机器只会机械重复的任务里，也能发挥创造性。用肉眼给星系编目是重复的——同时它是有创造性的、好玩的。苦力也可以有创造性，和发现一样。</p>
+    <p class="lang-en">So: guesses get closer to being right not by piling up more observations, but by finding the misconceptions inside the guess and correcting them. That is how a smudge stops being a galaxy — and how a white dot becomes a furnace.</p>
+    <p class="lang-cn">所以：猜越猜越对，靠的不是堆更多观察，而是找到猜里面的误解、纠正它。一团污迹就是这样不再是星系的，一个白点就是这样变成熔炉的。</p>
+  </div>
+
+  <div class="scene" id="n2-quotes">
+    <h3><span class="sc">GOLDEN LINES · 金句</span>今夜的金句<span class="h-cn lang-cn">值得抄下来的句子</span></h3>
+    <p class="lede lang-en">Six lines from Chapter 2 worth copying into your notebook. Each one is a tool, not a decoration.</p>
+    <p class="lede lang-cn">第二章里值得抄进笔记本的六句话。每一句都是工具，不是装饰。</p>
+    <div class="quote">
+      <div class="en">It may seem strange that scientific instruments bring us closer to reality when in purely physical terms they only ever separate us further from it.</div>
+      <div class="cn">科学仪器让我们更接近实在，这听起来可能很奇怪——因为从纯物理的角度说，它们只会让我们离实在更远。</div>
+    </div>
+    <div class="quote">
+      <div class="en">We observe nothing directly anyway. All observation is theory-laden.</div>
+      <div class="cn">反正我们什么都不是直接观察到的。所有的观察都负载着理论。</div>
+    </div>
+    <div class="quote">
+      <div class="en">We never perceive anything directly. All our external experience is virtual reality... generated by our own brains.</div>
+      <div class="cn">我们从未直接感知任何东西。我们所有的外部经验都是虚拟现实……由我们自己的大脑生成。</div>
+    </div>
+    <div class="quote">
+      <div class="en">Telescopes... are rungs on a ladder of theoretical interpretation which reaches down to the true, unseen reality.</div>
+      <div class="cn">望远镜……是理论解读之梯上的一级，通向真实的、看不见的实在。</div>
+    </div>
+    <div class="quote">
+      <div class="en">The growth of knowledge consists of correcting misconceptions in our theories.</div>
+      <div class="cn">知识的增长，就是纠正我们理论中的误解。</div>
+    </div>
+    <div class="quote">
+      <div class="en">That is why appearances can be deceptive, and it is also why we, and our instruments, can correct for that deceptiveness.</div>
+      <div class="cn">这就是为什么表象会骗人，也正是为什么我们——和我们的仪器——能够纠正这种骗人。</div>
+    </div>
+    <p class="lang-en">If you only keep one: keep the second. "All observation is theory-laden" is the sentence that changes how you read everything else in this book — and how you trust your own eyes.</p>
+    <p class="lang-cn">如果只留一句，留第二句。"所有的观察都负载着理论"——这句话会改变你读这本书其余部分的方式，也会改变你信任自己眼睛的方式。</p>
+  </div>
+
+  <div class="scene" id="n2-try">
+    <h3><span class="sc">TRY IT · 动手试</span>The "I saw it myself" test<span class="h-cn lang-cn">"我亲眼所见"测试</span></h3>
+    <p class="lang-en">Tonight's tool is one sentence: <b>all observation is theory-laden</b>. Use it on two claims. Tap a card to see the verdict.</p>
+    <p class="lang-cn">今夜的工具只有一句话：<b>所有观察都负载理论</b>。拿它测两个说法。点开卡片看答案。</p>
+    <div class="quiz">
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>A.</b> "I saw it with my own eyes, so it must be true."</div>
+        <div class="lang-cn"><b>A.</b> "我亲眼所见，所以一定是真的。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-bad">Bad reasoning.</span> Your eyes are theory-laden too — "seeing" is already interpreting. A smudge on a plate looked like a galaxy to a trained eye. "I saw it myself" is not evidence; it is a report from one instrument (your visual system) that can be wrong. The question is never "did you see it" but "is the theory behind the seeing any good?"</div>
+        <div class="a lang-cn"><span class="verdict-bad">坏推理。</span>你的眼睛也是负载理论的——"看到"已经是解读。一团污迹在训练有素的眼睛里也像星系。"我亲眼所见"不是证据，只是一台可能出错的仪器（你的视觉系统）的报告。问题从来不是"你看到了吗"，而是"你看背后的理论好不好"。</div>
+      </div>
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>B.</b> "The telescope disagrees with my eyes. I trust the telescope."</div>
+        <div class="lang-cn"><b>B.</b> "望远镜和我的眼睛不一致，我信望远镜。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-good">Good reasoning.</span> The telescope is a better theory built into glass — it has been tested, corrected, and it corrects the errors your eye makes. Trusting the instrument is not blind faith; it is trusting the better explanation. That is how a white dot becomes a furnace.</div>
+        <div class="a lang-cn"><span class="verdict-good">好推理。</span>望远镜是用玻璃造出来的更好的理论——它经过检验和修正，能纠正你的眼睛犯的错。信仪器不是盲信，而是信更好的解释。一个白点就是这样变成熔炉的。</div>
+      </div>
+    </div>
+    <p class="lang-en">Try it on your own eyes this week: pick one thing you were sure you saw, and ask what theory was doing the seeing. That is tonight's tool, and it works everywhere — not just in astronomy.</p>
+    <p class="lang-cn">这周拿自己的眼睛试一次：挑一件你确信自己"看到"的事，问问当时是哪个理论在替你看。这就是今夜的工具，而且它哪都管用——不只在天文学里。</p>
+  </div>
+
+  <div class="takeaway">
+    <h4>TAKEAWAY · 今夜带走三句</h4>
+    <ol>
+      <li><span class="lang-en">Observation is theory-laden: we never see anything directly; all experience is interpretation.</span><span class="t-cn lang-cn">观察负载理论：我们从未直接看到任何东西；所有经验都是解读。</span></li>
+      <li><span class="lang-en">Instruments don't distance us from reality — they bring us closer, by correcting our senses' errors.</span><span class="t-cn lang-cn">仪器没有让我们远离实在——它让我们更近，靠的是纠正感官的错误。</span></li>
+      <li><span class="lang-en">Knowledge grows by correcting misconceptions in our theories — each correction moves us closer to reality.</span><span class="t-cn lang-cn">知识靠纠正理论中的误解来增长——每一次纠正都让我们离实在更近。</span></li>
+    </ol>
+  </div>
+
+  <h2 id="n2-check"><span class="en">CHECKPOINT · CAN YOU EXPLAIN IT BACK?</span>检查点 · 能讲回来吗？</h2>
+  <p class="lede lang-en">Your rule: understand it 70–80% before it counts. Three questions — answer them before the next night. Tap to check.</p>
+  <p class="lede lang-cn">你的规则：看懂 7788 才算过。三道题，答得上来再进下一夜。点开对答案。</p>
+  <details class="check"><summary><span class="lang-en">01｜Why is mistaking a photographic flaw for a galaxy an error in theory, not in observation?</span><span class="lang-cn">01｜为什么把底片瑕疵当成星系，是理论里的错，不是观察里的错？</span></summary>
+    <div class="ans lang-en">The eyes saw the smudge correctly. The mistake was the interpretation — "this smudge is a galaxy." Errors live in explanations, not in raw signals. That is why correcting the theory (not looking harder) fixes it.</div>
+    <div class="ans lang-cn">眼睛正确地看到了那团污迹。错在解读——"这团污迹是个星系"。错误住在解释里，不住在原始信号里。所以纠正理论（而不是看得更仔细）才能修好它。</div></details>
+  <details class="check"><summary><span class="lang-en">02｜Why does a telescope bring you closer to reality, not farther from it?</span><span class="lang-cn">02｜为什么望远镜让你离实在更近，而不是更远？</span></summary>
+    <div class="ans lang-en">Because "closer" is about the interpretation, not the physical distance. The telescope is a better theory: it corrects the errors your naked eye makes (a star as a white dot) and reveals the massive object underneath. Instruments are rungs on a ladder of better interpretations.</div>
+    <div class="ans lang-cn">因为"更近"说的是解读，不是物理距离。望远镜是更好的理论：它纠正肉眼的错误（星星是个白点），揭示底下那个庞然大物。仪器是通向更好解读的梯子。</div></details>
+  <details class="check"><summary><span class="lang-en">03｜Use "all observation is theory-laden" on something you "saw with your own eyes" — what theory was doing the seeing?</span><span class="lang-cn">03｜用"所有观察都负载理论"测一件你"亲眼所见"的事——当时是哪个理论在替你看？</span></summary>
+    <div class="ans lang-en">Pick something you were sure you saw — a person's mood, a "fact" from a chart, a word's meaning. Ask: what did I already believe that made me see it that way? If you change the background theory, does the "seeing" change? If yes, the seeing was theory-laden — and that theory can be criticized and corrected.</div>
+    <div class="ans lang-cn">挑一件你确信自己"看到"的事——一个人的情绪、一张图里的"事实"、一个词的意思。问：我事先相信了什么，才让我这样看？如果换掉背景理论，"看到"的东西会变吗？如果会，那这次"看"就是负载理论的——而那个理论可以被批评、被纠正。</div></details>
+
+  <div class="cliff">
+    <span class="next">→ NEXT · NIGHT 03：THE SPARK</span>
+    <p class="lang-en" style="margin:0">We've learned that guesses get closer to reality by correcting errors. But wait — if all our knowledge is guessed, where did the first good guess come from? How did humans start explaining at all? And why did it take so long? <b>Next night: The Spark — the first time humans "explained" the world.</b></p>
+    <p class="lang-cn" style="margin:8px 0 0">我们知道了，猜靠纠错越猜越对。但等等——如果所有知识都是猜出来的，那第一个好猜从哪来？人类是怎么开始"解释"的？又为什么花了这么久？<b>下一夜：火花——人类第一次"解释"世界。</b></p>
+  </div>
+
+  <p class="lang-en" style="color:var(--muted); font-size:15px">Night 3 comes after you've read Night 2 and passed the checkpoint. One night, one chapter, no greed.</p>
+  <p class="lang-cn" style="color:var(--muted); font-size:15px">第三夜在你读完第二夜、过了检查点之后写。一夜一章，不贪多。</p>
 
   <footer>
     <p class="lang-en"><i>The Beginning of Infinity: Explanations That Transform the World</i> · David Deutsch · 2011 · Viking / Penguin · 496 pages. This guide is a companion, not a substitute — read it alongside the book for the best effect. Book page: <a href="https://www.penguin.co.uk/books/24745/the-beginning-of-infinity-by-david-deutsch/9780141969695">Penguin</a></p>
     <p class="lang-cn">《The Beginning of Infinity: Explanations That Transform the World》· David Deutsch · 2011 · Viking / Penguin · 496 页。本指南是伴读，不是替代品——对照书读，效果最好。书页：<a href="https://www.penguin.co.uk/books/24745/the-beginning-of-infinity-by-david-deutsch/9780141969695">Penguin 官方页</a></p>
-    <p>A reader's guide by Conjurer Lab · AISummoner · Night 1 of 18 · 中英对照</p>
+    <p>A reader's guide by Conjurer Lab · AISummoner · Night 2 of 18 · 中英对照</p>
   </footer>
 
 </div>
+<button class="bm-fab" id="bm-btn" title="收藏此处，下次点击进来" onclick="saveBookmark()">🔖</button>
+<script>
+  // bookmark: save reading position, resume next visit
+  var BM_KEY = 'boi-bookmark';
+  var BM_IDS = ['night1','n2-s1','n2-s2','n2-s3','n2-s4','n2-s5','n2-quotes','n2-try','n2-check','night2'];
+  function nearestAnchor(){
+    var y = window.scrollY + 120, best = 'night1';
+    BM_IDS.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && el.getBoundingClientRect().top + window.scrollY <= y) best = id;
+    });
+    return best;
+  }
+  function labelFor(id){
+    var el = document.getElementById(id);
+    if(!el) return id;
+    var h = el.querySelector('h2,h3') || el;
+    var t = (h.textContent || '').replace(/\s+/g, ' ').trim();
+    return t.slice(0, 42);
+  }
+  function saveBookmark(){
+    var id = nearestAnchor();
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+    var b = document.getElementById('bm-btn');
+    if(b){ b.textContent = '✓'; setTimeout(function(){ b.textContent = '🔖'; }, 1500); }
+  }
+  function showResume(data){
+    var bar = document.getElementById('resume-bar');
+    if(!bar || !data) return;
+    bar.style.display = 'flex';
+    var t = document.getElementById('resume-text');
+    if(t) t.textContent = '上次读到：' + data.label + ' · ' + data.t;
+  }
+  function goResume(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        var el = document.getElementById(data.id);
+        if(el) el.scrollIntoView({behavior:'smooth'});
+      }
+    }catch(e){}
+  }
+  function clearBookmark(){
+    try{ localStorage.removeItem(BM_KEY); }catch(e){}
+    var bar = document.getElementById('resume-bar');
+    if(bar) bar.style.display = 'none';
+  }
+  window.addEventListener('DOMContentLoaded', function(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data) showResume(data);
+    }catch(e){}
+  });
+</script>
 <script>
   // language toggle: bi (both) / en / cn
   function setLang(m){
@@ -364,7 +617,7 @@
     var h = document.documentElement;
     var max = h.scrollHeight - h.clientHeight;
     var p = max > 0 ? (h.scrollTop / max) : 0;
-    bar.style.width = (5.5 + p * 94.5) + '%';
+    bar.style.width = (11 + p * 89) + '%';
   }
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
