@@ -8,7 +8,7 @@
 
 - [Home — AI Summoner](https://aisummoner.com/): product site homepage with a showcase (Atlas + Beginning of Infinity reading guide).
 - [AI Learning Atlas](https://aisummoner.com/atlas): interactive 6-month AI engineering learning map (1-day / 1-week / 1-month / 6-month zoom levels). Free. For adult learners, not for kids.
-- [The Beginning of Infinity — 18 Nights](https://aisummoner.com/beginning-of-infinity/): a reader's guide to David Deutsch's *The Beginning of Infinity* (2011) — 496 pages retold as eighteen 10-minute nights, one chapter per night, each ending on a cliffhanger with a checkpoint. Night 1 live.
+- [The Beginning of Infinity — 18 Nights](https://aisummoner.com/beginning-of-infinity/): a bilingual (EN/CN) reader's guide to David Deutsch's *The Beginning of Infinity* (2011) — 496 pages retold as eighteen 10-minute nights, one chapter per night, each ending on a cliffhanger with a checkpoint. Language toggle: mirror / EN / CN. Night 1 live.
 - [The Atlas Story](https://aisummoner.com/atlas-story): the article telling the Atlas story — "Midnight Silicon Bistro: a small bistro that only opens late at night, and the server is an AI." Reached from inside the Atlas (story tab), not from the homepage showcase.
 
 ## For agents
