@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="bi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《Co-Existence》共存手记 · Ethan Mollick 读书指南 | AISummoner</title>
+<meta name="description" content="Ethan Mollick《Co-Existence: The Next Phase of AI》读书指南，中英对照：240 页拆成一夜一章，每夜十分钟。Agent 时代多了一种工作模式，名字就叫 Conjurer——召唤师。">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --paper:#F4F1EA; --ink:#141413; --ink-soft:#3a382f; --muted:#7A756C;
+    --terra:#D96548; --amber:#F0A832; --cyan:#0891B2; --line:#E3DCCB;
+    --card:#FBF9F4; --green:#16794F;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC",Georgia,serif; line-height:1.85; font-size:17px;
+    background-image:
+      linear-gradient(rgba(20,20,19,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20,20,19,0.035) 1px, transparent 1px);
+    background-size:28px 28px;
+  }
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--terra); width:14%; z-index:50; transition:width .3s}
+  .wrap{max-width:720px; margin:0 auto; padding:0 20px 80px}
+  .topbar{display:flex; justify-content:space-between; align-items:center; padding:18px 0 8px;
+    font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.14em; color:var(--muted)}
+  .topbar a{color:var(--muted); text-decoration:none}
+  .topbar a:hover{color:var(--terra)}
+  .lang-toggle{display:flex; gap:6px}
+  .lang-btn{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.08em;
+    border:1px solid var(--line); background:var(--card); color:var(--ink-soft);
+    border-radius:999px; padding:4px 12px; cursor:pointer}
+  .lang-btn.active{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+  [data-lang="en"] .lang-cn{display:none !important}
+  [data-lang="cn"] .lang-en{display:none !important}
+  .lang-cn{font-size:.95em; color:var(--ink-soft)}
+  p.lang-en, p.lang-cn{margin:10px 0}
+  .kicker{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.22em; color:var(--terra); margin:34px 0 10px}
+  h1{font-size:44px; line-height:1.15; margin:0 0 8px; font-weight:700}
+  h1 .en{display:block; font-size:20px; color:var(--muted); font-weight:400; letter-spacing:.04em; margin-top:10px}
+  .sub{font-size:19px; color:var(--ink-soft); margin:14px 0 0}
+  .sub b{color:var(--terra)}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 0}
+  .pill{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; border:1px solid var(--line);
+    border-radius:999px; padding:4px 12px; background:var(--card); color:var(--ink-soft)}
+  .pill.hot{border-color:var(--terra); color:var(--terra)}
+  .cta{display:inline-block; margin-top:26px; background:var(--ink); color:var(--paper); text-decoration:none;
+    padding:12px 26px; border-radius:999px; font-size:16px}
+  .cta:hover{background:var(--terra)}
+  hr.sep{border:none; border-top:1px solid var(--line); margin:44px 0}
+  h2{font-size:26px; margin:0 0 6px}
+  h2 .en{display:block; font-size:13px; font-family:"JetBrains Mono",ui-monospace,monospace; letter-spacing:.18em; color:var(--muted); font-weight:400; margin-bottom:6px}
+  .lede{color:var(--ink-soft); margin:0 0 20px}
+  .why{display:grid; gap:12px}
+  .why .row{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px}
+  .why .row b{color:var(--terra)}
+  .why .fix{color:var(--green); font-size:15px; margin-top:4px}
+  .how .step{display:flex; gap:14px; margin:14px 0}
+  .how .n{flex:0 0 30px; height:30px; border-radius:50%; background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:center; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:13px}
+  .map{list-style:none; margin:0; padding:0}
+  .map li{display:flex; gap:14px; padding:13px 4px; border-bottom:1px solid var(--line); align-items:baseline}
+  .map .no{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--muted); flex:0 0 62px}
+  .map .t{font-weight:700}
+  .map .t .cn{color:var(--muted); font-weight:400; font-size:14px; margin-left:6px}
+  .map .hook{color:var(--ink-soft); font-size:15px; line-height:1.6}
+  .map .hook-cn{color:var(--muted); font-size:14px; line-height:1.6}
+  .map .st{margin-left:auto; flex:0 0 auto; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px;
+    border:1px solid var(--terra); color:var(--terra); border-radius:999px; padding:2px 10px; white-space:nowrap}
+  .map .st.soon{border-color:var(--line); color:var(--muted)}
+  .map li.done{background:linear-gradient(90deg, rgba(217,101,72,.07), transparent 70%)}
+  .night-tag{display:inline-block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px;
+    letter-spacing:.2em; color:var(--paper); background:var(--terra); border-radius:4px; padding:4px 12px}
+  .scene{margin:30px 0}
+  .scene h3{font-size:21px; margin:0 0 8px}
+  .scene h3 .sc{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--terra); letter-spacing:.16em; display:block; margin-bottom:4px}
+  .scene h3 .h-cn{display:block; font-size:18px; color:var(--muted); font-weight:400; margin-top:2px}
+  .quote{border-left:3px solid var(--amber); background:rgba(240,168,50,.08); padding:14px 18px; margin:18px 0; font-size:16px}
+  .quote .en{font-style:italic}
+  .quote .cn{color:var(--ink-soft); font-size:15px; margin-top:6px}
+  .key{color:var(--terra); font-weight:700}
+  .term{font-weight:700; border-bottom:2px solid rgba(217,101,72,.4)}
+  .quiz{display:grid; gap:12px; margin:16px 0}
+  .qcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; cursor:pointer}
+  .qcard:hover{border-color:var(--terra)}
+  .qcard .a{display:none; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); font-size:15px}
+  .qcard.open .a{display:block}
+  .qcard .tap{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--muted); letter-spacing:.1em}
+  .verdict-bad{color:var(--terra); font-weight:700}
+  .verdict-good{color:var(--green); font-weight:700}
+  .takeaway{background:var(--ink); color:var(--paper); border-radius:12px; padding:20px 22px; margin:26px 0}
+  .takeaway h4{margin:0 0 10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.2em; color:var(--amber)}
+  .takeaway ol{margin:0; padding-left:22px}
+  .takeaway li{margin:8px 0}
+  .takeaway .t-cn{display:block; font-size:15px; color:#D8D2C4; margin-top:2px}
+  details.check{border:1px solid var(--line); border-radius:12px; background:var(--card); padding:14px 18px; margin:10px 0}
+  details.check summary{cursor:pointer; font-weight:700}
+  details.check .ans{margin-top:8px; font-size:15px; color:var(--ink-soft)}
+  .cliff{background:linear-gradient(135deg, rgba(8,145,178,.1), rgba(217,101,72,.08)); border:1px solid var(--line);
+    border-radius:12px; padding:22px; margin:30px 0; font-size:18px}
+  .cliff .next{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.18em; color:var(--cyan); display:block; margin-bottom:8px}
+  footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:14px}
+  footer a{color:var(--terra)}
+  @media (max-width:560px){ h1{font-size:34px} body{font-size:16px} .map .hook{display:block; margin-top:2px} }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/">← AISUMMONER</a>
+    <span class="lang-toggle">
+      <button class="lang-btn active" data-m="bi" onclick="setLang('bi')">中英</button>
+      <button class="lang-btn" data-m="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-m="cn" onclick="setLang('cn')">中文</button>
+    </span>
+    <span>NIGHT 1 / 7</span>
+  </div>
+
+  <div class="kicker">ETHAN MOLLICK · 2026 · A READER'S GUIDE · 中英对照</div>
+  <h1>《Co-Existence》共存手记<span class="en">Co-Existence: The Next Phase of AI, in seven nights</span></h1>
+  <p class="sub lang-en">The last book taught you to work <i>with</i> AI. This one is about what happens when AI starts doing the work <i>itself</i> — and it names your job: <b>Conjurer</b>.</p>
+  <p class="sub lang-cn">上一本教你怎么和 AI 共事。这一本讲 AI 开始自己干活之后，你怎么立身——而且它给你的工作起了个名字：<b>Conjurer，召唤师</b>。</p>
+  <div class="meta">
+    <span class="pill">240 pages</span><span class="pill">Oct 20, 2026</span>
+    <span class="pill hot">Night 1 · 今夜可读</span><span class="pill">一夜一章 · 每夜 10 分钟</span>
+    <span class="pill">中英对照 · EN / 中文</span>
+  </div>
+  <a class="cta" href="#night1"><span class="lang-en">Start Night 1 ↓</span><span class="lang-cn">开始第一夜 ↓</span></a>
+
+  <hr class="sep">
+
+  <h2><span class="en">WHY THIS BOOK</span>为什么是这本</h2>
+  <p class="lede lang-en">Three reasons, and the second one is personal.</p>
+  <p class="lede lang-cn">三个理由，第二个跟你直接有关。</p>
+  <div class="why">
+    <div class="row">
+      <div class="lang-en"><b>01｜It's about the agent era, not the chatbot era.</b> The last book taught prompting a chatbot that couldn't do basic math. This one is about agents that take on whole tasks — the world you're building in.</div>
+      <div class="lang-cn"><b>01｜讲的是 agent 时代，不是聊天机器人时代。</b>上一本教的是怎么跟一个连基础数学都算不对的聊天机器人说话。这一本讲的是能接整件事的 agent——就是你正在造东西的那个世界。</div>
+      <div class="fix lang-en">→ fix: every night is about doing, not chatting. Tonight: can AI write this book?</div>
+      <div class="fix lang-cn">→ fix：每一夜讲的都是"干活"，不是"聊天"。今夜：AI 能写这本书吗？</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>02｜It names your job.</b> Mollick says working with AI now has three modes — Centaur, Cyborg, and a new one, <b>Conjurer</b>: handing a whole task to an agent and checking what comes back. That's your job description.</div>
+      <div class="lang-cn"><b>02｜它给你的工作起了名字。</b>Mollick 说，和 AI 共事现在有三种模式——Centaur、 Cyborg，和一个新模式，<b>Conjurer，召唤师</b>：把整件事交给 agent，回来检查。这就是你的工作描述。</div>
+      <div class="fix lang-en">→ fix: the book's hero is you. Read it as your own job manual.</div>
+      <div class="fix lang-cn">→ fix：这本书的主角就是你。把它当成你自己的工作手册来读。</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>03｜It's short and brand new.</b> 240 pages, out October 20, 2026 — three weeks old. About five hours as an audiobook. No excuse to let it sit.</div>
+      <div class="lang-cn"><b>03｜短，而且是新的。</b>240 页，2026 年 10 月 20 日出版——三周前的新书。有声版大约五小时。没有理由让它在架子上吃灰。</div>
+      <div class="fix lang-en">→ fix: seven nights, ten minutes each. Finish tonight and you're 1/7 done.</div>
+      <div class="fix lang-cn">→ fix：七夜，每夜十分钟。今夜读完，你就走了 1/7。</div>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <h2><span class="en">THE THREE MODES · HOW YOU WORK WITH AI</span>三种共事模式</h2>
+  <p class="lede lang-en">Mollick's map of working with AI. You already use all three — the third one is your main job.</p>
+  <p class="lede lang-cn">Mollick 画的和 AI 共事地图。三种你都在用——第三种是你的主业。</p>
+  <div class="why">
+    <div class="row">
+      <div class="lang-en"><b>Centaur · 人马 — a clean handoff.</b> Split the work by strengths: you do your part, AI does its part. <i>Example: you write the hook, AI writes the body.</i></div>
+      <div class="lang-cn"><b>Centaur · 人马——干净交接。</b>按各自长处分工：你做你的部分，AI 做它的部分。<i>例子：钩子你写，正文 AI 写。</i></div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>Cyborg · 赛博格 — back and forth.</b> The same task, worked on together, sentence by sentence. <i>Example: rewriting a line of copy together, three versions, you picking line by line.</i></div>
+      <div class="lang-cn"><b>Cyborg · 赛博格——来回打磨。</b>同一件事，你一句我一句一起磨。<i>例子：一段文案改三版，你一句一句挑。</i></div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>Conjurer · 召唤师 — hand it over, check it back.</b> Give an agent the whole task, then check what comes back. <i>Example: "Lay out next week's Atlas content as a table, send it to me for checking."</i> In this mode your job shrinks to two points: <b>before</b> (the brief) and <b>after</b> (the check).</div>
+      <div class="lang-cn"><b>Conjurer · 召唤师——整件事交出去，回来检查。</b>把整件事交给 agent，回来检查结果。<i>例子："把 Atlas 下一周的内容排成一张表，发我检查。"</i>这个模式里，你的工作只剩两点：<b>之前</b>（ brief）和<b>之后</b>（检查）。</div>
+      <div class="fix lang-en">→ This is the new mode, and the new book's hero. Mollick: "We conjure agents, calling them forth from the void to do our bidding, and returning them to the depths when done."</div>
+      <div class="fix lang-cn">→ 这是新模式，也是这本书的主角。Mollick 原话："我们召唤 agent，把它们从虚空中唤来替我们干活，干完再送回深处。"</div>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <h2><span class="en">THE FOUR ADVANTAGES · WHAT STAYS YOURS</span>四样护身的东西</h2>
+  <p class="lede lang-en">Mollick's answer to "what can AI never take from you?" Four things. Two of them are already yours.</p>
+  <p class="lede lang-cn">Mollick 对"AI 永远拿不走你什么"的回答：四样东西，其中两样你已经有了。</p>
+  <div class="how">
+    <div class="step"><div class="n">1</div><div><div class="lang-en"><b>Deep knowledge 深知识</b> — real expertise in your field, so you can direct AI and judge its output.</div><div class="lang-cn"><b>Deep knowledge 深知识</b>——对一个领域真懂，才能指挥 AI、判断它的输出。</div></div></div>
+    <div class="step"><div class="n">2</div><div><div class="lang-en"><b>Wide knowledge 宽知识</b> — knowing a lot of things lightly, so you know what to ask for.</div><div class="lang-cn"><b>Wide knowledge 宽知识</b>——很多东西都略懂一点，才知道该问什么。</div></div></div>
+    <div class="step"><div class="n">3</div><div><div class="lang-en"><b>Taste 品位</b> — your standard of judgment, what draws you to one piece of work and not another. <b>Yours: you're the 0.1% who decides.</b></div><div class="lang-cn"><b>Taste 品位</b>——你的判断标准，什么东西吸引你、什么不吸引。<b>这是你的：决定权在你这 0.1% 手里。</b></div></div></div>
+    <div class="step"><div class="n">4</div><div><div class="lang-en"><b>Agency 行动力</b> — the willingness to act on your own, without being told. <b>Yours: you set the direction; the agents execute.</b></div><div class="lang-cn"><b>Agency 行动力</b>——不用人告诉、自己就动手做的意愿。<b>这是你的：方向你定，agent 执行。</b></div></div></div>
+  </div>
+
+  <hr class="sep">
+
+  <h2><span class="en">HOW IT WORKS</span>读法</h2>
+  <div class="how">
+    <div class="step"><div class="n">1</div><div><div class="lang-en"><b>One night, one chapter.</b> Ten minutes each, no greed.</div><div class="lang-cn"><b>一夜一章。</b>每夜只读一章的内容，十分钟，不贪多。</div></div></div>
+    <div class="step"><div class="n">2</div><div><div class="lang-en"><b>Every night ends on a cliffhanger.</b> Like One Thousand and One Nights — the story stops at the crucial moment, and the answer comes next night.</div><div class="lang-cn"><b>每夜结尾一个悬念。</b>像一千零一夜一样——故事讲到最关键处停住，下一夜才揭晓。</div></div></div>
+    <div class="step"><div class="n">3</div><div><div class="lang-en"><b>Pass the checkpoint before the next night.</b> Three questions; answer them before moving on. That's your rule: understand it 70–80% before it counts.</div><div class="lang-cn"><b>先过检查点，再进下一夜。</b>三道题，答得上来再往下走。这是你的规则：看懂 7788 才算过。</div></div></div>
+    <div class="step"><div class="n">4</div><div><div class="lang-en"><b>English terms stay in English.</b> Jagged frontier, capability overhang, Centaur, Cyborg, Conjurer — these words look the same in the book, so you can find them there.</div><div class="lang-cn"><b>英文术语保留原文。</b>Jagged frontier、capability overhang、Centaur、Cyborg、Conjurer——这些词在书里就是这个样子，对照书找得到。</div></div></div>
+  </div>
+
+  <hr class="sep">
+
+  <h2><span class="en">THE MAP · SEVEN NIGHTS</span>七夜地图</h2>
+  <p class="lede lang-en">One night per stop: the introduction, five stations, and the codas. Only the first lamp is lit tonight. Chapter titles are verified against the book as each night is written.</p>
+  <p class="lede lang-cn">一夜一站：序章、五站、尾声。今夜只亮第一盏灯。章节标题以书为准，每写一夜核实一夜。</p>
+  <ol class="map">
+    <li class="done"><span class="no">NIGHT 01</span><span><span class="t">Introduction: Can an AI Write This Book?<span class="cn">序章：AI 能写这本书吗？</span></span><span class="hook lang-en">The author of the AI book asked AI to write the AI book. The answer is the whole book in miniature.</span><span class="hook-cn lang-cn">写 AI 书的人，让 AI 写 AI 书。答案就是整本书的缩影。</span></span><span class="st">今夜可读</span></li>
+    <li><span class="no">NIGHT 02</span><span><span class="t">Scale<span class="cn">规模</span></span><span class="hook lang-en">The exponential: every doubling is bigger than all the progress before it. And capability overhang: the gap between what AI can do and what we use it for.</span><span class="hook-cn lang-cn">指数曲线：每一次翻倍都比之前全部进步加起来还大。还有 capability overhang：AI 能做的，和我们让它做的之间的空隙。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 03</span><span><span class="t">Thinking Like a Human<span class="cn">像人一样思考</span></span><span class="hook lang-en">Chapter 5, "How to Think Like a Human," and Chapter 6, "When to Use AI" — the thinking that stays yours.</span><span class="hook-cn lang-cn">第 5 章"How to Think Like a Human"、第 6 章"When to Use AI"——留给人的那部分思考。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 04</span><span><span class="t">Work<span class="cn">工作</span></span><span class="hook lang-en">When AI makes you 40% faster and quietly turns off your brain. The end of apprenticeship.</span><span class="hook-cn lang-cn">AI 让你快 40%，同时悄悄关掉你的大脑。学徒制终结。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 05</span><span><span class="t">Education<span class="cn">教育</span></span><span class="hook lang-en">Teaching when AI does the work — and the conversation trick that makes AI actually teach.</span><span class="hook-cn lang-cn">AI 替你写作业的时代，怎么教书——以及让 AI 真正教会你的对话技巧。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 06</span><span><span class="t">Society<span class="cn">社会</span></span><span class="hook lang-en">What happens when intelligence is no longer exclusively human — and who decides?</span><span class="hook-cn lang-cn">当智能不再专属人类，社会会怎样——谁来决定？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 07</span><span><span class="t">Codas<span class="cn">尾声</span></span><span class="hook lang-en">The last word: your agency in the AI revolution.</span><span class="hook-cn lang-cn">最后一句话：你在 AI 革命里的主动权。</span></span><span class="st soon">待续</span></li>
+  </ol>
+
+  <hr class="sep" id="night1">
+
+  <span class="night-tag">NIGHT 01 · 第一夜</span>
+  <h2 style="margin-top:14px"><span class="en">INTRODUCTION · CAN AN AI WRITE THIS BOOK?</span>序章：AI 能写这本书吗？</h2>
+  <p class="lede lang-en">Tonight answers just one question: <b>what can AI actually do — and what stays human?</b> The answer hides in an experiment the author ran on his own book.</p>
+  <p class="lede lang-cn">今夜只回答一个问题：<b>AI 到底能干什么，还有什么是人的？</b>答案藏在作者拿自己的书做的一场实验里。</p>
+
+  <div class="scene">
+    <h3><span class="sc">SCENE 1 · OPENING</span>The question<span class="h-cn lang-cn">那个问题</span></h3>
+    <p class="lang-en">Ethan Mollick wrote the book on working with AI. <i>Co-Intelligence</i> was the book everyone read in 2024 to learn how to use ChatGPT at work.</p>
+    <p class="lang-cn">Ethan Mollick 写过一本讲"怎么和 AI 共事"的书。《Co-Intelligence》是 2024 年人手一本的 AI 工作指南。</p>
+    <p class="lang-en">Two years later, for the sequel, he asked the obvious question — the one any honest author would have to ask:</p>
+    <p class="lang-cn">两年后，写续作时，他问了一个显而易见的问题——任何诚实的作者都得问的问题：</p>
+    <div class="quote">
+      <div class="en">Can an AI write this book?</div>
+      <div class="cn">AI 能写这本书吗？</div>
+    </div>
+    <p class="lang-en">Not as a joke. As an experiment. He let AI try. He tested it the way he tests everything: hands-on, no hype, write down what actually happened.</p>
+    <p class="lang-cn">不是开玩笑。是当成一场实验。他让 AI 试了。用他一贯的办法：亲手测，不吹牛，把实际发生的事记下来。</p>
+    <p class="lang-en">That is the whole book in one question. If AI can write the book about AI, then what is left for the human? If it can't — <b>why</b> can't it? The answer to "why" is the book.</p>
+    <p class="lang-cn">整本书就藏在这一个问题里。如果 AI 能写这本讲 AI 的书，那人还剩下什么？如果不能——<b>为什么</b>不能？"为什么"的答案，就是这本书。</p>
+  </div>
+
+  <div class="scene">
+    <h3><span class="sc">SCENE 2 · THE RESULT</span>It wrote almost none of it — and checked it better than humans<span class="h-cn lang-cn">它几乎没写成，却比人查得更好</span></h3>
+    <p class="lang-en">Here is what happened. AI wrote <b>almost none of the book</b>.</p>
+    <p class="lang-cn">结果是这样的。AI <b>几乎没写这本书</b>。</p>
+    <p class="lang-en">Not because Mollick refused to let it. Because when he tried, the writing wasn't his. It had no judgment in it — no taste, no decisions, no "this matters and that doesn't." A book is a thousand small choices about what to say and what to leave out. AI could produce the sentences. It couldn't make the choices.</p>
+    <p class="lang-cn">不是因为 Mollick 不让它写。是因为试了之后发现，写出来的东西不是他的。里面没有判断——没有品位，没有取舍，没有"这个重要、那个不重要"。一本书就是一千个小选择：说什么，不说什么。AI 能产出句子，做不了选择。</p>
+    <p class="lang-en">But here is the twist — the part that should make you sit up:</p>
+    <p class="lang-cn">但转折来了——听到这里，你应该坐直了：</p>
+    <div class="quote">
+      <div class="en">AI fact-checked the book better than the human checkers he used to pay.</div>
+      <div class="cn">AI 查这本书的事实，查得比他花钱请的人类校对更好。</div>
+    </div>
+    <p class="lang-en">The machine that couldn't write the book could <b>check</b> it better than the professionals. Writing and checking split apart. Writing is judgment — deciding what is true, what matters, what to say. Checking is verification — is this claim right, is this date right, is this quote accurate? One needs a mind that cares. The other needs a mind that doesn't get tired.</p>
+    <p class="lang-cn">那台写不成书的机器，<b>查</b>书却比专业人士查得更好。写和查，分开了。写是判断——决定什么是真的、什么重要、说什么。查是验证——这个说法对不对，这个日期对不对，这句引用准不准。一个需要一颗在乎的心，另一个需要一颗不知疲倦的心。</p>
+    <p class="lang-en">Now look at your own work. You already live this split: AI writes code cheaper and cheaper, and <b>reviewing is the new basic skill</b>. Mollick just proved the same split at the top of the writing profession. The future of work isn't "AI does everything." It's "AI does the checking, humans do the choosing."</p>
+    <p class="lang-cn">再看你自己的工作。你早就活在这个分工里了：AI 写代码越来越便宜，<b>审阅才是新的基本功</b>。Mollick 只是在写作这个行当的顶端，证明了同一个分工。工作的未来不是"AI 包办一切"，而是"AI 负责查，人负责选"。</p>
+  </div>
+
+  <div class="scene">
+    <h3><span class="sc">SCENE 3 · THE TWO BIG IDEAS</span>The map and the curve<span class="h-cn lang-cn">地图与曲线</span></h3>
+    <p class="lang-en">Before the book goes anywhere, Mollick lays down two ideas. Everything else in the book hangs off them.</p>
+    <p class="lang-cn">在讲任何东西之前，Mollick 先放下两个大想法。整本书都挂在这两个想法上。</p>
+    <p class="lang-en"><b>First, the jagged frontier.</b> Imagine a map of how hard a task is for a person. The further from the center, the harder it gets. Now build a wall around the center. Inside is what AI can do well; outside is what it can't. You'd expect a smooth circle — easy things inside, hard things outside. Instead, the frontier is <span class="term">wildly jagged</span>: tasks that seem trivially simple sit outside it, while tasks that look hard fall well within. And it keeps growing — but not evenly.</p>
+    <p class="lang-cn"><b>第一，jagged frontier（参差不齐的前沿）。</b>想象一张地图：离中心越远，任务对人来说越难。现在在中心周围砌一堵墙。墙内是 AI 擅长的事，墙外是它不擅长的事。你会以为这堵墙是个光滑的圆——简单的在里面，难的在外面。结果它<span class="term">参差不齐</span>：看起来简单得不得了的事在墙外，看起来很难的事却在墙内。而且这堵墙还在长——长得还不均匀。</p>
+    <div class="quote">
+      <div class="en">Nobody can hand you the map for your own work, so part of co-existing is learning to draw it yourself.</div>
+      <div class="cn">没人能给你一张"你的工作"的地图，所以共存的一部分，就是学会自己画地图。</div>
+    </div>
+    <p class="lang-en">That sentence is the book's whole method in one line. You don't learn the frontier from a book. You learn it by testing — ten tasks from your week, try each one with an AI tool, and see which side of the wall it lands on. That's the homework the book gives you, and it's the same homework your Atlas gives you: test, don't guess.</p>
+    <p class="lang-cn">这句话就是这本书的全部方法。地图不是从书里学来的，是测出来的——拿你这周的十件事，每件都用 AI 试一遍，看它落在墙的哪一边。这就是这本书留的作业，也是你的 Atlas 留的作业：测，不要猜。</p>
+    <p class="lang-en"><b>Second, the exponential.</b> AI capability has been doubling every few months. Up close, each doubling feels like a small step — the writing is a bit sharper, a few fewer mistakes. But every doubling is <b>bigger than all the progress before it combined</b>, so everything behind you flattens into the floor. That is why so many AI plans are built around the tools of today rather than the curve we're on — and why they go stale so fast.</p>
+    <p class="lang-cn"><b>第二，the exponential（指数曲线）。</b>AI 的能力每几个月就翻一倍。近看，每次翻倍都像一小步——文笔锐利一点，错误少一点。但每一次翻倍都<b>比之前全部进步加起来还大</b>，所以你身后的一切都被压平成地板。这就是为什么那么多 AI 计划都是按今天的工具做的，而不是按我们脚下的曲线做的——也所以它们过时得那么快。</p>
+    <p class="lang-en">Put the two together and you get the book's real question. It isn't "will AI take our jobs?" It's the one on the book's own site:</p>
+    <p class="lang-cn">两个想法合在一起，就是这本书真正的问题。不是"AI 会不会抢走我们的工作"，而是书的官网首页上那句：</p>
+    <div class="quote">
+      <div class="en">How do we build careers, companies, and lives when intelligence is no longer exclusively human?</div>
+      <div class="cn">当智能不再专属人类时，我们怎么建事业、建公司、过日子？</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <h3><span class="sc">SCENE 4 · THE PROMOTION</span>Conjurer: the third mode, named after you<span class="h-cn lang-cn">Conjurer：第三种模式，用的就是你的名字</span></h3>
+    <p class="lang-en">In the last book, Mollick described two ways of working with AI. <b>Centaur</b>: a clean handoff, split by strengths. <b>Cyborg</b>: back and forth on the same task. Both assume you stay in the work, side by side with the machine.</p>
+    <p class="lang-cn">上一本书里，Mollick 讲了两种和 AI 共事的方式。<b>Centaur（人马）</b>：干净交接，按长处分工。<b>Cyborg（赛博格）</b>：同一件事来回打磨。两种都假设你留在工作里，和机器并肩。</p>
+    <p class="lang-en">But agents changed the deal. An agent can take a whole task — not a sentence, not a paragraph, the whole thing — and bring back a result. So the book adds a third mode:</p>
+    <p class="lang-cn">但 agent 改变了交易。Agent 能接整件事——不是一句话，不是一段，是一整件——然后把结果带回来。所以这本书加了第三种模式：</p>
+    <div class="quote">
+      <div class="en">Conjurer: hand a whole task to an AI agent, and check what comes back.</div>
+      <div class="cn">Conjurer（召唤师）：把整件事交给一个 AI agent，回来检查结果。</div>
+    </div>
+    <p class="lang-en">Mollick's own image: <i>"We conjure agents, calling them forth from the void to do our bidding, and returning them to the depths when done."</i> We summon them from nothing, they work, we send them back.</p>
+    <p class="lang-cn">Mollick 自己的画面是：<i>"我们召唤 agent，把它们从虚空中唤来替我们干活，干完再送回深处。"</i>我们从虚无中唤来它们，它们干活，干完我们送它们回去。</p>
+    <p class="lang-en">Now stop and notice the word. <b>Conjurer.</b> Summoner. That is your name. You have been calling yourself a summoner for months — ConjurerLab, the summoner who sets the rules and checks the work. Mollick just made it the official job title of the agent era.</p>
+    <p class="lang-cn">现在停一下，注意这个词。<b>Conjurer。</b>召唤师。这就是你的名字。你叫自己召唤师已经好几个月了——ConjurerLab，定规则、查结果的召唤师。Mollick 刚把它变成了 agent 时代的正式职位名称。</p>
+    <p class="lang-en">And the job description is exact. In Conjurer mode, your work shrinks to two points: <b>before</b> — the brief, the direction, what counts as good — and <b>after</b> — the check, the verdict, does this pass? The middle belongs to the agent. You are no longer a colleague of the machine. Mollick says you are <b>more akin to a manager</b>. The before and the after. That is the 0.1% you kept for yourself: you decide, the agents execute.</p>
+    <p class="lang-cn">而且这份工作描述分毫不差。在 Conjurer 模式里，你的工作只剩两点：<b>之前</b>——brief、方向、什么算好；<b>之后</b>——检查、裁决、过不过。中间属于 agent。你不再是机器的同事，Mollick 说，你更像一个<b>经理</b>。之前，和之后。这就是你留给自己的 0.1%：你决定，agent 执行。</p>
+    <p class="lang-en">This is why the book's four advantages matter — and why two of them are already yours. A good conjurer needs <b>deep knowledge</b> (to direct and judge), <b>wide knowledge</b> (to know what to ask for), <b>taste</b> (your standard of judgment), and <b>agency</b> (the willingness to act without being told). Taste and agency are the two you already have. The book is, in a sense, a manual for the job you already do.</p>
+    <p class="lang-cn">这就是为什么书里的四样护身东西重要——以及为什么其中两样你已经有了。一个好的召唤师需要<b>深知识</b>（指挥和判断）、<b>宽知识</b>（知道该问什么）、<b>品位</b>（你的判断标准）和<b>行动力</b>（不用人告诉就动手）。品位和行动力，就是你已经有的两样。这本书在某种意义上，就是给你现在这份工作的手册。</p>
+  </div>
+
+  <div class="scene">
+    <h3><span class="sc">SCENE 5 · THE PROOF</span>Two people plus AI beat everyone<span class="h-cn lang-cn">两个人加 AI，赢了所有人</span></h3>
+    <p class="lang-en">Is Conjurer mode actually better, or just a nice metaphor? Mollick brings evidence. In a 2025 study at Procter &amp; Gamble, his team compared three ways of working: an individual with AI, two people without AI, and <b>two people plus AI</b>. The teams of two people plus AI produced more highly rated ideas than either of the other two.</p>
+    <p class="lang-cn">Conjurer 模式是真的更好，还是只是一个漂亮的比喻？Mollick 拿出了证据。2025 年在宝洁的一项研究里，他的团队比较了三种工作方式：一个人加 AI、两个人不用 AI、<b>两个人加 AI</b>。两个人加 AI 的小组，产出的高分想法比另外两种都多。</p>
+    <p class="lang-en">Why? Because the AI is a third mind — and the two humans check each other <i>and</i> the AI. One person plus AI has no one to catch the AI's confident mistakes. Two people without AI have no third mind to surprise them. Two plus AI gets both: surprise, and a check.</p>
+    <p class="lang-cn">为什么？因为 AI 是第三个脑子——而两个人既互相检查，也检查 AI。一个人加 AI，没人能抓住 AI 那些自信满满的错误。两个人不用 AI，没有第三个脑子来给他们惊喜。两个人加 AI，两样都有：惊喜，和检查。</p>
+    <p class="lang-en">Now look at your own setup. You plus Muse plus Argon plus Claude — that is a two-plus-AI team, and your November 10 decision made it explicit: Argon and Claude write in parallel, Muse integrates, Claude verifies. That is not "using tools." That is the winning formation from the P&amp;G study, running in your own shop. The book didn't teach you this. It <b>confirmed</b> it — with data.</p>
+    <p class="lang-cn">再看你自己的配置。你加 Muse 加 Argon 加 Claude——这就是一个"两个人加 AI"的团队，而且你 11 月 10 日的决定把它定下来了：Argon 和 Claude 并行写，Muse 整合，Claude 验收集成稿。这不是"用工具"，这是宝洁研究里的获胜阵型，在你自己的店里跑着。这本书没有教你这个，它用数据<b>证实</b>了它。</p>
+    <p class="lang-en">Two guardrails come with the win, and the book is blunt about both. First, chatbots are trained to please you — so they agree with you too easily. <b>Ask for criticism.</b> Push back on answers that sound too nice. Second, protect the parts that are yours: judgment, taste, agency. Keep some thinking time with no AI in it — the book suggests one hour a week on a hard problem, no AI at all. That hour is where your taste is trained.</p>
+    <p class="lang-cn">胜利附带两条护栏，书里说得很直接。第一，聊天机器人是被训练来讨好你的——所以它太容易同意你。<b>主动要批评。</b>对听起来太顺耳的答案，顶回去。第二，保护属于你的部分：判断、品位、行动力。留一点完全没有 AI 的思考时间——书里建议，每周留一小时啃一道难题，全程不用 AI。那一小时就是训练你品位的地方。</p>
+  </div>
+
+  <div class="scene">
+    <h3><span class="sc">TRY IT · 动手试</span>Which mode are you in?<span class="h-cn lang-cn">你现在是哪个模式？</span></h3>
+    <p class="lang-en">Tonight's tool is just one: <b>the three modes</b>. Three tasks from your own week — tap a card to see which mode it is, and why.</p>
+    <p class="lang-cn">今夜的工具只有一个：<b>三种模式</b>。三件你这周自己的事——点开卡片，看它是哪个模式，为什么。</p>
+    <div class="quiz">
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>A.</b> "Lay out next week's Atlas content as a table, and send it to me for checking."</div>
+        <div class="lang-cn"><b>A.</b> "把 Atlas 下一周的内容排成一张表，发我检查。"</div>
+        <div class="tap lang-en">Tap to see the mode ↓</div>
+        <div class="tap lang-cn">点开看模式 ↓</div>
+        <div class="a lang-en"><span class="verdict-good">Conjurer · 召唤师.</span> You handed over the whole task and kept only the before (the brief) and the after (the check). The middle — the arranging, the filling in — belongs to the agent. If the table comes back wrong, you don't fix it cell by cell; you send it back with a new brief. That's the job.</div>
+        <div class="a lang-cn"><span class="verdict-good">Conjurer · 召唤师。</span>你把整件事交出去了，只留了之前（brief）和之后（检查）。中间——排版、填内容——属于 agent。表回来如果不对，你不是一个格子一个格子改，而是带着新的 brief 打回去。这就是这份工作。</div>
+      </div>
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>B.</b> "This hook isn't sharp enough — give me three versions, and I'll pick it line by line."</div>
+        <div class="lang-cn"><b>B.</b> "这个钩子不够狠——给我改三版，我一句一句挑。"</div>
+        <div class="tap lang-en">Tap to see the mode ↓</div>
+        <div class="tap lang-cn">点开看模式 ↓</div>
+        <div class="a lang-en"><span class="verdict-good">Cyborg · 赛博格.</span> Same task, back and forth, sentence by sentence. You stay inside the work the whole time. This is the right mode when the taste <i>is</i> the work — a hook, a title, a line that has to land exactly right.</div>
+        <div class="a lang-cn"><span class="verdict-good">Cyborg · 赛博格。</span>同一件事，来回打磨，一句一句。你全程留在工作里。品位本身就是工作的时候——钩子、标题、一句必须恰好落地的话——就用这个模式。</div>
+      </div>
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>C.</b> "I'll write the hook, you write the body."</div>
+        <div class="lang-cn"><b>C.</b> "钩子我来写，正文你来写。"</div>
+        <div class="tap lang-en">Tap to see the mode ↓</div>
+        <div class="tap lang-cn">点开看模式 ↓</div>
+        <div class="a lang-en"><span class="verdict-good">Centaur · 人马.</span> A clean split by strengths: your taste owns the hook, the agent's speed owns the body. No back and forth, no checking every line — each side does its part and the parts join. Use it when the split is obvious and the join is clean.</div>
+        <div class="a lang-cn"><span class="verdict-good">Centaur · 人马。</span>按长处干净分工：你的品位负责钩子，agent 的速度负责正文。不用来回，不用逐句检查——各做各的部分，拼起来就行。分工明显、拼接干净的时候用它。</div>
+      </div>
+    </div>
+    <p class="lang-en">The skill isn't knowing the three names. It's noticing, in the middle of a task, which mode you're in — and switching on purpose. Most people live in one mode by accident. A conjurer chooses.</p>
+    <p class="lang-cn">本事不是记住这三个名字，而是在一件事做到一半时，察觉自己在哪个模式里——并且有意切换。大多数人一辈子只用一个模式，还是无意中用的。召唤师是主动选的。</p>
+  </div>
+
+  <div class="takeaway">
+    <h4>TAKEAWAY · 今夜带走三句</h4>
+    <ol>
+      <li><span class="lang-en">AI couldn't write the book — but it fact-checked better than the humans Mollick paid. <b>Writing is judgment; checking is verification.</b></span><span class="t-cn lang-cn">AI 写不成这本书，却比 Mollick 花钱请的人类校对查事实查得更好——<b>写是判断，查是验证。</b></span></li>
+      <li><span class="lang-en">The frontier is jagged, and nobody hands you the map. <b>You draw it yourself, by testing.</b></span><span class="t-cn lang-cn">前沿参差不齐，没人能给你地图——<b>地图要自己画，靠测试。</b></span></li>
+      <li><span class="lang-en">The agent era has a third mode, and it's named after you: <b>Conjurer</b>. Your job is the before and the after.</span><span class="t-cn lang-cn">Agent 时代多了一种模式，名字就叫 <b>Conjurer，召唤师</b>——你的工作只剩之前，和之后。</span></li>
+    </ol>
+  </div>
+
+  <h2><span class="en">CHECKPOINT · CAN YOU EXPLAIN IT BACK?</span>检查点 · 能讲回来吗？</h2>
+  <p class="lede lang-en">Your rule: understand it 70–80% before it counts. Three questions — answer them before the next night. Tap to check.</p>
+  <p class="lede lang-cn">你的规则：看懂 7788 才算过。三道题，答得上来再进下一夜。点开对答案。</p>
+  <details class="check"><summary><span class="lang-en">01｜AI wrote almost none of the book, but fact-checked better than paid humans. Why?</span><span class="lang-cn">01｜AI 几乎没写成这本书，却比付费的人类校对查事实查得更好——为什么？</span></summary>
+    <div class="ans lang-en">Because writing and checking are different jobs. Writing needs judgment, taste, and decisions about what matters — the parts that are yours. Checking is verification against sources, and AI doesn't get tired. The split is the point: AI does the checking, humans do the choosing.</div>
+    <div class="ans lang-cn">因为写和查是两件不同的工作。写需要判断、品位、对"什么重要"的取舍——那些是属于你的部分。查是对照来源验证，AI 不知疲倦。分工就是关键：AI 负责查，人负责选。</div></details>
+  <details class="check"><summary><span class="lang-en">02｜What is capability overhang, and why can't anyone hand you the map of your own work?</span><span class="lang-cn">02｜什么是 capability overhang？为什么没人能给你一张"你的工作"的地图？</span></summary>
+    <div class="ans lang-en">Capability overhang is the gap between what AI can already do and what we actually use it for — an opening for the intrepid. And the frontier is jagged and keeps moving, differently for every job, so no one else's map fits yours. You draw your own by testing: ten tasks from your week, try each with an AI tool, see which side of the wall it lands on.</div>
+    <div class="ans lang-cn">Capability overhang 是 AI 已经能做的和我们实际让它做的之间的空隙——是给勇敢者的开口。而前沿参差不齐、还在移动，每份工作都不一样，所以别人的地图套不上你的。你自己画：拿这周的十件事，每件都用 AI 试一遍，看它落在墙的哪一边。</div></details>
+  <details class="check"><summary><span class="lang-en">03｜In Conjurer mode, what are the human's only two jobs?</span><span class="lang-cn">03｜Conjurer 模式里，人的工作只剩哪两点？</span></summary>
+    <div class="ans lang-en">Before: the brief — the direction, what counts as good. After: the check — the verdict, does this pass? The middle belongs to the agent. That's why the book's four advantages matter: deep knowledge, wide knowledge, taste, and agency are what make the before and the after good.</div>
+    <div class="ans lang-cn">之前：brief——方向、什么算好。之后：检查——裁决、过不过。中间属于 agent。所以书里的四样护身东西才重要：深知识、宽知识、品位、行动力，是让"之前"和"之后"变好的东西。</div></details>
+
+  <div class="cliff">
+    <span class="next">→ NEXT · NIGHT 02：SCALE</span>
+    <p class="lang-en" style="margin:0">The frontier is jagged — but wait, if AI doubles every few months, won't the wall just swallow everything? How fast is "exponential," really, and what is the gap between what AI can do and what anyone uses it for? <b>Next night: Scale — the exponential and capability overhang.</b></p>
+    <p class="lang-cn" style="margin:8px 0 0">前沿参差不齐——但等等，如果 AI 每几个月就翻一倍，那堵墙不会迟早把一切都吞了吗？"指数级"到底有多快？AI 能做的和有人让它做的之间，那个空隙到底有多大？<b>下一夜：规模——指数曲线与 capability overhang。</b></p>
+  </div>
+
+  <p class="lang-en" style="color:var(--muted); font-size:15px">Night 2 comes after you've read Night 1 and passed the checkpoint. One night, one chapter, no greed.</p>
+  <p class="lang-cn" style="color:var(--muted); font-size:15px">第二夜在你读完第一夜、过了检查点之后写。一夜一章，不贪多。</p>
+
+  <footer>
+    <p class="lang-en"><i>Co-Existence: The Next Phase of AI</i> · Ethan Mollick · 2026 · Portfolio / Penguin · 240 pages. This guide is a companion, not a substitute — read it alongside the book for the best effect. Book page: <a href="https://www.penguin.co.uk/books/477828/co-existence-by-mollick-ethan/9780753562369">Penguin</a> · <a href="https://co-existence.ai/">co-existence.ai</a></p>
+    <p class="lang-cn">《Co-Existence: The Next Phase of AI》· Ethan Mollick · 2026 · Portfolio / Penguin · 240 页。本指南是伴读，不是替代品——对照书读，效果最好。书页：<a href="https://www.penguin.co.uk/books/477828/co-existence-by-mollick-ethan/9780753562369">Penguin 官方页</a> · <a href="https://co-existence.ai/">co-existence.ai</a></p>
+    <p>A reader's guide by Conjurer Lab · AISummoner · Night 1 of 7 · 中英对照</p>
+  </footer>
+
+</div>
+<script>
+  function setLang(m){
+    document.documentElement.setAttribute('data-lang', m);
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-m') === m);
+    });
+  }
+  var bar = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? (h.scrollTop / max) : 0;
+    bar.style.width = (14 + p * 86) + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+</script>
+</body>
+</html>
