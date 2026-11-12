@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>我的网站 · My Sites | AISummoner</title>
+<meta name="description" content="Joyce 的网站启动器：点一个，进一个站。">
+<link rel="manifest" href="/hub/manifest.json">
+<link rel="apple-touch-icon" href="/hub/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="我的网站">
+<meta name="theme-color" content="#141413">
+<link rel="icon" href="/hub/icon-192.png" type="image/png">
+<style>
+  :root{
+    --paper:#F4F1EA; --ink:#141413; --ink-soft:#3a382f; --muted:#7A756C;
+    --terra:#D96548; --amber:#F0A832; --cyan:#0891B2; --line:#E3DCCB; --card:#FBF9F4;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC",Georgia,serif; line-height:1.7; font-size:17px;
+    background-image:
+      linear-gradient(rgba(20,20,19,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20,20,19,0.035) 1px, transparent 1px);
+    background-size:28px 28px;
+  }
+  .wrap{max-width:640px; margin:0 auto; padding:0 20px 60px}
+  .top{padding:34px 0 6px; text-align:center}
+  .top img{width:96px; height:96px; border-radius:22px; box-shadow:0 6px 24px rgba(20,20,19,.18)}
+  .kicker{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.22em; color:var(--terra); margin:18px 0 6px}
+  h1{font-size:32px; line-height:1.2; margin:0}
+  h1 .en{display:block; font-size:15px; color:var(--muted); font-weight:400; letter-spacing:.06em; margin-top:6px}
+  .sub{color:var(--ink-soft); font-size:16px; margin:12px 0 0}
+  .grid{display:grid; gap:14px; margin-top:28px}
+  .site{display:flex; gap:14px; align-items:flex-start; background:var(--card);
+    border:1px solid var(--line); border-radius:14px; padding:18px; text-decoration:none; color:var(--ink)}
+  .site:active{background:#F1EBDD}
+  .dot{flex:0 0 44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    font-size:22px; background:var(--paper); border:1px solid var(--line)}
+  .site b{font-size:19px; display:block}
+  .site .dom{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--terra); letter-spacing:.04em}
+  .site .desc{font-size:15px; color:var(--ink-soft); margin-top:2px; line-height:1.6}
+  .site .go{margin-left:auto; flex:0 0 auto; color:var(--muted); font-size:20px; line-height:1; padding-top:6px}
+  .how{margin-top:30px; background:var(--ink); color:var(--paper); border-radius:14px; padding:20px 22px}
+  .how h2{margin:0 0 8px; font-size:17px}
+  .how h2 span{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.2em; color:var(--amber); display:block; margin-bottom:6px}
+  .how ol{margin:0; padding-left:20px; font-size:15px; line-height:1.9; color:#E8E2D4}
+  .how ol b{color:#fff}
+  footer{margin-top:28px; text-align:center; color:var(--muted); font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <img src="/hub/icon-192.png" alt="水晶球">
+    <div class="kicker">AISUMMONER · ONE APP, ALL SITES</div>
+    <h1>我的网站<span class="en">My Sites — tap one to enter</span></h1>
+    <p class="sub">点一个，进一个站。</p>
+  </div>
+
+  <div class="grid">
+    <a class="site" href="https://aisummoner.com/">
+      <span class="dot">🗺️</span>
+      <span><b>召唤师的产品站</b><span class="dom">aisummoner.com</span><span class="desc">Atlas 学习地图 · 读书站《无穷的开始》《Co-Existence》· 单词卡</span></span>
+      <span class="go">›</span>
+    </a>
+    <a class="site" href="https://conjurerlab.com/">
+      <span class="dot">🔮</span>
+      <span><b>召唤师实验室</b><span class="dom">conjurerlab.com</span><span class="desc">文章之家 · Silicon 专著 · 召唤签 · 续杯</span></span>
+      <span class="go">›</span>
+    </a>
+    <a class="site" href="https://conjurer.us/">
+      <span class="dot">🏰</span>
+      <span><b>主城门户</b><span class="dom">conjurer.us</span><span class="desc">Lab / OS / Atlas / 续杯，一个入口进主城</span></span>
+      <span class="go">›</span>
+    </a>
+    <a class="site" href="https://agent.conjurer.us/">
+      <span class="dot">🤖</span>
+      <span><b>卖给 Agent</b><span class="dom">agent.conjurer.us</span><span class="desc">B2A 战略页：机器可读店面、爬虫付费、Agent 友好</span></span>
+      <span class="go">›</span>
+    </a>
+    <a class="site" href="https://os.conjurer.us/">
+      <span class="dot">🧠</span>
+      <span><b>Human OS</b><span class="dom">os.conjurer.us</span><span class="desc">人的操作系统：认知、学习、决策</span></span>
+      <span class="go">›</span>
+    </a>
+    <a class="site" href="https://hustleaesthete.com/">
+      <span class="dot">💼</span>
+      <span><b>创业美学 · 副号案例站</b><span class="dom">hustleaesthete.com</span><span class="desc">独立创业案例拆解 · @HustleAesthete</span></span>
+      <span class="go">›</span>
+    </a>
+  </div>
+
+  <div class="how">
+    <h2><span>ADD TO HOME SCREEN</span>怎么放到手机上</h2>
+    <ol>
+      <li>在 iPhone 的 <b>Safari</b> 里打开这一页（不要用微信里打开）。</li>
+      <li>点底部的<b>分享按钮</b>（方框 + 向上箭头）。</li>
+      <li>选<b>“添加到主屏幕”</b>，点右上角<b>“添加”</b>。</li>
+      <li>主屏幕上出现水晶球图标，点它进来，选一个站。</li>
+    </ol>
+  </div>
+
+  <footer>Conjurer Lab · AISummoner · 一个 App，全部网站</footer>
+</div>
+</body>
+</html>
