@@ -47,6 +47,8 @@
   .pill{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; border:1px solid var(--line);
     border-radius:999px; padding:4px 12px; background:var(--card); color:var(--ink-soft)}
   .pill.hot{border-color:var(--terra); color:var(--terra)}
+  a.pill{text-decoration:none}
+  a.pill.hot:hover{background:var(--terra); color:var(--paper)}
   .cta{display:inline-block; margin-top:26px; background:var(--ink); color:var(--paper); text-decoration:none;
     padding:12px 26px; border-radius:999px; font-size:16px}
   .cta:hover{background:var(--terra)}
@@ -143,7 +145,7 @@
   <p class="sub lang-cn">你手里有这本书，却读不下去——<b>不是你的问题</b>。496 页，18 章，零故事，全是抽象论证。这站把书写成十八夜故事，每夜十分钟，读完一夜，你会想知道下一夜发生什么。</p>
   <div class="meta">
     <span class="pill">496 pages</span><span class="pill">18 chapters</span>
-    <span class="pill hot">Night 2 · 今夜可读</span><span class="pill">一夜一章 · 每夜 10 分钟</span>
+    <a class="pill hot" href="#night3">Night 3 · 今夜可读</a><span class="pill">一夜一章 · 每夜 10 分钟</span>
     <span class="pill">中英对照 · EN / 中文</span>
   </div>
   <a class="cta" href="#night1"><span class="lang-en">Start Night 1 ↓</span><span class="lang-cn">开始第一夜 ↓</span></a>
@@ -192,7 +194,7 @@
   <ol class="map">
     <li class="done" onclick="location.hash='#night1'"><span class="no">NIGHT 01</span><span><span class="t">The Reach of Explanations<span class="cn">解释的 reach</span></span><span class="hook lang-en">What does a good explanation look like? A goddess and a tilted axis will tell you.</span><span class="hook-cn lang-cn">好解释长什么样？一个女神和一根倾斜的地轴告诉你。</span></span><span class="st">今夜可读</span></li>
     <li class="done" onclick="location.hash='#night2'"><span class="no">NIGHT 02</span><span><span class="t">Closer to Reality<span class="cn">更接近实在</span></span><span class="hook lang-en">Explanations are guesses — so how do guesses get closer to being right?</span><span class="hook-cn lang-cn">解释都是猜的，猜怎么会越猜越对？</span></span><span class="st">今夜可读</span></li>
-    <li><span class="no">NIGHT 03</span><span><span class="t">The Spark<span class="cn">火花</span></span><span class="hook lang-en">What happened the first time humans "explained" the world?</span><span class="hook-cn lang-cn">人类第一次"解释"世界时，发生了什么？</span></span><span class="st soon">待续</span></li>
+    <li class="done" onclick="location.hash='#night3'"><span class="no">NIGHT 03</span><span><span class="t">The Spark<span class="cn">火花</span></span><span class="hook lang-en">What happened the first time humans "explained" the world?</span><span class="hook-cn lang-cn">人类第一次"解释"世界时，发生了什么？</span></span><span class="st">今夜可读</span></li>
     <li><span class="no">NIGHT 04</span><span><span class="t">Creation<span class="cn">创造</span></span><span class="hook lang-en">With no creator, how does the universe make new things?</span><span class="hook-cn lang-cn">没有创造者，宇宙怎么造出新东西？</span></span><span class="st soon">待续</span></li>
     <li><span class="no">NIGHT 05</span><span><span class="t">The Reality of Abstractions<span class="cn">抽象实在</span></span><span class="hook lang-en">Are numbers, laws, explanations real things?</span><span class="hook-cn lang-cn">数字、定律、解释，是真实存在的东西吗？</span></span><span class="st soon">待续</span></li>
     <li><span class="no">NIGHT 06</span><span><span class="t">The Jump to Universality<span class="cn">普遍性一跃</span></span><span class="hook lang-en">Cross one threshold, and finite becomes infinite.</span><span class="hook-cn lang-cn">跨过一个门槛，有限变无限。</span></span><span class="st soon">待续</span></li>
@@ -537,13 +539,201 @@
     <p class="lang-cn" style="margin:8px 0 0">我们知道了，猜靠纠错越猜越对。但等等——如果所有知识都是猜出来的，那第一个好猜从哪来？人类是怎么开始"解释"的？又为什么花了这么久？<b>下一夜：火花——人类第一次"解释"世界。</b></p>
   </div>
 
-  <p class="lang-en" style="color:var(--muted); font-size:15px">Night 3 comes after you've read Night 2 and passed the checkpoint. One night, one chapter, no greed.</p>
-  <p class="lang-cn" style="color:var(--muted); font-size:15px">第三夜在你读完第二夜、过了检查点之后写。一夜一章，不贪多。</p>
+  <p style="margin-top:22px"><a class="cta" href="#night3"><span class="lang-en">Night 3 is ready →</span><span class="lang-cn">第三夜已上线 →</span></a></p>
+
+  <hr class="sep" id="night3">
+
+  <span class="night-tag">NIGHT 03 · 第三夜</span>
+  <h2 style="margin-top:14px"><span class="en">CHAPTER 3 · THE SPARK</span>火花</h2>
+  <p class="lede lang-en">Tonight answers just one question: <b>what happened the first time humans "explained" the world?</b> The answer starts with a winter that was someone's anger, and ends with a spark that could light up the universe.</p>
+  <p class="lede lang-cn">今夜只回答一个问题：<b>人类第一次"解释"世界时，发生了什么？</b>答案从一个"有人发怒"的冬天开始，到一粒能点亮宇宙的火花结束。</p>
+
+  <div class="scene" id="n3-s1">
+    <h3><span class="sc">SCENE 1 · OPENING</span>The winter that was someone's anger<span class="h-cn lang-cn">发怒的冬天</span></h3>
+    <p class="lang-en">Long before science, every explanation had a person in it. Winter came because someone was sad. The harvest was generous because someone was pleased. A disaster struck because someone was angry. The gods and spirits behind the weather were people, too — bigger, more powerful, but people all the same, with intentions and moods.</p>
+    <p class="lang-cn">在科学出现之前，每一个解释里都有一个人。冬天来了，是因为有人伤心；收成好，是因为有人高兴；灾难降临，是因为有人发怒。天气背后的神和精灵也是人——更大、更强，但终究是人，有意图、有情绪。</p>
+    <p class="lang-en">And we were at the centre of it all — literally. The geocentric theory placed humans at the physical hub of the universe. Two kinds of <span class="term">anthropocentrism</span> — explanatory and geometrical — made each other more plausible: the world was about us, and it was built around us.</p>
+    <p class="lang-cn">而我们就在这一切的中心——字面意义上的中心。地心说把人类放在宇宙的物理中心。两种<span class="term">人类中心主义（anthropocentrism）</span>——解释上的和几何上的——互相印证：世界是关于我们的，世界是围着我们建的。</p>
+    <p class="lang-en">There was one exception, and almost no one noticed it. The ancient Greek mathematician Euclid built geometry out of impersonal things — points and lines — and elegant axioms about them. It would later inspire the pioneers of the Enlightenment. But at the time, most astronomers were also astrologers: they used sophisticated geometry to read politics and personal fortunes in the stars.</p>
+    <p class="lang-cn">有一个例外，几乎没人注意到。古希腊数学家欧几里得用非人的东西——点和线——加上优雅的公理，建起了几何学。它后来启发了启蒙运动的先驱。但在当时，大多数天文学家同时也是占星家：他们用精密的几何学，从星星里读政治、读个人命运。</p>
+    <p class="lang-en">So here is the question hiding in this scene: what if the world has no intentions at all? What if winter is not someone's sadness, and the stars do not care what we do?</p>
+    <p class="lang-cn">这个场景里藏着一个问题：如果世界根本没有任何意图呢？如果冬天不是谁的伤心，星星也不在乎我们做什么呢？</p>
+  </div>
+
+  <div class="scene" id="n3-s2">
+    <h3><span class="sc">SCENE 2 · THE STORY</span>Two modern myths<span class="h-cn lang-cn">两则现代神话</span></h3>
+    <p class="lang-en">We abandoned the gods. But two new ideas took their place — and both sound scientific. The first is called the <span class="term">Principle of Mediocrity</span>: there is nothing significant about humans, in the cosmic scheme of things. The physicist Stephen Hawking put it like this:</p>
+    <p class="lang-cn">我们抛弃了神。但两个新想法取代了它们的位置——而且听起来都很科学。第一个叫<span class="term">平庸原理（Principle of Mediocrity）</span>：在宇宙图景中，人类没什么重要性。物理学家霍金是这么说的：</p>
+    <div class="quote">
+      <div class="en">Humans are 'just a chemical scum on the surface of a typical planet that's in orbit round a typical star on the outskirts of a typical galaxy'.</div>
+      <div class="cn">人类不过是"一颗典型行星表面的一层化学渣滓，绕着一颗典型恒星运行，而那颗恒星位于一个典型星系的边缘"。</div>
+    </div>
+    <p class="lang-en">The second idea is called <span class="term">Spaceship Earth</span>. Imagine a generation ship — a spaceship on a journey so long that many generations live out their lives in transit. The biosphere, the system of all living things on Earth, is that ship: a vastly complex life-support system that provides everything we need. If we overload it, it breaks down — and, like the passengers, we have nowhere else to go.</p>
+    <p class="lang-cn">第二个想法叫<span class="term">地球飞船（Spaceship Earth）</span>。想象一艘世代飞船——航程如此漫长，好几代人在途中度过一生。生物圈，也就是地球上所有生物组成的系统，就是这艘飞船：一套极其复杂的生命维持系统，提供我们需要的一切。如果我们把它压垮了，它就会崩溃——而我们和船上的乘客一样，无处可去。</p>
+    <p class="lang-en">Both ideas agree on one thing: we live inside a tiny, friendly bubble in a hostile universe, and outside the bubble our reach ends. One bubble is physical — the biosphere. The other is conceptual — the limits of our brains. Both oppose arrogance: the Principle of Mediocrity opposes the arrogance of believing ourselves significant; Spaceship Earth opposes the arrogance of aspiring to control the world.</p>
+    <p class="lang-cn">这两个想法在一个点上是一致的：我们住在一个充满敌意的宇宙里的小小友好气泡里，气泡之外，我们的 reach 就到头了。一个气泡是物理的——生物圈；另一个是概念的——我们大脑的极限。两者都反对傲慢：平庸原理反对"相信自己重要"的傲慢；地球飞船反对"妄想控制世界"的傲慢。</p>
+    <p class="lang-en">They sound humble. They sound scientific. Deutsch says they are both false — so false that their negations are worth carving in stone.</p>
+    <p class="lang-cn">它们听起来很谦逊，听起来很科学。Deutsch 说，它们都是错的——错到它们的否定值得刻在石头上。</p>
+  </div>
+
+  <div class="scene" id="n3-s3">
+    <h3><span class="sc">SCENE 3 · THE TURN</span>The negations, carved in stone<span class="h-cn lang-cn">刻在石头上的否定</span></h3>
+    <p class="lang-en">Here are the two sentences Deutsch would carve in stone:</p>
+    <p class="lang-cn">下面就是 Deutsch 要刻在石头上的两句话：</p>
+    <div class="quote">
+      <div class="en">People are significant in the cosmic scheme of things; and the Earth's biosphere is incapable of supporting human life.</div>
+      <div class="cn">人在宇宙图景中是重要的；而地球生物圈没有能力维持人类生命。</div>
+    </div>
+    <p class="lang-en">Start with the biosphere. Deutsch is writing in Oxford, England, where winter nights are often cold enough to kill any human unprotected by clothing and other technology. Primeval Oxfordshire — Oxfordshire as it was before humans — might kill him in a matter of hours. The Great Rift Valley in eastern Africa, where our species evolved, was barely more hospitable: no safe water supply, no medical equipment, infested with predators, parasites and disease. "There are very few fossils of old people."</p>
+    <p class="lang-cn">先说生物圈。Deutsch 在英格兰牛津写作，那里的冬夜冷到足以冻死任何没有衣服和其他技术保护的人。原始状态的牛津郡——人类出现之前的牛津郡——可能几小时内就要了他的命。东非大裂谷，我们物种演化的地方，也好不到哪去：没有安全的饮水，没有医疗设备，到处是捕食者、寄生虫和疾病。"老人的化石非常少。"</p>
+    <p class="lang-en">There <i>is</i> a life-support system in Oxfordshire today — but it was not provided by the biosphere. It has been built by humans. It consists of clothes, houses, farms, hospitals, an electrical grid, a sewage system and so on. Nearly the whole of the Earth's biosphere in its primeval state was likewise incapable of keeping an unprotected human alive for long. It would be much more accurate to call it a death trap for humans than a life-support system.</p>
+    <p class="lang-cn">今天的牛津郡确实有一套生命维持系统——但它不是生物圈提供的，而是人类建造的。它由衣服、房子、农场、医院、电网、下水道等等组成。地球生物圈原始状态下的绝大部分，同样没有能力让一个没有保护的人活多久。说它是人类的死亡陷阱，远比说它是生命维持系统准确。</p>
+    <div class="quote">
+      <div class="en">The biosphere no more provides humans with a life-support system than it provides us with radio telescopes.</div>
+      <div class="cn">生物圈为人类提供生命维持系统，不比它为我们提供射电望远镜多。</div>
+    </div>
+    <p class="lang-en">To the extent that we are on a "spaceship", Deutsch writes, we have never been merely its passengers, nor its stewards, nor even its maintenance crew: we are its designers and builders. Before the designs created by humans, it was not a vehicle, but only a heap of dangerous raw materials.</p>
+    <p class="lang-cn">Deutsch 写道，如果说我们在一艘"飞船"上，那我们从来不只是它的乘客，不是它的管家，甚至不是它的维修工：我们是它的设计者和建造者。在人类创造的设计出现之前，它不是一艘飞船，只是一堆危险的原材料。</p>
+    <p class="lang-en">And the Principle of Mediocrity? It is itself anthropocentric: it singles out anthropocentrism for special blame, while judging us with human values like "arrogance" and "mediocrity". But it was never arrogance that kept people from better explanations. They did not know how to seek them. In a sense, Deutsch writes, their whole problem was that they were not arrogant <i>enough</i>: they assumed far too easily that the world was fundamentally incomprehensible to them.</p>
+    <p class="lang-cn">那平庸原理呢？它本身就是人类中心主义的：它单把人类中心主义挑出来特别谴责，用的却是"傲慢""平庸"这些人类价值观。但让人们迟迟得不到更好解释的，从来不是傲慢。他们是不知道怎么去寻找更好的解释。某种意义上，Deutsch 写道，他们的问题恰恰是傲慢得<i>不够</i>：他们太轻易地认定，世界对他们来说从根本上是不可理解的。</p>
+  </div>
+
+  <div class="scene" id="n3-s4">
+    <h3><span class="sc">SCENE 4 · THE CONTRAST</span>Reach: wings vs. knowledge<span class="h-cn lang-cn">Reach：翅膀与知识</span></h3>
+    <p class="lang-en">Why do human abilities have unlimited reach, when every other adaptation in the biosphere is bounded? Because of what the reach is made of. Imagine a flock of birds blown to a new island. Their wings and eyes still work — because wings and eyes exploit universal laws of physics, aerodynamics and optics. But fly those same birds a few kilometres straight up, and their wings stop working: the air is too thin. Every biological adaptation has limited reach — it works only inside the conditions it evolved for.</p>
+    <p class="lang-cn">为什么人类的能力 reach 无限，而生物圈里其他每一种适应都是有限的？因为 reach 的构成不同。想象一群鸟被风吹到一座新岛上，它们的翅膀和眼睛照样管用——因为翅膀和眼睛利用的是物理学的普遍定律，空气动力学和光学。但把同样的鸟往上送几公里，翅膀就失效了：空气太稀薄。每一种生物适应都只有有限的 reach——只在它演化出来的条件里管用。</p>
+    <p class="lang-en">Human reach is different in kind. Consider all the conceivable transformations of physical objects. Some never happen because they are forbidden by the laws of nature. The rest are possible — but happen only when the requisite knowledge is present. And those are the only possibilities. That is the dichotomy this whole chapter turns on:</p>
+    <p class="lang-cn">人类的 reach 在种类上就不同。想想物理对象所有可能的变化：有些永远不会发生，因为它们被自然定律禁止；其余的都是可能的——但只有在具备所需知识时才会发生。除此之外没有第三种可能。这就是整章绕着转的那个二分法：</p>
+    <div class="quote">
+      <div class="en">Everything that is not forbidden by laws of nature is achievable, given the right knowledge.</div>
+      <div class="cn">凡是不被自然定律禁止的事，有了正确的知识都能做到。</div>
+    </div>
+    <p class="lang-en">That is why Deutsch defines a <span class="term">person</span> as an entity that can create explanatory knowledge. It is also why human bodies are <span class="term">universal constructors</span>: "factories for transforming <i>anything into anything</i> that the laws of nature allow." Take vitamin C. Every primate needs it; their genes cannot make it. Humans cause over a tonne of vitamin C to appear in Oxfordshire every week — from farms and factories. The same goes for air on the moon: oxygen is plentiful there in the form of metal oxides in moon rock. Even with present-day technology, a self-sufficient colony on the moon, powered by sunlight, is possible.</p>
+    <p class="lang-cn">这就是为什么 Deutsch 把<span class="term">人（person）</span>定义为"能创造解释性知识的实体"。也是为什么人体是<span class="term">通用构造器（universal constructor）</span>："把<i>任何东西变成任何东西</i>的工厂，只要自然定律允许"。拿维生素 C 来说：所有灵长类都需要它，基因却造不出来。人类每周让一吨多的维生素 C 出现在牛津郡——来自农场和工厂。月球上的空气也一样：月岩里的金属氧化物中氧很丰富。即使以今天的技术，一个靠阳光供电、自给自足的月球殖民地也是可能的。</p>
+    <p class="lang-en">And the "perspiration" — the hard, repetitive work? Remember Edison from last night: "one per cent inspiration and ninety-nine per cent perspiration." Deutsch says the perspiration phase can always be automated — just as the task of recognizing galaxies on photographic plates was. The more advanced technology becomes, the shorter the gap between inspiration and automation.</p>
+    <p class="lang-cn">那"汗水"呢——那些艰苦重复的工作？还记得上夜的爱迪生吗："百分之一的灵感加百分之九十九的汗水"。Deutsch 说，"汗水"阶段永远可以自动化——就像在底片上识别星系的任务一样。技术越先进，灵感与自动化之间的间隔就越短。</p>
+    <p class="lang-en">So the difference between us and every other species is not that we are smarter. It is what kind of knowledge we can use — explanatory instead of rule-of-thumb — and how we create it: conjecture and criticism of ideas, rather than the variation and selection of genes.</p>
+    <p class="lang-cn">所以我们和其他物种的区别不在于我们更聪明，而在于我们能用什么样的知识——解释性的，而不是经验法则；以及我们怎么创造它——靠猜想和批评，而不是基因的变异与选择。</p>
+    <p class="lang-en">And here is the strangest proof that people are significant. In Arecibo, Puerto Rico, there is a giant radio telescope listening for signals from extraterrestrial intelligence. In an office near the telescope there is a small refrigerator — and inside it, a bottle of champagne, sealed by a cork. That cork will pop the day the search succeeds. To predict whether it pops, you must know whether there are people sending radio signals from other solar systems. The behaviour of that humble cork cannot be explained without understanding everything of fundamental importance.</p>
+    <p class="lang-cn">而人很重要的最奇怪的证据是这个：在波多黎各的阿雷西博，有一台巨大的射电望远镜，正在监听外星智慧的信号。望远镜附近一间办公室里有一台小冰箱——里面放着一瓶香槟，瓶口塞着软木塞。搜索成功的那一天，塞子就会弹开。要预测它会不会弹开，你必须知道其他太阳系里有没有人在发无线电信号。这枚小小软木塞的行为，不理解一切根本重要的东西就解释不了。</p>
+  </div>
+
+  <div class="scene" id="n3-s5">
+    <h3><span class="sc">SCENE 5 · THE RISE</span>Two tablets, one spark<span class="h-cn lang-cn">两块石碑，一个火花</span></h3>
+    <p class="lang-en">Two more truths deserve to be carved in stone. The first: <b>problems are inevitable</b>. "It is inevitable that we face problems, but no particular problem is inevitable." The second: <b>problems are soluble</b>. "By 'soluble' I mean that the right knowledge would solve them."</p>
+    <p class="lang-cn">还有两个真理值得刻在石头上。第一：<b>问题不可避免（problems are inevitable）</b>。"我们必然会面对问题，但没有哪一个具体问题是必然的。"第二：<b>问题可以解决（problems are soluble）</b>。"所谓'可以解决'，我的意思是正确的知识能解决它们。"</p>
+    <p class="lang-en">Make it concrete. During any given century there is about one chance in a thousand that the Earth will be struck by a comet or asteroid large enough to kill at least a substantial proportion of all human beings. Deutsch points out that a typical child born in the United States today is more likely to die as a result of an astronomical event than a car accident. We have no defence against that yet — unless we create the knowledge. As Hawking said: "I don't think the human race will survive the next thousand years, unless we spread into space... I'm an optimist. We will reach out to the stars."</p>
+    <p class="lang-cn">说具体点。在任何一个世纪里，地球都有大约千分之一的概率被一颗大到足以杀死相当一部分人类的彗星或小行星撞上。Deutsch 指出，今天出生在美国的一个普通孩子，死于天文事件的概率比死于车祸还高。我们现在对此毫无防御——除非我们创造出相应的知识。霍金说过："我认为人类活不过接下来的一千年，除非我们走向太空……我是乐观主义者。我们会走向群星。"</p>
+    <p class="lang-en">And here is the deepest point in the chapter. An unproblematic life would not be a good life:</p>
+    <p class="lang-cn">而这一章最深的一点是：没有问题的生活不是好生活：</p>
+    <div class="quote">
+      <div class="en">An unproblematic state is a state without creative thought. Its other name is death.</div>
+      <div class="cn">没有问题的状态，就是没有创造性思想的状态。它的另一个名字是死亡。</div>
+    </div>
+    <p class="lang-en">Nor will we ever run out of problems. "The deeper an explanation is, the more new problems it creates." There is no such thing as an ultimate explanation — just as "the gods did it" is always a bad explanation, any foundation that explains everything must be bad too, because it cannot answer: why that foundation and not another?</p>
+    <p class="lang-cn">而且我们永远不会用完问题。"解释越深，创造的新问题就越多。"不存在终极解释——正如"神干的"永远是坏解释，任何号称能解释一切的基础也一定是坏的，因为它回答不了：为什么是这个基础，而不是另一个？</p>
+    <p class="lang-en">Now, the spark itself. Take the most typical place in the universe: a cube of intergalactic space, the size of our solar system — cold, dark, empty, less than one atom per cubic metre. Even that cube holds over a billion tonnes of matter. And it is full of evidence: on any clear night, the chances are that your roof will be struck by evidence falling from the sky which, if you only knew what to look for and how, would win you a Nobel prize. Matter, energy, evidence — the only three things an environment needs in order to host the open-ended creation of knowledge. And nearly every environment has them.</p>
+    <p class="lang-cn">现在说火花本身。拿宇宙中最典型的地方来说：一块星际空间的立方体，和我们的太阳系一样大——冷、黑、空，每立方米不到一个原子。就连这块立方体里也有十亿吨以上的物质。而且它满是证据：在任何一个晴朗的夜晚，你家屋顶都可能被从天上掉下来的证据击中——如果你知道要找什么、怎么找，它能让你拿诺贝尔奖。物质、能量、证据——一个环境要承载无止境的知识创造，只需要这三样。而几乎每个环境都有它们。</p>
+    <p class="lang-en">Like an explosive awaiting a spark, unimaginably numerous environments in the universe are waiting out there, for aeons on end, doing nothing at all. Almost any of them would, if the right knowledge ever reached it, instantly and irrevocably burst into intense knowledge-creation. And when knowledge lands — on the moon, say — the moon reorganizes itself, and starts to create an indefinitely long stream of ever-improving explanations. A beginning of infinity.</p>
+    <p class="lang-cn">就像等待火花的炸药，宇宙中多得难以想象的环境在外面等着，等了亿万年，什么也不做。几乎任何一个，只要正确的知识一旦到达，就会立刻、不可逆转地爆发出高强度的知识创造。而当知识落地——比如落在月球上——月球会重新组织自己，开始创造一条无限长的、不断改进的解释之流。一个无穷的开始。</p>
+    <div class="quote">
+      <div class="en">If we want to, we could be that spark.</div>
+      <div class="cn">如果我们愿意，我们可以成为那粒火花。</div>
+    </div>
+    <p class="lang-en">We shall always be at the beginning of infinity. That is not a failure. That is the spark.</p>
+    <p class="lang-cn">我们将永远处在无穷的开始。这不是失败，这就是火花。</p>
+  </div>
+
+  <div class="scene" id="n3-quotes">
+    <h3><span class="sc">GOLDEN LINES · 金句</span>今夜的金句<span class="h-cn lang-cn">值得抄下来的句子</span></h3>
+    <p class="lede lang-en">Six lines from Chapter 3 worth copying into your notebook. Each one is a tool, not a decoration.</p>
+    <p class="lede lang-cn">第三章里值得抄进笔记本的六句话。每一句都是工具，不是装饰。</p>
+    <div class="quote">
+      <div class="en">People are significant in the cosmic scheme of things; and the Earth's biosphere is incapable of supporting human life.</div>
+      <div class="cn">人在宇宙图景中是重要的；而地球生物圈没有能力维持人类生命。</div>
+    </div>
+    <div class="quote">
+      <div class="en">The biosphere no more provides humans with a life-support system than it provides us with radio telescopes.</div>
+      <div class="cn">生物圈为人类提供生命维持系统，不比它为我们提供射电望远镜多。</div>
+    </div>
+    <div class="quote">
+      <div class="en">Everything that is not forbidden by laws of nature is achievable, given the right knowledge.</div>
+      <div class="cn">凡是不被自然定律禁止的事，有了正确的知识都能做到。</div>
+    </div>
+    <div class="quote">
+      <div class="en">It is inevitable that we face problems, but no particular problem is inevitable.</div>
+      <div class="cn">我们必然会面对问题，但没有哪一个具体问题是必然的。</div>
+    </div>
+    <div class="quote">
+      <div class="en">An unproblematic state is a state without creative thought. Its other name is death.</div>
+      <div class="cn">没有问题的状态，就是没有创造性思想的状态。它的另一个名字是死亡。</div>
+    </div>
+    <div class="quote">
+      <div class="en">If we want to, we could be that spark.</div>
+      <div class="cn">如果我们愿意，我们可以成为那粒火花。</div>
+    </div>
+    <p class="lang-en">If you only keep one: keep the sixth. It is the sentence the whole book is named after — a beginning, not an ending.</p>
+    <p class="lang-cn">如果只留一句，留第六句。这就是整本书书名的来历——一个开始，不是一个结局。</p>
+  </div>
+
+  <div class="scene" id="n3-try">
+    <h3><span class="sc">TRY IT · 动手试</span>The "impossible" test<span class="h-cn lang-cn">"不可能"测试</span></h3>
+    <p class="lang-en">Tonight's tool is one dichotomy: <b>every transformation is either forbidden by the laws of nature, or achievable given the right knowledge</b>. Use it on two claims. Tap a card to see the verdict.</p>
+    <p class="lang-cn">今夜的工具只有一个二分法：<b>每一种变化，要么被自然定律禁止，要么有了正确的知识就能做到</b>。拿它测两个说法。点开卡片看答案。</p>
+    <div class="quiz">
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>A.</b> "Humans are insignificant — just chemical scum on a typical planet."</div>
+        <div class="lang-cn"><b>A.</b> "人类微不足道——不过是一颗典型行星上的一层化学渣滓。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-bad">Bad reasoning.</span> That is the Principle of Mediocrity — and it is itself parochial. It judges us with human values ("arrogance", "mediocrity") while claiming to rise above them. Worse, it puts a ceiling on science: if our brains were parochial by nature, knowledge could never reach beyond the bubble. But people are the most significant phenomena there are — to predict almost anything, from a supernova to a champagne cork popping in Puerto Rico, you must take a position on what knowledge is present. Significance is not about size. It is about reach.</div>
+        <div class="a lang-cn"><span class="verdict-bad">坏推理。</span>这就是平庸原理——而它本身就是狭隘的。它一边用"傲慢""平庸"这些人类价值观评判我们，一边声称自己超越了它们。更糟的是，它给科学加了天花板：如果我们的大脑天生就是狭隘的，知识就永远走不出气泡。但人是最重要的现象——要预测几乎任何事，从超新星到波多黎各一瓶香槟的瓶塞弹开，你都必须对"那里有什么知识"表态。重要性不在于大小，而在于 reach。</div>
+      </div>
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>B.</b> "This problem looks impossible today — but unless a law of nature forbids it, the right knowledge would solve it."</div>
+        <div class="lang-cn"><b>B.</b> "这个问题今天看起来不可能——但除非自然定律禁止它，正确的知识就能解决它。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-good">Good reasoning.</span> That is exactly what "problems are soluble" means. "Impossible" needs a law of nature behind it — not just current ignorance. If a limit existed anyway, that limit would itself be a regularity in nature, calling for an explanation — and the explanation would be a law, or a consequence of one. So the burden of proof is on "impossible", not on "possible". Flying to the moon looked impossible for millennia — until Newton's theories arrived, and then it was only a matter of knowing how.</div>
+        <div class="a lang-cn"><span class="verdict-good">好推理。</span>这正是"问题可以解决"的意思。"不可能"背后需要一条自然定律，而不只是我们现在不知道。如果真有这么个极限，那个极限本身就是自然界的一条规律，需要一个解释——而那个解释本身就是一条定律，或是定律的推论。所以举证责任在"不可能"那一边，不在"可能"这一边。飞向月球看起来不可能了几千年——直到牛顿的理论出现，然后就只剩下"怎么做"的问题了。</div>
+      </div>
+    </div>
+    <p class="lang-en">Try it on one "impossible" thing this week: a skill you think you cannot learn, a problem you think has no answer. Ask what law of nature forbids it. If you cannot name one, it is soluble — the only question is what knowledge is missing.</p>
+    <p class="lang-cn">这周拿一件"不可能"的事试一次：一个你觉得学不会的技能，一个你觉得没有答案的问题。问问是哪条自然定律禁止了它。如果你说不出来，它就是可以解决的——唯一的问题是缺了什么知识。</p>
+  </div>
+
+  <div class="takeaway">
+    <h4>TAKEAWAY · 今夜带走三句</h4>
+    <ol>
+      <li><span class="lang-en">Ancient explanations gave the world human intentions; modern science replaced them with impersonal laws — and the two "scientific" myths that replaced the gods (Mediocrity, Spaceship Earth) are wrong too.</span><span class="t-cn lang-cn">古代解释给世界安上了人的意图；现代科学用非人的定律取代了它们——而取代神的那两个"科学"神话（平庸原理、地球飞船）也是错的。</span></li>
+      <li><span class="lang-en">The biosphere never supported human life — knowledge does. We are not its passengers or its stewards; we are its designers and builders.</span><span class="t-cn lang-cn">生物圈从来没有维持过人类生命——维持我们的是知识。我们不是它的乘客或管家，而是它的设计者和建造者。</span></li>
+      <li><span class="lang-en">Problems are inevitable, and problems are soluble: everything not forbidden by the laws of nature is achievable, given the right knowledge — and we could be the spark.</span><span class="t-cn lang-cn">问题不可避免，问题也可以解决：凡是不被自然定律禁止的事，有了正确的知识都能做到——而我们可以成为那粒火花。</span></li>
+    </ol>
+  </div>
+
+  <h2 id="n3-check"><span class="en">CHECKPOINT · CAN YOU EXPLAIN IT BACK?</span>检查点 · 能讲回来吗？</h2>
+  <p class="lede lang-en">Your rule: understand it 70–80% before it counts. Three questions — answer them before the next night. Tap to check.</p>
+  <p class="lede lang-cn">你的规则：看懂 7788 才算过。三道题，答得上来再进下一夜。点开对答案。</p>
+  <details class="check"><summary><span class="lang-en">01｜Why is the Principle of Mediocrity itself anthropocentric — and why does that matter?</span><span class="lang-cn">01｜为什么平庸原理本身就是人类中心主义的——这有什么要紧？</span></summary>
+    <div class="ans lang-en">It singles out anthropocentrism for special blame, while judging us with human values like "arrogance" and "mediocrity". Worse, it claims our brains are parochial by nature — which would put a built-in ceiling on science, a limit beyond which the world stops making sense. But that claim is about the world beyond us, and a value judgement made inside the "scum" cannot establish anything about the world outside it. If the Principle were true, the answer to Night 2's question — can the Enlightenment continue indefinitely? — would be no.</div>
+    <div class="ans lang-cn">它单把人类中心主义挑出来特别谴责，用的却是"傲慢""平庸"这些人类价值观。更糟的是，它说我们的大脑天生就是狭隘的——这就给科学加了一个内置天花板，超过它世界就不再有意义。但这个论断说的是我们之外的世界，而"渣滓"内部的价值判断，证明不了它之外的世界。如果平庸原理是对的，第二夜的问题——启蒙运动能无限继续下去吗——答案就是"不能"。</div></details>
+  <details class="check"><summary><span class="lang-en">02｜Why is the biosphere not a life-support system for humans — and what actually keeps us alive?</span><span class="lang-cn">02｜为什么生物圈不是人类的生命维持系统——真正让我们活着的是什么？</span></summary>
+    <div class="ans lang-en">Primeval Oxfordshire would kill an unprotected human in a matter of hours, and the Great Rift Valley, where our species evolved, was barely more hospitable — no safe water, no medicine, predators and disease everywhere; very few fossils of old people exist. The real life-support system — clothes, houses, farms, hospitals, an electrical grid, a sewage system — was built by humans. What keeps us alive is knowledge: it creates vitamin C, breathable air, warmth and medicine out of raw materials. The biosphere provides the raw materials, nothing more.</div>
+    <div class="ans lang-cn">原始状态的牛津郡几小时内就能要了一个没有保护的人的命；我们物种演化的大裂谷也好不到哪去——没有安全饮水，没有医疗，到处是捕食者和疾病，老人的化石非常少。真正的生命维持系统——衣服、房子、农场、医院、电网、下水道——是人类建造的。让我们活着的是知识：它用原材料造出维生素 C、能呼吸的空气、温暖和药物。生物圈提供的只是原材料，仅此而已。</div></details>
+  <details class="check"><summary><span class="lang-en">03｜Take a problem you believe is impossible. Apply the dichotomy: what law of nature would have to forbid it for it to be truly insoluble?</span><span class="lang-cn">03｜拿一个你觉得不可能的问题，用二分法测它：哪条自然定律必须禁止它，它才真的无解？</span></summary>
+    <div class="ans lang-en">If no law of nature forbids it, it is achievable given the right knowledge — "soluble" means exactly that. And if a limit existed anyway, that limit would itself be a regularity in nature calling for an explanation, and the explanation would be a law of nature or a consequence of one. So "impossible" always owes you a law. Flying to the moon, making vitamin C, living on the moon — each looked impossible until the knowledge arrived. Name the law, or drop the "impossible".</div>
+    <div class="ans lang-cn">如果没有自然定律禁止它，有了正确的知识就能做到——"可以解决"就是这个意思。而如果真有这么个极限，那个极限本身就是自然界的一条规律，需要一个解释，而那个解释本身就是一条自然定律或其推论。所以"不可能"永远欠你一条定律。飞向月球、制造维生素 C、住在月球上——每一件在知识到来之前都看起来不可能。说出那条定律，否则就别说"不可能"。</div></details>
+
+  <div class="cliff">
+    <span class="next">→ NEXT · NIGHT 04：CREATION</span>
+    <p class="lang-en" style="margin:0">We've learned that people are universal constructors — we can turn anything into anything the laws allow, and we could be the spark that lights up a dead universe. But wait — who built the first constructor? Evolution built us with no designer and no plan. The biosphere built itself the same way. If knowledge needs a knower, how does the universe make new things with no creator at all? <b>Next night: Creation — with no creator, how does the universe make new things?</b></p>
+    <p class="lang-cn" style="margin:8px 0 0">我们知道了，人是通用构造器——我们能把任何东西变成任何东西，只要定律允许；我们还可以成为点亮死寂宇宙的火花。但等等——第一个构造器是谁造的？演化造出我们时没有设计者、没有计划。生物圈也是这样自己建起来的。如果知识需要一个知者，宇宙没有创造者又怎么造出新东西？<b>下一夜：创造——没有创造者，宇宙怎么造出新东西？</b></p>
+  </div>
 
   <footer>
     <p class="lang-en"><i>The Beginning of Infinity: Explanations That Transform the World</i> · David Deutsch · 2011 · Viking / Penguin · 496 pages. This guide is a companion, not a substitute — read it alongside the book for the best effect. Book page: <a href="https://www.penguin.co.uk/books/24745/the-beginning-of-infinity-by-david-deutsch/9780141969695">Penguin</a></p>
     <p class="lang-cn">《The Beginning of Infinity: Explanations That Transform the World》· David Deutsch · 2011 · Viking / Penguin · 496 页。本指南是伴读，不是替代品——对照书读，效果最好。书页：<a href="https://www.penguin.co.uk/books/24745/the-beginning-of-infinity-by-david-deutsch/9780141969695">Penguin 官方页</a></p>
-    <p>A reader's guide by Conjurer Lab · AISummoner · Night 2 of 18 · 中英对照</p>
+    <p>A reader's guide by Conjurer Lab · AISummoner · Night 3 of 18 · 中英对照</p>
   </footer>
 
 </div>
@@ -551,7 +741,7 @@
 <script>
   // bookmark: save reading position, resume next visit
   var BM_KEY = 'boi-bookmark';
-  var BM_IDS = ['night1','n2-s1','n2-s2','n2-s3','n2-s4','n2-s5','n2-quotes','n2-try','n2-check','night2'];
+  var BM_IDS = ['night1','n2-s1','n2-s2','n2-s3','n2-s4','n2-s5','n2-quotes','n2-try','n2-check','night2','n3-s1','n3-s2','n3-s3','n3-s4','n3-s5','n3-quotes','n3-try','n3-check','night3'];
   function nearestAnchor(){
     var y = window.scrollY + 120, best = 'night1';
     BM_IDS.forEach(function(id){
