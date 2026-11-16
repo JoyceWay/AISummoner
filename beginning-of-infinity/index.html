@@ -741,24 +741,39 @@
 <script>
   // bookmark: save reading position, resume next visit
   var BM_KEY = 'boi-bookmark';
-  var BM_IDS = ['night1','n2-s1','n2-s2','n2-s3','n2-s4','n2-s5','n2-quotes','n2-try','n2-check','night2','n3-s1','n3-s2','n3-s3','n3-s4','n3-s5','n3-quotes','n3-try','n3-check','night3'];
+  var BM_SKIP = {progress:1, 'resume-bar':1, 'resume-text':1, 'bm-btn':1};
+  // dynamic anchors: every id on the page except the UI chrome above.
+  // New nights (night4, n4-s1...) are picked up automatically, no list to maintain.
+  function anchorEls(){
+    var out = [];
+    document.querySelectorAll('[id]').forEach(function(el){
+      if(!BM_SKIP[el.id]) out.push(el);
+    });
+    return out;
+  }
   function nearestAnchor(){
     var y = window.scrollY + 120, best = 'night1';
-    BM_IDS.forEach(function(id){
-      var el = document.getElementById(id);
-      if(el && el.getBoundingClientRect().top + window.scrollY <= y) best = id;
+    anchorEls().forEach(function(el){
+      if(el.getBoundingClientRect().top + window.scrollY <= y) best = el.id;
     });
     return best;
   }
   function labelFor(id){
     var el = document.getElementById(id);
     if(!el) return id;
-    var h = el.querySelector('h2,h3') || el;
+    var h = el.querySelector('h2,h3');
+    if(!h && el.tagName === 'HR'){
+      var n = el.nextElementSibling;
+      while(n && !/^H[23]$/.test(n.tagName)) n = n.nextElementSibling;
+      h = n;
+    }
+    h = h || el;
     var t = (h.textContent || '').replace(/\s+/g, ' ').trim();
-    return t.slice(0, 42);
+    return t ? t.slice(0, 42) : id;
   }
   function saveBookmark(){
     var id = nearestAnchor();
+    lastSaved = id;
     var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
     try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
     showResume(data);
@@ -783,14 +798,34 @@
   }
   function clearBookmark(){
     try{ localStorage.removeItem(BM_KEY); }catch(e){}
+    lastSaved = '';
     var bar = document.getElementById('resume-bar');
     if(bar) bar.style.display = 'none';
   }
+  // auto-save: reading position follows you, no tap needed.
+  // Only runs after the reader scrolls, so opening the page never clobbers the saved spot.
+  var lastSaved = '';
+  function autoSave(){
+    var id = nearestAnchor();
+    if(id === lastSaved) return;
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+  }
+  var saveTimer = null;
+  window.addEventListener('scroll', function(){
+    if(saveTimer) return;
+    saveTimer = setTimeout(function(){ saveTimer = null; autoSave(); }, 1200);
+  }, {passive:true});
   window.addEventListener('DOMContentLoaded', function(){
     try{
       var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
-      if(data) showResume(data);
+      if(data){ showResume(data); if(data.id) lastSaved = data.id; }
     }catch(e){}
+    if(location.hash){
+      setTimeout(autoSave, 800);
+    }
   });
 </script>
 <script>

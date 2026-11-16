@@ -43,6 +43,15 @@
   .site .dom{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--terra); letter-spacing:.04em}
   .site .desc{font-size:15px; color:var(--ink-soft); margin-top:2px; line-height:1.6}
   .site .go{margin-left:auto; flex:0 0 auto; color:var(--muted); font-size:20px; line-height:1; padding-top:6px}
+  .resume{display:none; margin-top:28px; background:var(--ink); color:var(--paper); border-radius:14px; padding:18px 20px}
+  .resume h2{margin:0 0 4px; font-size:17px}
+  .resume h2 span{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.2em; color:var(--amber); display:block; margin-bottom:6px}
+  .resume a{display:flex; gap:10px; align-items:baseline; color:var(--paper); text-decoration:none; padding:10px 0; border-top:1px solid rgba(244,241,234,.16)}
+  .resume a:first-of-type{border-top:none}
+  .resume a b{font-size:16px; white-space:nowrap}
+  .resume a .where{color:#D8D2C4; font-size:14px}
+  .resume a .go{margin-left:auto; color:var(--amber); font-weight:700; white-space:nowrap}
+  .resume .clear{background:none; border:none; color:#D8D2C4; font-size:13px; cursor:pointer; padding:6px 0 0}
   .how{margin-top:30px; background:var(--ink); color:var(--paper); border-radius:14px; padding:20px 22px}
   .how h2{margin:0 0 8px; font-size:17px}
   .how h2 span{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.2em; color:var(--amber); display:block; margin-bottom:6px}
@@ -58,6 +67,12 @@
     <div class="kicker">AISUMMONER · ONE APP, ALL SITES</div>
     <h1>我的网站<span class="en">My Sites — tap one to enter</span></h1>
     <p class="sub">点一个，进一个站。</p>
+  </div>
+
+  <div class="resume" id="resume">
+    <h2><span>RESUME READING</span>继续阅读</h2>
+    <div id="resume-list"></div>
+    <button class="clear" onclick="clearResume()">清除书签 ✕</button>
   </div>
 
   <div class="grid">
@@ -110,5 +125,40 @@
 
   <footer>Conjurer Lab · AISummoner · 一个 App，全部网站</footer>
 </div>
+<script>
+  // resume: read both books' bookmarks (same origin, shared localStorage)
+  // and offer one-tap return to the exact spot. Hidden when nothing is saved.
+  var BOOKS = [
+    {key:'boi-bookmark', title:'《无穷的开始》', base:'/beginning-of-infinity/'},
+    {key:'coe-bookmark', title:'《Co-Existence》', base:'/co-existence/'}
+  ];
+  function readBM(key){
+    try{ return JSON.parse(localStorage.getItem(key) || 'null'); }catch(e){ return null; }
+  }
+  (function(){
+    var list = document.getElementById('resume-list');
+    var box = document.getElementById('resume');
+    if(!list || !box) return;
+    var any = false;
+    BOOKS.forEach(function(b){
+      var d = readBM(b.key);
+      if(!d || !d.id) return;
+      any = true;
+      var a = document.createElement('a');
+      a.href = b.base + '#' + d.id;
+      var t = document.createElement('b'); t.textContent = b.title;
+      var w = document.createElement('span'); w.className = 'where'; w.textContent = '上次读到：' + (d.label || d.id) + ' · ' + (d.t || '');
+      var g = document.createElement('span'); g.className = 'go'; g.textContent = '继续 →';
+      a.appendChild(t); a.appendChild(w); a.appendChild(g);
+      list.appendChild(a);
+    });
+    if(any) box.style.display = 'block';
+  })();
+  function clearResume(){
+    try{ localStorage.removeItem('boi-bookmark'); localStorage.removeItem('coe-bookmark'); }catch(e){}
+    var box = document.getElementById('resume');
+    if(box) box.style.display = 'none';
+  }
+</script>
 </body>
 </html>

@@ -102,6 +102,15 @@
   .cliff .next{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.18em; color:var(--cyan); display:block; margin-bottom:8px}
   footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:14px}
   footer a{color:var(--terra)}
+  /* bookmark: resume bar + floating save button */
+  .resume-bar{display:none; position:sticky; top:0; z-index:55; background:var(--ink); color:var(--paper);
+    border-radius:10px; padding:10px 14px; margin:12px 0; align-items:center; gap:10px; cursor:pointer; font-size:15px}
+  .resume-bar .go{color:var(--amber); font-weight:700; white-space:nowrap}
+  .resume-bar .x{margin-left:auto; background:none; border:none; color:#D8D2C4; font-size:16px; cursor:pointer; padding:0 2px}
+  .bm-fab{position:fixed; right:18px; bottom:18px; z-index:60; width:52px; height:52px; border-radius:50%;
+    background:var(--ink); color:var(--paper); border:none; font-size:22px; cursor:pointer;
+    box-shadow:0 4px 16px rgba(0,0,0,.25)}
+  .bm-fab:hover{background:var(--terra)}
   @media (max-width:560px){ h1{font-size:34px} body{font-size:16px} .map .hook{display:block; margin-top:2px} }
 </style>
 </head>
@@ -117,6 +126,11 @@
       <button class="lang-btn" data-m="cn" onclick="setLang('cn')">中文</button>
     </span>
     <span>NIGHT 1 / 7</span>
+  </div>
+
+  <div class="resume-bar" id="resume-bar" onclick="goResume()">
+    <span>📖</span><span id="resume-text"></span><span class="go">继续 →</span>
+    <button class="x" title="清除书签" onclick="event.stopPropagation(); clearBookmark()">✕</button>
   </div>
 
   <div class="kicker">ETHAN MOLLICK · 2026 · A READER'S GUIDE · 中英对照</div>
@@ -202,7 +216,7 @@
 
   <hr class="sep">
 
-  <h2><span class="en">THE MAP · SEVEN NIGHTS</span>七夜地图</h2>
+  <h2 id="map"><span class="en">THE MAP · SEVEN NIGHTS</span>七夜地图</h2>
   <p class="lede lang-en">One night per stop: the introduction, five stations, and the codas. Only the first lamp is lit tonight. Chapter titles are verified against the book as each night is written.</p>
   <p class="lede lang-cn">一夜一站：序章、五站、尾声。今夜只亮第一盏灯。章节标题以书为准，每写一夜核实一夜。</p>
   <ol class="map">
@@ -222,7 +236,7 @@
   <p class="lede lang-en">Tonight answers just one question: <b>what can AI actually do — and what stays human?</b> The answer hides in an experiment the author ran on his own book.</p>
   <p class="lede lang-cn">今夜只回答一个问题：<b>AI 到底能干什么，还有什么是人的？</b>答案藏在作者拿自己的书做的一场实验里。</p>
 
-  <div class="scene">
+  <div class="scene" id="n1-s1">
     <h3><span class="sc">SCENE 1 · OPENING</span>The question<span class="h-cn lang-cn">那个问题</span></h3>
     <p class="lang-en">Ethan Mollick wrote the book on working with AI. <i>Co-Intelligence</i> was the book everyone read in 2024 to learn how to use ChatGPT at work.</p>
     <p class="lang-cn">Ethan Mollick 写过一本讲"怎么和 AI 共事"的书。《Co-Intelligence》是 2024 年人手一本的 AI 工作指南。</p>
@@ -238,7 +252,7 @@
     <p class="lang-cn">整本书就藏在这一个问题里。如果 AI 能写这本讲 AI 的书，那人还剩下什么？如果不能——<b>为什么</b>不能？"为什么"的答案，就是这本书。</p>
   </div>
 
-  <div class="scene">
+  <div class="scene" id="n1-s2">
     <h3><span class="sc">SCENE 2 · THE RESULT</span>It wrote almost none of it — and checked it better than humans<span class="h-cn lang-cn">它几乎没写成，却比人查得更好</span></h3>
     <p class="lang-en">Here is what happened. AI wrote <b>almost none of the book</b>.</p>
     <p class="lang-cn">结果是这样的。AI <b>几乎没写这本书</b>。</p>
@@ -256,7 +270,7 @@
     <p class="lang-cn">再看你自己的工作。你早就活在这个分工里了：AI 写代码越来越便宜，<b>审阅才是新的基本功</b>。Mollick 只是在写作这个行当的顶端，证明了同一个分工。工作的未来不是"AI 包办一切"，而是"AI 负责查，人负责选"。</p>
   </div>
 
-  <div class="scene">
+  <div class="scene" id="n1-s3">
     <h3><span class="sc">SCENE 3 · THE TWO BIG IDEAS</span>The map and the curve<span class="h-cn lang-cn">地图与曲线</span></h3>
     <p class="lang-en">Before the book goes anywhere, Mollick lays down two ideas. Everything else in the book hangs off them.</p>
     <p class="lang-cn">在讲任何东西之前，Mollick 先放下两个大想法。整本书都挂在这两个想法上。</p>
@@ -278,7 +292,7 @@
     </div>
   </div>
 
-  <div class="scene">
+  <div class="scene" id="n1-s4">
     <h3><span class="sc">SCENE 4 · THE PROMOTION</span>Conjurer: the third mode, named after you<span class="h-cn lang-cn">Conjurer：第三种模式，用的就是你的名字</span></h3>
     <p class="lang-en">In the last book, Mollick described two ways of working with AI. <b>Centaur</b>: a clean handoff, split by strengths. <b>Cyborg</b>: back and forth on the same task. Both assume you stay in the work, side by side with the machine.</p>
     <p class="lang-cn">上一本书里，Mollick 讲了两种和 AI 共事的方式。<b>Centaur（人马）</b>：干净交接，按长处分工。<b>Cyborg（赛博格）</b>：同一件事来回打磨。两种都假设你留在工作里，和机器并肩。</p>
@@ -298,7 +312,7 @@
     <p class="lang-cn">这就是为什么书里的四样护身东西重要——以及为什么其中两样你已经有了。一个好的召唤师需要<b>深知识</b>（指挥和判断）、<b>宽知识</b>（知道该问什么）、<b>品位</b>（你的判断标准）和<b>行动力</b>（不用人告诉就动手）。品位和行动力，就是你已经有的两样。这本书在某种意义上，就是给你现在这份工作的手册。</p>
   </div>
 
-  <div class="scene">
+  <div class="scene" id="n1-s5">
     <h3><span class="sc">SCENE 5 · THE PROOF</span>Two people plus AI beat everyone<span class="h-cn lang-cn">两个人加 AI，赢了所有人</span></h3>
     <p class="lang-en">Is Conjurer mode actually better, or just a nice metaphor? Mollick brings evidence. In a 2025 study at Procter &amp; Gamble, his team compared three ways of working: an individual with AI, two people without AI, and <b>two people plus AI</b>. The teams of two people plus AI produced more highly rated ideas than either of the other two.</p>
     <p class="lang-cn">Conjurer 模式是真的更好，还是只是一个漂亮的比喻？Mollick 拿出了证据。2025 年在宝洁的一项研究里，他的团队比较了三种工作方式：一个人加 AI、两个人不用 AI、<b>两个人加 AI</b>。两个人加 AI 的小组，产出的高分想法比另外两种都多。</p>
@@ -310,7 +324,7 @@
     <p class="lang-cn">胜利附带两条护栏，书里说得很直接。第一，聊天机器人是被训练来讨好你的——所以它太容易同意你。<b>主动要批评。</b>对听起来太顺耳的答案，顶回去。第二，保护属于你的部分：判断、品位、行动力。留一点完全没有 AI 的思考时间——书里建议，每周留一小时啃一道难题，全程不用 AI。那一小时就是训练你品位的地方。</p>
   </div>
 
-  <div class="scene">
+  <div class="scene" id="n1-try">
     <h3><span class="sc">TRY IT · 动手试</span>Which mode are you in?<span class="h-cn lang-cn">你现在是哪个模式？</span></h3>
     <p class="lang-en">Tonight's tool is just one: <b>the three modes</b>. Three tasks from your own week — tap a card to see which mode it is, and why.</p>
     <p class="lang-cn">今夜的工具只有一个：<b>三种模式</b>。三件你这周自己的事——点开卡片，看它是哪个模式，为什么。</p>
@@ -344,7 +358,7 @@
     <p class="lang-cn">本事不是记住这三个名字，而是在一件事做到一半时，察觉自己在哪个模式里——并且有意切换。大多数人一辈子只用一个模式，还是无意中用的。召唤师是主动选的。</p>
   </div>
 
-  <div class="takeaway">
+  <div class="takeaway" id="n1-takeaway">
     <h4>TAKEAWAY · 今夜带走三句</h4>
     <ol>
       <li><span class="lang-en">AI couldn't write the book — but it fact-checked better than the humans Mollick paid. <b>Writing is judgment; checking is verification.</b></span><span class="t-cn lang-cn">AI 写不成这本书，却比 Mollick 花钱请的人类校对查事实查得更好——<b>写是判断，查是验证。</b></span></li>
@@ -353,7 +367,7 @@
     </ol>
   </div>
 
-  <h2><span class="en">CHECKPOINT · CAN YOU EXPLAIN IT BACK?</span>检查点 · 能讲回来吗？</h2>
+  <h2 id="n1-check"><span class="en">CHECKPOINT · CAN YOU EXPLAIN IT BACK?</span>检查点 · 能讲回来吗？</h2>
   <p class="lede lang-en">Your rule: understand it 70–80% before it counts. Three questions — answer them before the next night. Tap to check.</p>
   <p class="lede lang-cn">你的规则：看懂 7788 才算过。三道题，答得上来再进下一夜。点开对答案。</p>
   <details class="check"><summary><span class="lang-en">01｜AI wrote almost none of the book, but fact-checked better than paid humans. Why?</span><span class="lang-cn">01｜AI 几乎没写成这本书，却比付费的人类校对查事实查得更好——为什么？</span></summary>
@@ -398,6 +412,97 @@
   }
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
+</script>
+<button class="bm-fab" id="bm-btn" title="收藏此处，下次点击进来" onclick="saveBookmark()">🔖</button>
+<script>
+  // bookmark: save reading position, resume next visit (auto-save on scroll)
+  var BM_KEY = 'coe-bookmark';
+  var BM_SKIP = {progress:1, 'resume-bar':1, 'resume-text':1, 'bm-btn':1};
+  // dynamic anchors: every id on the page except the UI chrome above.
+  // New nights (night2, n2-s1...) are picked up automatically, no list to maintain.
+  function anchorEls(){
+    var out = [];
+    document.querySelectorAll('[id]').forEach(function(el){
+      if(!BM_SKIP[el.id]) out.push(el);
+    });
+    return out;
+  }
+  function nearestAnchor(){
+    var y = window.scrollY + 120, best = 'night1';
+    anchorEls().forEach(function(el){
+      if(el.getBoundingClientRect().top + window.scrollY <= y) best = el.id;
+    });
+    return best;
+  }
+  function labelFor(id){
+    var el = document.getElementById(id);
+    if(!el) return id;
+    var h = el.querySelector('h2,h3,h4');
+    if(!h && el.tagName === 'HR'){
+      var n = el.nextElementSibling;
+      while(n && !/^H[23]$/.test(n.tagName)) n = n.nextElementSibling;
+      h = n;
+    }
+    h = h || el;
+    var t = (h.textContent || '').replace(/\s+/g, ' ').trim();
+    return t ? t.slice(0, 42) : id;
+  }
+  function saveBookmark(){
+    var id = nearestAnchor();
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+    var b = document.getElementById('bm-btn');
+    if(b){ b.textContent = '✓'; setTimeout(function(){ b.textContent = '🔖'; }, 1500); }
+  }
+  function showResume(data){
+    var bar = document.getElementById('resume-bar');
+    if(!bar || !data) return;
+    bar.style.display = 'flex';
+    var t = document.getElementById('resume-text');
+    if(t) t.textContent = '上次读到：' + data.label + ' · ' + data.t;
+  }
+  function goResume(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        var el = document.getElementById(data.id);
+        if(el) el.scrollIntoView({behavior:'smooth'});
+      }
+    }catch(e){}
+  }
+  function clearBookmark(){
+    try{ localStorage.removeItem(BM_KEY); }catch(e){}
+    lastSaved = '';
+    var bar = document.getElementById('resume-bar');
+    if(bar) bar.style.display = 'none';
+  }
+  // auto-save: reading position follows you, no tap needed.
+  // Only runs after the reader scrolls, so opening the page never clobbers the saved spot.
+  var lastSaved = '';
+  function autoSave(){
+    var id = nearestAnchor();
+    if(id === lastSaved) return;
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+  }
+  var saveTimer = null;
+  window.addEventListener('scroll', function(){
+    if(saveTimer) return;
+    saveTimer = setTimeout(function(){ saveTimer = null; autoSave(); }, 1200);
+  }, {passive:true});
+  window.addEventListener('DOMContentLoaded', function(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data){ showResume(data); if(data.id) lastSaved = data.id; }
+    }catch(e){}
+    if(location.hash){
+      setTimeout(autoSave, 800);
+    }
+  });
 </script>
 </body>
 </html>
