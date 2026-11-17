@@ -109,8 +109,9 @@
   footer a{color:var(--terra)}
   @media (max-width:560px){ h1{font-size:34px} body{font-size:16px} .map .hook{display:block; margin-top:2px} }
   /* bookmark: resume bar + floating save button */
-  .resume-bar{display:none; position:sticky; top:0; z-index:55; background:var(--ink); color:var(--paper);
-    border-radius:10px; padding:10px 14px; margin:12px 0; align-items:center; gap:10px; cursor:pointer; font-size:15px}
+  .resume-bar{display:none; background:var(--ink); color:var(--paper);
+    border-radius:10px; padding:8px 12px; margin:12px 0; align-items:center; gap:8px; cursor:pointer; font-size:14px}
+  #resume-text{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; flex:1}
   .resume-bar .go{color:var(--amber); font-weight:700; white-space:nowrap}
   .resume-bar .x{margin-left:auto; background:none; border:none; color:#D8D2C4; font-size:16px; cursor:pointer; padding:0 2px}
   .bm-fab{position:fixed; right:18px; bottom:18px; z-index:60; width:52px; height:52px; border-radius:50%;
@@ -785,7 +786,7 @@
     if(!bar || !data) return;
     bar.style.display = 'flex';
     var t = document.getElementById('resume-text');
-    if(t) t.textContent = '上次读到：' + data.label + ' · ' + data.t;
+    if(t) t.textContent = '上次读到：' + data.label;
   }
   function goResume(){
     try{
