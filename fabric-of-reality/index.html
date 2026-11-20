@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="bi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《实在的结构》十四夜 · David Deutsch 读书指南 | AISummoner</title>
+<meta name="description" content="David Deutsch《The Fabric of Reality》读书指南，中英对照：400 页拆成十四夜故事，每夜十分钟，读完一夜想知道下一夜发生什么。">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --paper:#F4F1EA; --ink:#141413; --ink-soft:#3a382f; --muted:#7A756C;
+    --terra:#D96548; --amber:#F0A832; --cyan:#0891B2; --line:#E3DCCB;
+    --card:#FBF9F4; --green:#16794F;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC",Georgia,serif; line-height:1.85; font-size:17px;
+    background-image:
+      linear-gradient(rgba(20,20,19,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20,20,19,0.035) 1px, transparent 1px);
+    background-size:28px 28px;
+  }
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--terra); width:11%; z-index:50; transition:width .3s}
+  .wrap{max-width:720px; margin:0 auto; padding:0 20px 80px}
+  .topbar{display:flex; justify-content:space-between; align-items:center; padding:18px 0 8px;
+    font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.14em; color:var(--muted)}
+  .topbar a{color:var(--muted); text-decoration:none}
+  .topbar a:hover{color:var(--terra)}
+  /* language toggle */
+  .lang-toggle{display:flex; gap:6px}
+  .lang-btn{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.08em;
+    border:1px solid var(--line); background:var(--card); color:var(--ink-soft);
+    border-radius:999px; padding:4px 12px; cursor:pointer}
+  .lang-btn.active{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+  /* bilingual: EN first, CN after, CN slightly smaller */
+  [data-lang="en"] .lang-cn{display:none !important}
+  [data-lang="cn"] .lang-en{display:none !important}
+  .lang-cn{font-size:.95em; color:var(--ink-soft)}
+  p.lang-en, p.lang-cn{margin:10px 0}
+  .kicker{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.22em; color:var(--terra); margin:34px 0 10px}
+  h1{font-size:44px; line-height:1.15; margin:0 0 8px; font-weight:700}
+  h1 .en{display:block; font-size:20px; color:var(--muted); font-weight:400; letter-spacing:.04em; margin-top:10px}
+  .sub{font-size:19px; color:var(--ink-soft); margin:14px 0 0}
+  .sub b{color:var(--terra)}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 0}
+  .pill{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; border:1px solid var(--line);
+    border-radius:999px; padding:4px 12px; background:var(--card); color:var(--ink-soft)}
+  .pill.hot{border-color:var(--terra); color:var(--terra)}
+  a.pill{text-decoration:none}
+  a.pill.hot:hover{background:var(--terra); color:var(--paper)}
+  .cta{display:inline-block; margin-top:26px; background:var(--ink); color:var(--paper); text-decoration:none;
+    padding:12px 26px; border-radius:999px; font-size:16px}
+  .cta:hover{background:var(--terra)}
+  hr.sep{border:none; border-top:1px solid var(--line); margin:44px 0}
+  h2{font-size:26px; margin:0 0 6px}
+  h2 .en{display:block; font-size:13px; font-family:"JetBrains Mono",ui-monospace,monospace; letter-spacing:.18em; color:var(--muted); font-weight:400; margin-bottom:6px}
+  .lede{color:var(--ink-soft); margin:0 0 20px}
+  .why{display:grid; gap:12px}
+  .why .row{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px}
+  .why .row b{color:var(--terra)}
+  .why .fix{color:var(--green); font-size:15px; margin-top:4px}
+  .how .step{display:flex; gap:14px; margin:14px 0}
+  .how .n{flex:0 0 30px; height:30px; border-radius:50%; background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:center; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:13px}
+  .map{list-style:none; margin:0; padding:0}
+  .map li{display:flex; gap:14px; padding:13px 4px; border-bottom:1px solid var(--line); align-items:baseline}
+  .map .no{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--muted); flex:0 0 62px}
+  .map .t{font-weight:700}
+  .map .t .cn{color:var(--muted); font-weight:400; font-size:14px; margin-left:6px}
+  .map .hook{color:var(--ink-soft); font-size:15px; line-height:1.6}
+  .map .hook-cn{color:var(--muted); font-size:14px; line-height:1.6}
+  .map .st{margin-left:auto; flex:0 0 auto; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px;
+    border:1px solid var(--terra); color:var(--terra); border-radius:999px; padding:2px 10px; white-space:nowrap}
+  .map .st.soon{border-color:var(--line); color:var(--muted)}
+  .map li.done{background:linear-gradient(90deg, rgba(217,101,72,.07), transparent 70%)}
+  /* Night 1 */
+  .night-tag{display:inline-block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px;
+    letter-spacing:.2em; color:var(--paper); background:var(--terra); border-radius:4px; padding:4px 12px}
+  .scene{margin:30px 0}
+  .scene h3{font-size:21px; margin:0 0 8px}
+  .scene h3 .sc{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--terra); letter-spacing:.16em; display:block; margin-bottom:4px}
+  .scene h3 .h-cn{display:block; font-size:18px; color:var(--muted); font-weight:400; margin-top:2px}
+  .quote{border-left:3px solid var(--amber); background:rgba(240,168,50,.08); padding:14px 18px; margin:18px 0; font-size:16px}
+  .quote .en{font-style:italic}
+  .quote .cn{color:var(--ink-soft); font-size:15px; margin-top:6px}
+  .key{color:var(--terra); font-weight:700}
+  .term{font-weight:700; border-bottom:2px solid rgba(217,101,72,.4)}
+  .quiz{display:grid; gap:12px; margin:16px 0}
+  .qcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; cursor:pointer}
+  .qcard:hover{border-color:var(--terra)}
+  .qcard .a{display:none; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); font-size:15px}
+  .qcard.open .a{display:block}
+  .qcard .tap{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--muted); letter-spacing:.1em}
+  .verdict-bad{color:var(--terra); font-weight:700}
+  .verdict-good{color:var(--green); font-weight:700}
+  .takeaway{background:var(--ink); color:var(--paper); border-radius:12px; padding:20px 22px; margin:26px 0}
+  .takeaway h4{margin:0 0 10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.2em; color:var(--amber)}
+  .takeaway ol{margin:0; padding-left:22px}
+  .takeaway li{margin:8px 0}
+  .takeaway .t-cn{display:block; font-size:15px; color:#D8D2C4; margin-top:2px}
+  .highlights{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:26px 0}
+  .highlights h4{margin:0 0 10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.2em; color:var(--terra)}
+  .highlights ol{margin:0; padding-left:22px}
+  .highlights li{margin:10px 0}
+  .highlights li .lang-en{font-style:italic}
+  .highlights li .cn{display:block; font-size:15px; color:var(--ink-soft); margin-top:2px}
+  details.check{border:1px solid var(--line); border-radius:12px; background:var(--card); padding:14px 18px; margin:10px 0}
+  details.check summary{cursor:pointer; font-weight:700}
+  details.check .ans{margin-top:8px; font-size:15px; color:var(--ink-soft)}
+  .cliff{background:linear-gradient(135deg, rgba(8,145,178,.1), rgba(217,101,72,.08)); border:1px solid var(--line);
+    border-radius:12px; padding:22px; margin:30px 0; font-size:18px}
+  .cliff .next{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.18em; color:var(--cyan); display:block; margin-bottom:8px}
+  footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:14px}
+  footer a{color:var(--terra)}
+  @media (max-width:560px){ h1{font-size:34px} body{font-size:16px} .map .hook{display:block; margin-top:2px} }
+  /* bookmark: resume bar + floating save button */
+  .resume-bar{display:none; background:var(--ink); color:var(--paper);
+    border-radius:10px; padding:8px 12px; margin:12px 0; align-items:center; gap:8px; cursor:pointer; font-size:14px}
+  #resume-text{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; flex:1}
+  .resume-bar .go{color:var(--amber); font-weight:700; white-space:nowrap}
+  .resume-bar .x{margin-left:auto; background:none; border:none; color:#D8D2C4; font-size:16px; cursor:pointer; padding:0 2px}
+  .bm-fab{position:fixed; right:12px; bottom:12px; z-index:60; width:44px; height:44px; border-radius:50%;
+    background:var(--ink); color:var(--paper); border:none; font-size:20px; cursor:pointer;
+    box-shadow:0 4px 16px rgba(0,0,0,.25)}
+  .bm-fab:hover{background:var(--terra)}
+  /* night list menu: tap 🔖 to jump to any night */
+  .bm-menu{display:none; position:fixed; right:12px; top:64px; z-index:70; width:min(340px, calc(100vw - 24px));
+    max-height:min(70vh, 560px); overflow-y:auto; background:var(--paper); color:var(--ink);
+    border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,.28); padding:6px 0}
+  .bm-menu.open{display:block}
+  .bm-menu h4{margin:6px 16px 4px; font-size:13px; letter-spacing:.14em; color:var(--muted); display:flex; justify-content:space-between; align-items:center}
+  .bm-menu h4 button{background:none; border:none; font-size:16px; cursor:pointer; color:var(--muted); padding:2px 6px}
+  .bm-row{display:flex; gap:10px; align-items:baseline; width:100%; text-align:left; background:none; border:none;
+    padding:10px 16px; font-size:15px; font-family:inherit; color:var(--ink); cursor:pointer; border-top:1px solid var(--line)}
+  .bm-row:hover{background:rgba(217,101,72,.07)}
+  .bm-row .no{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--muted); flex:0 0 62px}
+  .bm-row .t{flex:1; min-width:0}
+  .bm-row .t small{display:block; color:var(--muted); font-size:12px; margin-top:1px}
+  .bm-row .st{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--terra); white-space:nowrap}
+  .bm-row.soon{opacity:.55; cursor:default}
+  .bm-row.soon:hover{background:none}
+  .bm-row.soon .st{color:var(--muted)}
+  .bm-row.now{background:rgba(217,101,72,.07)}
+  .bm-row.now .no{color:var(--terra); font-weight:700}
+  .map li.done{cursor:pointer}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/">← AISUMMONER</a>
+    <span class="lang-toggle">
+      <button class="lang-btn active" data-m="bi" onclick="setLang('bi')">中英</button>
+      <button class="lang-btn" data-m="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-m="cn" onclick="setLang('cn')">中文</button>
+    </span>
+    <span>NIGHT 1 / 14</span>
+  </div>
+
+  <div class="resume-bar" id="resume-bar" onclick="goResume()">
+    <span>📖</span><span id="resume-text"></span><span class="go">继续 →</span>
+    <button class="x" title="清除书签" onclick="event.stopPropagation(); clearBookmark()">✕</button>
+  </div>
+
+  <div class="kicker">DAVID DEUTSCH · 1997 · A READER'S GUIDE · 中英对照</div>
+  <h1>《实在的结构》十四夜<span class="en">The Fabric of Reality, in fourteen nights</span></h1>
+  <p class="sub lang-en">You own this book, but you couldn't finish it — <b>that's not your fault</b>. 400 pages, 14 chapters, four threads braided into one argument about the nature of reality — and the payoff doesn't arrive until chapter 13. This site retells the book as fourteen nights of stories, ten minutes a night. Finish one night, and you'll want to know what happens the next.</p>
+  <p class="sub lang-cn">你手里有这本书，却读不下去——<b>不是你的问题</b>。400 页，14 章，四条线索编成一个关于实在本质的论证——而答案要到第 13 章才揭晓。这站把书写成十四夜故事，每夜十分钟，读完一夜，你会想知道下一夜发生什么。</p>
+  <div class="meta">
+    <span class="pill">400 pages</span><span class="pill">14 chapters</span>
+    <a class="pill hot" href="#night1">Night 1 · 今夜可读</a><span class="pill">一夜一章 · 每夜 10 分钟</span>
+    <span class="pill">中英对照 · EN / 中文</span>
+  </div>
+  <a class="cta" href="#night1"><span class="lang-en">Start Night 1 ↓</span><span class="lang-cn">开始第一夜 ↓</span></a>
+
+  <hr class="sep">
+
+  <h2><span class="en">WHY YOU STOPPED</span>为什么读不下去</h2>
+  <p class="lede lang-en">First, let's be clear: not finishing it isn't a willpower problem. It's a problem with how the book is written.</p>
+  <p class="lede lang-cn">先说清楚：读不下去不是意志力问题，是这本书的写法问题。</p>
+  <div class="why">
+    <div class="row">
+      <div class="lang-en"><b>01｜Four threads at once, no map.</b> Chapter 1 introduces four whole theories — quantum physics, knowledge, computation, evolution — in one breath, and never says which thread you are holding.</div>
+      <div class="lang-cn"><b>01｜四条线同时抛出来，没有地图。</b>第一章一口气介绍四个理论——量子物理、知识、计算、演化——却不说你手里正抓着哪一根。</div>
+      <div class="fix lang-en">→ fix: one thread at a time, one night at a time. Tonight: only the weaving — what the four strands are, and why they belong together.</div>
+      <div class="fix lang-cn">→ fix：一夜一根线，一夜织一段。今夜只讲编织本身——四条线索是什么，为什么它们属于同一块布。</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>02｜It asks you to unlearn common sense before it earns it.</b> Parallel universes, reality bigger than what you see — the strange conclusions arrive before the evidence that makes them believable.</div>
+      <div class="lang-cn"><b>02｜先让你推翻常识，证据却还没给。</b>平行宇宙、比所见更大的实在——奇怪的结论先到，让人相信的证据后到。</div>
+      <div class="fix lang-en">→ fix: every night starts with something you can picture — a photon, a shadow — and only then the strange conclusion. Evidence first, wonder second.</div>
+      <div class="fix lang-cn">→ fix：每一夜先给你能想象的东西——一个光子、一道影子——再给奇怪的结论。证据先行，惊奇在后。</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>03｜The payoff is at the back of the book.</b> The four strands are only woven together in chapter 13 — 400 pages in, most readers have already quit.</div>
+      <div class="lang-cn"><b>03｜答案在书的后头。</b>四条线索要到第 13 章才织在一起——400 页读到那儿，大多数人早放弃了。</div>
+      <div class="fix lang-en">→ fix: a map of 14 nights, ten minutes each, progress you can see. Tonight you get the whole picture in miniature — the rest fills it in. Finish tonight and you're 1/14 done.</div>
+      <div class="fix lang-cn">→ fix：14 夜地图，每夜十分钟，进度看得见。今夜先给你整幅图的缩影，剩下的夜再慢慢填满。读完今夜，你就走了 1/14。</div>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <h2><span class="en">HOW IT WORKS</span>读法</h2>
+  <div class="how">
+    <div class="step"><div class="n">1</div><div><div class="lang-en"><b>One night, one chapter.</b> Ten minutes each, no greed.</div><div class="lang-cn"><b>一夜一章。</b>每夜只读一章的内容，十分钟，不贪多。</div></div></div>
+    <div class="step"><div class="n">2</div><div><div class="lang-en"><b>Every night ends on a cliffhanger.</b> Like One Thousand and One Nights — the story stops at the crucial moment, and the answer comes next night.</div><div class="lang-cn"><b>每夜结尾一个悬念。</b>像一千零一夜一样——故事讲到最关键处停住，下一夜才揭晓。</div></div></div>
+    <div class="step"><div class="n">3</div><div><div class="lang-en"><b>Pass the checkpoint before the next night.</b> Three questions; answer them before moving on. That's your rule: understand it 70–80% before it counts.</div><div class="lang-cn"><b>先过检查点，再进下一夜。</b>三道题，答得上来再往下走。这是你的规则：看懂 7788 才算过。</div></div></div>
+    <div class="step"><div class="n">4</div><div><div class="lang-en"><b>English terms stay in English.</b> Four strands, good explanations, the multiverse, the Turing principle — these words look the same in the book, so you can find them there.</div><div class="lang-cn"><b>英文术语保留原文。</b>四条线索（four strands）、好解释（good explanations）、多重宇宙（the multiverse）、图灵原理（the Turing principle）——这些词在书里就是这个样子，对照书找得到。</div></div></div>
+  </div>
+
+  <hr class="sep">
+
+  <h2 id="map"><span class="en">THE MAP · 14 NIGHTS</span>十四夜地图</h2>
+  <p class="lede lang-en">All 14 chapters, one night each. One lamp is lit tonight.</p>
+  <p class="lede lang-cn">全书 14 章，一章一夜。今夜亮起一盏灯。</p>
+  <ol class="map">
+    <li class="done" onclick="location.hash='#night1'"><span class="no">NIGHT 01</span><span><span class="t">The Theory of Everything<span class="cn">万物理论</span></span><span class="hook lang-en">Four strands of reality, woven into one theory — and why understanding beats memorizing.</span><span class="hook-cn lang-cn">四条线索织成一个理论——为什么理解胜过死记硬背。</span></span><span class="st">今夜可读</span></li>
+    <li><span class="no">NIGHT 02</span><span><span class="t">Shadows<span class="cn">影子</span></span><span class="hook lang-en">A single photon, a double slit — what interferes with it?</span><span class="hook-cn lang-cn">一个光子，一条双缝——是什么在干扰它？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 03</span><span><span class="t">Problem-solving<span class="cn">解决问题</span></span><span class="hook lang-en">How does knowledge grow? Problems, guesses, criticism — repeat.</span><span class="hook-cn lang-cn">知识怎么增长？问题、猜想、批评——循环往复。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 04</span><span><span class="t">Criteria for Reality<span class="cn">实在的标准</span></span><span class="hook lang-en">What counts as real? A test for what exists.</span><span class="hook-cn lang-cn">什么算真实？一个判断存在与否的标准。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 05</span><span><span class="t">Virtual Reality<span class="cn">虚拟现实</span></span><span class="hook lang-en">Every experience you have is already virtual reality — generated by your brain.</span><span class="hook-cn lang-cn">你的每次体验都已是虚拟现实——由大脑生成。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 06</span><span><span class="t">Universality and the Limits of Computation<span class="cn">普遍性与计算的极限</span></span><span class="hook lang-en">One machine that can do anything any machine can do — and what no machine can do.</span><span class="hook-cn lang-cn">一台能做任何机器能做的事的机器——以及任何机器都做不到的事。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 07</span><span><span class="t">A Conversation About Justification<span class="cn">关于辩护的对话</span></span><span class="hook lang-en">Can a belief ever be justified? A dialogue with a critic.</span><span class="hook-cn lang-cn">信念能被辩护吗？一场与批评者的对话。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 08</span><span><span class="t">The Significance of Life<span class="cn">生命的意义</span></span><span class="hook lang-en">Why does life matter in a universe of dead matter?</span><span class="hook-cn lang-cn">在死物质的宇宙里，生命为什么重要？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 09</span><span><span class="t">Quantum Computers<span class="cn">量子计算机</span></span><span class="hook lang-en">A computer that runs in many universes at once.</span><span class="hook-cn lang-cn">一台同时在多个宇宙里运行的计算机。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 10</span><span><span class="t">The Nature of Mathematics<span class="cn">数学的本质</span></span><span class="hook lang-en">Is mathematics discovered or invented — and where does it live?</span><span class="hook-cn lang-cn">数学是发现的还是发明的——它住在哪里？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 11</span><span><span class="t">Time: The First Quantum Concept<span class="cn">时间：第一个量子概念</span></span><span class="hook lang-en">Time, seen through quantum eyes, for the first time.</span><span class="hook-cn lang-cn">透过量子的眼睛，第一次看时间。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 12</span><span><span class="t">Time Travel<span class="cn">时间旅行</span></span><span class="hook lang-en">Could you visit the past — and what would stop you?</span><span class="hook-cn lang-cn">你能回到过去吗——什么会拦住你？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 13</span><span><span class="t">The Four Strands<span class="cn">四条线索</span></span><span class="hook lang-en">The four strands, woven together at last.</span><span class="hook-cn lang-cn">四条线索，终于织成一块布。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 14</span><span><span class="t">The Ends of the Universe<span class="cn">宇宙的终结</span></span><span class="hook lang-en">How will it all end — and does the end matter?</span><span class="hook-cn lang-cn">一切将如何终结——终结重要吗？</span></span><span class="st soon">待续</span></li>
+  </ol>
+
+  <hr class="sep" id="night1">
+
+  <span class="night-tag">NIGHT 01 · 第一夜</span>
+  <h2 style="margin-top:14px"><span class="en">CHAPTER 1 · THE THEORY OF EVERYTHING</span>万物理论</h2>
+  <p class="lede lang-en">Tonight answers just one question: <b>what does it mean to understand something — and can one person understand everything?</b> The answer starts with a child being told it is impossible, and ends with four threads woven into one fabric.</p>
+  <p class="lede lang-cn">今夜只回答一个问题：<b>理解一个东西是什么意思——一个人能理解一切吗？</b>答案从一个孩子被告知"不可能"开始，到四根线织成一块布结束。</p>
+
+  <div class="scene" id="n1-s1">
+    <h3><span class="sc">SCENE 1 · OPENING</span>Can one person understand everything?<span class="h-cn lang-cn">一个人能懂一切吗？</span></h3>
+    <p class="lang-en">As a child, Deutsch was told something that sounded like common sense: no one person can ever know everything. There is simply too much to know — too many facts, too many fields, too many books.</p>
+    <p class="lang-cn">Deutsch 小时候听到一句话，听起来像常识：没有一个人能知道一切。知道的东西实在太多了——事实太多、领域太多、书太多。</p>
+    <p class="lang-en">But that sentence hides a confusion — between knowing and understanding. Knowing is collecting facts: the capital of France, the boiling point of water, the date of a battle. Understanding is different: it is seeing why things are the way they are, and being able to explain them.</p>
+    <p class="lang-cn">但这句话里藏着一个混淆——知道和理解之间的混淆。知道是收集事实：法国的首都在哪里，水的沸点是多少，一场战役是哪一年。理解不一样：它是看清事物为什么是这个样子，并且能把它解释出来。</p>
+    <p class="lang-en">Think of Newton and Einstein. Newton could predict how the planets move, with beautiful precision. Einstein explained why — gravity is not a force pulling across empty space, but the shape of space and time itself. Prediction tells you what will happen. Explanation tells you what is going on. Tonight's question is the one the whole book turns on: what does it mean to understand something?</p>
+    <p class="lang-cn">想想牛顿和爱因斯坦。牛顿能精确预测行星如何运动。爱因斯坦解释了为什么——引力不是隔着空无一物的空间拉扯的力，而是时空本身的形状。预测告诉你将会发生什么，解释告诉你正在发生什么。今夜的问题，就是整本书绕着转的问题：理解一个东西，到底是什么意思？</p>
+  </div>
+
+  <div class="scene" id="n1-s2">
+    <h3><span class="sc">SCENE 2 · THE STORY</span>A theory that only predicts<span class="h-cn lang-cn">只会预测的理论</span></h3>
+    <p class="lang-en">Imagine a machine that predicts the weather perfectly. It never says why it rains — it just prints tomorrow's forecast, and it is always right. Would you say the machine understands the weather?</p>
+    <p class="lang-cn">想象一台能完美预测天气的机器。它从不说为什么下雨——它只打印明天的预报，而且永远是对的。你会说这台机器理解天气吗？</p>
+    <p class="lang-en">Most people would say no — and Deutsch agrees. A prediction machine is not understanding. Yet a whole school of thought, called instrumentalism, says that is all science is: a tool for making predictions. Theories, on this view, are not descriptions of reality. They are instruments — useful fictions that help us predict what we will observe next.</p>
+    <p class="lang-cn">大多数人会说不会——Deutsch 也同意。预测机器不是理解。可是一整个学派，叫工具主义（instrumentalism），却说科学就是这个：一个做预测的工具。在这种看法里，理论不是对实在的描述，而是工具——有用的虚构，帮我们预测接下来会观察到什么。</p>
+    <p class="lang-en">Its extreme form, positivism, goes further: anything that cannot be observed is meaningless to talk about. Atoms you cannot see, parallel universes you cannot visit — on this view, asking what they really are is a waste of breath. Deutsch thinks this is exactly backwards. Science is not in the business of predicting blips on a screen. It is in the business of explaining reality — and explanations are about what is really there, whether or not we can see it.</p>
+    <p class="lang-cn">它的极端形式，实证主义（positivism），走得更远：凡是观察不到的东西，谈论它就没有意义。看不见的原子、去不了的平行宇宙——在这种看法里，问它们真实是什么，纯属浪费口舌。Deutsch 认为这正好搞反了。科学做的不是预测屏幕上的光点，而是解释实在——解释讲的是真实存在的东西，不管我们看不看得见。</p>
+  </div>
+
+  <div class="scene" id="n1-s3">
+    <h3><span class="sc">SCENE 3 · THE TURN</span>Four threads, one fabric<span class="h-cn lang-cn">四根线，一块布</span></h3>
+    <p class="lang-en">Here is the turn. Deutsch says reality is not one puzzle but four — four great theories, each deep, each unfinished, each pointing at the others. He calls them the four strands of the fabric of reality.</p>
+    <p class="lang-cn">转折在这里。Deutsch 说，实在不是一个谜，而是四个——四个伟大的理论，各自很深、各自未完成、各自指向另外三个。他把它们叫做实在之布的四条线索（four strands）。</p>
+    <p class="lang-en">The first strand is quantum physics — the many-worlds picture, in which reality is far larger than the one universe we see. The second is epistemology, the theory of knowledge: how do we learn anything, and how do guesses become knowledge? The third is the theory of computation: what can be computed, in principle, and what can never be computed? The fourth is evolution: how does knowledge — in genes, in brains, in ideas — arise without a designer?</p>
+    <p class="lang-cn">第一条线索是量子物理——多世界图景，实在比我们看到的这一个宇宙大得多。第二条是认识论（epistemology），知识的理论：我们怎么学到东西，猜想怎么变成知识？第三条是计算理论：原则上什么能算出来，什么永远算不出来？第四条是演化：知识——在基因里、在大脑里、在想法里——没有设计者，是怎么出现的？</p>
+    <p class="lang-en">Each strand alone leaves holes. Quantum physics alone cannot explain how we know about it. Evolution alone cannot explain why explanations work. Computation alone cannot say what is real. But woven together, they support each other — and Deutsch's claim is that their woven form is the first real theory of everything. Not a final equation for particles, but a unified structure of understanding.</p>
+    <p class="lang-cn">每条线索单独看都有窟窿。单靠量子物理，解释不了我们怎么知道它；单靠演化，解释不了为什么解释会管用；单靠计算，说不清什么是真实的。但织在一起，它们互相支撑——Deutsch 的主张是，织成的样子就是第一个真正的万物理论。不是粒子的终极方程，而是一个统一的理解结构。</p>
+    <p class="lang-en">One idea sounds like a theory of everything, one is the real thing. Tap a card to see which — and why.</p>
+    <p class="lang-cn">一个想法听起来像万物理论，一个才是真的。点开卡片，看哪个是、为什么。</p>
+    <div class="quiz">
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>A.</b> "A theory of everything is the final equation of particle physics — once we know the smallest particles and their forces, everything else follows."</div>
+        <div class="lang-cn"><b>A.</b> "万物理论就是粒子物理的终极方程——一旦知道最小的粒子和它们的力，其余一切都跟着来。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-bad">Wrong.</span> That is reductionism: it assumes everything higher up — life, thought, computation — is just particles in disguise. Deutsch's theory of everything is emergentist, not reductive: the four strands support each other, and none of them reduces to particle physics alone.</div>
+        <div class="a lang-cn"><span class="verdict-bad">错。</span>这是还原论（reductionism）：它假设更高层的一切——生命、思想、计算——都只是粒子的伪装。Deutsch 的万物理论是涌现论的，不是还原论的：四条线索互相支撑，没有一条能单独还原成粒子物理。</div>
+      </div>
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>B.</b> "A theory of everything unifies four strands — quantum physics, epistemology, computation and evolution — so that understanding any one of them depends on understanding the others."</div>
+        <div class="lang-cn"><b>B.</b> "万物理论统一了四条线索——量子物理、认识论、计算和演化——理解其中任何一条，都依赖于理解另外三条。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-good">Right.</span> That is Deutsch's thesis: the strands are deeply connected, and their coherent structure may already deserve the name of the first real theory of everything.</div>
+        <div class="a lang-cn"><span class="verdict-good">对。</span>这就是 Deutsch 的论点：四条线索深刻相连，它们连贯的结构已经配得上"第一个真正的万物理论"这个名字。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene" id="n1-s4">
+    <h3><span class="sc">SCENE 4 · THE CONTRAST</span>Deep, not wide<span class="h-cn lang-cn">深，不宽</span></h3>
+    <p class="lang-en">A natural objection: if knowledge keeps growing, how could one person ever understand it all? The facts multiply every year — new papers, new fields, new data. Surely the pile only gets taller.</p>
+    <p class="lang-cn">一个自然的反驳：如果知识一直在增长，一个人怎么可能全都理解？事实每年都在翻倍——新论文、新领域、新数据。这堆东西只会越堆越高。</p>
+    <p class="lang-en">Deutsch's answer is that understanding does not grow the way facts grow. Facts spread sideways — wider and wider. Understanding grows deeper. A deeper theory replaces many shallow ones: one explanation takes the place of a hundred rules of thumb. That is why the history of science is not just accumulation — it is unification. Theories become fewer, broader, and deeper at the same time.</p>
+    <p class="lang-cn">Deutsch 的回答是，理解的增长方式和事实不一样。事实是横向铺开——越来越宽。理解是纵向变深。一个更深的理论取代许多个浅的理论：一个解释顶替一百条经验法则。所以科学史不只是积累——它是统一。理论同时变得更少、更广、更深。</p>
+    <p class="lang-en">This is emergence: high-level simplicity growing out of low-level complexity. People out of atoms, societies out of people — the higher level is simpler to describe than the lower one, once you have the right explanation. And here is a trap to avoid: holism, the slogan that "the whole is more than the sum of its parts." A slogan is not an explanation. Saying the whole is more tells you nothing about how the parts make the whole. Emergence is not magic — it is an explanation of how simplicity appears.</p>
+    <p class="lang-cn">这就是涌现（emergence）：高层的简单从低层的复杂里长出来。人由原子组成，社会由人组成——有了对的解释，高层反而比低层更容易描述。这里有个陷阱要避开：整体论（holism），那句口号"整体大于部分之和"。口号不是解释。说整体更大，并没有告诉你部分怎么组成整体。涌现不是魔法——它是对简单如何出现的解释。</p>
+  </div>
+
+  <div class="scene" id="n1-s5">
+    <h3><span class="sc">SCENE 5 · THE RISE</span>The fabric<span class="h-cn lang-cn">这块布</span></h3>
+    <p class="lang-en">Now step back and look at the four strands together. Quantum physics says reality is a multiverse — every possibility played out somewhere. The theory of computation says that multiverse is, in principle, renderable: a universal computer could simulate any physical process. Evolution says that inside such a universe, systems arise that concentrate knowledge over generations — genes first, then brains, then ideas. And epistemology says how that knowledge grows: by guessing, and by criticising the guesses.</p>
+    <p class="lang-cn">现在退后一步，看四条线索合在一起。量子物理说，实在是一个多重宇宙——每种可能都在某处上演。计算理论说，这个多重宇宙原则上是可以模拟的：一台通用计算机能模拟任何物理过程。演化说，在这样的宇宙里，会出现一代代积累知识的系统——先是基因，然后是大脑，然后是想法。而认识论说，这种知识怎么增长：靠猜想，靠批评猜想。</p>
+    <p class="lang-en">Each strand needs the others. Without the multiverse, quantum computation has no stage to run on. Without computation, the multiverse is just a list of worlds with no story about what happens in them. Without evolution, there is no explanation of how knowledge-bearing creatures appear. Without epistemology, there is no account of how their guesses become knowledge. Pull one thread and the fabric loosens; weave them, and it holds.</p>
+    <p class="lang-cn">每条线索都需要另外三条。没有多重宇宙，量子计算就没有上演的舞台；没有计算，多重宇宙只是一张世界清单，讲不出里面发生了什么；没有演化，解释不了携带知识的生物怎么出现；没有认识论，说不清它们的猜想怎么变成知识。抽掉一根线，布就松了；织在一起，布就结实了。</p>
+    <p class="lang-en">That is the fabric of reality — and it is also a promise. If understanding grows deeper rather than merely wider, then one person can, in principle, understand everything that is understood. Not by memorising every fact, but by holding the deep explanations that unify them. The next night begins the weaving in earnest — with a single photon, and a shadow that should not be there.</p>
+    <p class="lang-cn">这就是实在的结构——同时也是一个承诺。如果理解是变深而不是只变宽，那么原则上，一个人能理解一切已被理解的东西。不是靠背下每个事实，而是靠掌握那些把事实统一起来的深层解释。下一夜，编织正式开始——从一个光子，和一道本不该出现的影子开始。</p>
+  </div>
+
+  <div class="takeaway">
+    <h4>TAKEAWAY · 今夜带走三句</h4>
+    <ol>
+      <li><span class="lang-en">Understanding is not knowing facts: it is grasping the explanations that say why things are the way they are.</span><span class="t-cn lang-cn">理解不是知道事实，而是掌握解释——说清事物为什么是这个样子的解释。</span></li>
+      <li><span class="lang-en">A theory of everything is not the final particle equation. It is four strands — quantum physics, epistemology, computation, evolution — woven into one structure, each depending on the others.</span><span class="t-cn lang-cn">万物理论不是粒子的终极方程，而是四条线索——量子物理、认识论、计算、演化——织成一个结构，彼此依赖。</span></li>
+      <li><span class="lang-en">Knowledge grows deeper, not just wider: one deep explanation replaces a hundred shallow rules — which is why, in principle, one person can understand everything understood.</span><span class="t-cn lang-cn">知识是变深，不只是变宽：一个深解释顶替一百条浅规则——所以原则上，一个人能理解一切已被理解的东西。</span></li>
+    </ol>
+  </div>
+
+  <div class="highlights">
+    <h4>HIGHLIGHTS · 十二句重点亮点</h4>
+    <ol>
+      <li><span class="lang-en">As a child, Deutsch was told no one person can ever know everything — there is simply too much to know.</span><span class="cn lang-cn">Deutsch 小时候被告知，没有一个人能知道一切——知道的东西实在太多了。</span></li>
+      <li><span class="lang-en">Knowing is collecting facts; understanding is seeing why things are the way they are.</span><span class="cn lang-cn">知道是收集事实；理解是看清事物为什么是这个样子。</span></li>
+      <li><span class="lang-en">Newton predicted how the planets move; Einstein explained why.</span><span class="cn lang-cn">牛顿预测了行星如何运动；爱因斯坦解释了为什么。</span></li>
+      <li><span class="lang-en">Prediction tells you what will happen. Explanation tells you what is going on.</span><span class="cn lang-cn">预测告诉你将会发生什么；解释告诉你正在发生什么。</span></li>
+      <li><span class="lang-en">Instrumentalism: theories are tools for prediction, not descriptions of reality.</span><span class="cn lang-cn">工具主义：理论是预测的工具，不是实在的描述。</span></li>
+      <li><span class="lang-en">Positivism goes further: whatever cannot be observed is meaningless to talk about.</span><span class="cn lang-cn">实证主义走得更远：观察不到的东西，谈论它没有意义。</span></li>
+      <li><span class="lang-en">The four strands: quantum physics, epistemology, computation, evolution.</span><span class="cn lang-cn">四条线索：量子物理、认识论、计算、演化。</span></li>
+      <li><span class="lang-en">Understanding any one strand increasingly depends on understanding the others.</span><span class="cn lang-cn">理解其中任何一条，都越来越依赖于理解另外三条。</span></li>
+      <li><span class="lang-en">Deutsch's theory of everything is emergentist, not reductive: the strands support each other; none reduces to particle physics alone.</span><span class="cn lang-cn">Deutsch 的万物理论是涌现论的，不是还原论的：线索互相支撑，没有一条能单独还原成粒子物理。</span></li>
+      <li><span class="lang-en">Facts spread sideways; understanding grows deeper — one deep explanation replaces a hundred rules of thumb.</span><span class="cn lang-cn">事实横向铺开；理解纵向变深——一个深解释顶替一百条经验法则。</span></li>
+      <li><span class="lang-en">Emergence: high-level simplicity growing out of low-level complexity — people out of atoms, societies out of people.</span><span class="cn lang-cn">涌现：高层的简单从低层的复杂里长出来——人由原子组成，社会由人组成。</span></li>
+      <li><span class="lang-en">If understanding grows deeper rather than wider, one person can in principle understand everything that is understood.</span><span class="cn lang-cn">如果理解是变深而不只是变宽，原则上一个人能理解一切已被理解的东西。</span></li>
+    </ol>
+  </div>
+
+  <h2 id="n1-check"><span class="en">CHECKPOINT · CAN YOU EXPLAIN IT BACK?</span>检查点 · 能讲回来吗？</h2>
+  <p class="lede lang-en">Your rule: understand it 70–80% before it counts. Three questions — answer them before the next night. Tap to check.</p>
+  <p class="lede lang-cn">你的规则：看懂 7788 才算过。三道题，答得上来再进下一夜。点开对答案。</p>
+  <details class="check"><summary><span class="lang-en">01｜What is the difference between knowing and understanding — and why does it matter for this book?</span><span class="lang-cn">01｜知道和理解有什么区别——为什么这对本书很重要？</span></summary>
+    <div class="ans lang-en">Knowing is collecting facts; understanding is grasping explanations of why things are as they are. It matters because the book's whole project is understanding, not memorising: Deutsch claims one person can in principle understand everything that is understood, because deep explanations unify facts instead of piling them up.</div>
+    <div class="ans lang-cn">知道是收集事实；理解是掌握"为什么"的解释。这很重要，因为整本书做的事是理解，不是死记硬背：Deutsch 认为原则上一个人能理解一切已被理解的东西，因为深解释把事实统一起来，而不是把它们堆起来。</div></details>
+  <details class="check"><summary><span class="lang-en">02｜Why is a theory that only predicts not enough — what do instrumentalism and positivism get wrong?</span><span class="lang-cn">02｜为什么只会预测的理论不够——工具主义和实证主义错在哪里？</span></summary>
+    <div class="ans lang-en">A prediction machine can be right without understanding anything. Instrumentalism treats theories as prediction tools, not descriptions of reality; positivism calls whatever cannot be observed meaningless. Both give up on explanation — and explanation, what is really there and why, is what science is for.</div>
+    <div class="ans lang-cn">预测机器可以全对却什么都不理解。工具主义把理论当预测工具，不当实在的描述；实证主义把观察不到的东西说成没有意义。两者都放弃了解释——而解释，真实存在的东西和它为什么这样，才是科学做的事。</div></details>
+  <details class="check"><summary><span class="lang-en">03｜Name the four strands, and say in one sentence why they must be woven together.</span><span class="lang-cn">03｜说出四条线索，并用一句话说它们为什么必须织在一起。</span></summary>
+    <div class="ans lang-en">Quantum physics, epistemology, computation, evolution. Each alone leaves holes — quantum physics cannot explain how we know about it, evolution cannot explain why explanations work — but woven together they support each other, forming the first real theory of everything.</div>
+    <div class="ans lang-cn">量子物理、认识论、计算、演化。每条单独看都有窟窿——量子物理解释不了我们怎么知道它，演化解释不了为什么解释会管用——但织在一起，它们互相支撑，构成第一个真正的万物理论。</div></details>
+
+  <div class="cliff">
+    <span class="next">→ NEXT · NIGHT 2：SHADOWS</span>
+    <p class="lang-en" style="margin:0">The four strands are named, but the first one — quantum physics — is still just a name. Tomorrow night, one photon walks into a double slit, and something interferes with it that should not be there. What is it — and what does it say about how many universes there are? <b>Next night: Shadows.</b></p>
+    <p class="lang-cn" style="margin:8px 0 0">四条线索已经点名，但第一条——量子物理——还只是一个名字。明夜，一个光子走进双缝，有什么东西干扰了它，而那东西本不该在那里。它是什么——它说明了宇宙有多少个？<b>下一夜：影子。</b></p>
+  </div>
+
+  <p style="margin-top:22px"><a class="cta" href="#map"><span class="lang-en">Next night → Night 2 · Shadows (coming soon)</span><span class="lang-cn">下一夜 → 第二夜 · 影子（待续）</span></a></p>
+
+
+  <footer>
+    <p class="lang-en"><i>The Fabric of Reality: The Science of Parallel Universes — and Its Implications</i> · David Deutsch · 1997 · Allen Lane · 400 pages. This guide is a companion, not a substitute — read it alongside the book for the best effect. Book page: <a href="https://books.google.com/books?id=Z7uFxViR19oC">Google Books</a></p>
+    <p class="lang-cn">《The Fabric of Reality: The Science of Parallel Universes — and Its Implications》· David Deutsch · 1997 · Allen Lane · 400 页。本指南是伴读，不是替代品——对照书读，效果最好。书页：<a href="https://books.google.com/books?id=Z7uFxViR19oC">Google Books</a></p>
+    <p>A reader's guide by Conjurer Lab · AISummoner · Night 1 of 14 · 中英对照</p>
+  </footer>
+
+</div>
+<button class="bm-fab" id="bm-btn" title="夜晚列表：点开跳转任意一夜" onclick="toggleNightList()">🔖</button>
+<div class="bm-menu" id="bm-menu" role="dialog" aria-label="夜晚列表"></div>
+<script>
+  // bookmark: save reading position, resume next visit
+  var BM_KEY = 'fabric-bookmark';
+  var BM_SKIP = {progress:1, 'resume-bar':1, 'resume-text':1, 'bm-btn':1, 'bm-menu':1};
+  // dynamic anchors: every id on the page except the UI chrome above.
+  // New nights (night4, n4-s1...) are picked up automatically, no list to maintain.
+  function anchorEls(){
+    var out = [];
+    document.querySelectorAll('[id]').forEach(function(el){
+      if(!BM_SKIP[el.id]) out.push(el);
+    });
+    return out;
+  }
+  function nearestAnchor(){
+    var y = window.scrollY + 120, best = 'night1';
+    anchorEls().forEach(function(el){
+      if(el.getBoundingClientRect().top + window.scrollY <= y) best = el.id;
+    });
+    return best;
+  }
+  function labelFor(id){
+    var el = document.getElementById(id);
+    if(!el) return id;
+    var h = el.querySelector('h2,h3');
+    if(!h && el.tagName === 'HR'){
+      var n = el.nextElementSibling;
+      while(n && !/^H[23]$/.test(n.tagName)) n = n.nextElementSibling;
+      h = n;
+    }
+    h = h || el;
+    var t = (h.textContent || '').replace(/\s+/g, ' ').trim();
+    return t ? t.slice(0, 42) : id;
+  }
+  function saveBookmark(){
+    var id = nearestAnchor();
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+    var b = document.getElementById('bm-btn');
+    if(b){ b.textContent = '✓'; setTimeout(function(){ b.textContent = '🔖'; }, 1500); }
+  }
+
+  // night list menu: tap 🔖 to see all nights, jump to any published one.
+  // Built from the map rows, so new nights appear automatically, no list to maintain.
+  function currentNightNum(){
+    var id = nearestAnchor();
+    var m = id.match(/^night(\d+)/) || id.match(/^n(\d+)-/);
+    return m ? parseInt(m[1], 10) : 0;
+  }
+  function buildNightMenu(){
+    var menu = document.getElementById('bm-menu');
+    if(!menu) return;
+    var esc = function(t){ return (t || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+    var html = '<h4>全部夜晚 <button onclick="closeNightList()" aria-label="关闭">✕</button></h4>';
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        html += '<button class="bm-row" onclick="goResume(); closeNightList();"><span class="no">上次读到</span><span class="t">' + esc(data.label) + '</span><span class="st">继续 →</span></button>';
+      }
+    }catch(e){}
+    html += '<button class="bm-row" onclick="saveBookmark(); closeNightList();"><span class="no">📌</span><span class="t">收藏此处<small>下次打开直接回到这里</small></span><span class="st">保存</span></button>';
+    var now = currentNightNum();
+    document.querySelectorAll('.map li').forEach(function(li){
+      var no = li.querySelector('.no');
+      var t = li.querySelector('.t');
+      var st = li.querySelector('.st');
+      if(!no || !t) return;
+      var num = parseInt((no.textContent || '').replace(/\D/g, ''), 10) || 0;
+      var done = li.classList.contains('done');
+      var cnEl = t.querySelector('.cn');
+      var cn = cnEl ? cnEl.textContent : '';
+      var title = (t.textContent || '').replace(cn, '').trim();
+      var stTxt = st ? st.textContent.trim() : '';
+      var cls = 'bm-row' + (done ? '' : ' soon') + (num === now && num > 0 ? ' now' : '');
+      var click = done ? ' onclick="goNight(' + num + ')"' : '';
+      html += '<button class="' + cls + '"' + click + '><span class="no">' + esc(no.textContent.trim()) + '</span><span class="t">' + esc(title) + (cn ? '<small>' + esc(cn) + '</small>' : '') + '</span><span class="st">' + esc(stTxt) + '</span></button>';
+    });
+    menu.innerHTML = html;
+  }
+  function goNight(n){
+    closeNightList();
+    var el = document.getElementById('night' + n);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  }
+  function toggleNightList(){
+    var menu = document.getElementById('bm-menu');
+    if(!menu) return;
+    if(menu.classList.contains('open')){ closeNightList(); return; }
+    buildNightMenu();
+    menu.classList.add('open');
+  }
+  function closeNightList(){
+    var menu = document.getElementById('bm-menu');
+    if(menu) menu.classList.remove('open');
+  }
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('bm-menu');
+    if(!menu || !menu.classList.contains('open')) return;
+    var btn = document.getElementById('bm-btn');
+    if(menu.contains(e.target) || (btn && btn.contains(e.target))) return;
+    closeNightList();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeNightList();
+  });
+
+  function showResume(data){
+    var bar = document.getElementById('resume-bar');
+    if(!bar || !data) return;
+    bar.style.display = 'flex';
+    var t = document.getElementById('resume-text');
+    if(t) t.textContent = '上次读到：' + data.label;
+  }
+  function goResume(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        var el = document.getElementById(data.id);
+        if(el) el.scrollIntoView({behavior:'smooth'});
+      }
+    }catch(e){}
+  }
+  function clearBookmark(){
+    try{ localStorage.removeItem(BM_KEY); }catch(e){}
+    lastSaved = '';
+    var bar = document.getElementById('resume-bar');
+    if(bar) bar.style.display = 'none';
+  }
+  // auto-save: reading position follows you, no tap needed.
+  // Only runs after the reader scrolls, so opening the page never clobbers the saved spot.
+  var lastSaved = '';
+  function autoSave(){
+    var id = nearestAnchor();
+    if(id === lastSaved) return;
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+  }
+  var saveTimer = null;
+  window.addEventListener('scroll', function(){
+    if(saveTimer) return;
+    saveTimer = setTimeout(function(){ saveTimer = null; autoSave(); }, 1200);
+  }, {passive:true});
+  window.addEventListener('DOMContentLoaded', function(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data){ showResume(data); if(data.id) lastSaved = data.id; }
+    }catch(e){}
+    if(location.hash){
+      setTimeout(autoSave, 800);
+    }
+  });
+</script>
+<script>
+  // language toggle: bi (both) / en / cn
+  function setLang(m){
+    document.documentElement.setAttribute('data-lang', m);
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-m') === m);
+    });
+  }
+  // progress bar follows scroll
+  var bar = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? (h.scrollTop / max) : 0;
+    bar.style.width = (11 + p * 89) + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+</script>
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="bi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《开放社会及其敌人》二十五夜 · Karl Popper 读书指南 | AISummoner</title>
+<meta name="description" content="Karl Popper《The Open Society and Its Enemies》读书指南，中英对照：920 页拆成二十五夜故事，每夜十分钟，读完一夜想知道下一夜发生什么。">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --paper:#F4F1EA; --ink:#141413; --ink-soft:#3a382f; --muted:#7A756C;
+    --terra:#D96548; --amber:#F0A832; --cyan:#0891B2; --line:#E3DCCB;
+    --card:#FBF9F4; --green:#16794F;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC",Georgia,serif; line-height:1.85; font-size:17px;
+    background-image:
+      linear-gradient(rgba(20,20,19,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20,20,19,0.035) 1px, transparent 1px);
+    background-size:28px 28px;
+  }
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--terra); width:11%; z-index:50; transition:width .3s}
+  .wrap{max-width:720px; margin:0 auto; padding:0 20px 80px}
+  .topbar{display:flex; justify-content:space-between; align-items:center; padding:18px 0 8px;
+    font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.14em; color:var(--muted)}
+  .topbar a{color:var(--muted); text-decoration:none}
+  .topbar a:hover{color:var(--terra)}
+  /* language toggle */
+  .lang-toggle{display:flex; gap:6px}
+  .lang-btn{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.08em;
+    border:1px solid var(--line); background:var(--card); color:var(--ink-soft);
+    border-radius:999px; padding:4px 12px; cursor:pointer}
+  .lang-btn.active{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+  /* bilingual: EN first, CN after, CN slightly smaller */
+  [data-lang="en"] .lang-cn{display:none !important}
+  [data-lang="cn"] .lang-en{display:none !important}
+  .lang-cn{font-size:.95em; color:var(--ink-soft)}
+  p.lang-en, p.lang-cn{margin:10px 0}
+  .kicker{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.22em; color:var(--terra); margin:34px 0 10px}
+  h1{font-size:44px; line-height:1.15; margin:0 0 8px; font-weight:700}
+  h1 .en{display:block; font-size:20px; color:var(--muted); font-weight:400; letter-spacing:.04em; margin-top:10px}
+  .sub{font-size:19px; color:var(--ink-soft); margin:14px 0 0}
+  .sub b{color:var(--terra)}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 0}
+  .pill{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; border:1px solid var(--line);
+    border-radius:999px; padding:4px 12px; background:var(--card); color:var(--ink-soft)}
+  .pill.hot{border-color:var(--terra); color:var(--terra)}
+  a.pill{text-decoration:none}
+  a.pill.hot:hover{background:var(--terra); color:var(--paper)}
+  .cta{display:inline-block; margin-top:26px; background:var(--ink); color:var(--paper); text-decoration:none;
+    padding:12px 26px; border-radius:999px; font-size:16px}
+  .cta:hover{background:var(--terra)}
+  hr.sep{border:none; border-top:1px solid var(--line); margin:44px 0}
+  h2{font-size:26px; margin:0 0 6px}
+  h2 .en{display:block; font-size:13px; font-family:"JetBrains Mono",ui-monospace,monospace; letter-spacing:.18em; color:var(--muted); font-weight:400; margin-bottom:6px}
+  .lede{color:var(--ink-soft); margin:0 0 20px}
+  .why{display:grid; gap:12px}
+  .why .row{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px}
+  .why .row b{color:var(--terra)}
+  .why .fix{color:var(--green); font-size:15px; margin-top:4px}
+  .how .step{display:flex; gap:14px; margin:14px 0}
+  .how .n{flex:0 0 30px; height:30px; border-radius:50%; background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:center; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:13px}
+  .map{list-style:none; margin:0; padding:0}
+  .map li{display:flex; gap:14px; padding:13px 4px; border-bottom:1px solid var(--line); align-items:baseline}
+  .map .no{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--muted); flex:0 0 62px}
+  .map .t{font-weight:700}
+  .map .t .cn{color:var(--muted); font-weight:400; font-size:14px; margin-left:6px}
+  .map .hook{color:var(--ink-soft); font-size:15px; line-height:1.6}
+  .map .hook-cn{color:var(--muted); font-size:14px; line-height:1.6}
+  .map .st{margin-left:auto; flex:0 0 auto; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px;
+    border:1px solid var(--terra); color:var(--terra); border-radius:999px; padding:2px 10px; white-space:nowrap}
+  .map .st.soon{border-color:var(--line); color:var(--muted)}
+  .map li.done{background:linear-gradient(90deg, rgba(217,101,72,.07), transparent 70%)}
+  /* Night 1 */
+  .night-tag{display:inline-block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px;
+    letter-spacing:.2em; color:var(--paper); background:var(--terra); border-radius:4px; padding:4px 12px}
+  .scene{margin:30px 0}
+  .scene h3{font-size:21px; margin:0 0 8px}
+  .scene h3 .sc{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--terra); letter-spacing:.16em; display:block; margin-bottom:4px}
+  .scene h3 .h-cn{display:block; font-size:18px; color:var(--muted); font-weight:400; margin-top:2px}
+  .quote{border-left:3px solid var(--amber); background:rgba(240,168,50,.08); padding:14px 18px; margin:18px 0; font-size:16px}
+  .quote .en{font-style:italic}
+  .quote .cn{color:var(--ink-soft); font-size:15px; margin-top:6px}
+  .key{color:var(--terra); font-weight:700}
+  .term{font-weight:700; border-bottom:2px solid rgba(217,101,72,.4)}
+  .quiz{display:grid; gap:12px; margin:16px 0}
+  .qcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; cursor:pointer}
+  .qcard:hover{border-color:var(--terra)}
+  .qcard .a{display:none; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); font-size:15px}
+  .qcard.open .a{display:block}
+  .qcard .tap{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--muted); letter-spacing:.1em}
+  .verdict-bad{color:var(--terra); font-weight:700}
+  .verdict-good{color:var(--green); font-weight:700}
+  .takeaway{background:var(--ink); color:var(--paper); border-radius:12px; padding:20px 22px; margin:26px 0}
+  .takeaway h4{margin:0 0 10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.2em; color:var(--amber)}
+  .takeaway ol{margin:0; padding-left:22px}
+  .takeaway li{margin:8px 0}
+  .takeaway .t-cn{display:block; font-size:15px; color:#D8D2C4; margin-top:2px}
+  .highlights{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:26px 0}
+  .highlights h4{margin:0 0 10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.2em; color:var(--terra)}
+  .highlights ol{margin:0; padding-left:22px}
+  .highlights li{margin:10px 0}
+  .highlights li .lang-en{font-style:italic}
+  .highlights li .cn{display:block; font-size:15px; color:var(--ink-soft); margin-top:2px}
+  details.check{border:1px solid var(--line); border-radius:12px; background:var(--card); padding:14px 18px; margin:10px 0}
+  details.check summary{cursor:pointer; font-weight:700}
+  details.check .ans{margin-top:8px; font-size:15px; color:var(--ink-soft)}
+  .cliff{background:linear-gradient(135deg, rgba(8,145,178,.1), rgba(217,101,72,.08)); border:1px solid var(--line);
+    border-radius:12px; padding:22px; margin:30px 0; font-size:18px}
+  .cliff .next{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.18em; color:var(--cyan); display:block; margin-bottom:8px}
+  footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:14px}
+  footer a{color:var(--terra)}
+  @media (max-width:560px){ h1{font-size:34px} body{font-size:16px} .map .hook{display:block; margin-top:2px} }
+  /* bookmark: resume bar + floating save button */
+  .resume-bar{display:none; background:var(--ink); color:var(--paper);
+    border-radius:10px; padding:8px 12px; margin:12px 0; align-items:center; gap:8px; cursor:pointer; font-size:14px}
+  #resume-text{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; flex:1}
+  .resume-bar .go{color:var(--amber); font-weight:700; white-space:nowrap}
+  .resume-bar .x{margin-left:auto; background:none; border:none; color:#D8D2C4; font-size:16px; cursor:pointer; padding:0 2px}
+  .bm-fab{position:fixed; right:12px; bottom:12px; z-index:60; width:44px; height:44px; border-radius:50%;
+    background:var(--ink); color:var(--paper); border:none; font-size:20px; cursor:pointer;
+    box-shadow:0 4px 16px rgba(0,0,0,.25)}
+  .bm-fab:hover{background:var(--terra)}
+  /* night list menu: tap 🔖 to jump to any night */
+  .bm-menu{display:none; position:fixed; right:12px; top:64px; z-index:70; width:min(340px, calc(100vw - 24px));
+    max-height:min(70vh, 560px); overflow-y:auto; background:var(--paper); color:var(--ink);
+    border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,.28); padding:6px 0}
+  .bm-menu.open{display:block}
+  .bm-menu h4{margin:6px 16px 4px; font-size:13px; letter-spacing:.14em; color:var(--muted); display:flex; justify-content:space-between; align-items:center}
+  .bm-menu h4 button{background:none; border:none; font-size:16px; cursor:pointer; color:var(--muted); padding:2px 6px}
+  .bm-row{display:flex; gap:10px; align-items:baseline; width:100%; text-align:left; background:none; border:none;
+    padding:10px 16px; font-size:15px; font-family:inherit; color:var(--ink); cursor:pointer; border-top:1px solid var(--line)}
+  .bm-row:hover{background:rgba(217,101,72,.07)}
+  .bm-row .no{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--muted); flex:0 0 62px}
+  .bm-row .t{flex:1; min-width:0}
+  .bm-row .t small{display:block; color:var(--muted); font-size:12px; margin-top:1px}
+  .bm-row .st{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--terra); white-space:nowrap}
+  .bm-row.soon{opacity:.55; cursor:default}
+  .bm-row.soon:hover{background:none}
+  .bm-row.soon .st{color:var(--muted)}
+  .bm-row.now{background:rgba(217,101,72,.07)}
+  .bm-row.now .no{color:var(--terra); font-weight:700}
+  .map li.done{cursor:pointer}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/">← AISUMMONER</a>
+    <span class="lang-toggle">
+      <button class="lang-btn active" data-m="bi" onclick="setLang('bi')">中英</button>
+      <button class="lang-btn" data-m="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-m="cn" onclick="setLang('cn')">中文</button>
+    </span>
+    <span>NIGHT 1 / 25</span>
+  </div>
+
+  <div class="resume-bar" id="resume-bar" onclick="goResume()">
+    <span>📖</span><span id="resume-text"></span><span class="go">继续 →</span>
+    <button class="x" title="清除书签" onclick="event.stopPropagation(); clearBookmark()">✕</button>
+  </div>
+
+  <div class="kicker">KARL POPPER · 1945 · A READER'S GUIDE · 中英对照</div>
+  <h1>《开放社会及其敌人》二十五夜<span class="en">The Open Society and Its Enemies, in twenty-five nights</span></h1>
+  <p class="sub lang-en">You own this book, but you couldn't finish it — <b>that's not your fault</b>. 920 pages, 25 chapters, written in exile in New Zealand while the Second World War raged — a dense argument against the idea that history has a destiny. This site retells the book as twenty-five nights of stories, ten minutes a night. Finish one night, and you'll want to know what happens the next.</p>
+  <p class="sub lang-cn">你手里有这本书，却读不下去——<b>不是你的问题</b>。920 页，25 章，写于第二次世界大战的战火中，作者在新西兰流亡时写就——一本反驳“历史有命运”的密集论证。这站把书写成二十五夜故事，每夜十分钟，读完一夜，你会想知道下一夜发生什么。</p>
+  <div class="meta">
+    <span class="pill">920 pages</span><span class="pill">25 chapters</span>
+    <a class="pill hot" href="#night1">Night 1 · 今夜可读</a><span class="pill">一夜一章 · 每夜 10 分钟</span>
+    <span class="pill">中英对照 · EN / 中文</span>
+  </div>
+  <a class="cta" href="#night1"><span class="lang-en">Start Night 1 ↓</span><span class="lang-cn">开始第一夜 ↓</span></a>
+
+  <hr class="sep">
+
+  <h2><span class="en">WHY YOU STOPPED</span>为什么读不下去</h2>
+  <p class="lede lang-en">First, let's be clear: not finishing it isn't a willpower problem. It's a problem with how the book is written.</p>
+  <p class="lede lang-cn">先说清楚：读不下去不是意志力问题，是这本书的写法问题。</p>
+  <div class="why">
+    <div class="row">
+      <div class="lang-en"><b>01｜Too many -isms, no people.</b> It opens with historicism, tribalism, the myth of destiny — abstract nouns fighting each other, and no one you can picture.</div>
+      <div class="lang-cn"><b>01｜太多主义，没有人物。</b>一上来就是历史主义、部落主义、命运神话——抽象名词互相打架，没有一个你能想象出来的人。</div>
+      <div class="fix lang-en">→ fix: every night starts with a story. Tonight: a people who believed they were chosen.</div>
+      <div class="fix lang-cn">→ fix：每一夜从一个故事开始。今夜：一个相信自己被选中的民族。</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>02｜It argues against three giants at once.</b> Plato, Hegel, Marx — two thousand years of philosophy in one book, and Popper assumes you already know them.</div>
+      <div class="lang-cn"><b>02｜一次挑战三个巨人。</b>柏拉图、黑格尔、马克思——两千年哲学塞进一本书，波普尔默认你已经认识他们。</div>
+      <div class="fix lang-en">→ fix: each night introduces one thinker, one idea, in plain words. No background needed.</div>
+      <div class="fix lang-cn">→ fix：每夜只讲一个思想家、一个想法，用大白话。不需要背景知识。</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>03｜Too long, no end in sight.</b> 920 pages like a wall — by page 30 you want to quit.</div>
+      <div class="lang-cn"><b>03｜太长，看不到头。</b>920 页像一堵墙，翻到第 30 页就想放弃。</div>
+      <div class="fix lang-en">→ fix: a map of 25 nights, ten minutes each, progress you can see. Finish tonight and you're 1/25 done.</div>
+      <div class="fix lang-cn">→ fix：25 夜地图，每夜十分钟，进度看得见。今夜读完，你就走了 1/25。</div>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <h2><span class="en">HOW IT WORKS</span>读法</h2>
+  <div class="how">
+    <div class="step"><div class="n">1</div><div><div class="lang-en"><b>One night, one chapter.</b> Ten minutes each, no greed.</div><div class="lang-cn"><b>一夜一章。</b>每夜只读一章的内容，十分钟，不贪多。</div></div></div>
+    <div class="step"><div class="n">2</div><div><div class="lang-en"><b>Every night ends on a cliffhanger.</b> Like One Thousand and One Nights — the story stops at the crucial moment, and the answer comes next night.</div><div class="lang-cn"><b>每夜结尾一个悬念。</b>像一千零一夜一样——故事讲到最关键处停住，下一夜才揭晓。</div></div></div>
+    <div class="step"><div class="n">3</div><div><div class="lang-en"><b>Pass the checkpoint before the next night.</b> Three questions; answer them before moving on. That's your rule: understand it 70–80% before it counts.</div><div class="lang-cn"><b>先过检查点，再进下一夜。</b>三道题，答得上来再往下走。这是你的规则：看懂 7788 才算过。</div></div></div>
+    <div class="step"><div class="n">4</div><div><div class="lang-en"><b>English terms stay in English.</b> Historicism, open society, piecemeal engineering, utopian engineering — these words look the same in the book, so you can find them there.</div><div class="lang-cn"><b>英文术语保留原文。</b>historicism、open society、piecemeal engineering、utopian engineering——这些词在书里就是这个样子，对照书找得到。</div></div></div>
+  </div>
+
+  <hr class="sep">
+
+  <h2 id="map"><span class="en">THE MAP · 25 NIGHTS</span>二十五夜地图</h2>
+  <p class="lede lang-en">All 25 chapters, one night each. One lamp is lit tonight.</p>
+  <p class="lede lang-cn">全书 25 章，一章一夜。今夜亮起一盏灯。</p>
+  <p class="lede lang-en">The book was published in two volumes: <b>Vol. 1 · The Spell of Plato</b> (chapters 1–10) and <b>Vol. 2 · The High Tide of Prophecy</b> (chapters 11–25). The map below follows the chapters in order.</p>
+  <p class="lede lang-cn">本书分两卷出版：<b>上卷 · 柏拉图的魔咒</b>（第 1–10 章）与<b>下卷 · 预言的高潮</b>（第 11–25 章）。下面的地图按章节顺序排列。</p>
+  <ol class="map">
+    <li class="done" onclick="location.hash='#night1'"><span class="no">NIGHT 01</span><span><span class="t">Historicism and the Myth of Destiny<span class="cn">历史主义与命运神话</span></span><span class="hook lang-en">History has laws, and its course can be predicted — or does it?</span><span class="hook-cn lang-cn">历史有规律可循、可以预测——真的吗？</span></span><span class="st">今夜可读</span></li>
+    <li><span class="no">NIGHT 02</span><span><span class="t">Heraclitus<span class="cn">赫拉克利特</span></span><span class="hook lang-en">Where historicism began: everything flows, and change is the law.</span><span class="hook-cn lang-cn">历史主义从这里开始：万物皆流，变化就是规律。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 03</span><span><span class="t">Plato's Theory of Forms or Ideas<span class="cn">柏拉图的理念论</span></span><span class="hook lang-en">Behind the changing world, Plato saw unchanging Forms — the first blueprint of destiny.</span><span class="hook-cn lang-cn">变化世界背后，柏拉图看到不变的理念——命运蓝图的起点。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 04</span><span><span class="t">Change and Rest<span class="cn">变化与静止</span></span><span class="hook lang-en">Why did the Greeks fear change — and dream of a society that never changes?</span><span class="hook-cn lang-cn">希腊人为什么害怕变化，梦想一个永不改变的社会？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 05</span><span><span class="t">Nature and Convention<span class="cn">自然与约定</span></span><span class="hook lang-en">Which laws are nature, and which are just human convention? The answer decides what can be changed.</span><span class="hook-cn lang-cn">哪些是自然法则，哪些只是人为约定？答案决定了什么可以改。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 06</span><span><span class="t">Totalitarian Justice<span class="cn">极权主义的正义</span></span><span class="hook lang-en">Plato's justice means each stays in their place — a justice that freezes society.</span><span class="hook-cn lang-cn">柏拉图的正义是各安其位——一种让社会凝固的正义。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 07</span><span><span class="t">The Principle of Leadership<span class="cn">领袖原则</span></span><span class="hook lang-en">Who should rule? Plato's answer: the wise few, and never the many.</span><span class="hook-cn lang-cn">谁应该统治？柏拉图的答案：少数智者，绝不是多数人。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 08</span><span><span class="t">The Philosopher King<span class="cn">哲学王</span></span><span class="hook lang-en">The ruler who knows the Forms — Popper's most dangerous idea, and its target.</span><span class="hook-cn lang-cn">掌握理念的统治者——波普尔眼中最危险的想法。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 09</span><span><span class="t">Aestheticism, Perfectionism, Utopianism<span class="cn">唯美主义、完美主义、乌托邦主义</span></span><span class="hook lang-en">Build the perfect city from a blueprint — why the dream of perfection ends in force.</span><span class="hook-cn lang-cn">按蓝图建造完美之城——完美之梦为什么以暴力收场。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 10</span><span><span class="t">The Open Society and its Enemies<span class="cn">开放社会及其敌人</span></span><span class="hook lang-en">The chapter that names the book: what makes a society open, and who wants it closed.</span><span class="hook-cn lang-cn">为全书命名的一章：什么让社会开放，谁想让它封闭。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 11</span><span><span class="t">The Aristotelian Roots of Hegelianism<span class="cn">黑格尔主义的亚里士多德根源</span></span><span class="hook lang-en">Hegel did not come from nowhere: his roots run back to Aristotle.</span><span class="hook-cn lang-cn">黑格尔不是凭空而来：他的根在亚里士多德。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 12</span><span><span class="t">Hegel and The New Tribalism<span class="cn">黑格尔与新部落主义</span></span><span class="hook lang-en">Hegel's worship of the state, dressed as philosophy — the new tribalism.</span><span class="hook-cn lang-cn">黑格尔的国家崇拜，披着哲学外衣——新部落主义。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 13</span><span><span class="t">Sociological Determinism<span class="cn">社会学决定论</span></span><span class="hook lang-en">Can society be predicted the way physics predicts the planets?</span><span class="hook-cn lang-cn">社会能像物理学预测行星一样被预测吗？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 14</span><span><span class="t">The Autonomy of Sociology<span class="cn">社会学的自主性</span></span><span class="hook lang-en">Does sociology have laws of its own — or does it only borrow them from psychology?</span><span class="hook-cn lang-cn">社会学有自己的定律吗，还是只向心理学借来的？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 15</span><span><span class="t">Economic Historicism<span class="cn">经济历史主义</span></span><span class="hook lang-en">Marx's claim: economics writes the script of history. Does it?</span><span class="hook-cn lang-cn">马克思的主张：经济写了历史的剧本。真是这样吗？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 16</span><span><span class="t">The Classes<span class="cn">阶级</span></span><span class="hook lang-en">Are classes the real actors of history, or a story we tell about it?</span><span class="hook-cn lang-cn">阶级是历史真正的主角，还是我们讲给历史听的故事？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 17</span><span><span class="t">The Legal and the Social System<span class="cn">法律体系与社会体系</span></span><span class="hook lang-en">Law is not the whole of society — and mistaking it for the whole is a historicist error.</span><span class="hook-cn lang-cn">法律不是社会的全部——把它当成全部，是历史主义的错误。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 18</span><span><span class="t">The Coming of Socialism<span class="cn">社会主义的到来</span></span><span class="hook lang-en">Marx predicted socialism must come. What did he actually prove?</span><span class="hook-cn lang-cn">马克思预言社会主义必然到来。他到底证明了什么？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 19</span><span><span class="t">The Social Revolution<span class="cn">社会革命</span></span><span class="hook lang-en">Must change come by revolution, or can it come step by step?</span><span class="hook-cn lang-cn">变革必须靠革命，还是可以一步一步来？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 20</span><span><span class="t">Capitalism and Its Fate<span class="cn">资本主义及其命运</span></span><span class="hook lang-en">Marx said capitalism must collapse. A century later, what happened?</span><span class="hook-cn lang-cn">马克思说资本主义必然崩溃。一个世纪后，发生了什么？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 21</span><span><span class="t">An Evaluation<span class="cn">评价</span></span><span class="hook lang-en">The verdict on Marx: what survives the criticism, and what does not.</span><span class="hook-cn lang-cn">对马克思的裁决：什么经得起批评，什么经不起。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 22</span><span><span class="t">The Moral Theory of Historicism<span class="cn">历史主义的道德理论</span></span><span class="hook lang-en">If history has a plan, does morality mean obeying it? The historicist's ethics.</span><span class="hook-cn lang-cn">如果历史有计划，道德就是服从它吗？历史主义者的伦理。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 23</span><span><span class="t">The Sociology of Knowledge<span class="cn">知识社会学</span></span><span class="hook lang-en">Is all knowledge just the product of its age and class? Popper answers.</span><span class="hook-cn lang-cn">一切知识都只是时代和阶级的产物吗？波普尔回答。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 24</span><span><span class="t">Oracular Philosophy and the Revolt against Reason<span class="cn">预言哲学与反理性主义的反叛</span></span><span class="hook lang-en">When philosophers speak like oracles, reason itself is under attack.</span><span class="hook-cn lang-cn">当哲学家像神谕一样说话，理性本身正受到攻击。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 25</span><span><span class="t">Has History any Meaning?<span class="cn">历史有意义吗？</span></span><span class="hook lang-en">The last question: if history has no script, can our lives still have meaning?</span><span class="hook-cn lang-cn">最后一个问题：如果历史没有剧本，我们的人生还能有意义吗？</span></span><span class="st soon">待续</span></li>
+  </ol>
+
+
+  <hr class="sep" id="night1">
+
+  <span class="night-tag">NIGHT 01 · 第一夜</span>
+  <h2 style="margin-top:14px"><span class="en">CHAPTER 1 · HISTORICISM AND THE MYTH OF DESTINY</span>历史主义与命运神话</h2>
+  <p class="lede lang-en">Tonight answers just one question: <b>does history have a destiny — a script already written?</b> The answer starts in wartime exile, with a people who believed they were chosen.</p>
+  <p class="lede lang-cn">今夜只回答一个问题：<b>历史有命运吗——剧本是不是早就写好了？</b>答案从战时流亡开始，从一个相信自己被选中的民族开始。</p>
+
+  <div class="scene" id="n1-s1">
+    <h3><span class="sc">SCENE 1 · OPENING</span>A book written while the world burned<span class="h-cn lang-cn">战火中写成的书</span></h3>
+    <p class="lang-en">In 1945, as the Second World War ended, a book appeared in London that had been written far away, in New Zealand. Its author, Karl Popper (1902–1994), was an Austrian who had fled the Nazis and found refuge on the other side of the world.</p>
+    <p class="lang-cn">1945 年，第二次世界大战结束时，一本书在伦敦出版，它写于遥远的新西兰。作者卡尔·波普尔（1902–1994），一个逃离纳粹、在世界另一端找到庇护的奥地利人。</p>
+    <p class="lang-en">Popper called the book his contribution to the war effort — not a weapon, but an argument. While armies fought totalitarian regimes, he wanted to fight the idea underneath them: the belief that history moves by iron laws toward a destiny, and that those who know the laws may force history toward its end.</p>
+    <p class="lang-cn">波普尔说这本书是他对战争的贡献——不是武器，而是一个论证。当军队在与极权政权作战时，他想打的是政权底下的那个想法：历史按铁律走向命运，懂得规律的人可以强行把历史推向终点。</p>
+    <p class="lang-en">The book's enemy has a name: <span class="term">historicism</span> — the doctrine that history unfolds according to inexorable laws, and that its course can be predicted. Tonight is about that one word, and the myth that comes with it.</p>
+    <p class="lang-cn">这本书的敌人有一个名字：<span class="term">historicism（历史主义）</span>——认为历史按不可抗拒的规律展开、其进程可以预测的学说。今夜讲的就是这一个词，和随它而来的神话。</p>
+  </div>
+
+  <div class="scene" id="n1-s2">
+    <h3><span class="sc">SCENE 2 · THE STORY</span>The chosen people<span class="h-cn lang-cn">被选中的民族</span></h3>
+    <p class="lang-en">Popper begins with the oldest version of the idea: the doctrine of the chosen people. In this story, God is the author of history, and one people is His chosen instrument — picked out to carry out His plan.</p>
+    <p class="lang-cn">波普尔从这个想法最古老的版本讲起：被选中的民族。在这个故事里，上帝是历史的作者，一个民族是祂选中的工具——被挑出来执行祂的计划。</p>
+    <p class="lang-en">Why would anyone believe that? Because of <span class="term">tribalism</span> — the feeling that the individual means nothing alone, and everything only inside the tribe, the nation, the race, the class. When a group sees itself as chosen, its history stops looking like chance and starts looking like destiny.</p>
+    <p class="lang-cn">为什么有人会信这个？因为<span class="term">tribalism（部落主义）</span>——个人单独存在时毫无意义，只有在部落、民族、种族、阶级里面才有意义的感觉。当一个群体把自己看作被选中的，它的经历就不再像偶然，而像命运。</p>
+    <p class="lang-en">Then the story changes clothes. God steps out, and other forces step in: Nature, the Spirit, the laws of economics. The chosen people becomes the chosen race — and then, in Marx, the chosen class. The costumes change; the plot stays the same: history has a script, and one group holds the leading role.</p>
+    <p class="lang-cn">然后故事换了衣服。上帝退场，别的力量登场：自然、精神、经济规律。被选中的民族变成被选中的种族——再到马克思那里，变成被选中的阶级。戏服换了，剧情没变：历史有剧本，有一个群体拿着主角的戏份。</p>
+    <p class="lang-en">That is the first thing to notice: historicism is not one theory. It is a shape that many theories take — a story in which the ending is already known.</p>
+    <p class="lang-cn">这是首先要注意的：历史主义不是一个理论，而是一种许多理论都会套用的形状——一个结局早已写好的故事。</p>
+  </div>
+
+  <div class="scene" id="n1-s3">
+    <h3><span class="sc">SCENE 3 · THE TURN</span>A theory that can never fail<span class="h-cn lang-cn">永远不会错的理论</span></h3>
+    <p class="lang-en">Here is the turn. Ask a historicist: what would prove you wrong? The honest answer is: nothing. If the revolution comes, the laws are confirmed. If it is delayed, the laws are merely working in hidden ways. If the opposite happens, it was a necessary detour on the road to destiny.</p>
+    <p class="lang-cn">转折在这里。问一个历史主义者：什么能证明你错了？诚实的答案是：什么都不能。革命来了，规律得到证实；革命推迟了，规律只是在暗中起作用；发生了相反的事，那是通往命运之路上的必要弯路。</p>
+    <p class="lang-en">A theory that can accommodate any outcome explains nothing. It is a prophecy dressed up as science: it sounds like knowledge of the future, but no future event could ever contradict it — because every event is reinterpreted to fit.</p>
+    <p class="lang-cn">一个能容纳任何结果的理论，什么都没解释。它是扮成科学的预言：听起来像对未来的知识，可没有任何未来事件能反驳它——因为每件事都会被重新解释，以符合理论。</p>
+    <p class="lang-en">And that is exactly why it is dangerous. If you believe you know where history must go, then forcing people toward that end starts to look justified — even necessary. False certainty about the future becomes a license for power in the present.</p>
+    <p class="lang-cn">而这正是它危险的原因。如果你相信自己知道历史必然走向哪里，强迫人们走向那个终点就开始显得正当——甚至必要。对未来的虚假确定性，变成了当下权力的许可证。</p>
+    <p class="lang-en">One claim about history can be tested; one cannot. Tap a card to see which — and why.</p>
+    <p class="lang-cn">关于历史的一个说法可以被检验，一个不能。点开卡片，看哪个是、为什么。</p>
+    <div class="quiz">
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>A.</b> "History moves by iron laws. The revolution is inevitable — and any delay only proves the laws are working in hidden ways."</div>
+        <div class="lang-cn"><b>A.</b> “历史按铁律前进。革命不可避免——任何推迟都只证明规律在暗中起作用。”</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-bad">Wrong — irrefutable.</span> Any outcome fits: success confirms it, delay excuses it, the opposite is a "necessary detour." A theory no event can contradict is prophecy, not science.</div>
+        <div class="a lang-cn"><span class="verdict-bad">错——无法反驳。</span>任何结果都符合：成功证实它，推迟原谅它，相反是“必要的弯路”。没有任何事件能反驳的理论是预言，不是科学。</div>
+      </div>
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>B.</b> "The new childcare subsidy will raise the birth rate in this town. Let's compare it with a similar town without the subsidy, and see."</div>
+        <div class="lang-cn"><b>B.</b> “新的育儿补贴会提高这个镇的出生率。我们把它和一个没有补贴的相似小镇比较一下，看看结果。”</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-good">Right — testable.</span> It names one concrete effect, in one place, that could turn out false. If the birth rate does not rise, the claim fails — and that is exactly what makes it worth testing.</div>
+        <div class="a lang-cn"><span class="verdict-good">对——可以检验。</span>它指出了一个地方、一个具体效果，而且可能被证明是错的。如果出生率没有上升，这个说法就失败了——而这正是它值得检验的原因。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene" id="n1-s4">
+    <h3><span class="sc">SCENE 4 · THE CONTRAST</span>The closed tribe and the open society<span class="h-cn lang-cn">封闭的部落与开放的社会</span></h3>
+    <p class="lang-en">Behind historicism stands an older picture of society: the <span class="term">closed society</span>. It is tribal and magical. Its rules present themselves as natural and unchangeable, its customs are fixed, and criticism feels like betrayal — because to question the order is to question the tribe itself.</p>
+    <p class="lang-cn">历史主义背后站着一幅更古老的社会图景：<span class="term">closed society（封闭社会）</span>。它是部落的、魔法的。它的规则以自然、不可改变的面貌出现，习俗固定不变，批评感觉像背叛——因为质疑秩序就是质疑部落本身。</p>
+    <p class="lang-en">Against it Popper sets the <span class="term">open society</span>: a society of criticism and choice. Its institutions are recognized as human artifacts — made by people, and therefore changeable. Its laws are revisable. Its members are free to question everything, including the foundations of the society itself.</p>
+    <p class="lang-cn">波普尔用<span class="term">open society（开放社会）</span>与之对立：一个批评与选择的社会。它的制度被认作人为的产物——人造的，所以可以改变。它的法律可以修改。它的成员可以自由地质疑一切，包括社会本身的基础。</p>
+    <p class="lang-en">The move from the closed society to the open one, Popper argues, is the great drama of Western history — and the great reactions against it, from Plato to Marx, are the subject of this whole book. The enemies of the open society are not just rulers. They are ideas — ideas that promise certainty and deliver closure.</p>
+    <p class="lang-cn">波普尔认为，从封闭社会走向开放社会，是西方历史的大戏——而反对它的巨大反动，从柏拉图到马克思，就是整本书的主题。开放社会的敌人不只是统治者，而是一些想法——许诺确定性、带来封闭的想法。</p>
+  </div>
+
+  <div class="scene" id="n1-s5">
+    <h3><span class="sc">SCENE 5 · THE RISE</span>Small steps instead of a blueprint<span class="h-cn lang-cn">蓝图换成小步</span></h3>
+    <p class="lang-en">If history has no script, how should we change society? Popper's answer is already hiding in this first chapter: not by <span class="term">utopian engineering</span> — drawing up a blueprint of the perfect society and rebuilding everything at once — but by <span class="term">piecemeal engineering</span>: small, reversible reforms, tested one at a time.</p>
+    <p class="lang-cn">如果历史没有剧本，我们该怎么改变社会？波普尔的答案已经藏在第一章里：不是靠<span class="term">utopian engineering（乌托邦工程）</span>——画一张完美社会的蓝图、一次性重建一切——而是靠<span class="term">piecemeal engineering（零星社会工程）</span>：一小步、一小步、可逆的改革，一次检验一个。</p>
+    <p class="lang-en">The difference is practical. A blueprint for everything cannot be tested: when it goes wrong, there are too many moving parts to know why — and the failure is blamed on enemies, or on people who did not believe hard enough. A small reform can be tested: did it reduce the suffering it aimed at? If not, correct it, and try again.</p>
+    <p class="lang-cn">区别是实际的。一张包罗万象的蓝图无法检验：它出错时，动的零件太多，找不出原因——失败只会被怪到敌人头上，或怪到信得不够坚定的人头上。而一个小改革可以检验：它减少了它要针对的苦难吗？没有，就纠正它，再试一次。</p>
+    <p class="lang-en">That is the book's promise, and its gamble: freedom does not live in knowing the future. It lives in keeping the future open — in societies that can admit a mistake, change course, and try again. The next night goes back to where historicism began: ancient Greece, and a philosopher who said everything flows.</p>
+    <p class="lang-cn">这就是这本书的许诺，也是它的赌注：自由不在于知道未来，而在于让未来保持开放——在于一个能承认错误、改变方向、再试一次的社会。下一夜回到历史主义开始的地方：古希腊，和一位说万物皆流的哲学家。</p>
+  </div>
+
+  <div class="takeaway">
+    <h4>TAKEAWAY · 今夜带走三句</h4>
+    <ol>
+      <li><span class="lang-en">Historicism is the doctrine that history unfolds by inexorable laws — and that its course can be predicted. Popper's whole book is the argument that there are no such laws.</span><span class="t-cn lang-cn">历史主义是认为历史按不可抗拒的规律展开、其进程可以预测的学说。波普尔整本书就是论证：没有这样的规律。</span></li>
+      <li><span class="lang-en">The myth of destiny wears many costumes — the chosen people, the chosen race, the chosen class. The costumes change; the plot stays the same.</span><span class="t-cn lang-cn">命运神话穿过许多戏服——被选中的民族、被选中的种族、被选中的阶级。戏服换了，剧情没变。</span></li>
+      <li><span class="lang-en">A theory that can explain any outcome explains nothing. And a society that cannot be criticized cannot correct its mistakes — so keep it open, and change it one small step at a time.</span><span class="t-cn lang-cn">能解释任何结果的理论什么都没解释。而一个不能被批评的社会无法纠正错误——所以让它保持开放，一小步一小步地改变它。</span></li>
+    </ol>
+  </div>
+
+  <div class="highlights">
+    <h4>HIGHLIGHTS · 十二句重点亮点</h4>
+    <ol>
+      <li><span class="lang-en">Written in exile in New Zealand during the Second World War, the book was Popper's contribution to the war effort — an argument, not a weapon.</span><span class="cn lang-cn">这本书写于第二次世界大战期间，作者在新西兰流亡时写就——是波普尔对战争的贡献：一个论证，不是一件武器。</span></li>
+      <li><span class="lang-en">Historicism: history unfolds according to inexorable laws, and its course can be predicted.</span><span class="cn lang-cn">历史主义：历史按不可抗拒的规律展开，其进程可以预测。</span></li>
+      <li><span class="lang-en">The doctrine of the chosen people is historicism's oldest form: God is the author of history, and one people is His chosen instrument.</span><span class="cn lang-cn">被选中的民族是历史主义最古老的形式：上帝是历史的作者，一个民族是祂选中的工具。</span></li>
+      <li><span class="lang-en">Tribalism: the individual has meaning only inside the collective — the tribe, the nation, the race, the class.</span><span class="cn lang-cn">部落主义：个人只有在集体——部落、民族、种族、阶级——里面才有意义。</span></li>
+      <li><span class="lang-en">Theistic historicism becomes secular: God steps out, and Nature, Spirit, or economic laws step in.</span><span class="cn lang-cn">神学的历史主义变成世俗的：上帝退场，自然、精神或经济规律登场。</span></li>
+      <li><span class="lang-en">The chosen people becomes the chosen race — and then, in Marx, the chosen class. The costumes change; the plot stays the same.</span><span class="cn lang-cn">被选中的民族变成被选中的种族——再到马克思那里，变成被选中的阶级。戏服换了，剧情没变。</span></li>
+      <li><span class="lang-en">Historicist theories are irrefutable: any outcome can be reinterpreted to fit, so no event can disprove them.</span><span class="cn lang-cn">历史主义理论无法反驳：任何结果都能被重新解释以符合理论，所以没有任何事件能证伪它们。</span></li>
+      <li><span class="lang-en">A theory that can accommodate any outcome explains nothing — prophecy dressed up as science.</span><span class="cn lang-cn">能容纳任何结果的理论什么都没解释——扮成科学的预言。</span></li>
+      <li><span class="lang-en">False certainty about the future becomes a license for power in the present.</span><span class="cn lang-cn">对未来的虚假确定性，变成了当下权力的许可证。</span></li>
+      <li><span class="lang-en">The closed society is tribal and magical: its rules look natural and unchangeable, and criticism feels like betrayal.</span><span class="cn lang-cn">封闭社会是部落的、魔法的：规则看似自然、不可改变，批评感觉像背叛。</span></li>
+      <li><span class="lang-en">The open society is a society of criticism and choice: its institutions are human-made, its laws revisable, its members free to question everything.</span><span class="cn lang-cn">开放社会是批评与选择的社会：制度是人造的，法律可以修改，成员可以自由地质疑一切。</span></li>
+      <li><span class="lang-en">Piecemeal engineering: small, reversible reforms, tested one at a time — the opposite of rebuilding everything from a blueprint.</span><span class="cn lang-cn">零星社会工程：一小步、一小步、可逆的改革，一次检验一个——与按蓝图重建一切相反。</span></li>
+    </ol>
+  </div>
+
+  <h2 id="n1-check"><span class="en">CHECKPOINT · CAN YOU EXPLAIN IT BACK?</span>检查点 · 能讲回来吗？</h2>
+  <p class="lede lang-en">Your rule: understand it 70–80% before it counts. Three questions — answer them before the next night. Tap to check.</p>
+  <p class="lede lang-cn">你的规则：看懂 7788 才算过。三道题，答得上来再进下一夜。点开对答案。</p>
+  <details class="check"><summary><span class="lang-en">01｜What is historicism, and what is the "myth of destiny"?</span><span class="lang-cn">01｜什么是历史主义，什么是“命运神话”？</span></summary>
+    <div class="ans lang-en">Historicism is the doctrine that history unfolds according to inexorable laws and its course can be predicted. The myth of destiny is the story that comes with it: history has a script and a chosen carrier — a people, a race, a class — whose fate is to carry it out.</div>
+    <div class="ans lang-cn">历史主义是认为历史按不可抗拒的规律展开、其进程可以预测的学说。命运神话是随它而来的故事：历史有剧本，有一个被选中的承担者——民族、种族、阶级——命中注定要执行它。</div></details>
+  <details class="check"><summary><span class="lang-en">02｜Why are historicist theories dangerous, even though they sound like science?</span><span class="lang-cn">02｜历史主义理论听起来像科学，为什么还危险？</span></summary>
+    <div class="ans lang-en">Because they are irrefutable: any outcome fits, so no event can prove them wrong — they only look like knowledge. And once you believe you know where history must go, forcing people toward that end starts to look justified.</div>
+    <div class="ans lang-cn">因为它们无法反驳：任何结果都符合，所以没有任何事件能证明它们错——它们只是看起来像知识。而一旦你相信自己知道历史必然走向哪里，强迫人们走向那个终点就开始显得正当。</div></details>
+  <details class="check"><summary><span class="lang-en">03｜What is the difference between a closed society and an open society — and between utopian and piecemeal engineering?</span><span class="lang-cn">03｜封闭社会和开放社会有什么区别——乌托邦工程和零星工程有什么区别？</span></summary>
+    <div class="ans lang-en">In a closed society the order looks natural and unchangeable, and criticism feels like betrayal; in an open society institutions are human-made and revisable, and members may question everything. Utopian engineering rebuilds everything from a blueprint and cannot be tested; piecemeal engineering makes small, reversible reforms and corrects them by their results.</div>
+    <div class="ans lang-cn">封闭社会里秩序看似自然、不可改变，批评像背叛；开放社会里制度是人造的、可以修改，成员可以质疑一切。乌托邦工程按蓝图重建一切，无法检验；零星工程做一小步、可逆的改革，按结果纠正。</div></details>
+
+  <div class="cliff">
+    <span class="next">→ NEXT · NIGHT 2：HERACLITUS</span>
+    <p class="lang-en" style="margin:0">Historicism did not begin with Plato or Marx. It began in ancient Greece, with a philosopher who looked at the world and saw only change — everything flows, nothing stays. <b>Next night: Heraclitus — where the myth of destiny was born.</b></p>
+    <p class="lang-cn" style="margin:8px 0 0">历史主义不是从柏拉图或马克思开始的。它开始于古希腊，一位哲学家看世界只看到变化——万物皆流，无物常驻。<b>下一夜：赫拉克利特——命运神话诞生的地方。</b></p>
+  </div>
+
+  <p style="margin-top:22px"><a class="cta" href="#map"><span class="lang-en">Next night → Night 2 · Heraclitus (coming soon)</span><span class="lang-cn">下一夜 → 第二夜 · 赫拉克利特（待续）</span></a></p>
+
+  <footer>
+    <p class="lang-en"><i>The Open Society and Its Enemies</i> · Karl Popper · 1945 · Routledge · 920 pages. This guide is a companion, not a substitute — read it alongside the book for the best effect. Book page: <a href="https://www.routledge.com/The-Open-Society-and-its-Enemies-7th-Edition/Popper-Havel-Gombrich/p/book/9780415282369">Routledge</a></p>
+    <p class="lang-cn">《The Open Society and Its Enemies》· Karl Popper · 1945 · Routledge · 920 页。本指南是伴读，不是替代品——对照书读，效果最好。书页：<a href="https://www.routledge.com/The-Open-Society-and-its-Enemies-7th-Edition/Popper-Havel-Gombrich/p/book/9780415282369">Routledge 官方页</a></p>
+    <p>A reader's guide by Conjurer Lab · AISummoner · Night 1 of 25 · 中英对照</p>
+  </footer>
+
+</div>
+<button class="bm-fab" id="bm-btn" title="夜晚列表：点开跳转任意一夜" onclick="toggleNightList()">🔖</button>
+<div class="bm-menu" id="bm-menu" role="dialog" aria-label="夜晚列表"></div>
+<script>
+  // bookmark: save reading position, resume next visit
+  var BM_KEY = 'os-bookmark';
+  var BM_SKIP = {progress:1, 'resume-bar':1, 'resume-text':1, 'bm-btn':1, 'bm-menu':1};
+  // dynamic anchors: every id on the page except the UI chrome above.
+  // New nights (night4, n4-s1...) are picked up automatically, no list to maintain.
+  function anchorEls(){
+    var out = [];
+    document.querySelectorAll('[id]').forEach(function(el){
+      if(!BM_SKIP[el.id]) out.push(el);
+    });
+    return out;
+  }
+  function nearestAnchor(){
+    var y = window.scrollY + 120, best = 'night1';
+    anchorEls().forEach(function(el){
+      if(el.getBoundingClientRect().top + window.scrollY <= y) best = el.id;
+    });
+    return best;
+  }
+  function labelFor(id){
+    var el = document.getElementById(id);
+    if(!el) return id;
+    var h = el.querySelector('h2,h3');
+    if(!h && el.tagName === 'HR'){
+      var n = el.nextElementSibling;
+      while(n && !/^H[23]$/.test(n.tagName)) n = n.nextElementSibling;
+      h = n;
+    }
+    h = h || el;
+    var t = (h.textContent || '').replace(/\s+/g, ' ').trim();
+    return t ? t.slice(0, 42) : id;
+  }
+  function saveBookmark(){
+    var id = nearestAnchor();
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+    var b = document.getElementById('bm-btn');
+    if(b){ b.textContent = '✓'; setTimeout(function(){ b.textContent = '🔖'; }, 1500); }
+  }
+
+  // night list menu: tap 🔖 to see all nights, jump to any published one.
+  // Built from the map rows, so new nights appear automatically, no list to maintain.
+  function currentNightNum(){
+    var id = nearestAnchor();
+    var m = id.match(/^night(\d+)/) || id.match(/^n(\d+)-/);
+    return m ? parseInt(m[1], 10) : 0;
+  }
+  function buildNightMenu(){
+    var menu = document.getElementById('bm-menu');
+    if(!menu) return;
+    var esc = function(t){ return (t || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+    var html = '<h4>全部夜晚 <button onclick="closeNightList()" aria-label="关闭">✕</button></h4>';
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        html += '<button class="bm-row" onclick="goResume(); closeNightList();"><span class="no">上次读到</span><span class="t">' + esc(data.label) + '</span><span class="st">继续 →</span></button>';
+      }
+    }catch(e){}
+    html += '<button class="bm-row" onclick="saveBookmark(); closeNightList();"><span class="no">📌</span><span class="t">收藏此处<small>下次打开直接回到这里</small></span><span class="st">保存</span></button>';
+    var now = currentNightNum();
+    document.querySelectorAll('.map li').forEach(function(li){
+      var no = li.querySelector('.no');
+      var t = li.querySelector('.t');
+      var st = li.querySelector('.st');
+      if(!no || !t) return;
+      var num = parseInt((no.textContent || '').replace(/\D/g, ''), 10) || 0;
+      var done = li.classList.contains('done');
+      var cnEl = t.querySelector('.cn');
+      var cn = cnEl ? cnEl.textContent : '';
+      var title = (t.textContent || '').replace(cn, '').trim();
+      var stTxt = st ? st.textContent.trim() : '';
+      var cls = 'bm-row' + (done ? '' : ' soon') + (num === now && num > 0 ? ' now' : '');
+      var click = done ? ' onclick="goNight(' + num + ')"' : '';
+      html += '<button class="' + cls + '"' + click + '><span class="no">' + esc(no.textContent.trim()) + '</span><span class="t">' + esc(title) + (cn ? '<small>' + esc(cn) + '</small>' : '') + '</span><span class="st">' + esc(stTxt) + '</span></button>';
+    });
+    menu.innerHTML = html;
+  }
+  function goNight(n){
+    closeNightList();
+    var el = document.getElementById('night' + n);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  }
+  function toggleNightList(){
+    var menu = document.getElementById('bm-menu');
+    if(!menu) return;
+    if(menu.classList.contains('open')){ closeNightList(); return; }
+    buildNightMenu();
+    menu.classList.add('open');
+  }
+  function closeNightList(){
+    var menu = document.getElementById('bm-menu');
+    if(menu) menu.classList.remove('open');
+  }
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('bm-menu');
+    if(!menu || !menu.classList.contains('open')) return;
+    var btn = document.getElementById('bm-btn');
+    if(menu.contains(e.target) || (btn && btn.contains(e.target))) return;
+    closeNightList();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeNightList();
+  });
+
+  function showResume(data){
+    var bar = document.getElementById('resume-bar');
+    if(!bar || !data) return;
+    bar.style.display = 'flex';
+    var t = document.getElementById('resume-text');
+    if(t) t.textContent = '上次读到：' + data.label;
+  }
+  function goResume(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        var el = document.getElementById(data.id);
+        if(el) el.scrollIntoView({behavior:'smooth'});
+      }
+    }catch(e){}
+  }
+  function clearBookmark(){
+    try{ localStorage.removeItem(BM_KEY); }catch(e){}
+    lastSaved = '';
+    var bar = document.getElementById('resume-bar');
+    if(bar) bar.style.display = 'none';
+  }
+  // auto-save: reading position follows you, no tap needed.
+  // Only runs after the reader scrolls, so opening the page never clobbers the saved spot.
+  var lastSaved = '';
+  function autoSave(){
+    var id = nearestAnchor();
+    if(id === lastSaved) return;
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+  }
+  var saveTimer = null;
+  window.addEventListener('scroll', function(){
+    if(saveTimer) return;
+    saveTimer = setTimeout(function(){ saveTimer = null; autoSave(); }, 1200);
+  }, {passive:true});
+  window.addEventListener('DOMContentLoaded', function(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data){ showResume(data); if(data.id) lastSaved = data.id; }
+    }catch(e){}
+    if(location.hash){
+      setTimeout(autoSave, 800);
+    }
+  });
+</script>
+<script>
+  // language toggle: bi (both) / en / cn
+  function setLang(m){
+    document.documentElement.setAttribute('data-lang', m);
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-m') === m);
+    });
+  }
+  // progress bar follows scroll
+  var bar = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? (h.scrollTop / max) : 0;
+    bar.style.width = (11 + p * 89) + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+</script>
+</body>
+</html>

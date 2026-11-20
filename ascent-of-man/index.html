@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="bi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《人的攀登》十三夜 · Jacob Bronowski 读书指南 | AISummoner</title>
+<meta name="description" content="Jacob Bronowski《The Ascent of Man》读书指南，中英对照：448 页拆成十三夜故事，每夜十分钟，读完一夜想知道下一夜发生什么。">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --paper:#F4F1EA; --ink:#141413; --ink-soft:#3a382f; --muted:#7A756C;
+    --terra:#D96548; --amber:#F0A832; --cyan:#0891B2; --line:#E3DCCB;
+    --card:#FBF9F4; --green:#16794F;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC",Georgia,serif; line-height:1.85; font-size:17px;
+    background-image:
+      linear-gradient(rgba(20,20,19,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20,20,19,0.035) 1px, transparent 1px);
+    background-size:28px 28px;
+  }
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--terra); width:11%; z-index:50; transition:width .3s}
+  .wrap{max-width:720px; margin:0 auto; padding:0 20px 80px}
+  .topbar{display:flex; justify-content:space-between; align-items:center; padding:18px 0 8px;
+    font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.14em; color:var(--muted)}
+  .topbar a{color:var(--muted); text-decoration:none}
+  .topbar a:hover{color:var(--terra)}
+  /* language toggle */
+  .lang-toggle{display:flex; gap:6px}
+  .lang-btn{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.08em;
+    border:1px solid var(--line); background:var(--card); color:var(--ink-soft);
+    border-radius:999px; padding:4px 12px; cursor:pointer}
+  .lang-btn.active{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+  /* bilingual: EN first, CN after, CN slightly smaller */
+  [data-lang="en"] .lang-cn{display:none !important}
+  [data-lang="cn"] .lang-en{display:none !important}
+  .lang-cn{font-size:.95em; color:var(--ink-soft)}
+  p.lang-en, p.lang-cn{margin:10px 0}
+  .kicker{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.22em; color:var(--terra); margin:34px 0 10px}
+  h1{font-size:44px; line-height:1.15; margin:0 0 8px; font-weight:700}
+  h1 .en{display:block; font-size:20px; color:var(--muted); font-weight:400; letter-spacing:.04em; margin-top:10px}
+  .sub{font-size:19px; color:var(--ink-soft); margin:14px 0 0}
+  .sub b{color:var(--terra)}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 0}
+  .pill{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; border:1px solid var(--line);
+    border-radius:999px; padding:4px 12px; background:var(--card); color:var(--ink-soft)}
+  .pill.hot{border-color:var(--terra); color:var(--terra)}
+  a.pill{text-decoration:none}
+  a.pill.hot:hover{background:var(--terra); color:var(--paper)}
+  .cta{display:inline-block; margin-top:26px; background:var(--ink); color:var(--paper); text-decoration:none;
+    padding:12px 26px; border-radius:999px; font-size:16px}
+  .cta:hover{background:var(--terra)}
+  hr.sep{border:none; border-top:1px solid var(--line); margin:44px 0}
+  h2{font-size:26px; margin:0 0 6px}
+  h2 .en{display:block; font-size:13px; font-family:"JetBrains Mono",ui-monospace,monospace; letter-spacing:.18em; color:var(--muted); font-weight:400; margin-bottom:6px}
+  .lede{color:var(--ink-soft); margin:0 0 20px}
+  .why{display:grid; gap:12px}
+  .why .row{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px}
+  .why .row b{color:var(--terra)}
+  .why .fix{color:var(--green); font-size:15px; margin-top:4px}
+  .how .step{display:flex; gap:14px; margin:14px 0}
+  .how .n{flex:0 0 30px; height:30px; border-radius:50%; background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:center; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:13px}
+  .map{list-style:none; margin:0; padding:0}
+  .map li{display:flex; gap:14px; padding:13px 4px; border-bottom:1px solid var(--line); align-items:baseline}
+  .map .no{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--muted); flex:0 0 62px}
+  .map .t{font-weight:700}
+  .map .t .cn{color:var(--muted); font-weight:400; font-size:14px; margin-left:6px}
+  .map .hook{color:var(--ink-soft); font-size:15px; line-height:1.6}
+  .map .hook-cn{color:var(--muted); font-size:14px; line-height:1.6}
+  .map .st{margin-left:auto; flex:0 0 auto; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px;
+    border:1px solid var(--terra); color:var(--terra); border-radius:999px; padding:2px 10px; white-space:nowrap}
+  .map .st.soon{border-color:var(--line); color:var(--muted)}
+  .map li.done{background:linear-gradient(90deg, rgba(217,101,72,.07), transparent 70%)}
+  /* Night 1 */
+  .night-tag{display:inline-block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px;
+    letter-spacing:.2em; color:var(--paper); background:var(--terra); border-radius:4px; padding:4px 12px}
+  .scene{margin:30px 0}
+  .scene h3{font-size:21px; margin:0 0 8px}
+  .scene h3 .sc{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--terra); letter-spacing:.16em; display:block; margin-bottom:4px}
+  .scene h3 .h-cn{display:block; font-size:18px; color:var(--muted); font-weight:400; margin-top:2px}
+  .quote{border-left:3px solid var(--amber); background:rgba(240,168,50,.08); padding:14px 18px; margin:18px 0; font-size:16px}
+  .quote .en{font-style:italic}
+  .quote .cn{color:var(--ink-soft); font-size:15px; margin-top:6px}
+  .key{color:var(--terra); font-weight:700}
+  .term{font-weight:700; border-bottom:2px solid rgba(217,101,72,.4)}
+  .quiz{display:grid; gap:12px; margin:16px 0}
+  .qcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; cursor:pointer}
+  .qcard:hover{border-color:var(--terra)}
+  .qcard .a{display:none; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); font-size:15px}
+  .qcard.open .a{display:block}
+  .qcard .tap{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--muted); letter-spacing:.1em}
+  .verdict-bad{color:var(--terra); font-weight:700}
+  .verdict-good{color:var(--green); font-weight:700}
+  .takeaway{background:var(--ink); color:var(--paper); border-radius:12px; padding:20px 22px; margin:26px 0}
+  .takeaway h4{margin:0 0 10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.2em; color:var(--amber)}
+  .takeaway ol{margin:0; padding-left:22px}
+  .takeaway li{margin:8px 0}
+  .takeaway .t-cn{display:block; font-size:15px; color:#D8D2C4; margin-top:2px}
+  .highlights{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:26px 0}
+  .highlights h4{margin:0 0 10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.2em; color:var(--terra)}
+  .highlights ol{margin:0; padding-left:22px}
+  .highlights li{margin:10px 0}
+  .highlights li .lang-en{font-style:italic}
+  .highlights li .cn{display:block; font-size:15px; color:var(--ink-soft); margin-top:2px}
+  details.check{border:1px solid var(--line); border-radius:12px; background:var(--card); padding:14px 18px; margin:10px 0}
+  details.check summary{cursor:pointer; font-weight:700}
+  details.check .ans{margin-top:8px; font-size:15px; color:var(--ink-soft)}
+  .cliff{background:linear-gradient(135deg, rgba(8,145,178,.1), rgba(217,101,72,.08)); border:1px solid var(--line);
+    border-radius:12px; padding:22px; margin:30px 0; font-size:18px}
+  .cliff .next{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.18em; color:var(--cyan); display:block; margin-bottom:8px}
+  footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:14px}
+  footer a{color:var(--terra)}
+  @media (max-width:560px){ h1{font-size:34px} body{font-size:16px} .map .hook{display:block; margin-top:2px} }
+  /* bookmark: resume bar + floating save button */
+  .resume-bar{display:none; background:var(--ink); color:var(--paper);
+    border-radius:10px; padding:8px 12px; margin:12px 0; align-items:center; gap:8px; cursor:pointer; font-size:14px}
+  #resume-text{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; flex:1}
+  .resume-bar .go{color:var(--amber); font-weight:700; white-space:nowrap}
+  .resume-bar .x{margin-left:auto; background:none; border:none; color:#D8D2C4; font-size:16px; cursor:pointer; padding:0 2px}
+  .bm-fab{position:fixed; right:12px; bottom:12px; z-index:60; width:44px; height:44px; border-radius:50%;
+    background:var(--ink); color:var(--paper); border:none; font-size:20px; cursor:pointer;
+    box-shadow:0 4px 16px rgba(0,0,0,.25)}
+  .bm-fab:hover{background:var(--terra)}
+  /* night list menu: tap 🔖 to jump to any night */
+  .bm-menu{display:none; position:fixed; right:12px; top:64px; z-index:70; width:min(340px, calc(100vw - 24px));
+    max-height:min(70vh, 560px); overflow-y:auto; background:var(--paper); color:var(--ink);
+    border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,.28); padding:6px 0}
+  .bm-menu.open{display:block}
+  .bm-menu h4{margin:6px 16px 4px; font-size:13px; letter-spacing:.14em; color:var(--muted); display:flex; justify-content:space-between; align-items:center}
+  .bm-menu h4 button{background:none; border:none; font-size:16px; cursor:pointer; color:var(--muted); padding:2px 6px}
+  .bm-row{display:flex; gap:10px; align-items:baseline; width:100%; text-align:left; background:none; border:none;
+    padding:10px 16px; font-size:15px; font-family:inherit; color:var(--ink); cursor:pointer; border-top:1px solid var(--line)}
+  .bm-row:hover{background:rgba(217,101,72,.07)}
+  .bm-row .no{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--muted); flex:0 0 62px}
+  .bm-row .t{flex:1; min-width:0}
+  .bm-row .t small{display:block; color:var(--muted); font-size:12px; margin-top:1px}
+  .bm-row .st{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--terra); white-space:nowrap}
+  .bm-row.soon{opacity:.55; cursor:default}
+  .bm-row.soon:hover{background:none}
+  .bm-row.soon .st{color:var(--muted)}
+  .bm-row.now{background:rgba(217,101,72,.07)}
+  .bm-row.now .no{color:var(--terra); font-weight:700}
+  .map li.done{cursor:pointer}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/">← AISUMMONER</a>
+    <span class="lang-toggle">
+      <button class="lang-btn active" data-m="bi" onclick="setLang('bi')">中英</button>
+      <button class="lang-btn" data-m="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-m="cn" onclick="setLang('cn')">中文</button>
+    </span>
+    <span>NIGHT 1 / 13</span>
+  </div>
+
+  <div class="resume-bar" id="resume-bar" onclick="goResume()">
+    <span>📖</span><span id="resume-text"></span><span class="go">继续 →</span>
+    <button class="x" title="清除书签" onclick="event.stopPropagation(); clearBookmark()">✕</button>
+  </div>
+
+  <div class="kicker">JACOB BRONOWSKI · 1973 · A READER'S GUIDE · 中英对照</div>
+  <h1>《人的攀登》十三夜<span class="en">The Ascent of Man, in thirteen nights</span></h1>
+  <p class="sub lang-en">You own this book, but you couldn't finish it — <b>that's not your fault</b>. 448 pages, 13 chapters, a 1973 BBC series in print: part travelogue, part science history, part philosophy, all in one man's voice. This site retells the book as thirteen nights of stories, ten minutes a night. Finish one night, and you'll want to know what happens the next.</p>
+  <p class="sub lang-cn">你手里有这本书，却读不下去——<b>不是你的问题</b>。448 页，13 章，是 1973 年 BBC 纪录片的文字版：一半游记、一半科学史、一半哲学，全是一个人的声音。这站把书写成十三夜故事，每夜十分钟，读完一夜，你会想知道下一夜发生什么。</p>
+  <div class="meta">
+    <span class="pill">448 pages</span><span class="pill">13 chapters</span>
+    <a class="pill hot" href="#night1">Night 1 · 今夜可读</a><span class="pill">一夜一章 · 每夜 10 分钟</span>
+    <span class="pill">中英对照 · EN / 中文</span>
+  </div>
+  <a class="cta" href="#night1"><span class="lang-en">Start Night 1 ↓</span><span class="lang-cn">开始第一夜 ↓</span></a>
+
+  <hr class="sep">
+
+  <h2><span class="en">WHY YOU STOPPED</span>为什么读不下去</h2>
+  <p class="lede lang-en">First, let's be clear: not finishing it isn't a willpower problem. It's a problem with how the book is written.</p>
+  <p class="lede lang-cn">先说清楚：读不下去不是意志力问题，是这本书的写法问题。</p>
+  <div class="why">
+    <div class="row">
+      <div class="lang-en"><b>01｜Too much ground, too fast.</b> Chapter 1 alone runs from a fish on a California beach to the Ice Age to a cave in Spain — millions of years in thirty pages, with no pause to let any of it land.</div>
+      <div class="lang-cn"><b>01｜一章横跨几百万年，太快了。</b>光是第一章，就从加州海滩上的一条鱼讲到冰河时代、再讲到西班牙的洞穴——三十页装了几百万年，没有停顿让任何一段落下来。</div>
+      <div class="fix lang-en">→ fix: every night follows one thread. Tonight: one fish, one head, one handprint.</div>
+      <div class="fix lang-cn">→ fix：每一夜只跟一条线。今夜：一条鱼、一个头、一只手印。</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>02｜It&apos;s a TV script in print — you can hear the voice but not see the pictures.</b> The book is almost word-for-word the TV narration. Bronowski keeps pointing at things — a valley, a skull, a cave wall — that you cannot see on the page.</div>
+      <div class="lang-cn"><b>02｜它是电视稿印成的书——听得见声音，看不见画面。</b>这本书几乎就是电视解说词的逐字稿。布朗诺斯基不停地指给你看东西——山谷、头骨、洞穴墙壁——可书页上你什么都看不见。</div>
+      <div class="fix lang-en">→ fix: each scene rebuilds the picture in words, so you can see it without the screen.</div>
+      <div class="fix lang-cn">→ fix：每个场景都用文字把画面重建出来，不用看屏幕也能看见。</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>03｜The big idea hides behind the travelogue.</b> The sights are so vivid — deserts, ice, reindeer — that the argument slips past: what actually makes us human? By the end of the chapter you remember the places and lose the point.</div>
+      <div class="lang-cn"><b>03｜大想法藏在游记后面。</b>景色太生动了——沙漠、冰原、驯鹿——论点反而溜过去了：到底什么让我们成为人？读完一章，你记得地方，丢了论点。</div>
+      <div class="fix lang-en">→ fix: every night ends with three takeaway lines and a checkpoint. If you can explain it back, the point stayed.</div>
+      <div class="fix lang-cn">→ fix：每夜结尾三句带走 + 检查点。能讲回来，论点就留下了。</div>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <h2><span class="en">HOW IT WORKS</span>读法</h2>
+  <div class="how">
+    <div class="step"><div class="n">1</div><div><div class="lang-en"><b>One night, one chapter.</b> Ten minutes each, no greed.</div><div class="lang-cn"><b>一夜一章。</b>每夜只读一章的内容，十分钟，不贪多。</div></div></div>
+    <div class="step"><div class="n">2</div><div><div class="lang-en"><b>Every night ends on a cliffhanger.</b> Like One Thousand and One Nights — the story stops at the crucial moment, and the answer comes next night.</div><div class="lang-cn"><b>每夜结尾一个悬念。</b>像一千零一夜一样——故事讲到最关键处停住，下一夜才揭晓。</div></div></div>
+    <div class="step"><div class="n">3</div><div><div class="lang-en"><b>Pass the checkpoint before the next night.</b> Three questions; answer them before moving on. That's your rule: understand it 70–80% before it counts.</div><div class="lang-cn"><b>先过检查点，再进下一夜。</b>三道题，答得上来再往下走。这是你的规则：看懂 7788 才算过。</div></div></div>
+    <div class="step"><div class="n">4</div><div><div class="lang-en"><b>English terms stay in English.</b> foresight, imagination, cultural evolution, transhumance — these words look the same in the book, so you can find them there.</div><div class="lang-cn"><b>英文术语保留原文。</b>foresight、imagination、cultural evolution、transhumance——这些词在书里就是这个样子，对照书找得到。</div></div></div>
+  </div>
+
+  <hr class="sep">
+
+  <h2 id="map"><span class="en">THE MAP · 13 NIGHTS</span>十三夜地图</h2>
+  <p class="lede lang-en">All 13 chapters, one night each. One lamp is lit tonight.</p>
+  <p class="lede lang-cn">全书 13 章，一章一夜。今夜亮起一盏灯。</p>
+  <ol class="map">
+    <li class="done" onclick="location.hash='#night1'"><span class="no">NIGHT 01</span><span><span class="t">Lower than the Angels<span class="cn">低于天使</span></span><span class="hook lang-en">What makes us human? A fish, a head, and a handprint in a dark cave.</span><span class="hook-cn lang-cn">什么让我们成为人？一条鱼、一个头、一只印在黑暗洞穴里的手。</span></span><span class="st">今夜可读</span></li>
+    <li><span class="no">NIGHT 02</span><span><span class="t">The Harvest of the Seasons<span class="cn">季节的收获</span></span><span class="hook lang-en">The ice retreats, and the hunter learns to plant wheat and stay put.</span><span class="hook-cn lang-cn">冰退了，猎人学会种小麦、定居下来。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 03</span><span><span class="t">The Grain in the Stone<span class="cn">石头里的谷物</span></span><span class="hook lang-en">Nomads settle into towns — and the hand and the eye invent science.</span><span class="hook-cn lang-cn">游牧者定居成城——手和眼发明了科学。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 04</span><span><span class="t">The Hidden Structure<span class="cn">隐藏的结构</span></span><span class="hook lang-en">Fire, metals, alchemy: digging for the structure beneath the visible world.</span><span class="hook-cn lang-cn">火、金属、炼金术：挖掘可见世界之下的结构。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 05</span><span><span class="t">Music of the Spheres<span class="cn">天体的音乐</span></span><span class="hook lang-en">Mathematics is a language — numbers, music, and the harmony of the spheres.</span><span class="hook-cn lang-cn">数学是一种语言——数字、音乐与天体和谐。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 06</span><span><span class="t">The Starry Messenger<span class="cn">星空信使</span></span><span class="hook lang-en">Galileo looks up, and the sky stops being a ceiling.</span><span class="hook-cn lang-cn">伽利略抬起头，天空不再是天花板。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 07</span><span><span class="t">The Majestic Clockwork<span class="cn">庄严的时钟</span></span><span class="hook lang-en">Newton's universe ticks like a clock — stately, lawful, and knowable.</span><span class="hook-cn lang-cn">牛顿的宇宙像钟表一样走动——庄严、有序、可以认识。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 08</span><span><span class="t">The Drive for Power<span class="cn">权力的驱动</span></span><span class="hook lang-en">Steam and iron: the Industrial Revolution puts power in human hands.</span><span class="hook-cn lang-cn">蒸汽与钢铁：工业革命把力量交到人手里。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 09</span><span><span class="t">The Ladder of Creation<span class="cn">创造的阶梯</span></span><span class="hook lang-en">Darwin and Wallace: life climbs, one small step at a time.</span><span class="hook-cn lang-cn">达尔文与华莱士：生命一步一步往上爬。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 10</span><span><span class="t">World Within World<span class="cn">世界中的世界</span></span><span class="hook lang-en">Inside the atom: a whole world hidden within the world.</span><span class="hook-cn lang-cn">原子内部：世界之中藏着另一个世界。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 11</span><span><span class="t">Knowledge or Certainty<span class="cn">知识还是确定性</span></span><span class="hook lang-en">At Auschwitz, Bronowski asks what science can and cannot be certain of.</span><span class="hook-cn lang-cn">在奥斯维辛，布朗诺斯基问科学能确定什么、不能确定什么。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 12</span><span><span class="t">Generation upon Generation<span class="cn">一代又一代</span></span><span class="hook lang-en">Genetics: how one generation hands its instructions to the next.</span><span class="hook-cn lang-cn">遗传学：一代人如何把指令传给下一代。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 13</span><span><span class="t">The Long Childhood<span class="cn">漫长的童年</span></span><span class="hook lang-en">Humans learn for so long — and that long childhood is the whole ascent.</span><span class="hook-cn lang-cn">人要学那么久——而漫长的童年就是整场攀登。</span></span><span class="st soon">待续</span></li>
+  </ol>
+
+  <hr class="sep" id="night1">
+
+  <span class="night-tag">NIGHT 01 · 第一夜</span>
+  <h2 style="margin-top:14px"><span class="en">CHAPTER 1 · LOWER THAN THE ANGELS</span>低于天使</h2>
+  <p class="lede lang-en">Tonight answers just one question: <b>what makes us human — and not just another animal?</b> The answer starts with a fish dancing on a California beach.</p>
+  <p class="lede lang-cn">今夜只回答一个问题：<b>什么让我们成为人——而不只是另一种动物？</b>答案从一条在加州海滩上跳舞的鱼开始。</p>
+
+  <div class="scene" id="n1-s1">
+    <h3><span class="sc">SCENE 1 · OPENING</span>The fish that dances at full moon<span class="h-cn lang-cn">满月跳舞的鱼</span></h3>
+    <p class="lang-en">In 1769, when the Spaniards first reached the Pacific overland, the California Indians told them a strange thing: at full moon, the fish come up and dance on the beaches.</p>
+    <p class="lang-cn">1769 年，西班牙人第一次翻山越岭到达太平洋时，加州的印第安人告诉他们一件怪事：满月的时候，鱼会上岸，在海滩上跳舞。</p>
+    <p class="lang-en">And it is true. There is a local fish, the grunion, that comes out of the water at full moon and lays its eggs in the sand, above the high-tide mark. The females bury themselves tail first in the sand, and the males curl around them and fertilise the eggs as they are laid.</p>
+    <p class="lang-cn">这是真的。有一种当地的鱼叫银汉鱼（grunion），满月时会爬出水面，在高潮线以上的沙子里产卵。雌鱼把尾巴先埋进沙里，雄鱼盘绕在它们身边，在卵产下的同时受精。</p>
+    <p class="lang-en">The full moon matters, because it gives the eggs nine or ten days in the sand — undisturbed — before the next very high tide washes the hatched fish back out to sea. Everything is timed to the tides, to the day.</p>
+    <p class="lang-cn">满月很重要，因为它给了鱼卵九到十天时间——不受打扰地躺在沙里——直到下一波大潮把孵出来的小鱼冲回大海。一切都按潮汐、按天算得刚刚好。</p>
+    <p class="lang-en">Every landscape is full of adaptations as exact as this one. The grunion fits the tides like one cog-wheel into another. Millions of years of evolution shaped it to sit exactly where it sits. But here is Bronowski's first turn: nature has not fitted man to any specific environment. Compared with the grunion, we have a rather crude survival kit.</p>
+    <p class="lang-cn">每一片风景里都充满了这样精确的适应。银汉鱼和潮汐咬合得像齿轮一样严丝合缝，几百万年的进化把它塑造成了恰好坐在那个位置的样子。但布朗诺斯基的第一个转折来了：大自然并没有把人适配到任何特定的环境里。和银汉鱼比起来，我们的生存装备相当粗糙。</p>
+    <p class="lang-en">So what do we have instead? That is tonight's question.</p>
+    <p class="lang-cn">那我们有什么？这就是今夜的问题。</p>
+  </div>
+
+  <div class="scene" id="n1-s2">
+    <h3><span class="sc">SCENE 2 · THE STORY</span>A singular creature<span class="h-cn lang-cn">一个独特的生物</span></h3>
+    <p class="lang-en">Bronowski's answer begins with a sentence he puts at the very front of the book:</p>
+    <p class="lang-cn">布朗诺斯基的答案，从他放在全书最前面的一句话开始：</p>
+    <div class="quote">
+      <div class="en">Man is a singular creature. He has a set of gifts which make him unique among the animals: so that, unlike them, he is not a figure in the landscape — he is a shaper of the landscape.</div>
+      <div class="cn">人是一个独特的生物。他有一组天赋，让他在动物中独一无二：因此，和它们不同，他不是风景中的一个形象——他是风景的塑造者。</div>
+    </div>
+    <p class="lang-en">In body and in mind he is the explorer of nature — the ubiquitous animal, at home on every continent, not because he found a home there, but because he made one.</p>
+    <p class="lang-cn">在身体和心智上，他都是自然的探索者——无处不在的动物，在每个大陆上安家，不是因为他在那里找到了家，而是因为他在那里造了一个家。</p>
+    <p class="lang-en">Look at the other animals. The hedgehog sleeps until spring bursts its metabolism into life. The humming-bird dips its needle-fine beak into hanging blossoms. The mole plods through the ground like a mechanical shuttle. Each one fits its environment exactly — and is trapped by that fit.</p>
+    <p class="lang-cn">看看别的动物。刺猬沉睡，直到春天让它的新陈代谢苏醒；蜂鸟把针一样细的喙探进垂下的花朵；鼹鼠在地下爬行，像一架机械梭子。每一种都严丝合缝地嵌进自己的环境——也被这份契合困住。</p>
+    <p class="lang-en">Man fits nowhere exactly — and that is his advantage. What he has instead is imagination, reason, and a toughness of feeling. Together they make it possible for him not to accept the environment, but to change it.</p>
+    <p class="lang-cn">人哪里都不严丝合缝——而这正是他的优势。他有的，是想象力、理性和情感的坚韧。它们合在一起，让他有可能不接受环境，而是改变环境。</p>
+    <p class="lang-en">And that series of inventions, by which man from age to age has remade his environment, is a different kind of evolution — not biological, but cultural evolution. That brilliant sequence of cultural peaks is what Bronowski calls the ascent of man.</p>
+    <p class="lang-cn">而人一代一代重造环境的那一连串发明，是一种不同的进化——不是生物进化，而是文化进化。布朗诺斯基把文化高峰的这条灿烂序列，叫做人的攀登。</p>
+  </div>
+
+  <div class="scene" id="n1-s3">
+    <h3><span class="sc">SCENE 3 · THE TURN</span>The gift of foresight<span class="h-cn lang-cn">预见的天赋</span></h3>
+    <p class="lang-en">Animals live in the present. A grunion knows the tides because evolution built the timing into its body — it does not plan nine days ahead. Man does. He can look at a landscape and see what it will become: a field, a house, a road. Bronowski calls this the gift of foresight.</p>
+    <p class="lang-cn">动物活在当下。银汉鱼懂得潮汐，是因为进化把时间算进了它的身体——它不会提前九天做计划。人会。人能看着一片风景，看到它将变成什么：一块田、一座房子、一条路。布朗诺斯基把这叫做预见的天赋。</p>
+    <p class="lang-en">Foresight is not the same as having tools. Many animals use tools — a bird uses a twig, an otter uses a stone. What no other animal does is imagine a future that does not exist yet, and then work, step by step, to bring it into being.</p>
+    <p class="lang-cn">预见不等于有工具。许多动物会用工具——鸟用树枝，水獭用石头。但没有别的动物能想象一个还不存在的未来，然后一步一步把它变成现实。</p>
+    <p class="lang-en">That is why the chapter is called "Lower than the Angels." The title comes from Psalm 8: "Thou hast made him a little lower than the angels, and hast crowned him with glory and honour." Man is not an angel. He is lower. But he is crowned — with a mind that can see ahead.</p>
+    <p class="lang-cn">这就是为什么这一章叫"低于天使"。标题来自《诗篇》第 8 篇："你叫他比天使微小一点，并赐他荣耀尊贵为冠冕。"人不是天使，他更低。但他戴着冠冕——一颗能看到前方的心智。</p>
+    <p class="lang-en">One claim about what makes us human points at tools, one points at foresight. Tap a card to see which — and why.</p>
+    <p class="lang-cn">关于什么让我们成为人，一个说法指向工具，一个指向预见。点开卡片，看哪个是、为什么。</p>
+    <div class="quiz">
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>A.</b> "Man is unique because he makes tools — the hand and the tool are what set him apart from the animals."</div>
+        <div class="lang-cn"><b>A.</b> "人之所以独特，是因为他会制造工具——手和工具就是他和动物的区别。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-bad">Wrong.</span> Many animals use tools. A tool in the hand is not the difference — the difference is the mind that imagines what the tool is for, before it exists. Tools are the product of foresight, not the source of it.</div>
+        <div class="a lang-cn"><span class="verdict-bad">错。</span>许多动物都会用工具。手里的工具不是区别——区别在于那颗在工具存在之前、就想象出它用途的心智。工具是预见的产物，不是预见的来源。</div>
+      </div>
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>B.</b> "Man is unique because he can foresee — imagine a future that does not exist, and reshape the world to reach it."</div>
+        <div class="lang-cn"><b>B.</b> "人之所以独特，是因为他能预见——想象一个还不存在的未来，并重塑世界去抵达它。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-good">Right.</span> Foresight is the gift: the ability to picture what is not yet there and work toward it. Tools follow from it; art follows from it; science follows from it.</div>
+        <div class="a lang-cn"><span class="verdict-good">对。</span>预见就是这份天赋：想象还不存在的东西、并朝着它努力的能力。工具从它而来，艺术从它而来，科学也从它而来。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene" id="n1-s4">
+    <h3><span class="sc">SCENE 4 · THE CONTRAST</span>The head, rebuilt piece by piece<span class="h-cn lang-cn">被一块一块重建的头</span></h3>
+    <p class="lang-en">To trace the ascent back to its beginnings in the animal, Bronowski says, you have to trace the evolution of the head and the skull. The head did not evolve all at once. It evolved as a mosaic — different parts changing at different times, at different speeds.</p>
+    <p class="lang-cn">要把这场攀登追溯回它在动物身上的起点，布朗诺斯基说，就得追溯头和头骨的演化。头不是一下子演化成的，它演化成了一幅马赛克——不同的部分在不同的时间、以不同的速度变化。</p>
+    <p class="lang-en">The snout becomes shorter. The eyes become larger and more widely spaced — forward-facing eyes that judge distance, made for a creature that reaches and grasps. The brain grows, and with it the skull that holds it. Each piece arrives when it is needed, and the pieces fit together into a new kind of animal.</p>
+    <p class="lang-cn">吻部变短了，眼睛变大、间距变宽——朝前看的眼睛，能判断距离，是为一个会伸手、会抓握的生物准备的。大脑长大了，装着它的头骨也跟着长大。每一块都在需要的时候到位，拼在一起，成了一种新的动物。</p>
+    <p class="lang-en">That is the difference between a mosaic and a blueprint. A blueprint is drawn whole, in advance. A mosaic is built piece by piece, and the picture only appears at the end. Evolution had no plan for man — it assembled him, one gift at a time, and foresight was the gift that changed everything.</p>
+    <p class="lang-cn">这就是马赛克和蓝图的区别。蓝图是事先整体画好的，马赛克是一块一块拼起来的，图画要到最后才显现。进化对人没有任何计划——它一次一件天赋地把人组装起来，而预见是改变一切的那件天赋。</p>
+    <p class="lang-en">The proof is in where it began: in Africa, near the equator, in the Great Rift Valley. Bronowski stands there and calls it the navel of the world — the birthplace of man. In a parched landscape like the Omo Valley, man first put his foot to the ground.</p>
+    <p class="lang-cn">证据就在它开始的地方：非洲，赤道附近，东非大裂谷。布朗诺斯基站在那里，称它为世界的肚脐——人的出生地。在奥莫谷那样干裂的风景里，人第一次把脚踩到了地上。</p>
+  </div>
+
+  <div class="scene" id="n1-s5">
+    <h3><span class="sc">SCENE 5 · THE RISE</span>A handprint in a dark cave<span class="h-cn lang-cn">黑暗洞穴里的一只手印</span></h3>
+    <p class="lang-en">The chapter ends in a dark cave in Spain. On the wall, among paintings of animals, there is the print of a human hand — left there in the Ice Age by someone who pressed a hand to the rock and blew pigment around it, so the hand stayed behind as a pale shape on the stone.</p>
+    <p class="lang-cn">这一章结束于西班牙的一座黑暗洞穴。墙上，在动物的画像中间，有一只人手的印记——冰河时代留下的，有人把手按在岩石上，对着它吹颜料，于是手在石头上留下了一个苍白的形状。</p>
+    <p class="lang-en">The paintings were not decoration. Bronowski calls them a peep-hole to the future: the painter was not recording what he saw, but imagining what he would see — the hunt that had not happened yet, the animal he hoped to meet. Art and science, he says, are both expressions of the same gift: the ability to visualise the future.</p>
+    <p class="lang-cn">这些画不是装饰。布朗诺斯基称它们为通向未来的一个小孔：画画的人不是在记录他看到的，而是在想象他将看到的——还没发生的狩猎、他希望遇到的动物。他说，艺术与科学是同一天赋的两种表达：想象未来的能力。</p>
+    <p class="lang-en">That is the whole ascent in one image. A hand, pressed to stone, imagining tomorrow. From the grunion's beach to the Rift Valley to this cave wall, the story is the same: the animal that could not accept the world as it was, and learned to imagine it otherwise.</p>
+    <p class="lang-cn">这就是整场攀登在一幅画面里的样子：一只按在石头上的手，在想象明天。从银汉鱼的海滩到大裂谷再到这面洞穴墙壁，故事是同一个：那种无法接受世界本来样子的动物，学会了想象它别的样子。</p>
+    <p class="lang-en">Next night, the imagining becomes a decision: after the last ice age, man stops wandering and plants wheat. The harvest of the seasons begins.</p>
+    <p class="lang-cn">下一夜，想象变成一个决定：最后一个冰河时代结束后，人停下脚步，种下小麦。季节的收获开始了。</p>
+  </div>
+
+  <div class="takeaway">
+    <h4>TAKEAWAY · 今夜带走三句</h4>
+    <ol>
+      <li><span class="lang-en">Man is not fitted to any environment — his survival kit is crude. What he has instead is imagination, reason, and toughness: the power not to accept the environment, but to change it.</span><span class="t-cn lang-cn">人不适应任何特定的环境——他的生存装备很粗糙。他有的，是想象力、理性和坚韧：不接受环境、而是改变环境的力量。</span></li>
+      <li><span class="lang-en">The gift that sets us apart is foresight: picturing a future that does not exist yet, and working step by step to bring it into being. Tools are the product of foresight, not its source.</span><span class="t-cn lang-cn">让我们与众不同的天赋是预见：想象一个还不存在的未来，并一步一步把它变成现实。工具是预见的产物，不是预见的来源。</span></li>
+      <li><span class="lang-en">Evolution is a mosaic, not a blueprint — and culture is a second evolution: the inventions by which man remakes his world, age after age, are the ascent of man.</span><span class="t-cn lang-cn">进化是马赛克，不是蓝图——而文化是第二次进化：人一代一代重造世界的发明，就是人的攀登。</span></li>
+    </ol>
+  </div>
+
+  <div class="highlights">
+    <h4>HIGHLIGHTS · 十二句重点亮点</h4>
+    <ol>
+      <li><span class="lang-en">The grunion comes up at full moon and lays its eggs above the high-tide mark — nine or ten undisturbed days before the next tide washes them out to sea.</span><span class="cn lang-cn">银汉鱼在满月时上岸，在高潮线以上产卵——在下一波大潮把它们冲回大海之前，有九到十天不受打扰。</span></li>
+      <li><span class="lang-en">Every animal fits its environment like one cog-wheel into another — and is trapped by that fit.</span><span class="cn lang-cn">每种动物都像齿轮一样严丝合缝地嵌进环境——也被这份契合困住。</span></li>
+      <li><span class="lang-en">Man is a singular creature: not a figure in the landscape, but a shaper of the landscape.</span><span class="cn lang-cn">人是一个独特的生物：不是风景中的一个形象，而是风景的塑造者。</span></li>
+      <li><span class="lang-en">In body and in mind he is the explorer of nature — at home on every continent.</span><span class="cn lang-cn">在身体和心智上，他都是自然的探索者——在每个大陆上安家。</span></li>
+      <li><span class="lang-en">The gift is foresight: seeing what a landscape will become, before it becomes it.</span><span class="cn lang-cn">天赋是预见：在一片风景变成什么之前，就看到它将变成什么。</span></li>
+      <li><span class="lang-en">Many animals use tools. No other animal imagines a future that does not exist yet.</span><span class="cn lang-cn">许多动物会用工具，但没有别的动物能想象一个还不存在的未来。</span></li>
+      <li><span class="lang-en">The chapter's title comes from Psalm 8: made "a little lower than the angels, and crowned with glory and honour."</span><span class="cn lang-cn">本章标题来自《诗篇》第 8 篇：人被造得"比天使微小一点，却戴上了荣耀尊贵的冠冕"。</span></li>
+      <li><span class="lang-en">The head evolved as a mosaic — the snout shorter, the eyes larger and wider apart, the brain growing — piece by piece.</span><span class="cn lang-cn">头是一块一块演化成的马赛克——吻部变短、眼睛变大变宽、大脑生长——一件一件拼起来。</span></li>
+      <li><span class="lang-en">It began in Africa, near the equator: the Great Rift Valley, the navel of the world.</span><span class="cn lang-cn">一切始于非洲，赤道附近：东非大裂谷，世界的肚脐。</span></li>
+      <li><span class="lang-en">The Ice Age forced man to follow the herds — to anticipate, and in the end to adopt their wandering migrations. The Lapps still live that way, following the reindeer.</span><span class="cn lang-cn">冰河时代迫使人跟随兽群——去预料、最终去采纳它们的迁徙。拉普人至今仍这样生活，跟着驯鹿走。</span></li>
+      <li><span class="lang-en">Cave paintings are a peep-hole to the future: not a record of what was seen, but an imagining of the hunt to come.</span><span class="cn lang-cn">洞穴壁画是通向未来的一个小孔：不是对所见的记录，而是对将至的狩猎的想象。</span></li>
+      <li><span class="lang-en">Art and science are both expressions of the same gift — the marvellous plasticity of mind that can visualise the future.</span><span class="cn lang-cn">艺术与科学是同一天赋的两种表达——那种能想象未来的、奇妙的可塑的心智。</span></li>
+    </ol>
+  </div>
+
+  <h2 id="n1-check"><span class="en">CHECKPOINT · CAN YOU EXPLAIN IT BACK?</span>检查点 · 能讲回来吗？</h2>
+  <p class="lede lang-en">Your rule: understand it 70–80% before it counts. Three questions — answer them before the next night. Tap to check.</p>
+  <p class="lede lang-cn">你的规则：看懂 7788 才算过。三道题，答得上来再进下一夜。点开对答案。</p>
+  <details class="check"><summary><span class="lang-en">01｜Why is the grunion's story the wrong model for man?</span><span class="lang-cn">01｜为什么银汉鱼的故事不是人的模式？</span></summary>
+    <div class="ans lang-en">The grunion fits the tides exactly — millions of years of evolution shaped it to sit precisely where it sits. That fit is also a trap: it cannot live anywhere else. Man has no such fit; his survival kit is crude. What he has instead is the power to change the environment rather than fit into it.</div>
+    <div class="ans lang-cn">银汉鱼和潮汐咬合得刚刚好——几百万年的进化把它塑造成了恰好坐在那个位置的样子。这份契合也是一个陷阱：它在别处活不下去。人没有这样的契合，他的生存装备很粗糙。他有的，是改变环境、而不是嵌进环境的力量。</div></details>
+  <details class="check"><summary><span class="lang-en">02｜What is foresight, and why is it not the same as using tools?</span><span class="lang-cn">02｜什么是预见？它为什么不等于用工具？</span></summary>
+    <div class="ans lang-en">Foresight is picturing a future that does not exist yet and working toward it. Many animals use tools, but no other animal imagines what is not there. Tools are the product of foresight — the hand follows the mind's picture, not the other way round.</div>
+    <div class="ans lang-cn">预见是想象一个还不存在的未来、并朝着它努力。许多动物会用工具，但没有别的动物能想象不存在的东西。工具是预见的产物——手跟着心里的图画走，而不是反过来。</div></details>
+  <details class="check"><summary><span class="lang-en">03｜What does the handprint in the Spanish cave show about art and science?</span><span class="lang-cn">03｜西班牙洞穴里的手印说明了艺术与科学的什么关系？</span></summary>
+    <div class="ans lang-en">The cave paintings are a peep-hole to the future: the painter imagined the hunt that had not happened yet. Art and science are both expressions of the same gift — visualising the future. The handprint is the first evidence of a mind that could see tomorrow.</div>
+    <div class="ans lang-cn">洞穴壁画是通向未来的一个小孔：画画的人想象了还没发生的狩猎。艺术与科学是同一天赋的两种表达——想象未来。这只手印是一颗能看到明天的心智留下的第一个证据。</div></details>
+
+  <div class="cliff">
+    <span class="next">→ NEXT · NIGHT 2：THE HARVEST OF THE SEASONS</span>
+    <p class="lang-en" style="margin:0">Foresight let man imagine the future — but for ages he still lived by following it: chasing herds, gathering what the seasons gave. Then the ice retreated, and one decision changed everything: stay in one place, and make the land feed you. <b>Next night: The Harvest of the Seasons — agriculture, settled civilisation, and the first towns.</b></p>
+    <p class="lang-cn" style="margin:8px 0 0">预见让人能想象未来——但很长一段时间里，他仍然靠追逐未来活着：追赶兽群、采集四季的馈赠。然后冰退了，一个决定改变了一切：留在一个地方，让土地养活你。<b>下一夜：季节的收获——农业、定居文明与第一批城镇。</b></p>
+  </div>
+
+  <p style="margin-top:22px"><a class="cta" href="#map"><span class="lang-en">Next night → Night 2 · The Harvest of the Seasons (coming soon)</span><span class="lang-cn">下一夜 → 第二夜 · 季节的收获（待续）</span></a></p>
+
+  <footer>
+    <p class="lang-en"><i>The Ascent of Man</i> · Jacob Bronowski · 1973 · BBC Publications (UK) / Little, Brown (US) · 448 pages. This guide is a companion, not a substitute — read it alongside the book for the best effect. Book page: <a href="https://openlibrary.org/books/OL24373028M/The_ascent_of_man">Open Library</a></p>
+    <p class="lang-cn">《The Ascent of Man》· Jacob Bronowski · 1973 · BBC Publications（英国）/ Little, Brown（美国）· 448 页。本指南是伴读，不是替代品——对照书读，效果最好。书页：<a href="https://openlibrary.org/books/OL24373028M/The_ascent_of_man">Open Library</a></p>
+    <p>A reader's guide by Conjurer Lab · AISummoner · Night 1 of 13 · 中英对照</p>
+  </footer>
+
+</div>
+<button class="bm-fab" id="bm-btn" title="夜晚列表：点开跳转任意一夜" onclick="toggleNightList()">🔖</button>
+<div class="bm-menu" id="bm-menu" role="dialog" aria-label="夜晚列表"></div>
+<script>
+  // bookmark: save reading position, resume next visit
+  var BM_KEY = 'ascent-bookmark';
+  var BM_SKIP = {progress:1, 'resume-bar':1, 'resume-text':1, 'bm-btn':1, 'bm-menu':1};
+  // dynamic anchors: every id on the page except the UI chrome above.
+  // New nights (night4, n4-s1...) are picked up automatically, no list to maintain.
+  function anchorEls(){
+    var out = [];
+    document.querySelectorAll('[id]').forEach(function(el){
+      if(!BM_SKIP[el.id]) out.push(el);
+    });
+    return out;
+  }
+  function nearestAnchor(){
+    var y = window.scrollY + 120, best = 'night1';
+    anchorEls().forEach(function(el){
+      if(el.getBoundingClientRect().top + window.scrollY <= y) best = el.id;
+    });
+    return best;
+  }
+  function labelFor(id){
+    var el = document.getElementById(id);
+    if(!el) return id;
+    var h = el.querySelector('h2,h3');
+    if(!h && el.tagName === 'HR'){
+      var n = el.nextElementSibling;
+      while(n && !/^H[23]$/.test(n.tagName)) n = n.nextElementSibling;
+      h = n;
+    }
+    h = h || el;
+    var t = (h.textContent || '').replace(/\s+/g, ' ').trim();
+    return t ? t.slice(0, 42) : id;
+  }
+  function saveBookmark(){
+    var id = nearestAnchor();
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+    var b = document.getElementById('bm-btn');
+    if(b){ b.textContent = '✓'; setTimeout(function(){ b.textContent = '🔖'; }, 1500); }
+  }
+
+  // night list menu: tap 🔖 to see all nights, jump to any published one.
+  // Built from the map rows, so new nights appear automatically, no list to maintain.
+  function currentNightNum(){
+    var id = nearestAnchor();
+    var m = id.match(/^night(\d+)/) || id.match(/^n(\d+)-/);
+    return m ? parseInt(m[1], 10) : 0;
+  }
+  function buildNightMenu(){
+    var menu = document.getElementById('bm-menu');
+    if(!menu) return;
+    var esc = function(t){ return (t || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+    var html = '<h4>全部夜晚 <button onclick="closeNightList()" aria-label="关闭">✕</button></h4>';
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        html += '<button class="bm-row" onclick="goResume(); closeNightList();"><span class="no">上次读到</span><span class="t">' + esc(data.label) + '</span><span class="st">继续 →</span></button>';
+      }
+    }catch(e){}
+    html += '<button class="bm-row" onclick="saveBookmark(); closeNightList();"><span class="no">📌</span><span class="t">收藏此处<small>下次打开直接回到这里</small></span><span class="st">保存</span></button>';
+    var now = currentNightNum();
+    document.querySelectorAll('.map li').forEach(function(li){
+      var no = li.querySelector('.no');
+      var t = li.querySelector('.t');
+      var st = li.querySelector('.st');
+      if(!no || !t) return;
+      var num = parseInt((no.textContent || '').replace(/\D/g, ''), 10) || 0;
+      var done = li.classList.contains('done');
+      var cnEl = t.querySelector('.cn');
+      var cn = cnEl ? cnEl.textContent : '';
+      var title = (t.textContent || '').replace(cn, '').trim();
+      var stTxt = st ? st.textContent.trim() : '';
+      var cls = 'bm-row' + (done ? '' : ' soon') + (num === now && num > 0 ? ' now' : '');
+      var click = done ? ' onclick="goNight(' + num + ')"' : '';
+      html += '<button class="' + cls + '"' + click + '><span class="no">' + esc(no.textContent.trim()) + '</span><span class="t">' + esc(title) + (cn ? '<small>' + esc(cn) + '</small>' : '') + '</span><span class="st">' + esc(stTxt) + '</span></button>';
+    });
+    menu.innerHTML = html;
+  }
+  function goNight(n){
+    closeNightList();
+    var el = document.getElementById('night' + n);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  }
+  function toggleNightList(){
+    var menu = document.getElementById('bm-menu');
+    if(!menu) return;
+    if(menu.classList.contains('open')){ closeNightList(); return; }
+    buildNightMenu();
+    menu.classList.add('open');
+  }
+  function closeNightList(){
+    var menu = document.getElementById('bm-menu');
+    if(menu) menu.classList.remove('open');
+  }
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('bm-menu');
+    if(!menu || !menu.classList.contains('open')) return;
+    var btn = document.getElementById('bm-btn');
+    if(menu.contains(e.target) || (btn && btn.contains(e.target))) return;
+    closeNightList();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeNightList();
+  });
+
+  function showResume(data){
+    var bar = document.getElementById('resume-bar');
+    if(!bar || !data) return;
+    bar.style.display = 'flex';
+    var t = document.getElementById('resume-text');
+    if(t) t.textContent = '上次读到：' + data.label;
+  }
+  function goResume(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        var el = document.getElementById(data.id);
+        if(el) el.scrollIntoView({behavior:'smooth'});
+      }
+    }catch(e){}
+  }
+  function clearBookmark(){
+    try{ localStorage.removeItem(BM_KEY); }catch(e){}
+    lastSaved = '';
+    var bar = document.getElementById('resume-bar');
+    if(bar) bar.style.display = 'none';
+  }
+  // auto-save: reading position follows you, no tap needed.
+  // Only runs after the reader scrolls, so opening the page never clobbers the saved spot.
+  var lastSaved = '';
+  function autoSave(){
+    var id = nearestAnchor();
+    if(id === lastSaved) return;
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+  }
+  var saveTimer = null;
+  window.addEventListener('scroll', function(){
+    if(saveTimer) return;
+    saveTimer = setTimeout(function(){ saveTimer = null; autoSave(); }, 1200);
+  }, {passive:true});
+  window.addEventListener('DOMContentLoaded', function(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data){ showResume(data); if(data.id) lastSaved = data.id; }
+    }catch(e){}
+    if(location.hash){
+      setTimeout(autoSave, 800);
+    }
+  });
+</script>
+<script>
+  // language toggle: bi (both) / en / cn
+  function setLang(m){
+    document.documentElement.setAttribute('data-lang', m);
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-m') === m);
+    });
+  }
+  // progress bar follows scroll
+  var bar = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? (h.scrollTop / max) : 0;
+    bar.style.width = (11 + p * 89) + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+</script>
+</body>
+</html>

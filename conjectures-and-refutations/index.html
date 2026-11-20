@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="bi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《猜想与反驳》二十夜 · Karl Popper 读书指南 | AISummoner</title>
+<meta name="description" content="Karl Popper《Conjectures and Refutations》读书指南，中英对照：608 页拆成二十夜故事，每夜十分钟，读完一夜想知道下一夜发生什么。">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --paper:#F4F1EA; --ink:#141413; --ink-soft:#3a382f; --muted:#7A756C;
+    --terra:#D96548; --amber:#F0A832; --cyan:#0891B2; --line:#E3DCCB;
+    --card:#FBF9F4; --green:#16794F;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC",Georgia,serif; line-height:1.85; font-size:17px;
+    background-image:
+      linear-gradient(rgba(20,20,19,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20,20,19,0.035) 1px, transparent 1px);
+    background-size:28px 28px;
+  }
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--terra); width:5%; z-index:50; transition:width .3s}
+  .wrap{max-width:720px; margin:0 auto; padding:0 20px 80px}
+  .topbar{display:flex; justify-content:space-between; align-items:center; padding:18px 0 8px;
+    font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.14em; color:var(--muted)}
+  .topbar a{color:var(--muted); text-decoration:none}
+  .topbar a:hover{color:var(--terra)}
+  /* language toggle */
+  .lang-toggle{display:flex; gap:6px}
+  .lang-btn{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.08em;
+    border:1px solid var(--line); background:var(--card); color:var(--ink-soft);
+    border-radius:999px; padding:4px 12px; cursor:pointer}
+  .lang-btn.active{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+  /* bilingual: EN first, CN after, CN slightly smaller */
+  [data-lang="en"] .lang-cn{display:none !important}
+  [data-lang="cn"] .lang-en{display:none !important}
+  .lang-cn{font-size:.95em; color:var(--ink-soft)}
+  p.lang-en, p.lang-cn{margin:10px 0}
+  .kicker{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.22em; color:var(--terra); margin:34px 0 10px}
+  h1{font-size:44px; line-height:1.15; margin:0 0 8px; font-weight:700}
+  h1 .en{display:block; font-size:20px; color:var(--muted); font-weight:400; letter-spacing:.04em; margin-top:10px}
+  .sub{font-size:19px; color:var(--ink-soft); margin:14px 0 0}
+  .sub b{color:var(--terra)}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 0}
+  .pill{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; border:1px solid var(--line);
+    border-radius:999px; padding:4px 12px; background:var(--card); color:var(--ink-soft)}
+  .pill.hot{border-color:var(--terra); color:var(--terra)}
+  a.pill{text-decoration:none}
+  a.pill.hot:hover{background:var(--terra); color:var(--paper)}
+  .cta{display:inline-block; margin-top:26px; background:var(--ink); color:var(--paper); text-decoration:none;
+    padding:12px 26px; border-radius:999px; font-size:16px}
+  .cta:hover{background:var(--terra)}
+  hr.sep{border:none; border-top:1px solid var(--line); margin:44px 0}
+  h2{font-size:26px; margin:0 0 6px}
+  h2 .en{display:block; font-size:13px; font-family:"JetBrains Mono",ui-monospace,monospace; letter-spacing:.18em; color:var(--muted); font-weight:400; margin-bottom:6px}
+  .lede{color:var(--ink-soft); margin:0 0 20px}
+  .why{display:grid; gap:12px}
+  .why .row{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px}
+  .why .row b{color:var(--terra)}
+  .why .fix{color:var(--green); font-size:15px; margin-top:4px}
+  .how .step{display:flex; gap:14px; margin:14px 0}
+  .how .n{flex:0 0 30px; height:30px; border-radius:50%; background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:center; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:13px}
+  .map{list-style:none; margin:0; padding:0}
+  .map li{display:flex; gap:14px; padding:13px 4px; border-bottom:1px solid var(--line); align-items:baseline}
+  .map .no{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--muted); flex:0 0 62px}
+  .map .t{font-weight:700}
+  .map .t .cn{color:var(--muted); font-weight:400; font-size:14px; margin-left:6px}
+  .map .hook{color:var(--ink-soft); font-size:15px; line-height:1.6}
+  .map .hook-cn{color:var(--muted); font-size:14px; line-height:1.6}
+  .map .st{margin-left:auto; flex:0 0 auto; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px;
+    border:1px solid var(--terra); color:var(--terra); border-radius:999px; padding:2px 10px; white-space:nowrap}
+  .map .st.soon{border-color:var(--line); color:var(--muted)}
+  .map li.done{background:linear-gradient(90deg, rgba(217,101,72,.07), transparent 70%)}
+  /* Night 1 */
+  .night-tag{display:inline-block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px;
+    letter-spacing:.2em; color:var(--paper); background:var(--terra); border-radius:4px; padding:4px 12px}
+  .scene{margin:30px 0}
+  .scene h3{font-size:21px; margin:0 0 8px}
+  .scene h3 .sc{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--terra); letter-spacing:.16em; display:block; margin-bottom:4px}
+  .scene h3 .h-cn{display:block; font-size:18px; color:var(--muted); font-weight:400; margin-top:2px}
+  .quote{border-left:3px solid var(--amber); background:rgba(240,168,50,.08); padding:14px 18px; margin:18px 0; font-size:16px}
+  .quote .en{font-style:italic}
+  .quote .cn{color:var(--ink-soft); font-size:15px; margin-top:6px}
+  .key{color:var(--terra); font-weight:700}
+  .term{font-weight:700; border-bottom:2px solid rgba(217,101,72,.4)}
+  .quiz{display:grid; gap:12px; margin:16px 0}
+  .qcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; cursor:pointer}
+  .qcard:hover{border-color:var(--terra)}
+  .qcard .a{display:none; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); font-size:15px}
+  .qcard.open .a{display:block}
+  .qcard .tap{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--muted); letter-spacing:.1em}
+  .verdict-bad{color:var(--terra); font-weight:700}
+  .verdict-good{color:var(--green); font-weight:700}
+  .takeaway{background:var(--ink); color:var(--paper); border-radius:12px; padding:20px 22px; margin:26px 0}
+  .takeaway h4{margin:0 0 10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.2em; color:var(--amber)}
+  .takeaway ol{margin:0; padding-left:22px}
+  .takeaway li{margin:8px 0}
+  .takeaway .t-cn{display:block; font-size:15px; color:#D8D2C4; margin-top:2px}
+  .highlights{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:26px 0}
+  .highlights h4{margin:0 0 10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.2em; color:var(--terra)}
+  .highlights ol{margin:0; padding-left:22px}
+  .highlights li{margin:10px 0}
+  .highlights li .lang-en{font-style:italic}
+  .highlights li .cn{display:block; font-size:15px; color:var(--ink-soft); margin-top:2px}
+  details.check{border:1px solid var(--line); border-radius:12px; background:var(--card); padding:14px 18px; margin:10px 0}
+  details.check summary{cursor:pointer; font-weight:700}
+  details.check .ans{margin-top:8px; font-size:15px; color:var(--ink-soft)}
+  .cliff{background:linear-gradient(135deg, rgba(8,145,178,.1), rgba(217,101,72,.08)); border:1px solid var(--line);
+    border-radius:12px; padding:22px; margin:30px 0; font-size:18px}
+  .cliff .next{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.18em; color:var(--cyan); display:block; margin-bottom:8px}
+  footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:14px}
+  footer a{color:var(--terra)}
+  @media (max-width:560px){ h1{font-size:34px} body{font-size:16px} .map .hook{display:block; margin-top:2px} }
+  /* bookmark: resume bar + floating save button */
+  .resume-bar{display:none; background:var(--ink); color:var(--paper);
+    border-radius:10px; padding:8px 12px; margin:12px 0; align-items:center; gap:8px; cursor:pointer; font-size:14px}
+  #resume-text{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; flex:1}
+  .resume-bar .go{color:var(--amber); font-weight:700; white-space:nowrap}
+  .resume-bar .x{margin-left:auto; background:none; border:none; color:#D8D2C4; font-size:16px; cursor:pointer; padding:0 2px}
+  .bm-fab{position:fixed; right:12px; bottom:12px; z-index:60; width:44px; height:44px; border-radius:50%;
+    background:var(--ink); color:var(--paper); border:none; font-size:20px; cursor:pointer;
+    box-shadow:0 4px 16px rgba(0,0,0,.25)}
+  .bm-fab:hover{background:var(--terra)}
+  /* night list menu: tap 🔖 to jump to any night */
+  .bm-menu{display:none; position:fixed; right:12px; top:64px; z-index:70; width:min(340px, calc(100vw - 24px));
+    max-height:min(70vh, 560px); overflow-y:auto; background:var(--paper); color:var(--ink);
+    border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,.28); padding:6px 0}
+  .bm-menu.open{display:block}
+  .bm-menu h4{margin:6px 16px 4px; font-size:13px; letter-spacing:.14em; color:var(--muted); display:flex; justify-content:space-between; align-items:center}
+  .bm-menu h4 button{background:none; border:none; font-size:16px; cursor:pointer; color:var(--muted); padding:2px 6px}
+  .bm-row{display:flex; gap:10px; align-items:baseline; width:100%; text-align:left; background:none; border:none;
+    padding:10px 16px; font-size:15px; font-family:inherit; color:var(--ink); cursor:pointer; border-top:1px solid var(--line)}
+  .bm-row:hover{background:rgba(217,101,72,.07)}
+  .bm-row .no{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--muted); flex:0 0 62px}
+  .bm-row .t{flex:1; min-width:0}
+  .bm-row .t small{display:block; color:var(--muted); font-size:12px; margin-top:1px}
+  .bm-row .st{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--terra); white-space:nowrap}
+  .bm-row.soon{opacity:.55; cursor:default}
+  .bm-row.soon:hover{background:none}
+  .bm-row.soon .st{color:var(--muted)}
+  .bm-row.now{background:rgba(217,101,72,.07)}
+  .bm-row.now .no{color:var(--terra); font-weight:700}
+  .map li.done{cursor:pointer}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/">← AISUMMONER</a>
+    <span class="lang-toggle">
+      <button class="lang-btn active" data-m="bi" onclick="setLang('bi')">中英</button>
+      <button class="lang-btn" data-m="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-m="cn" onclick="setLang('cn')">中文</button>
+    </span>
+    <span>NIGHT 1 / 20</span>
+  </div>
+
+  <div class="resume-bar" id="resume-bar" onclick="goResume()">
+    <span>📖</span><span id="resume-text"></span><span class="go">继续 →</span>
+    <button class="x" title="清除书签" onclick="event.stopPropagation(); clearBookmark()">✕</button>
+  </div>
+
+  <div class="kicker">KARL POPPER · 1963 · A READER'S GUIDE · 中英对照</div>
+  <h1>《猜想与反驳》二十夜<span class="en">Conjectures and Refutations, in twenty nights</span></h1>
+  <p class="sub lang-en">You own this book, but you couldn't finish it — <b>that's not your fault</b>. 608 pages, 20 chapters, dense philosophical argument, no stories, and terms like falsifiability that nobody explains as they go. This site retells the book as twenty nights of stories, ten minutes a night. Finish one night, and you'll want to know what happens the next.</p>
+  <p class="sub lang-cn">你手里有这本书，却读不下去——<b>不是你的问题</b>。608 页，20 章，密集的哲学论证，零故事，可证伪性这样的术语出现时没人顺手解释。这站把书写成二十夜故事，每夜十分钟，读完一夜，你会想知道下一夜发生什么。</p>
+  <div class="meta">
+    <span class="pill">608 pages</span><span class="pill">20 chapters</span>
+    <a class="pill hot" href="#night1">Night 1 · 今夜可读</a><span class="pill">一夜一章 · 每夜 10 分钟</span>
+    <span class="pill">中英对照 · EN / 中文</span>
+  </div>
+  <a class="cta" href="#night1"><span class="lang-en">Start Night 1 ↓</span><span class="lang-cn">开始第一夜 ↓</span></a>
+
+  <hr class="sep">
+
+  <h2><span class="en">WHY YOU STOPPED</span>为什么读不下去</h2>
+  <p class="lede lang-en">First, let's be clear: not finishing it isn't a willpower problem. It's a problem with how the book is written.</p>
+  <p class="lede lang-cn">先说清楚：读不下去不是意志力问题，是这本书的写法问题。</p>
+  <div class="why">
+    <div class="row">
+      <div class="lang-en"><b>01｜Dense argument, no stories.</b> It opens with the demarcation problem, induction, metaphysics — long essays of pure reasoning, no people, no scenes, nothing for the brain to hold on to.</div>
+      <div class="lang-cn"><b>01｜论证太密，没有故事。</b>一上来就是划界问题、归纳、形而上学——长篇纯推理，没有人物，没有场景，大脑抓不住。</div>
+      <div class="fix lang-en">→ fix: every night starts with a story. Tonight: Vienna, 1919, and four famous theories.</div>
+      <div class="fix lang-cn">→ fix：每一夜从一个故事开始。今夜：1919 年的维也纳，四个著名理论。</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>02｜The key terms arrive unexplained.</b> Falsifiability, corroboration, demarcation — Popper uses them like tools, but nobody hands you the tools first, so each page feels like a locked door.</div>
+      <div class="lang-cn"><b>02｜关键术语没人先讲清楚。</b>可证伪性、确证、划界——波普尔把它们当工具使，可没人先把工具递到你手里，每页都像一扇锁着的门。</div>
+      <div class="fix lang-en">→ fix: every term is introduced in the story, in English, with its Chinese meaning beside it. Tonight: conjecture, refutation, falsifiability.</div>
+      <div class="fix lang-cn">→ fix：每个术语都在故事里出现，英文原文加中文意思。今夜：猜想、反驳、可证伪性。</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>03｜Too long, no end in sight.</b> 608 pages like a wall — by page 30 you want to quit.</div>
+      <div class="lang-cn"><b>03｜太长，看不到头。</b>608 页像一堵墙，翻到第 30 页就想放弃。</div>
+      <div class="fix lang-en">→ fix: a map of 20 nights, ten minutes each, progress you can see. Finish tonight and you're 1/20 done.</div>
+      <div class="fix lang-cn">→ fix：20 夜地图，每夜十分钟，进度看得见。今夜读完，你就走了 1/20。</div>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <h2><span class="en">HOW IT WORKS</span>读法</h2>
+  <div class="how">
+    <div class="step"><div class="n">1</div><div><div class="lang-en"><b>One night, one chapter.</b> Ten minutes each, no greed.</div><div class="lang-cn"><b>一夜一章。</b>每夜只读一章的内容，十分钟，不贪多。</div></div></div>
+    <div class="step"><div class="n">2</div><div><div class="lang-en"><b>Every night ends on a cliffhanger.</b> Like One Thousand and One Nights — the story stops at the crucial moment, and the answer comes next night.</div><div class="lang-cn"><b>每夜结尾一个悬念。</b>像一千零一夜一样——故事讲到最关键处停住，下一夜才揭晓。</div></div></div>
+    <div class="step"><div class="n">3</div><div><div class="lang-en"><b>Pass the checkpoint before the next night.</b> Three questions; answer them before moving on. That's your rule: understand it 70–80% before it counts.</div><div class="lang-cn"><b>先过检查点，再进下一夜。</b>三道题，答得上来再往下走。这是你的规则：看懂 7788 才算过。</div></div></div>
+    <div class="step"><div class="n">4</div><div><div class="lang-en"><b>English terms stay in English.</b> Conjecture, refutation, falsifiability, corroboration, demarcation — these words look the same in the book, so you can find them there.</div><div class="lang-cn"><b>英文术语保留原文。</b>猜想、反驳、可证伪性、确证、划界——这些词在书里就是这个样子，对照书找得到。</div></div></div>
+  </div>
+
+  <hr class="sep">
+
+  <h2 id="map"><span class="en">THE MAP · 20 NIGHTS</span>二十夜地图</h2>
+  <p class="lede lang-en">All 20 chapters, one night each. One lamp is lit tonight.</p>
+  <p class="lede lang-cn">全书 20 章，一章一夜。今夜亮起一盏灯。</p>
+  <ol class="map">
+    <li class="done" onclick="location.hash='#night1'"><span class="no">NIGHT 01</span><span><span class="t">Science: Conjectures and Refutations<span class="cn">科学：猜想与反驳</span></span><span class="hook lang-en">When is a theory scientific? Vienna, 1919 — Einstein risks everything, the others risk nothing.</span><span class="hook-cn lang-cn">一个理论什么时候才算科学？1919 年的维也纳——爱因斯坦赌上一切，另外三个什么都不赌。</span></span><span class="st">今夜可读</span></li>
+    <li><span class="no">NIGHT 02</span><span><span class="t">The Nature of Philosophical Problems and their Roots in Science<span class="cn">哲学问题的本质及其在科学中的根源</span></span><span class="hook lang-en">Where do philosophical problems come from — and why do they grow out of science?</span><span class="hook-cn lang-cn">哲学问题从哪来——为什么它们生长于科学之中？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 03</span><span><span class="t">Three Views Concerning Human Knowledge<span class="cn">关于人类知识的三种观点</span></span><span class="hook lang-en">Three rival pictures of what knowledge is — and why only one of them survives criticism.</span><span class="hook-cn lang-cn">关于知识是什么的三种对立图景——为什么只有一种经得起批评？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 04</span><span><span class="t">Towards a Rational Theory of Tradition<span class="cn">走向传统的理性理论</span></span><span class="hook lang-en">Tradition is not the enemy of reason — it is the raw material reason works on.</span><span class="hook-cn lang-cn">传统不是理性的敌人，而是理性加工的原材料。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 05</span><span><span class="t">Back to the Presocratics<span class="cn">回到前苏格拉底</span></span><span class="hook lang-en">The first philosophers invented criticism — and with it, the whole tradition of science.</span><span class="hook-cn lang-cn">最早的哲学家发明了批评——也随之发明了整个科学传统。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 06</span><span><span class="t">A Note on Berkeley as Precursor of Mach and Einstein<span class="cn">贝克莱作为马赫和爱因斯坦先驱的札记</span></span><span class="hook lang-en">A bishop's strange idea about what exists — and how it anticipated modern physics.</span><span class="hook-cn lang-cn">一位主教关于存在是什么的奇怪想法——它如何预示了现代物理学。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 07</span><span><span class="t">Kant's Critique and Cosmology<span class="cn">康德的批判与宇宙论</span></span><span class="hook lang-en">Kant tried to save Newton from Hume — and opened the road to a new cosmology.</span><span class="hook-cn lang-cn">康德想把牛顿从休谟手里救出来——却打开了一条通向新宇宙论的路。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 08</span><span><span class="t">On the Status of Science and of Metaphysics<span class="cn">科学和形而上学的地位</span></span><span class="hook lang-en">Metaphysics is not nonsense — some of it is the seed from which science grows.</span><span class="hook-cn lang-cn">形而上学不是胡话——其中一些是科学赖以生长的种子。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 09</span><span><span class="t">Why are the Calculi of Logic and Arithmetic Applicable to Reality?<span class="cn">为什么逻辑和算术的演算适用于现实？</span></span><span class="hook lang-en">Why does mathematics, invented in the head, fit the world outside it?</span><span class="hook-cn lang-cn">为什么头脑里发明的数学，恰好合上了外面的世界？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 10</span><span><span class="t">Truth, Rationality, and the Growth of Scientific Knowledge<span class="cn">真理、合理性和科学知识的增长</span></span><span class="hook lang-en">Can we get closer to the truth without ever knowing we have arrived?</span><span class="hook-cn lang-cn">我们能在不知道自己到了的情况下，离真理越来越近吗？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 11</span><span><span class="t">The Demarcation Between Science and Metaphysics<span class="cn">科学和形而上学之间的划界</span></span><span class="hook lang-en">The line from Night 1, drawn again — this time between science and metaphysics.</span><span class="hook-cn lang-cn">第一夜划的那条线，这次划在科学与形而上学之间。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 12</span><span><span class="t">Language and the Body-Mind Problem<span class="cn">语言和身心问题</span></span><span class="hook lang-en">How does language trap us into thinking mind and body are two different things?</span><span class="hook-cn lang-cn">语言如何把我们困住，让我们以为心灵和身体是两种东西？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 13</span><span><span class="t">A Note on the Body-Mind Problem<span class="cn">关于身心问题的札记</span></span><span class="hook lang-en">A short note that sharpens the problem — and the way out of it.</span><span class="hook-cn lang-cn">一篇短札记，把问题磨得更锋利——也把出路指得更清楚。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 14</span><span><span class="t">Self-Reference and Meaning in Ordinary Language<span class="cn">日常语言中的自我指涉和意义</span></span><span class="hook lang-en">Sentences that talk about themselves — where ordinary language ties itself in knots.</span><span class="hook-cn lang-cn">谈论自身的句子——日常语言把自己打结的地方。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 15</span><span><span class="t">What is Dialectic?<span class="cn">什么是辩证法？</span></span><span class="hook lang-en">Thesis, antithesis, synthesis — is dialectic a method, or a mirage?</span><span class="hook-cn lang-cn">正题、反题、合题——辩证法是一种方法，还是一场幻觉？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 16</span><span><span class="t">Prediction and Prophecy in the Social Sciences<span class="cn">社会科学中的预测和预言</span></span><span class="hook lang-en">Can the social sciences predict the future — or only prophesy it?</span><span class="hook-cn lang-cn">社会科学能预测未来，还是只能预言未来？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 17</span><span><span class="t">Public Opinion and Liberal Principles<span class="cn">舆论和自由主义原则</span></span><span class="hook lang-en">What public opinion can and cannot decide — and what liberalism must protect from it.</span><span class="hook-cn lang-cn">舆论能决定什么、不能决定什么——自由主义必须保护什么不受它左右。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 18</span><span><span class="t">Utopia and Violence<span class="cn">乌托邦和暴力</span></span><span class="hook lang-en">Why the dream of a perfect society so often ends in violence.</span><span class="hook-cn lang-cn">为什么完美社会的梦想常常以暴力收场。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 19</span><span><span class="t">The History of Our Time: An Optimist's View<span class="cn">我们时代的历史：一个乐观主义者的看法</span></span><span class="hook lang-en">Against the despair of his century, Popper argues history is on our side.</span><span class="hook-cn lang-cn">面对他那个世纪的绝望，波普尔论证历史站在我们这边。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 20</span><span><span class="t">Humanism and Reason<span class="cn">人道主义和理性</span></span><span class="hook lang-en">The book's closing case: reason is not cold — it is the humanist's faith.</span><span class="hook-cn lang-cn">全书的收束：理性不是冷冰冰的——它是人道主义者的信念。</span></span><span class="st soon">待续</span></li>
+  </ol>
+
+  <hr class="sep" id="night1">
+
+  <span class="night-tag">NIGHT 01 · 第一夜</span>
+  <h2 style="margin-top:14px"><span class="en">CHAPTER 1 · SCIENCE: CONJECTURES AND REFUTATIONS</span>科学：猜想与反驳</h2>
+  <p class="lede lang-en">Tonight answers just one question: <b>when should a theory be called scientific?</b> The answer starts in Vienna in 1919, with four famous theories — and ends with a test any theory must pass.</p>
+  <p class="lede lang-cn">今夜只回答一个问题：<b>一个理论什么时候才算科学？</b>答案从 1919 年的维也纳开始——四个著名理论——到一个任何理论都必须通过的检验结束。</p>
+
+  <div class="scene" id="n1-s1">
+    <h3><span class="sc">SCENE 1 · OPENING</span>Vienna, 1919<span class="h-cn lang-cn">维也纳，1919 年</span></h3>
+    <p class="lang-en">In the autumn of 1919, a young Karl Popper in Vienna had a problem. Not "when is a theory true?" — a harder question: <b>"when should a theory be ranked as scientific?"</b> He knew science often gets things wrong, and that a pseudoscience might sometimes stumble on the truth. So truth could not be the test. Something else had to draw the line.</p>
+    <p class="lang-cn">1919 年秋天，维也纳的年轻卡尔·波普尔遇到了一个问题。不是"理论什么时候为真？"——而是更难的问题：<b>"一个理论什么时候才算科学？"</b>他知道科学常常犯错，也知道伪科学有时会碰巧说对。所以"真"不能是标准，必须有别的东西来划这条线。</p>
+    <p class="lang-en">Four theories filled the air around him. The first was Einstein's theory of relativity — the most important of the four, in Popper's eyes. The other three were Marx's theory of history, Freud's psychoanalysis, and Alfred Adler's "individual psychology." All four had passionate followers. All four claimed to explain the world. And yet Popper felt they were not the same kind of thing at all.</p>
+    <p class="lang-cn">他周围有四个理论。第一个是爱因斯坦的相对论——在波普尔眼里，这是四个里最重要的。另外三个是马克思的历史理论、弗洛伊德的精神分析，和阿尔弗雷德·阿德勒的"个体心理学"。四个理论都有狂热的追随者，都宣称能解释世界。可波普尔觉得，它们根本不是同一种东西。</p>
+    <p class="lang-en">This chapter is the story of that feeling — how a young man in Vienna turned an unease into a criterion, and how that criterion became the most famous idea in the philosophy of science. The chapter began as a lecture Popper gave at Peterhouse, Cambridge, in the summer of 1953, looking back on a question he had carried since 1919.</p>
+    <p class="lang-cn">这一章讲的就是这种感觉的故事——维也纳的一个年轻人，如何把一种不安变成一条标准，而这条标准又如何成了科学哲学里最著名的思想。本章源于波普尔 1953 年夏天在剑桥彼得学院的一场讲座，回望他自 1919 年起就带着的那个问题。</p>
+  </div>
+
+  <div class="scene" id="n1-s2">
+    <h3><span class="sc">SCENE 2 · THE STORY</span>Four theories, one puzzle<span class="h-cn lang-cn">四个理论，一个谜</span></h3>
+    <p class="lang-en">Start with Einstein. His theory of gravitation predicted something strange: light from a distant star, passing close to the sun, should bend — pulled by gravity, just as material bodies are pulled. In 1919, Arthur Eddington led an eclipse expedition to test it. During a total solar eclipse, the sun's light is blocked, and stars near the sun become visible. If their apparent positions had shifted by the amount Einstein predicted, the theory survived. If not, it fell.</p>
+    <p class="lang-cn">先看爱因斯坦。他的引力理论预言了一件奇怪的事：遥远恒星的光经过太阳附近时应该弯曲——像物质受引力拉扯一样受引力拉扯。1919 年，亚瑟·爱丁顿率领一次日食远征队去检验它。日全食时太阳光被遮住，太阳附近的星星变得可见。如果它们的视位置移动了爱因斯坦预言的量，理论就活下来了；如果没有，理论就倒了。</p>
+    <p class="lang-en">The result thrilled Popper's whole circle of students: the light bent, as predicted. But notice what impressed Popper. It was not that Einstein was "proved right." It was that Einstein had <b>taken a risk</b>. His theory forbade certain outcomes. It could have failed — and everybody knew exactly what failure would look like.</p>
+    <p class="lang-cn">结果让波普尔身边的整个学生圈子都激动了：光弯曲了，和预言的一样。但注意，真正打动波普尔的不是爱因斯坦"被证明是对的"，而是爱因斯坦<b>冒了险</b>。他的理论禁止了某些结果，它本可能失败——而且每个人都知道失败会是什么样子。</p>
+    <p class="lang-en">Now the other three. Their followers, Popper noticed, were impressed by the opposite thing: apparent explanatory power. A Marxist could find class struggle in every newspaper. A Freudian could explain any human behaviour — a man who drowns a child, and a man who saves a child, both "prove" the theory, one by one mechanism and the other by another. Adler's followers could do the same with any case at all.</p>
+    <p class="lang-cn">再看另外三个。波普尔注意到，它们的追随者恰恰为相反的东西着迷：表面上的解释力。马克思主义者能在每份报纸里找到阶级斗争；弗洛伊德主义者能解释任何人类行为——一个淹死孩子的男人和一个救起孩子的男人，都能"证明"理论，一个用一种机制，另一个用另一种。阿德勒的追随者对任何案例都能这样。</p>
+    <p class="lang-en">Every event confirmed them. No event could ever refute them. And that, Popper began to suspect, was not strength. It was the giveaway.</p>
+    <p class="lang-cn">每一件事都证实它们，没有任何事能反驳它们。而波普尔开始怀疑，这不是力量，而是破绽。</p>
+  </div>
+
+  <div class="scene" id="n1-s3">
+    <h3><span class="sc">SCENE 3 · THE TURN</span>Explaining everything explains nothing<span class="h-cn lang-cn">解释一切等于什么都没解释</span></h3>
+    <p class="lang-en">Here is the turn. The accepted wisdom of Popper's day said science is distinguished by its empirical method: observe, then infer — induction. Popper said that answer missed the real difference. The real difference was this: a scientific theory is one that <b>can be refuted</b>. He called this property <span class="term">falsifiability</span>: a theory is scientific only if some conceivable observation could prove it wrong.</p>
+    <p class="lang-cn">转折在这里。波普尔那个时代的通行说法是：科学靠的是经验方法——观察，然后归纳。但波普尔说，这个答案错过了真正的差别。真正的差别是：一个科学理论是<b>可以被反驳的</b>。他把这种性质叫做<span class="term">falsifiability（可证伪性）</span>：一个理论是科学的，当且仅当某种可以想象的观察能够证明它是错的。</p>
+    <p class="lang-en">That flips the usual instinct upside down. We tend to think a good theory is one with lots of confirmations. Popper's first conclusions say the opposite: it is easy to obtain confirmations for nearly every theory, if you look for them. Confirmations only count when they result from <span class="term">risky predictions</span> — predictions that would have refuted the theory if they had come out differently. Easy confirmations are worthless; a genuine test is a serious but unsuccessful attempt to falsify the theory.</p>
+    <p class="lang-cn">这把通常的直觉整个翻了过来。我们总以为好理论就是有很多证实的理论，波普尔的结论却说相反：只要你去找，几乎每个理论都能轻易得到证实。证实只有在来自<span class="term">risky predictions（冒险的预言）</span>时才算数——那些如果结果不同就会反驳理论的预言。轻易的证实一文不值；真正的检验，是一次认真却未能证伪理论的尝试。</p>
+    <p class="lang-en">And a theory that cannot be refuted by any conceivable event is not scientific. Irrefutability is not a virtue — it is a vice. That is the demarcation criterion: not a test of truth, not a test of meaning, but a line between science and pseudoscience. One claim about what makes a theory scientific is right, and one is the common mistake. Tap a card to see which — and why.</p>
+    <p class="lang-cn">而一个不能被任何可以想象的事件反驳的理论，不是科学。不可反驳不是优点，是缺点。这就是划界标准：不是检验真理，也不是检验意义，而是科学和伪科学之间的分界线。关于什么让理论成为科学，有一个说法是对的，一个是常见的错误。点开卡片，看哪个是、为什么。</p>
+    <div class="quiz">
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>A.</b> "A theory is scientific because it has been confirmed many times — the more evidence in its favour, the more scientific it is."</div>
+        <div class="lang-cn"><b>A.</b> "一个理论是科学的，因为它被证实过很多次——支持它的证据越多，它就越科学。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-bad">Wrong.</span> It is easy to obtain confirmations for nearly every theory, if you look for them — Marxists, Freudians and Adlerians all found confirmations everywhere. Confirmations count only when they come from risky predictions, from a genuine attempt to falsify the theory.</div>
+        <div class="a lang-cn"><span class="verdict-bad">错。</span>只要你去找，几乎每个理论都能轻易得到证实——马克思主义者、弗洛伊德主义者、阿德勒主义者到处都找到证实。证实只有来自冒险的预言、来自一次真正想证伪理论的尝试时，才算数。</div>
+      </div>
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>B.</b> "A theory is scientific if it forbids some possible observations — if it takes a risk, so that a conceivable event could prove it wrong."</div>
+        <div class="lang-cn"><b>B.</b> "一个理论是科学的，如果它禁止某些可能发生的观察——如果它冒了险，让某个可以想象的事件能够证明它是错的。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-good">Right.</span> That is falsifiability, Popper's criterion of demarcation. Einstein's theory was scientific because it said light must bend — and if the light had not bent, the theory would have fallen. A theory that explains everything forbids nothing, so nothing can ever test it.</div>
+        <div class="a lang-cn"><span class="verdict-good">对。</span>这就是可证伪性，波普尔的划界标准。爱因斯坦的理论是科学的，因为它说光必须弯曲——如果光没有弯曲，理论就倒了。一个解释一切的理论什么都不禁止，所以什么都检验不了它。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene" id="n1-s4">
+    <h3><span class="sc">SCENE 4 · THE CONTRAST</span>Risky predictions vs. easy confirmations<span class="h-cn lang-cn">冒险的预言 vs. 轻易的证实</span></h3>
+    <p class="lang-en">Put the two kinds of theory side by side. Einstein's theory made a prediction so precise that a single expedition could have killed it: the light must bend by a specific amount. That is what a scientific theory looks like — a <span class="term">prohibition</span>. Every good scientific theory is a prohibition: it forbids certain things to happen.</p>
+    <p class="lang-cn">把两种理论并排放在一起。爱因斯坦的理论做了一个精确到一次远征就能杀死它的预言：光必须弯曲一个特定的量。这就是科学理论的样子——一个<span class="term">prohibition（禁令）</span>。每一个好的科学理论都是一条禁令：它禁止某些事情发生。</p>
+    <p class="lang-en">Marxism and psychoanalysis, as Popper saw them practised, did the opposite. When events seemed to contradict them, their followers did not abandon the theory — they reinterpreted the event, or added a saving assumption, until the theory fit again. A theory rescued this way, Popper argued, loses its scientific status: each rescue makes it explain more and forbid less. The followers' attitude was <span class="term">dogmatic</span> — seek confirmation, resist revision — while science needs the <span class="term">critical attitude</span>: seek tests, admit doubt, and be ready to change your mind.</p>
+    <p class="lang-cn">而马克思主义和精神分析，在波普尔看到的实践中恰恰相反。当事件似乎与它们矛盾时，追随者不是放弃理论，而是重新解释事件、或加一个挽救性假设，直到理论重新合上。波普尔认为，这样被挽救的理论失去了科学地位：每一次挽救都让它解释得更多、禁止得更少。追随者的态度是<span class="term">dogmatic（教条的）</span>——寻求证实、抗拒修正；而科学需要<span class="term">critical attitude（批判的态度）</span>：寻求检验、承认怀疑、随时准备改变主意。</p>
+    <p class="lang-en">This also changes what "support" means. A theory that survives severe tests has not been proved true — Popper insists no number of confirmations can prove a theory. It has been <span class="term">corroborated</span>: it has stood up to serious attempts to knock it down. Corroboration is not confirmation. Confirmation asks "how much evidence agrees with me?" Corroboration asks "how hard did I try to be wrong — and survive?"</p>
+    <p class="lang-cn">这也改变了"支持"的意思。一个经受住严厉检验的理论并没有被证明为真——波普尔坚持说，再多的证实也证明不了一个理论。它只是被<span class="term">corroborated（确证了）</span>：它挺过了一次次认真的击倒尝试。确证不是证实。证实问的是"有多少证据赞同我？"，确证问的是"我多努力地想证明自己错了——还活了下来？"</p>
+    <p class="lang-en">So the same word, "confirmed," can mean two opposite things: an easy confirmation that cost the theory nothing, or a risky survival that cost it everything it risked. Only the second one counts.</p>
+    <p class="lang-cn">所以同一个词"被证实"，可以是两种相反的东西：一次没让理论付出任何代价的轻易证实，或一次让它赌上一切的冒险幸存。只有第二种算数。</p>
+  </div>
+
+  <div class="scene" id="n1-s5">
+    <h3><span class="sc">SCENE 5 · THE RISE</span>Science begins with myths<span class="h-cn lang-cn">科学始于神话</span></h3>
+    <p class="lang-en">Where do theories come from? Popper's answer is blunt: there is no recipe. Scientists make them up — bold guesses, <span class="term">conjectures</span>, often born from myths, dreams, and hunches. Science does not begin with careful observations piling up into theories. It begins with a myth, and then with its <span class="term">critical discussion</span>.</p>
+    <p class="lang-cn">理论从哪来？波普尔的回答很直白：没有配方。科学家是编出来的——大胆的猜测、<span class="term">conjectures（猜想）</span>，常常来自神话、梦境和直觉。科学不是从小心翼翼的观察堆积成理论开始的，而是从一个神话、然后从对它的<span class="term">critical discussion（批判性讨论）</span>开始的。</p>
+    <p class="lang-en">That is the method of the whole book, and the meaning of its title: knowledge grows by conjecture and refutation — trial and error. Propose boldly, try hard to show you are wrong, and tentatively keep whatever survives. A theory that survives is not "true forever"; it is the best guess we have, until a better guess and a sharper test come along.</p>
+    <p class="lang-cn">这就是整本书的方法，也是书名的含义：知识靠猜想与反驳生长——试错。大胆提出，努力证明自己错了，暂时保留活下来的东西。活下来的理论不是"永远为真"，而是我们目前最好的猜测，直到更好的猜测和更锋利的检验出现。</p>
+    <p class="lang-en">So tonight's question has an answer you can carry into every chapter that follows: ask not "what confirms this theory?" but "what would refute it — and has anyone honestly tried?" If nothing could refute it, you are not looking at science. You are looking at something else wearing science's clothes. And the next chapter asks where such questions themselves come from: what is a philosophical problem, and why does it grow out of science?</p>
+    <p class="lang-cn">所以今夜的问题有了一个可以带进后面每一章的答案：不要问"什么证实了这个理论？"，要问"什么能反驳它——有人诚实地试过吗？"如果什么都反驳不了它，你看的就不是科学，而是穿着科学衣服的别的东西。而下一章问的是，这类问题本身从哪来：什么是哲学问题，为什么它生长于科学之中？</p>
+  </div>
+
+  <div class="takeaway">
+    <h4>TAKEAWAY · 今夜带走三句</h4>
+    <ol>
+      <li><span class="lang-en">A theory is scientific not because it is confirmed, but because it can be refuted — falsifiability is the line between science and pseudoscience.</span><span class="t-cn lang-cn">一个理论是科学的，不是因为它被证实，而是因为它能被反驳——可证伪性是科学与伪科学的分界线。</span></li>
+      <li><span class="lang-en">Confirmations count only when they come from risky predictions — easy confirmations are worthless.</span><span class="t-cn lang-cn">证实只有来自冒险的预言时才算数——轻易的证实一文不值。</span></li>
+      <li><span class="lang-en">Knowledge grows by conjecture and refutation: bold guesses, severe tests, and whatever survives — tentatively.</span><span class="t-cn lang-cn">知识靠猜想与反驳生长：大胆猜测、严厉检验、活下来的东西——暂时保留。</span></li>
+    </ol>
+  </div>
+
+  <div class="highlights">
+    <h4>HIGHLIGHTS · 十二句重点亮点</h4>
+    <ol>
+      <li><span class="lang-en">Popper's question since the autumn of 1919: "When should a theory be ranked as scientific?" — not "when is it true?"</span><span class="cn lang-cn">波普尔自 1919 年秋天起的问题："一个理论什么时候才算科学？"——不是"它什么时候为真？"</span></li>
+      <li><span class="lang-en">Science often errs, and pseudoscience may sometimes stumble on the truth — so truth cannot be the test.</span><span class="cn lang-cn">科学常常犯错，伪科学有时也会碰巧说对——所以"真"不能是标准。</span></li>
+      <li><span class="lang-en">Four theories filled Vienna in 1919: Einstein's relativity, Marx's theory of history, Freud's psychoanalysis, and Adler's individual psychology.</span><span class="cn lang-cn">1919 年的维也纳有四个理论：爱因斯坦的相对论、马克思的历史理论、弗洛伊德的精神分析、阿德勒的个体心理学。</span></li>
+      <li><span class="lang-en">Eddington's 1919 eclipse expedition tested Einstein's prediction that light bends near the sun — and the light bent, as predicted.</span><span class="cn lang-cn">爱丁顿 1919 年的日食远征检验了爱因斯坦的预言：光经过太阳附近会弯曲——光弯曲了，和预言的一样。</span></li>
+      <li><span class="lang-en">What impressed Popper was not that Einstein was proved right, but that he had taken a risk — his theory could have failed, and everyone knew what failure would look like.</span><span class="cn lang-cn">打动波普尔的不是爱因斯坦被证明是对的，而是他冒了险——他的理论本可能失败，而且每个人都知道失败会是什么样子。</span></li>
+      <li><span class="lang-en">A Marxist saw class struggle in every newspaper; a Freudian could explain any behaviour — every event confirmed them, and no event could refute them.</span><span class="cn lang-cn">马克思主义者在每份报纸里看到阶级斗争，弗洛伊德主义者能解释任何行为——每一件事都证实它们，没有任何事能反驳它们。</span></li>
+      <li><span class="lang-en">Falsifiability: a theory is scientific only if some conceivable observation could prove it wrong.</span><span class="cn lang-cn">可证伪性：一个理论是科学的，当且仅当某种可以想象的观察能够证明它是错的。</span></li>
+      <li><span class="lang-en">It is easy to obtain confirmations for nearly every theory, if you look for them — easy confirmations are worthless.</span><span class="cn lang-cn">只要你去找，几乎每个理论都能轻易得到证实——轻易的证实一文不值。</span></li>
+      <li><span class="lang-en">Every good scientific theory is a prohibition: it forbids certain things to happen.</span><span class="cn lang-cn">每一个好的科学理论都是一条禁令：它禁止某些事情发生。</span></li>
+      <li><span class="lang-en">A theory rescued by reinterpretation loses scientific status: each rescue makes it explain more and forbid less.</span><span class="cn lang-cn">靠重新解释挽救的理论会失去科学地位：每一次挽救都让它解释得更多、禁止得更少。</span></li>
+      <li><span class="lang-en">Corroboration is not confirmation: a theory is corroborated when it survives severe attempts to refute it — not when evidence merely agrees with it.</span><span class="cn lang-cn">确证不是证实：理论在挺过严厉的反驳尝试后才被确证——不是在证据仅仅赞同它时。</span></li>
+      <li><span class="lang-en">Science begins with myths and their critical discussion — bold conjectures, tried hard, kept only tentatively.</span><span class="cn lang-cn">科学始于神话及其批判性讨论——大胆的猜想，努力检验，暂时保留。</span></li>
+    </ol>
+  </div>
+
+  <h2 id="n1-check"><span class="en">CHECKPOINT · CAN YOU EXPLAIN IT BACK?</span>检查点 · 能讲回来吗？</h2>
+  <p class="lede lang-en">Your rule: understand it 70–80% before it counts. Three questions — answer them before the next night. Tap to check.</p>
+  <p class="lede lang-cn">你的规则：看懂 7788 才算过。三道题，答得上来再进下一夜。点开对答案。</p>
+  <details class="check"><summary><span class="lang-en">01｜Why did Einstein's theory impress Popper more than Marxism or psychoanalysis?</span><span class="lang-cn">01｜为什么爱因斯坦的理论比马克思主义或精神分析更让波普尔印象深刻？</span></summary>
+    <div class="ans lang-en">Because Einstein's theory took a risk: it predicted that light bends near the sun, and Eddington's 1919 eclipse expedition could have refuted it. Marxism and psychoanalysis explained everything, so nothing could ever refute them — and a theory that explains everything forbids nothing.</div>
+    <div class="ans lang-cn">因为爱因斯坦的理论冒了险：它预言光经过太阳附近会弯曲，爱丁顿 1919 年的日食远征本可以反驳它。马克思主义和精神分析解释一切，所以什么都反驳不了它们——而一个解释一切的理论什么都不禁止。</div></details>
+  <details class="check"><summary><span class="lang-en">02｜What is falsifiability, and why is it a criterion of demarcation rather than of truth?</span><span class="lang-cn">02｜什么是可证伪性？为什么它是划界标准，而不是真理标准？</span></summary>
+    <div class="ans lang-en">Falsifiability means some conceivable observation could prove the theory wrong. It draws the line between science and pseudoscience — it says nothing about whether the theory is true. Science often errs, and a pseudoscience may stumble on the truth; falsifiability only asks whether the theory takes a testable risk.</div>
+    <div class="ans lang-cn">可证伪性是指，某种可以想象的观察能够证明理论是错的。它划的是科学与伪科学的分界线——对理论是否为真什么都不说。科学常常犯错，伪科学也可能碰巧说对；可证伪性只问理论是否冒了可检验的风险。</div></details>
+  <details class="check"><summary><span class="lang-en">03｜What is the difference between confirmation and corroboration?</span><span class="lang-cn">03｜证实（confirmation）和确证（corroboration）有什么区别？</span></summary>
+    <div class="ans lang-en">Confirmation is evidence that agrees with a theory — easy to find for almost any theory, so it counts for little. Corroboration is surviving a severe attempt at refutation: the theory was put at genuine risk and stood up. Only corroboration, from risky predictions, counts as real support.</div>
+    <div class="ans lang-cn">证实是与理论一致的证据——几乎任何理论都很容易找到，所以没什么分量。确证是挺过一次严厉的反驳尝试：理论被置于真正的风险之中还站住了。只有来自冒险预言的确证，才算真正的支持。</div></details>
+
+  <div class="cliff">
+    <span class="next">→ NEXT · NIGHT 2：THE NATURE OF PHILOSOPHICAL PROBLEMS AND THEIR ROOTS IN SCIENCE</span>
+    <p class="lang-en" style="margin:0">Tonight gave you the test — falsifiability — but where do the questions themselves come from? What is a philosophical problem, and why does it grow out of science rather than out of armchairs? <b>Next night: The Nature of Philosophical Problems and their Roots in Science.</b></p>
+    <p class="lang-cn" style="margin:8px 0 0">今夜给了你检验的标准——可证伪性。但问题本身从哪来？什么是哲学问题，为什么它生长于科学之中，而不是生长于扶手椅里？<b>下一夜：哲学问题的本质及其在科学中的根源。</b></p>
+  </div>
+
+  <p style="margin-top:22px"><a class="cta" href="#map"><span class="lang-en">Next night → Night 2 · The Nature of Philosophical Problems and their Roots in Science (coming soon)</span><span class="lang-cn">下一夜 → 第二夜 · 哲学问题的本质及其在科学中的根源（待续）</span></a></p>
+
+  <footer>
+    <p class="lang-en"><i>Conjectures and Refutations: The Growth of Scientific Knowledge</i> · Karl Popper · 1963 · Routledge · 608 pages. This guide is a companion, not a substitute — read it alongside the book for the best effect. Book page: <a href="https://www.routledge.com/link/link/p/book/9780415285940">Routledge</a></p>
+    <p class="lang-cn">《Conjectures and Refutations: The Growth of Scientific Knowledge》· Karl Popper · 1963 · Routledge · 608 页。本指南是伴读，不是替代品——对照书读，效果最好。书页：<a href="https://www.routledge.com/link/link/p/book/9780415285940">Routledge 官方页</a></p>
+    <p>A reader's guide by Conjurer Lab · AISummoner · Night 1 of 20 · 中英对照</p>
+  </footer>
+
+</div>
+<button class="bm-fab" id="bm-btn" title="夜晚列表：点开跳转任意一夜" onclick="toggleNightList()">🔖</button>
+<div class="bm-menu" id="bm-menu" role="dialog" aria-label="夜晚列表"></div>
+<script>
+  // bookmark: save reading position, resume next visit
+  var BM_KEY = 'cr-bookmark';
+  var BM_SKIP = {progress:1, 'resume-bar':1, 'resume-text':1, 'bm-btn':1, 'bm-menu':1};
+  // dynamic anchors: every id on the page except the UI chrome above.
+  // New nights (night4, n4-s1...) are picked up automatically, no list to maintain.
+  function anchorEls(){
+    var out = [];
+    document.querySelectorAll('[id]').forEach(function(el){
+      if(!BM_SKIP[el.id]) out.push(el);
+    });
+    return out;
+  }
+  function nearestAnchor(){
+    var y = window.scrollY + 120, best = 'night1';
+    anchorEls().forEach(function(el){
+      if(el.getBoundingClientRect().top + window.scrollY <= y) best = el.id;
+    });
+    return best;
+  }
+  function labelFor(id){
+    var el = document.getElementById(id);
+    if(!el) return id;
+    var h = el.querySelector('h2,h3');
+    if(!h && el.tagName === 'HR'){
+      var n = el.nextElementSibling;
+      while(n && !/^H[23]$/.test(n.tagName)) n = n.nextElementSibling;
+      h = n;
+    }
+    h = h || el;
+    var t = (h.textContent || '').replace(/\s+/g, ' ').trim();
+    return t ? t.slice(0, 42) : id;
+  }
+  function saveBookmark(){
+    var id = nearestAnchor();
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+    var b = document.getElementById('bm-btn');
+    if(b){ b.textContent = '✓'; setTimeout(function(){ b.textContent = '🔖'; }, 1500); }
+  }
+
+  // night list menu: tap 🔖 to see all nights, jump to any published one.
+  // Built from the map rows, so new nights appear automatically, no list to maintain.
+  function currentNightNum(){
+    var id = nearestAnchor();
+    var m = id.match(/^night(\d+)/) || id.match(/^n(\d+)-/);
+    return m ? parseInt(m[1], 10) : 0;
+  }
+  function buildNightMenu(){
+    var menu = document.getElementById('bm-menu');
+    if(!menu) return;
+    var esc = function(t){ return (t || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+    var html = '<h4>全部夜晚 <button onclick="closeNightList()" aria-label="关闭">✕</button></h4>';
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        html += '<button class="bm-row" onclick="goResume(); closeNightList();"><span class="no">上次读到</span><span class="t">' + esc(data.label) + '</span><span class="st">继续 →</span></button>';
+      }
+    }catch(e){}
+    html += '<button class="bm-row" onclick="saveBookmark(); closeNightList();"><span class="no">📌</span><span class="t">收藏此处<small>下次打开直接回到这里</small></span><span class="st">保存</span></button>';
+    var now = currentNightNum();
+    document.querySelectorAll('.map li').forEach(function(li){
+      var no = li.querySelector('.no');
+      var t = li.querySelector('.t');
+      var st = li.querySelector('.st');
+      if(!no || !t) return;
+      var num = parseInt((no.textContent || '').replace(/\D/g, ''), 10) || 0;
+      var done = li.classList.contains('done');
+      var cnEl = t.querySelector('.cn');
+      var cn = cnEl ? cnEl.textContent : '';
+      var title = (t.textContent || '').replace(cn, '').trim();
+      var stTxt = st ? st.textContent.trim() : '';
+      var cls = 'bm-row' + (done ? '' : ' soon') + (num === now && num > 0 ? ' now' : '');
+      var click = done ? ' onclick="goNight(' + num + ')"' : '';
+      html += '<button class="' + cls + '"' + click + '><span class="no">' + esc(no.textContent.trim()) + '</span><span class="t">' + esc(title) + (cn ? '<small>' + esc(cn) + '</small>' : '') + '</span><span class="st">' + esc(stTxt) + '</span></button>';
+    });
+    menu.innerHTML = html;
+  }
+  function goNight(n){
+    closeNightList();
+    var el = document.getElementById('night' + n);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  }
+  function toggleNightList(){
+    var menu = document.getElementById('bm-menu');
+    if(!menu) return;
+    if(menu.classList.contains('open')){ closeNightList(); return; }
+    buildNightMenu();
+    menu.classList.add('open');
+  }
+  function closeNightList(){
+    var menu = document.getElementById('bm-menu');
+    if(menu) menu.classList.remove('open');
+  }
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('bm-menu');
+    if(!menu || !menu.classList.contains('open')) return;
+    var btn = document.getElementById('bm-btn');
+    if(menu.contains(e.target) || (btn && btn.contains(e.target))) return;
+    closeNightList();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeNightList();
+  });
+
+  function showResume(data){
+    var bar = document.getElementById('resume-bar');
+    if(!bar || !data) return;
+    bar.style.display = 'flex';
+    var t = document.getElementById('resume-text');
+    if(t) t.textContent = '上次读到：' + data.label;
+  }
+  function goResume(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        var el = document.getElementById(data.id);
+        if(el) el.scrollIntoView({behavior:'smooth'});
+      }
+    }catch(e){}
+  }
+  function clearBookmark(){
+    try{ localStorage.removeItem(BM_KEY); }catch(e){}
+    lastSaved = '';
+    var bar = document.getElementById('resume-bar');
+    if(bar) bar.style.display = 'none';
+  }
+  // auto-save: reading position follows you, no tap needed.
+  // Only runs after the reader scrolls, so opening the page never clobbers the saved spot.
+  var lastSaved = '';
+  function autoSave(){
+    var id = nearestAnchor();
+    if(id === lastSaved) return;
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+  }
+  var saveTimer = null;
+  window.addEventListener('scroll', function(){
+    if(saveTimer) return;
+    saveTimer = setTimeout(function(){ saveTimer = null; autoSave(); }, 1200);
+  }, {passive:true});
+  window.addEventListener('DOMContentLoaded', function(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data){ showResume(data); if(data.id) lastSaved = data.id; }
+    }catch(e){}
+    if(location.hash){
+      setTimeout(autoSave, 800);
+    }
+  });
+</script>
+<script>
+  // language toggle: bi (both) / en / cn
+  function setLang(m){
+    document.documentElement.setAttribute('data-lang', m);
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-m') === m);
+    });
+  }
+  // progress bar follows scroll
+  var bar = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? (h.scrollTop / max) : 0;
+    bar.style.width = (11 + p * 89) + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+</script>
+</body>
+</html>

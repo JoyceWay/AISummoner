@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="bi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《自私的基因》十三夜 · Richard Dawkins 读书指南 | AISummoner</title>
+<meta name="description" content="Richard Dawkins《The Selfish Gene》读书指南，中英对照：360 页拆成十三夜故事，每夜十分钟，读完一夜想知道下一夜发生什么。">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --paper:#F4F1EA; --ink:#141413; --ink-soft:#3a382f; --muted:#7A756C;
+    --terra:#D96548; --amber:#F0A832; --cyan:#0891B2; --line:#E3DCCB;
+    --card:#FBF9F4; --green:#16794F;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC",Georgia,serif; line-height:1.85; font-size:17px;
+    background-image:
+      linear-gradient(rgba(20,20,19,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20,20,19,0.035) 1px, transparent 1px);
+    background-size:28px 28px;
+  }
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--terra); width:8%; z-index:50; transition:width .3s}
+  .wrap{max-width:720px; margin:0 auto; padding:0 20px 80px}
+  .topbar{display:flex; justify-content:space-between; align-items:center; padding:18px 0 8px;
+    font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.14em; color:var(--muted)}
+  .topbar a{color:var(--muted); text-decoration:none}
+  .topbar a:hover{color:var(--terra)}
+  /* language toggle */
+  .lang-toggle{display:flex; gap:6px}
+  .lang-btn{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.08em;
+    border:1px solid var(--line); background:var(--card); color:var(--ink-soft);
+    border-radius:999px; padding:4px 12px; cursor:pointer}
+  .lang-btn.active{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+  /* bilingual: EN first, CN after, CN slightly smaller */
+  [data-lang="en"] .lang-cn{display:none !important}
+  [data-lang="cn"] .lang-en{display:none !important}
+  .lang-cn{font-size:.95em; color:var(--ink-soft)}
+  p.lang-en, p.lang-cn{margin:10px 0}
+  .kicker{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.22em; color:var(--terra); margin:34px 0 10px}
+  h1{font-size:44px; line-height:1.15; margin:0 0 8px; font-weight:700}
+  h1 .en{display:block; font-size:20px; color:var(--muted); font-weight:400; letter-spacing:.04em; margin-top:10px}
+  .sub{font-size:19px; color:var(--ink-soft); margin:14px 0 0}
+  .sub b{color:var(--terra)}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 0}
+  .pill{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; border:1px solid var(--line);
+    border-radius:999px; padding:4px 12px; background:var(--card); color:var(--ink-soft)}
+  .pill.hot{border-color:var(--terra); color:var(--terra)}
+  a.pill{text-decoration:none}
+  a.pill.hot:hover{background:var(--terra); color:var(--paper)}
+  .cta{display:inline-block; margin-top:26px; background:var(--ink); color:var(--paper); text-decoration:none;
+    padding:12px 26px; border-radius:999px; font-size:16px}
+  .cta:hover{background:var(--terra)}
+  hr.sep{border:none; border-top:1px solid var(--line); margin:44px 0}
+  h2{font-size:26px; margin:0 0 6px}
+  h2 .en{display:block; font-size:13px; font-family:"JetBrains Mono",ui-monospace,monospace; letter-spacing:.18em; color:var(--muted); font-weight:400; margin-bottom:6px}
+  .lede{color:var(--ink-soft); margin:0 0 20px}
+  .why{display:grid; gap:12px}
+  .why .row{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px}
+  .why .row b{color:var(--terra)}
+  .why .fix{color:var(--green); font-size:15px; margin-top:4px}
+  .how .step{display:flex; gap:14px; margin:14px 0}
+  .how .n{flex:0 0 30px; height:30px; border-radius:50%; background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:center; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:13px}
+  .map{list-style:none; margin:0; padding:0}
+  .map li{display:flex; gap:14px; padding:13px 4px; border-bottom:1px solid var(--line); align-items:baseline}
+  .map .no{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--muted); flex:0 0 62px}
+  .map .t{font-weight:700}
+  .map .t .cn{color:var(--muted); font-weight:400; font-size:14px; margin-left:6px}
+  .map .hook{color:var(--ink-soft); font-size:15px; line-height:1.6}
+  .map .hook-cn{color:var(--muted); font-size:14px; line-height:1.6}
+  .map .st{margin-left:auto; flex:0 0 auto; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px;
+    border:1px solid var(--terra); color:var(--terra); border-radius:999px; padding:2px 10px; white-space:nowrap}
+  .map .st.soon{border-color:var(--line); color:var(--muted)}
+  .map li.done{background:linear-gradient(90deg, rgba(217,101,72,.07), transparent 70%)}
+  /* Night 1 */
+  .night-tag{display:inline-block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px;
+    letter-spacing:.2em; color:var(--paper); background:var(--terra); border-radius:4px; padding:4px 12px}
+  .scene{margin:30px 0}
+  .scene h3{font-size:21px; margin:0 0 8px}
+  .scene h3 .sc{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--terra); letter-spacing:.16em; display:block; margin-bottom:4px}
+  .scene h3 .h-cn{display:block; font-size:18px; color:var(--muted); font-weight:400; margin-top:2px}
+  .quote{border-left:3px solid var(--amber); background:rgba(240,168,50,.08); padding:14px 18px; margin:18px 0; font-size:16px}
+  .quote .en{font-style:italic}
+  .quote .cn{color:var(--ink-soft); font-size:15px; margin-top:6px}
+  .key{color:var(--terra); font-weight:700}
+  .term{font-weight:700; border-bottom:2px solid rgba(217,101,72,.4)}
+  .quiz{display:grid; gap:12px; margin:16px 0}
+  .qcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; cursor:pointer}
+  .qcard:hover{border-color:var(--terra)}
+  .qcard .a{display:none; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); font-size:15px}
+  .qcard.open .a{display:block}
+  .qcard .tap{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--muted); letter-spacing:.1em}
+  .verdict-bad{color:var(--terra); font-weight:700}
+  .verdict-good{color:var(--green); font-weight:700}
+  .takeaway{background:var(--ink); color:var(--paper); border-radius:12px; padding:20px 22px; margin:26px 0}
+  .takeaway h4{margin:0 0 10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.2em; color:var(--amber)}
+  .takeaway ol{margin:0; padding-left:22px}
+  .takeaway li{margin:8px 0}
+  .takeaway .t-cn{display:block; font-size:15px; color:#D8D2C4; margin-top:2px}
+  .highlights{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:26px 0}
+  .highlights h4{margin:0 0 10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.2em; color:var(--terra)}
+  .highlights ol{margin:0; padding-left:22px}
+  .highlights li{margin:10px 0}
+  .highlights li .lang-en{font-style:italic}
+  .highlights li .cn{display:block; font-size:15px; color:var(--ink-soft); margin-top:2px}
+  details.check{border:1px solid var(--line); border-radius:12px; background:var(--card); padding:14px 18px; margin:10px 0}
+  details.check summary{cursor:pointer; font-weight:700}
+  details.check .ans{margin-top:8px; font-size:15px; color:var(--ink-soft)}
+  .cliff{background:linear-gradient(135deg, rgba(8,145,178,.1), rgba(217,101,72,.08)); border:1px solid var(--line);
+    border-radius:12px; padding:22px; margin:30px 0; font-size:18px}
+  .cliff .next{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.18em; color:var(--cyan); display:block; margin-bottom:8px}
+  footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:14px}
+  footer a{color:var(--terra)}
+  @media (max-width:560px){ h1{font-size:34px} body{font-size:16px} .map .hook{display:block; margin-top:2px} }
+  /* bookmark: resume bar + floating save button */
+  .resume-bar{display:none; background:var(--ink); color:var(--paper);
+    border-radius:10px; padding:8px 12px; margin:12px 0; align-items:center; gap:8px; cursor:pointer; font-size:14px}
+  #resume-text{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; flex:1}
+  .resume-bar .go{color:var(--amber); font-weight:700; white-space:nowrap}
+  .resume-bar .x{margin-left:auto; background:none; border:none; color:#D8D2C4; font-size:16px; cursor:pointer; padding:0 2px}
+  .bm-fab{position:fixed; right:12px; bottom:12px; z-index:60; width:44px; height:44px; border-radius:50%;
+    background:var(--ink); color:var(--paper); border:none; font-size:20px; cursor:pointer;
+    box-shadow:0 4px 16px rgba(0,0,0,.25)}
+  .bm-fab:hover{background:var(--terra)}
+  /* night list menu: tap 🔖 to jump to any night */
+  .bm-menu{display:none; position:fixed; right:12px; top:64px; z-index:70; width:min(340px, calc(100vw - 24px));
+    max-height:min(70vh, 560px); overflow-y:auto; background:var(--paper); color:var(--ink);
+    border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,.28); padding:6px 0}
+  .bm-menu.open{display:block}
+  .bm-menu h4{margin:6px 16px 4px; font-size:13px; letter-spacing:.14em; color:var(--muted); display:flex; justify-content:space-between; align-items:center}
+  .bm-menu h4 button{background:none; border:none; font-size:16px; cursor:pointer; color:var(--muted); padding:2px 6px}
+  .bm-row{display:flex; gap:10px; align-items:baseline; width:100%; text-align:left; background:none; border:none;
+    padding:10px 16px; font-size:15px; font-family:inherit; color:var(--ink); cursor:pointer; border-top:1px solid var(--line)}
+  .bm-row:hover{background:rgba(217,101,72,.07)}
+  .bm-row .no{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--muted); flex:0 0 62px}
+  .bm-row .t{flex:1; min-width:0}
+  .bm-row .t small{display:block; color:var(--muted); font-size:12px; margin-top:1px}
+  .bm-row .st{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--terra); white-space:nowrap}
+  .bm-row.soon{opacity:.55; cursor:default}
+  .bm-row.soon:hover{background:none}
+  .bm-row.soon .st{color:var(--muted)}
+  .bm-row.now{background:rgba(217,101,72,.07)}
+  .bm-row.now .no{color:var(--terra); font-weight:700}
+  .map li.done{cursor:pointer}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/">← AISUMMONER</a>
+    <span class="lang-toggle">
+      <button class="lang-btn active" data-m="bi" onclick="setLang('bi')">中英</button>
+      <button class="lang-btn" data-m="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-m="cn" onclick="setLang('cn')">中文</button>
+    </span>
+    <span>NIGHT 1 / 13</span>
+  </div>
+
+  <div class="resume-bar" id="resume-bar" onclick="goResume()">
+    <span>📖</span><span id="resume-text"></span><span class="go">继续 →</span>
+    <button class="x" title="清除书签" onclick="event.stopPropagation(); clearBookmark()">✕</button>
+  </div>
+
+  <div class="kicker">RICHARD DAWKINS · 1976 · A READER'S GUIDE · 中英对照</div>
+  <h1>《自私的基因》十三夜<span class="en">The Selfish Gene, in thirteen nights</span></h1>
+  <p class="sub lang-en">You own this book, but you couldn't finish it — <b>that's not your fault</b>. 360 pages, 13 chapters, and a title that sounds like an excuse to be selfish. This site retells the book as thirteen nights of stories, ten minutes a night. Finish one night, and you'll want to know what happens the next.</p>
+  <p class="sub lang-cn">你手里有这本书，却读不下去——<b>不是你的问题</b>。360 页，13 章，还有一个听起来像"自私有理"的书名。这站把书写成十三夜故事，每夜十分钟，读完一夜，你会想知道下一夜发生什么。</p>
+  <div class="meta">
+    <span class="pill">360 pages</span><span class="pill">13 chapters</span>
+    <a class="pill hot" href="#night1">Night 1 · 今夜可读</a><span class="pill">一夜一章 · 每夜 10 分钟</span>
+    <span class="pill">中英对照 · EN / 中文</span>
+  </div>
+  <a class="cta" href="#night1"><span class="lang-en">Start Night 1 ↓</span><span class="lang-cn">开始第一夜 ↓</span></a>
+
+  <hr class="sep">
+
+  <h2><span class="en">WHY YOU STOPPED</span>为什么读不下去</h2>
+  <p class="lede lang-en">First, let's be clear: not finishing it isn't a willpower problem. It's a problem with how the book is written.</p>
+  <p class="lede lang-cn">先说清楚：读不下去不是意志力问题，是这本书的写法问题。</p>
+  <div class="why">
+    <div class="row">
+      <div class="lang-en"><b>01｜The title traps you.</b> "Selfish gene" sounds like a book telling you to be selfish — so you either nod along for the wrong reason, or argue with a book you haven't read.</div>
+      <div class="lang-cn"><b>01｜书名是个陷阱。</b>"自私的基因"听起来像一本教你自私的书——要么你为错的理由点头，要么你跟一本没读过的书吵架。</div>
+      <div class="fix lang-en">→ fix: tonight untangles the word in ten minutes. "Selfish" describes the gene, not you — and the book ends by telling you to rebel against it.</div>
+      <div class="fix lang-cn">→ fix：今夜十分钟把这个词拆开。"自私"说的是基因，不是你——而这本书的结尾，是叫你反抗它。</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>02｜No single lens, so every chapter feels like a different book.</b> Gangsters one chapter, game theory the next, memes after that — without the gene's-eye view holding it together, it falls apart.</div>
+      <div class="lang-cn"><b>02｜没有一根主线，每章像换了一本书。</b>这章黑帮，下章博弈论，再下章觅母——没有基因视角这根线串着，整本书就散了。</div>
+      <div class="fix lang-en">→ fix: one lens, carried through every night. Ask of everything: what does this do for the gene?</div>
+      <div class="fix lang-cn">→ fix：一个视角，贯穿每一夜。看什么都问一句：这对基因有什么好处？</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>03｜Too dense, no end in sight.</b> 360 pages of close argument, no stories to hold on to — by page 30 you want to quit.</div>
+      <div class="lang-cn"><b>03｜太密，看不到头。</b>360 页的严密论证，没有故事可抓，翻到第 30 页就想放弃。</div>
+      <div class="fix lang-en">→ fix: a map of 13 nights, ten minutes each, progress you can see. Finish tonight and you're 1/13 done.</div>
+      <div class="fix lang-cn">→ fix：13 夜地图，每夜十分钟，进度看得见。今夜读完，你就走了 1/13。</div>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <h2><span class="en">HOW IT WORKS</span>读法</h2>
+  <div class="how">
+    <div class="step"><div class="n">1</div><div><div class="lang-en"><b>One night, one chapter.</b> Ten minutes each, no greed.</div><div class="lang-cn"><b>一夜一章。</b>每夜只读一章的内容，十分钟，不贪多。</div></div></div>
+    <div class="step"><div class="n">2</div><div><div class="lang-en"><b>Every night ends on a cliffhanger.</b> Like One Thousand and One Nights — the story stops at the crucial moment, and the answer comes next night.</div><div class="lang-cn"><b>每夜结尾一个悬念。</b>像一千零一夜一样——故事讲到最关键处停住，下一夜才揭晓。</div></div></div>
+    <div class="step"><div class="n">3</div><div><div class="lang-en"><b>Pass the checkpoint before the next night.</b> Three questions; answer them before moving on. That's your rule: understand it 70–80% before it counts.</div><div class="lang-cn"><b>先过检查点，再进下一夜。</b>三道题，答得上来再往下走。这是你的规则：看懂 7788 才算过。</div></div></div>
+    <div class="step"><div class="n">4</div><div><div class="lang-en"><b>English terms stay in English.</b> Replicator, survival machine, gene's-eye view, meme — these words look the same in the book, so you can find them there.</div><div class="lang-cn"><b>英文术语保留原文。</b>replicator（复制者）、survival machine（生存机器）、gene's-eye view（基因视角）、meme（觅母）——这些词在书里就是这个样子，对照书找得到。</div></div></div>
+  </div>
+
+  <hr class="sep">
+
+  <h2 id="map"><span class="en">THE MAP · 13 NIGHTS</span>十三夜地图</h2>
+  <p class="lede lang-en">All 13 chapters, one night each. One lamp is lit tonight.</p>
+  <p class="lede lang-cn">全书 13 章，一章一夜。今夜亮起一盏灯。</p>
+    <ol class="map">
+    <li class="done" onclick="location.hash='#night1'"><span class="no">NIGHT 01</span><span><span class="t">Why Are People?<span class="cn">人为什么存在？</span></span><span class="hook lang-en">Intelligent life comes of age when it asks why it exists — and Darwin gave the answer.</span><span class="hook-cn lang-cn">智慧生命成熟的那一刻，是问出"我为什么存在"——而达尔文给出了答案。</span></span><span class="st">今夜可读</span></li>
+    <li><span class="no">NIGHT 02</span><span><span class="t">The Replicators<span class="cn">复制者</span></span><span class="hook lang-en">Before genes, there were replicators in a primeval soup — molecules that learned to copy themselves.</span><span class="hook-cn lang-cn">在基因之前，原始汤里有复制者——学会自我复制的分子。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 03</span><span><span class="t">Immortal Coils<span class="cn">不朽的线圈</span></span><span class="hook lang-en">Your genes are older than you — some have survived, unbroken, for millions of years.</span><span class="hook-cn lang-cn">你的基因比你年长——有些已经不间断地活了几百万年。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 04</span><span><span class="t">The Gene Machine<span class="cn">基因机器</span></span><span class="hook lang-en">You are a machine built by your genes — and the machine’s job is to keep them alive.</span><span class="hook-cn lang-cn">你是一台由基因造出的机器——机器的任务是让它们活下去。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 05</span><span><span class="t">Aggression: Stability and the Selfish Machine<span class="cn">攻击：稳定与自私机器</span></span><span class="hook lang-en">Why do animals fight — and why do they stop? Game theory has the answer.</span><span class="hook-cn lang-cn">动物为什么打架——又为什么停手？博弈论有答案。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 06</span><span><span class="t">Genesmanship<span class="cn">基因谋略</span></span><span class="hook lang-en">Genes are strategists: they cheat, signal, and manipulate — even their own bodies.</span><span class="hook-cn lang-cn">基因是谋略家：它们欺骗、发信号、搞操纵——连自己的身体都不放过。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 07</span><span><span class="t">Family Planning<span class="cn">家庭计划</span></span><span class="hook lang-en">How many children should a parent have? Genes do the maths.</span><span class="hook-cn lang-cn">父母该生几个孩子？基因会算这笔账。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 08</span><span><span class="t">Battle of the Generations<span class="cn">世代之战</span></span><span class="hook lang-en">Parents and children want different things — and genes explain why.</span><span class="hook-cn lang-cn">父母和孩子想要的不一样——基因解释了为什么。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 09</span><span><span class="t">Battle of the Sexes<span class="cn">两性之战</span></span><span class="hook lang-en">Males and females play different games — because their genes pay different prices.</span><span class="hook-cn lang-cn">雄性和雌性玩的是不同的游戏——因为它们的基因付的代价不同。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 10</span><span><span class="t">You Scratch My Back, I'll Ride on Yours<span class="cn">你给我搔背，我搭你的便车</span></span><span class="hook lang-en">Why help a stranger? Because a favour today can be repaid tomorrow.</span><span class="hook-cn lang-cn">为什么帮一个陌生人？因为今天的人情，明天可以还。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 11</span><span><span class="t">Memes: The New Replicators<span class="cn">觅母：新的复制者</span></span><span class="hook lang-en">Genes are not the only replicators. Ideas copy themselves through minds — meet the meme.</span><span class="hook-cn lang-cn">基因不是唯一的复制者。想法也在头脑之间自我复制——认识一下觅母。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 12</span><span><span class="t">Nice Guys Finish First<span class="cn">好人有好报</span></span><span class="hook lang-en">In the long run, the nice guys win — cooperation beats ruthlessness.</span><span class="hook-cn lang-cn">从长远看，好人赢——合作打败了无情。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 13</span><span><span class="t">The Long Reach of the Gene<span class="cn">基因的长臂</span></span><span class="hook lang-en">A gene’s reach goes beyond its own body — it can shape nests, dams, even other animals.</span><span class="hook-cn lang-cn">基因的臂膀伸出自己的身体之外——它能塑造巢穴、水坝，甚至别的动物。</span></span><span class="st soon">待续</span></li>
+  </ol>
+
+    <hr class="sep" id="night1">
+
+  <span class="night-tag">NIGHT 01 · 第一夜</span>
+  <h2 style="margin-top:14px"><span class="en">CHAPTER 1 · WHY ARE PEOPLE?</span>人为什么存在？</h2>
+  <p class="lede lang-en">Tonight answers just one question: <b>why are people?</b> The answer starts with Darwin — and ends with the discovery that you are a machine built by something else.</p>
+  <p class="lede lang-cn">今夜只回答一个问题：<b>人为什么存在？</b>答案从达尔文开始，到一个发现结束：你是一台由别的东西造出来的机器。</p>
+
+  <div class="scene" id="n1-s1">
+    <h3><span class="sc">SCENE 1 · OPENING</span>The question no one could answer<span class="h-cn lang-cn">没人答得出来的问题</span></h3>
+    <p class="lang-en">Living things had existed on Earth, without ever knowing why, for over three thousand million years — before the truth finally dawned on one of them. That is how Dawkins opens the book, and it is the boldest opening a biology book can have.</p>
+    <p class="lang-cn">地球上的生物存在了三十多亿年，却从来不知道自己为什么存在——直到真相终于在其中一个身上破晓。这是 Dawkins 开篇的第一句话，也是一本生物学著作能有的最大胆的开场。</p>
+    <p class="lang-en">Before Darwin, there was no credible answer to the question at all. People had stories — gods, designs, purposes handed down from above. But a story is not an explanation. For thousands of years, the deepest question a mind can ask — why am I here? — had no answer worth the name.</p>
+    <p class="lang-cn">在达尔文之前，这个问题根本没有可信的答案。人们有故事——神、设计、从上面交代下来的目的。但故事不是解释。几千年来，头脑能问的最深的问题——我为什么在这里？——没有一个像样的答案。</p>
+    <p class="lang-en">Dawkins says intelligent life on a planet comes of age when it first works out the reason for its own existence. That moment arrived in 1859, when Charles Darwin published his theory of evolution. It is, Dawkins argues, the one idea that makes everything else in biology fall into place.</p>
+    <p class="lang-cn">Dawkins 说，一颗行星上的智慧生命，在第一次弄清自己存在的理由时，才算成年。这一刻发生在 1859 年，查尔斯·达尔文发表进化论的那一年。在 Dawkins 看来，这是一个让生物学的一切都各归其位的想法。</p>
+    <p class="lang-en">So tonight's question is not a small one. It is the question the whole book exists to answer — and the answer is stranger than any of the old stories.</p>
+    <p class="lang-cn">所以今夜的问题不是小问题，它就是整本书为之而写的问题——而答案比所有古老的故事都更奇怪。</p>
+  </div>
+
+  <div class="scene" id="n1-s2">
+    <h3><span class="sc">SCENE 2 · THE STORY</span>Darwin's answer<span class="h-cn lang-cn">达尔文的答案</span></h3>
+    <p class="lang-en">Look at a living thing — a bird's wing, a human eye, a flower that opens at dawn. Everything looks designed, as if someone planned it. Before Darwin, the only explanation for that appearance of design was a designer.</p>
+    <p class="lang-cn">看一个生物——鸟的翅膀、人的眼睛、黎明时分开放的花。一切看起来都像是被设计过的，好像有人规划过。在达尔文之前，对这种"看起来像设计"的唯一解释，就是有个设计者。</p>
+    <p class="lang-en">Darwin's answer removed the designer and kept the design. Natural selection — the slow, blind sorting of small differences over millions of years — can build the appearance of purpose without any purpose at all. Wings were not drawn on a blueprint. They were shaped, generation after generation, by which birds survived to have more chicks.</p>
+    <p class="lang-cn">达尔文的答案拿掉了设计者，留下了设计。自然选择——几百万年里对微小差异缓慢而盲目的筛选——可以在没有任何目的的情况下，造出"看起来有目的"的东西。翅膀不是按蓝图画出来的，而是一代一代、由哪些鸟活下来生下更多雏鸟塑造出来的。</p>
+    <p class="lang-en">That is why Dawkins says doubting evolution today is like doubting that the Earth goes around the sun. The evidence is that solid. But the book is not about proving evolution. It is about what evolution means for one thing in particular: the biology of selfishness and altruism — loving, hating, fighting, sharing, stealing, giving.</p>
+    <p class="lang-cn">这就是为什么 Dawkins 说，今天怀疑进化论，就像怀疑地球绕着太阳转。证据就是这么硬。但这本书不是为了证明进化论，它要讲的是进化论对一件事意味着什么：自私与利他的生物学——爱、恨、争斗、分享、偷窃、给予。</p>
+    <p class="lang-en">And here is the twist that makes the book famous: to understand selfishness and altruism, Dawkins argues, you must stop looking at the animal — and start looking at the gene.</p>
+    <p class="lang-cn">而让这本书出名的转折在这里：要理解自私与利他，Dawkins 说，你必须停止看动物——开始看基因。</p>
+  </div>
+
+  <div class="scene" id="n1-s3">
+    <h3><span class="sc">SCENE 3 · THE TURN</span>The Chicago gangsters<span class="h-cn lang-cn">芝加哥黑帮</span></h3>
+    <p class="lang-en">Suppose you are told that a man lived a long and prosperous life in the world of 1920s Chicago gangsters. You know nothing else about him — but you can already guess something about his character. Tough. Quick on the trigger. Good at keeping loyal friends. The guesses are not certain, but they are reasonable: the world he survived in selects for exactly those qualities.</p>
+    <p class="lang-cn">假设有人告诉你，一个人在 1920 年代芝加哥黑帮的世界里活得又长又风光。关于他，你别的什么都不知道——但你已经能猜出他的性格。强硬。手快。善于留住忠心的朋友。这些猜测不一定对，但很合理：他活下来的那个世界，恰恰会筛选出这些品质。</p>
+    <p class="lang-en">Now apply the same logic to genes. Our genes have survived, in some cases for millions of years, in a highly competitive world. Like successful Chicago gangsters, they have prospered where others died out. So what quality should we expect in them?</p>
+    <p class="lang-cn">现在把同样的逻辑用到基因上。我们的基因在竞争激烈的世界里活了下来，有些已经活了几百万年。像成功的芝加哥黑帮一样，它们在别人死掉的地方繁荣起来。那么，我们应该期待它们有什么品质？</p>
+    <div class="quote">
+      <div class="en">Like successful Chicago gangsters, our genes have survived, in some cases for millions of years, in a highly competitive world.</div>
+      <div class="cn">像成功的芝加哥黑帮一样，我们的基因在竞争激烈的世界里活了下来，有些已经活了几百万年。</div>
+    </div>
+    <p class="lang-en">Dawkins argues the answer is <span class="term">ruthless selfishness</span> — a gene that does not look after its own copying gets copied less, and disappears. A gene that promotes its own survival, at whatever cost to the body carrying it, spreads. That is the logic of the whole book, stated in one paragraph.</p>
+    <p class="lang-cn">Dawkins 说，答案是<span class="term">ruthless selfishness（无情的自私）</span>——一个不照顾自己复制的基因，被复制得越来越少，最后消失；而一个促进自身生存的基因，不管对携带它的身体付出什么代价，都会扩散开来。这就是整本书的逻辑，写在一段话里。</p>
+    <p class="lang-en">But wait — "selfish" here does not mean what you think it means. That is the trap the title sets, and the next scene springs it. Tap a card to see which claim about "selfish" is right.</p>
+    <p class="lang-cn">但等一下——这里的"自私"不是你以为的那个意思。这是书名设下的陷阱，下一幕就拆穿它。点开卡片，看关于"自私"的哪个说法是对的。</p>
+    <div class="quiz">
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>A.</b> "The selfish gene means people are naturally selfish inside — so being selfish is just following nature, and Dawkins is telling us it's fine."</div>
+        <div class="lang-cn"><b>A.</b> "自私的基因就是说人天生内心自私——所以自私只是在顺应天性，Dawkins 是在告诉我们自私没问题。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-bad">Wrong.</span> Dawkins is not giving moral advice, and he says so plainly: the book is not a guide to how to live. He argues we should teach generosity and altruism precisely because we are born selfish — the biology describes what is, not what ought to be.</div>
+        <div class="a lang-cn"><span class="verdict-bad">错。</span>Dawkins 不是在给道德建议，他说得很明白：这本书不是生活指南。他主张我们应该教慷慨与利他，正因为我们生来是自私的——生物学描述的是"是什么"，不是"应该是什么"。</div>
+      </div>
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>B.</b> "'Selfish' here is a technical word: it describes the effect of a gene on survival — whether it helps copies of itself spread — not a person's feelings or motives."</div>
+        <div class="lang-cn"><b>B.</b> "这里的'自私'是个技术词：它描述的是一个基因对生存的影响——是否帮助自己的拷贝扩散——而不是一个人的感受或动机。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-good">Right.</span> Dawkins defines selfishness and altruism by their effects on survival prospects, not by psychology. A gene is "selfish" if it increases its own chances of being copied — even if the behaviour it produces looks generous.</div>
+        <div class="a lang-cn"><span class="verdict-good">对。</span>Dawkins 用对生存前景的影响来定义自私与利他，而不是用心理。一个基因如果提高了自己被复制的机会，就是"自私"的——即使它产生的行为看起来很慷慨。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene" id="n1-s4">
+    <h3><span class="sc">SCENE 4 · THE CONTRAST</span>The group is not the hero<span class="h-cn lang-cn">群体不是主角</span></h3>
+    <p class="lang-en">Before Dawkins, the popular story of evolution went like this: animals behave for the good of the species. Birds limit their own breeding so the species doesn't starve; animals sacrifice themselves so the group survives. Writers like Konrad Lorenz built whole books on that idea.</p>
+    <p class="lang-cn">在 Dawkins 之前，进化论的流行故事是这样的：动物是为了物种的好处而行动的。鸟儿限制自己的繁殖，免得物种饿死；动物牺牲自己，好让群体活下去。康拉德·洛伦兹这样的作家整本书都建立在这个想法上。</p>
+    <p class="lang-en">Dawkins says that story is wrong. It is not the species that survives and reproduces — species don't have children. Individuals do. And it is not really the individual either, because the individual dies. What survives, generation after generation, is the gene: copied from body to body, while bodies come and go.</p>
+    <p class="lang-cn">Dawkins 说这个故事是错的。活下来并繁殖的不是物种——物种不会生孩子，是个体在生。而严格说也不是个体，因为个体会死。一代一代活下来的，是基因：从一个身体复制到另一个身体，而身体来了又去。</p>
+    <p class="lang-en">So when an animal seems to sacrifice itself for the group, the gene's-eye view asks a different question: does that sacrifice help copies of the same gene sitting in other bodies? A mother bird risking her life for her chicks is not being noble for the species — she is protecting copies of her own genes, carried in her young.</p>
+    <p class="lang-cn">所以当一只动物似乎为群体牺牲自己时，基因视角会问一个不同的问题：这种牺牲有没有帮助坐在别的身体里的、相同的基因拷贝？一只母鸟为雏鸟冒生命危险，不是在为物种高尚——她是在保护自己基因的拷贝，装在她的孩子身体里。</p>
+    <p class="lang-en">That one shift — from the group, to the individual, to the gene — dissolves the puzzle of altruism. Apparent selflessness and apparent selfishness can both be explained by the same thing: gene selfishness. The rest of the book is the proof, case by case.</p>
+    <p class="lang-cn">这一次转换——从群体，到个体，到基因——解开了利他之谜。表面上的无私和表面上的自私，都可以用同一样东西解释：基因的自私。整本书的其余部分，就是一个案例一个案例地证明这一点。</p>
+  </div>
+
+  <div class="scene" id="n1-s5">
+    <h3><span class="sc">SCENE 5 · THE RISE</span>Survival machines<span class="h-cn lang-cn">生存机器</span></h3>
+    <p class="lang-en">If genes are the survivors, what are we? Dawkins gives the answer in the book's most famous image:</p>
+    <p class="lang-cn">如果基因是幸存者，那我们是什么？Dawkins 用这本书最著名的意象给出答案：</p>
+    <div class="quote">
+      <div class="en">We are survival machines — robot vehicles blindly programmed to preserve the selfish molecules known as genes.</div>
+      <div class="cn">我们是生存机器——被盲目编程、用来保存那些叫作基因的自私分子的机器人载具。</div>
+    </div>
+    <p class="lang-en">A gene leaps from body to body down the generations, manipulating body after body in its own way and for its own ends, abandoning a succession of bodies before they sink in senility and death. The genes are the immortals. The bodies are the throwaway machines they build, use, and discard.</p>
+    <p class="lang-cn">一个基因一代一代地从一个身体跳到另一个身体，用自己的方式、为自己的目的操纵一个又一个身体，在它们衰老死亡之前抛弃它们。基因是不朽的，身体是它们造出来、用完就扔的一次性机器。</p>
+    <p class="lang-en">It is a dizzying reversal of how we usually see ourselves. We think of genes as small parts of us. Dawkins says it is the other way round: we are large parts of them — their vehicles, their survival machines.</p>
+    <p class="lang-cn">这是对我们通常看自己的方式的一次眩晕的翻转。我们以为基因是我们身体里的小零件，Dawkins 说反了：我们是它们的大零件——它们的载具，它们的生存机器。</p>
+    <p class="lang-en">And yet the chapter ends with hope, not despair. Dawkins holds out the possibility that our species alone on Earth has the power to rebel against the designs of the selfish gene — to teach generosity, to choose altruism, precisely because we can understand what our genes are doing to us. Understanding is the first step of the rebellion.</p>
+    <p class="lang-cn">然而这一章的结尾是希望，不是绝望。Dawkins 提出，地球上只有我们这个物种有能力反抗自私基因的设计——教慷慨、选择利他，正因为我们能理解基因在对我们做什么。理解，是反抗的第一步。</p>
+    <p class="lang-en">But to rebel, you first need to know what you are rebelling against. What is a gene, really — and how did the first ones arise? That is the next night's story, and it begins in a soup.</p>
+    <p class="lang-cn">但要反抗，你首先得知道自己在反抗什么。基因到底是什么——最初的基因又是怎么来的？那是下一夜的故事，而它开始于一锅汤。</p>
+  </div>
+
+  <div class="takeaway">
+    <h4>TAKEAWAY · 今夜带走三句</h4>
+    <ol>
+      <li><span class="lang-en">Intelligent life comes of age when it works out the reason for its own existence — and Darwin gave us that reason in 1859: natural selection builds the appearance of design without a designer.</span><span class="t-cn lang-cn">智慧生命在弄清自己存在的理由时才算成年——达尔文在 1859 年给出了这个理由：自然选择在没有设计者的情况下造出了"看起来像设计"的东西。</span></li>
+      <li><span class="lang-en">"Selfish" is a technical word: it describes a gene's effect on its own copying, not a person's feelings — and the book is not a moral excuse for selfishness.</span><span class="t-cn lang-cn">"自私"是个技术词：它描述的是基因对自身复制的影响，不是人的感受——这本书也不是自私的道德借口。</span></li>
+      <li><span class="lang-en">We are survival machines built by genes; genes are the immortals, bodies are the throwaway vehicles — and understanding that is the first step to rebelling against it.</span><span class="t-cn lang-cn">我们是基因造出的生存机器；基因是不朽的，身体是可丢弃的载具——理解这一点，是反抗的第一步。</span></li>
+    </ol>
+  </div>
+
+  <div class="highlights">
+    <h4>HIGHLIGHTS · 十二句重点亮点</h4>
+    <ol>
+      <li><span class="lang-en">Living things existed on Earth for over three thousand million years without ever knowing why.</span><span class="cn lang-cn">地球上的生物存在了三十多亿年，却从来不知道自己为什么存在。</span></li>
+      <li><span class="lang-en">Before Darwin, the question "why are people?" had no credible answer — only stories.</span><span class="cn lang-cn">在达尔文之前，"人为什么存在"这个问题没有可信的答案——只有故事。</span></li>
+      <li><span class="lang-en">Natural selection builds the appearance of design without any designer.</span><span class="cn lang-cn">自然选择在没有设计者的情况下，造出了"看起来像设计"的东西。</span></li>
+      <li><span class="lang-en">The book's subject is the biology of selfishness and altruism — loving, hating, fighting, sharing, giving.</span><span class="cn lang-cn">这本书的主题是自私与利他的生物学——爱、恨、争斗、分享、给予。</span></li>
+      <li><span class="lang-en">To understand selfishness and altruism, stop looking at the animal — start looking at the gene.</span><span class="cn lang-cn">要理解自私与利他，别看动物——看基因。</span></li>
+      <li><span class="lang-en">Like successful Chicago gangsters, our genes have survived for millions of years in a highly competitive world.</span><span class="cn lang-cn">像成功的芝加哥黑帮一样，我们的基因在竞争激烈的世界里活了几百万年。</span></li>
+      <li><span class="lang-en">A gene that does not look after its own copying gets copied less — and disappears.</span><span class="cn lang-cn">一个不照顾自己复制的基因，被复制得越来越少——最后消失。</span></li>
+      <li><span class="lang-en">"Selfish" describes a gene's effect on survival prospects, not a person's motives or feelings.</span><span class="cn lang-cn">"自私"描述的是基因对生存前景的影响，不是人的动机或感受。</span></li>
+      <li><span class="lang-en">The "good of the species" story is wrong: species don't have children — individuals do, and genes outlive them all.</span><span class="cn lang-cn">"为了物种的好处"这个故事是错的：物种不会生孩子——个体会，而基因比它们活得都久。</span></li>
+      <li><span class="lang-en">A mother bird risking her life for her chicks protects copies of her own genes, carried in her young.</span><span class="cn lang-cn">一只母鸟为雏鸟冒生命危险，是在保护自己基因的拷贝，装在她的孩子身体里。</span></li>
+      <li><span class="lang-en">We are survival machines — robot vehicles blindly programmed to preserve the selfish molecules known as genes.</span><span class="cn lang-cn">我们是生存机器——被盲目编程、用来保存那些叫作基因的自私分子的机器人载具。</span></li>
+      <li><span class="lang-en">Our species alone may have the power to rebel against the designs of the selfish gene — and understanding is the first step.</span><span class="cn lang-cn">只有我们这个物种可能有能力反抗自私基因的设计——而理解是第一步。</span></li>
+    </ol>
+  </div>
+
+  <h2 id="n1-check"><span class="en">CHECKPOINT · CAN YOU EXPLAIN IT BACK?</span>检查点 · 能讲回来吗？</h2>
+  <p class="lede lang-en">Your rule: understand it 70–80% before it counts. Three questions — answer them before the next night. Tap to check.</p>
+  <p class="lede lang-cn">你的规则：看懂 7788 才算过。三道题，答得上来再进下一夜。点开对答案。</p>
+  <details class="check"><summary><span class="lang-en">01｜What does "selfish" mean in "selfish gene" — and what does it NOT mean?</span><span class="lang-cn">01｜"自私的基因"里的"自私"是什么意思——它不是什么意思？</span></summary>
+    <div class="ans lang-en">It means a gene's effect on survival: a gene is "selfish" if it helps copies of itself spread. It does not mean a person's feelings, motives, or morals — and it is not permission to be selfish. Dawkins says we should teach generosity precisely because we are born selfish.</div>
+    <div class="ans lang-cn">它指的是基因对生存的影响：一个基因如果帮助自己的拷贝扩散，就是"自私"的。它不是指人的感受、动机或道德——更不是自私的许可证。Dawkins 说我们应该教慷慨，正因为我们生来是自私的。</div></details>
+  <details class="check"><summary><span class="lang-en">02｜Why is the "good of the species" the wrong level to explain behaviour?</span><span class="lang-cn">02｜为什么"为了物种的好处"是解释行为的错误层面？</span></summary>
+    <div class="ans lang-en">Species don't reproduce — individuals do, and individuals die. What survives generation after generation is the gene, copied from body to body. So behaviour is best explained by what it does for the gene's copying, not for the species.</div>
+    <div class="ans lang-cn">物种不会繁殖——个体会，而个体会死。一代一代活下来的，是从一个身体复制到另一个身体的基因。所以行为最好用它对基因复制的作用来解释，而不是用它对物种的作用。</div></details>
+  <details class="check"><summary><span class="lang-en">03｜What is a "survival machine" — and who is the immortal in this story?</span><span class="lang-cn">03｜什么是"生存机器"——这个故事里的不朽者是谁？</span></summary>
+    <div class="ans lang-en">You are the survival machine: a body built and programmed by genes to keep them alive. The genes are the immortals — they leap from body to body down the generations, abandoning each body before it dies. The machine is throwaway; the gene goes on.</div>
+    <div class="ans lang-cn">你就是生存机器：一个由基因造出来、被编程来让它们活下去的身体。基因是不朽者——它们一代一代从一个身体跳到另一个身体，在每个身体死之前抛弃它。机器是一次性的，基因一直传下去。</div></details>
+
+  <div class="cliff">
+    <span class="next">→ NEXT · NIGHT 2：THE REPLICATORS</span>
+    <p class="lang-en" style="margin:0">Genes are the immortals — but where did the first ones come from? Before there were bodies, before there was life at all, there was only a soup of chemicals on a young Earth. In that soup, something learned to copy itself. <b>Next night: The Replicators — what a replicator is, and the primeval soup where it all began.</b></p>
+    <p class="lang-cn" style="margin:8px 0 0">基因是不朽的——但最初的基因从哪来？在有身体之前，在有生命之前，年轻的地球上只有一锅化学汤。在那锅汤里，有样东西学会了自我复制。<b>下一夜：复制者——什么是复制者，以及一切开始的那锅原始汤。</b></p>
+  </div>
+
+  <p style="margin-top:22px"><a class="cta" href="#map"><span class="lang-en">Next night → Night 2 · The Replicators (coming soon)</span><span class="lang-cn">下一夜 → 第二夜 · 复制者（待续）</span></a></p>
+
+  <footer>
+    <p class="lang-en"><i>The Selfish Gene</i> · Richard Dawkins · 1976 · Oxford University Press · 360 pages. This guide is a companion, not a substitute — read it alongside the book for the best effect. Book page: <a href="https://richarddawkins.com/public/books/book/the-selfish-gene">richarddawkins.com</a></p>
+    <p class="lang-cn">《The Selfish Gene》· Richard Dawkins · 1976 · Oxford University Press · 360 页。本指南是伴读，不是替代品——对照书读，效果最好。书页：<a href="https://richarddawkins.com/public/books/book/the-selfish-gene">richarddawkins.com</a></p>
+    <p>A reader's guide by Conjurer Lab · AISummoner · Night 1 of 13 · 中英对照</p>
+  </footer>
+
+</div>
+<button class="bm-fab" id="bm-btn" title="夜晚列表：点开跳转任意一夜" onclick="toggleNightList()">🔖</button>
+<div class="bm-menu" id="bm-menu" role="dialog" aria-label="夜晚列表"></div>
+<script>
+  // bookmark: save reading position, resume next visit
+  var BM_KEY = 'gene-bookmark';
+  var BM_SKIP = {progress:1, 'resume-bar':1, 'resume-text':1, 'bm-btn':1, 'bm-menu':1};
+  // dynamic anchors: every id on the page except the UI chrome above.
+  // New nights (night4, n4-s1...) are picked up automatically, no list to maintain.
+  function anchorEls(){
+    var out = [];
+    document.querySelectorAll('[id]').forEach(function(el){
+      if(!BM_SKIP[el.id]) out.push(el);
+    });
+    return out;
+  }
+  function nearestAnchor(){
+    var y = window.scrollY + 120, best = 'night1';
+    anchorEls().forEach(function(el){
+      if(el.getBoundingClientRect().top + window.scrollY <= y) best = el.id;
+    });
+    return best;
+  }
+  function labelFor(id){
+    var el = document.getElementById(id);
+    if(!el) return id;
+    var h = el.querySelector('h2,h3');
+    if(!h && el.tagName === 'HR'){
+      var n = el.nextElementSibling;
+      while(n && !/^H[23]$/.test(n.tagName)) n = n.nextElementSibling;
+      h = n;
+    }
+    h = h || el;
+    var t = (h.textContent || '').replace(/\s+/g, ' ').trim();
+    return t ? t.slice(0, 42) : id;
+  }
+  function saveBookmark(){
+    var id = nearestAnchor();
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+    var b = document.getElementById('bm-btn');
+    if(b){ b.textContent = '✓'; setTimeout(function(){ b.textContent = '🔖'; }, 1500); }
+  }
+
+  // night list menu: tap 🔖 to see all nights, jump to any published one.
+  // Built from the map rows, so new nights appear automatically, no list to maintain.
+  function currentNightNum(){
+    var id = nearestAnchor();
+    var m = id.match(/^night(\d+)/) || id.match(/^n(\d+)-/);
+    return m ? parseInt(m[1], 10) : 0;
+  }
+  function buildNightMenu(){
+    var menu = document.getElementById('bm-menu');
+    if(!menu) return;
+    var esc = function(t){ return (t || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+    var html = '<h4>全部夜晚 <button onclick="closeNightList()" aria-label="关闭">✕</button></h4>';
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        html += '<button class="bm-row" onclick="goResume(); closeNightList();"><span class="no">上次读到</span><span class="t">' + esc(data.label) + '</span><span class="st">继续 →</span></button>';
+      }
+    }catch(e){}
+    html += '<button class="bm-row" onclick="saveBookmark(); closeNightList();"><span class="no">📌</span><span class="t">收藏此处<small>下次打开直接回到这里</small></span><span class="st">保存</span></button>';
+    var now = currentNightNum();
+    document.querySelectorAll('.map li').forEach(function(li){
+      var no = li.querySelector('.no');
+      var t = li.querySelector('.t');
+      var st = li.querySelector('.st');
+      if(!no || !t) return;
+      var num = parseInt((no.textContent || '').replace(/\D/g, ''), 10) || 0;
+      var done = li.classList.contains('done');
+      var cnEl = t.querySelector('.cn');
+      var cn = cnEl ? cnEl.textContent : '';
+      var title = (t.textContent || '').replace(cn, '').trim();
+      var stTxt = st ? st.textContent.trim() : '';
+      var cls = 'bm-row' + (done ? '' : ' soon') + (num === now && num > 0 ? ' now' : '');
+      var click = done ? ' onclick="goNight(' + num + ')"' : '';
+      html += '<button class="' + cls + '"' + click + '><span class="no">' + esc(no.textContent.trim()) + '</span><span class="t">' + esc(title) + (cn ? '<small>' + esc(cn) + '</small>' : '') + '</span><span class="st">' + esc(stTxt) + '</span></button>';
+    });
+    menu.innerHTML = html;
+  }
+  function goNight(n){
+    closeNightList();
+    var el = document.getElementById('night' + n);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  }
+  function toggleNightList(){
+    var menu = document.getElementById('bm-menu');
+    if(!menu) return;
+    if(menu.classList.contains('open')){ closeNightList(); return; }
+    buildNightMenu();
+    menu.classList.add('open');
+  }
+  function closeNightList(){
+    var menu = document.getElementById('bm-menu');
+    if(menu) menu.classList.remove('open');
+  }
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('bm-menu');
+    if(!menu || !menu.classList.contains('open')) return;
+    var btn = document.getElementById('bm-btn');
+    if(menu.contains(e.target) || (btn && btn.contains(e.target))) return;
+    closeNightList();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeNightList();
+  });
+
+  function showResume(data){
+    var bar = document.getElementById('resume-bar');
+    if(!bar || !data) return;
+    bar.style.display = 'flex';
+    var t = document.getElementById('resume-text');
+    if(t) t.textContent = '上次读到：' + data.label;
+  }
+  function goResume(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        var el = document.getElementById(data.id);
+        if(el) el.scrollIntoView({behavior:'smooth'});
+      }
+    }catch(e){}
+  }
+  function clearBookmark(){
+    try{ localStorage.removeItem(BM_KEY); }catch(e){}
+    lastSaved = '';
+    var bar = document.getElementById('resume-bar');
+    if(bar) bar.style.display = 'none';
+  }
+  // auto-save: reading position follows you, no tap needed.
+  // Only runs after the reader scrolls, so opening the page never clobbers the saved spot.
+  var lastSaved = '';
+  function autoSave(){
+    var id = nearestAnchor();
+    if(id === lastSaved) return;
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+  }
+  var saveTimer = null;
+  window.addEventListener('scroll', function(){
+    if(saveTimer) return;
+    saveTimer = setTimeout(function(){ saveTimer = null; autoSave(); }, 1200);
+  }, {passive:true});
+  window.addEventListener('DOMContentLoaded', function(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data){ showResume(data); if(data.id) lastSaved = data.id; }
+    }catch(e){}
+    if(location.hash){
+      setTimeout(autoSave, 800);
+    }
+  });
+</script>
+<script>
+  // language toggle: bi (both) / en / cn
+  function setLang(m){
+    document.documentElement.setAttribute('data-lang', m);
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-m') === m);
+    });
+  }
+  // progress bar follows scroll
+  var bar = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? (h.scrollTop / max) : 0;
+    bar.style.width = (11 + p * 89) + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+</script>
+</body>
+</html>

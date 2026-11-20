@@ -81,6 +81,36 @@
       <span><b>召唤师的产品站</b><span class="dom">aisummoner.com</span><span class="desc">Atlas 学习地图 · 读书站《无穷的开始》《Co-Existence》· 单词卡</span></span>
       <span class="go">›</span>
     </a>
+    <a class="site" href="https://aisummoner.com/fabric-of-reality/">
+      <span class="dot">🌌</span>
+      <span><b>《实在的结构》· David Deutsch</b><span class="dom">aisummoner.com/fabric-of-reality</span><span class="desc">读书站 · 第一夜已上线 · 万物理论：四条线索织成一个理论</span></span>
+      <span class="go">›</span>
+    </a>
+    <a class="site" href="https://aisummoner.com/ascent-of-man/">
+      <span class="dot">🪜</span>
+      <span><b>《人的攀登》· Jacob Bronowski</b><span class="dom">aisummoner.com/ascent-of-man</span><span class="desc">读书站 · 第一夜已上线 · 低于天使：什么让我们成为人</span></span>
+      <span class="go">›</span>
+    </a>
+    <a class="site" href="https://aisummoner.com/selfish-gene/">
+      <span class="dot">🧬</span>
+      <span><b>《自私的基因》· Richard Dawkins</b><span class="dom">aisummoner.com/selfish-gene</span><span class="desc">读书站 · 第一夜已上线 · 人为什么存在？基因的视角</span></span>
+      <span class="go">›</span>
+    </a>
+    <a class="site" href="https://aisummoner.com/conjectures-and-refutations/">
+      <span class="dot">🔬</span>
+      <span><b>《猜想与反驳》· Karl Popper</b><span class="dom">aisummoner.com/conjectures-and-refutations</span><span class="desc">读书站 · 第一夜已上线 · 科学：猜想与反驳</span></span>
+      <span class="go">›</span>
+    </a>
+    <a class="site" href="https://aisummoner.com/open-society/">
+      <span class="dot">🏛️</span>
+      <span><b>《开放社会及其敌人》· Karl Popper</b><span class="dom">aisummoner.com/open-society</span><span class="desc">读书站 · 第一夜已上线 · 历史主义与命运神话</span></span>
+      <span class="go">›</span>
+    </a>
+    <a class="site" href="https://aisummoner.com/bold-conjectures/">
+      <span class="dot">💬</span>
+      <span><b>《大胆猜想》第一卷 · David Deutsch 访谈</b><span class="dom">aisummoner.com/bold-conjectures</span><span class="desc">读书站 · 第一夜已上线 · 库恩访谈：量子理论是什么意思</span></span>
+      <span class="go">›</span>
+    </a>
     <a class="site" href="https://roastprep.com/">
       <span class="dot">🔥</span>
       <span><b>RoastPrep · 搞笑学 SAT</b><span class="dom">roastprep.com</span><span class="desc">穿越群聊 + Boss 战 + 真题语境 · 五宠陪你背单词 · $49 起</span></span>
@@ -130,7 +160,13 @@
   // and offer one-tap return to the exact spot. Hidden when nothing is saved.
   var BOOKS = [
     {key:'boi-bookmark', title:'《无穷的开始》', base:'/beginning-of-infinity/'},
-    {key:'coe-bookmark', title:'《Co-Existence》', base:'/co-existence/'}
+    {key:'coe-bookmark', title:'《Co-Existence》', base:'/co-existence/'},
+    {key:'fabric-bookmark', title:'《实在的结构》', base:'/fabric-of-reality/'},
+    {key:'ascent-bookmark', title:'《人的攀登》', base:'/ascent-of-man/'},
+    {key:'gene-bookmark', title:'《自私的基因》', base:'/selfish-gene/'},
+    {key:'cr-bookmark', title:'《猜想与反驳》', base:'/conjectures-and-refutations/'},
+    {key:'os-bookmark', title:'《开放社会及其敌人》', base:'/open-society/'},
+    {key:'bc-bookmark', title:'《大胆猜想》', base:'/bold-conjectures/'}
   ];
   function readBM(key){
     try{ return JSON.parse(localStorage.getItem(key) || 'null'); }catch(e){ return null; }
@@ -155,7 +191,7 @@
     if(any) box.style.display = 'block';
   })();
   function clearResume(){
-    try{ localStorage.removeItem('boi-bookmark'); localStorage.removeItem('coe-bookmark'); }catch(e){}
+    try{ localStorage.removeItem('boi-bookmark'); localStorage.removeItem('coe-bookmark'); localStorage.removeItem('fabric-bookmark'); localStorage.removeItem('ascent-bookmark'); localStorage.removeItem('gene-bookmark'); localStorage.removeItem('cr-bookmark'); localStorage.removeItem('os-bookmark'); localStorage.removeItem('bc-bookmark'); }catch(e){}
     var box = document.getElementById('resume');
     if(box) box.style.display = 'none';
   }

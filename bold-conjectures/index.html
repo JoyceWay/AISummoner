@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="bi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《大胆猜想》第一卷 · 十四夜 · David Deutsch 访谈读书指南 | AISummoner</title>
+<meta name="description" content="David Deutsch《Bold Conjectures, Volume I》读书指南，中英对照：14 篇访谈拆成十四夜，每夜十分钟，读完一夜想知道下一夜发生什么。">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --paper:#F4F1EA; --ink:#141413; --ink-soft:#3a382f; --muted:#7A756C;
+    --terra:#D96548; --amber:#F0A832; --cyan:#0891B2; --line:#E3DCCB;
+    --card:#FBF9F4; --green:#16794F;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Serif SC","Songti SC",Georgia,serif; line-height:1.85; font-size:17px;
+    background-image:
+      linear-gradient(rgba(20,20,19,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20,20,19,0.035) 1px, transparent 1px);
+    background-size:28px 28px;
+  }
+  .progress{position:fixed; top:0; left:0; height:3px; background:var(--terra); width:11%; z-index:50; transition:width .3s}
+  .wrap{max-width:720px; margin:0 auto; padding:0 20px 80px}
+  .topbar{display:flex; justify-content:space-between; align-items:center; padding:18px 0 8px;
+    font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.14em; color:var(--muted)}
+  .topbar a{color:var(--muted); text-decoration:none}
+  .topbar a:hover{color:var(--terra)}
+  /* language toggle */
+  .lang-toggle{display:flex; gap:6px}
+  .lang-btn{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.08em;
+    border:1px solid var(--line); background:var(--card); color:var(--ink-soft);
+    border-radius:999px; padding:4px 12px; cursor:pointer}
+  .lang-btn.active{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+  /* bilingual: EN first, CN after, CN slightly smaller */
+  [data-lang="en"] .lang-cn{display:none !important}
+  [data-lang="cn"] .lang-en{display:none !important}
+  .lang-cn{font-size:.95em; color:var(--ink-soft)}
+  p.lang-en, p.lang-cn{margin:10px 0}
+  .kicker{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.22em; color:var(--terra); margin:34px 0 10px}
+  h1{font-size:44px; line-height:1.15; margin:0 0 8px; font-weight:700}
+  h1 .en{display:block; font-size:20px; color:var(--muted); font-weight:400; letter-spacing:.04em; margin-top:10px}
+  .sub{font-size:19px; color:var(--ink-soft); margin:14px 0 0}
+  .sub b{color:var(--terra)}
+  .meta{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 0}
+  .pill{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; border:1px solid var(--line);
+    border-radius:999px; padding:4px 12px; background:var(--card); color:var(--ink-soft)}
+  .pill.hot{border-color:var(--terra); color:var(--terra)}
+  a.pill{text-decoration:none}
+  a.pill.hot:hover{background:var(--terra); color:var(--paper)}
+  .cta{display:inline-block; margin-top:26px; background:var(--ink); color:var(--paper); text-decoration:none;
+    padding:12px 26px; border-radius:999px; font-size:16px}
+  .cta:hover{background:var(--terra)}
+  hr.sep{border:none; border-top:1px solid var(--line); margin:44px 0}
+  h2{font-size:26px; margin:0 0 6px}
+  h2 .en{display:block; font-size:13px; font-family:"JetBrains Mono",ui-monospace,monospace; letter-spacing:.18em; color:var(--muted); font-weight:400; margin-bottom:6px}
+  .lede{color:var(--ink-soft); margin:0 0 20px}
+  .why{display:grid; gap:12px}
+  .why .row{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px}
+  .why .row b{color:var(--terra)}
+  .why .fix{color:var(--green); font-size:15px; margin-top:4px}
+  .how .step{display:flex; gap:14px; margin:14px 0}
+  .how .n{flex:0 0 30px; height:30px; border-radius:50%; background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:center; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:13px}
+  .map{list-style:none; margin:0; padding:0}
+  .map li{display:flex; gap:14px; padding:13px 4px; border-bottom:1px solid var(--line); align-items:baseline}
+  .map .no{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--muted); flex:0 0 62px}
+  .map .t{font-weight:700}
+  .map .t .cn{color:var(--muted); font-weight:400; font-size:14px; margin-left:6px}
+  .map .hook{color:var(--ink-soft); font-size:15px; line-height:1.6}
+  .map .hook-cn{color:var(--muted); font-size:14px; line-height:1.6}
+  .map .st{margin-left:auto; flex:0 0 auto; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px;
+    border:1px solid var(--terra); color:var(--terra); border-radius:999px; padding:2px 10px; white-space:nowrap}
+  .map .st.soon{border-color:var(--line); color:var(--muted)}
+  .map li.done{background:linear-gradient(90deg, rgba(217,101,72,.07), transparent 70%)}
+  /* Night 1 */
+  .night-tag{display:inline-block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px;
+    letter-spacing:.2em; color:var(--paper); background:var(--terra); border-radius:4px; padding:4px 12px}
+  .scene{margin:30px 0}
+  .scene h3{font-size:21px; margin:0 0 8px}
+  .scene h3 .sc{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; color:var(--terra); letter-spacing:.16em; display:block; margin-bottom:4px}
+  .scene h3 .h-cn{display:block; font-size:18px; color:var(--muted); font-weight:400; margin-top:2px}
+  .quote{border-left:3px solid var(--amber); background:rgba(240,168,50,.08); padding:14px 18px; margin:18px 0; font-size:16px}
+  .quote .en{font-style:italic}
+  .quote .cn{color:var(--ink-soft); font-size:15px; margin-top:6px}
+  .key{color:var(--terra); font-weight:700}
+  .term{font-weight:700; border-bottom:2px solid rgba(217,101,72,.4)}
+  .quiz{display:grid; gap:12px; margin:16px 0}
+  .qcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; cursor:pointer}
+  .qcard:hover{border-color:var(--terra)}
+  .qcard .a{display:none; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); font-size:15px}
+  .qcard.open .a{display:block}
+  .qcard .tap{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--muted); letter-spacing:.1em}
+  .verdict-bad{color:var(--terra); font-weight:700}
+  .verdict-good{color:var(--green); font-weight:700}
+  .takeaway{background:var(--ink); color:var(--paper); border-radius:12px; padding:20px 22px; margin:26px 0}
+  .takeaway h4{margin:0 0 10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.2em; color:var(--amber)}
+  .takeaway ol{margin:0; padding-left:22px}
+  .takeaway li{margin:8px 0}
+  .takeaway .t-cn{display:block; font-size:15px; color:#D8D2C4; margin-top:2px}
+  .highlights{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:26px 0}
+  .highlights h4{margin:0 0 10px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.2em; color:var(--terra)}
+  .highlights ol{margin:0; padding-left:22px}
+  .highlights li{margin:10px 0}
+  .highlights li .lang-en{font-style:italic}
+  .highlights li .cn{display:block; font-size:15px; color:var(--ink-soft); margin-top:2px}
+  details.check{border:1px solid var(--line); border-radius:12px; background:var(--card); padding:14px 18px; margin:10px 0}
+  details.check summary{cursor:pointer; font-weight:700}
+  details.check .ans{margin-top:8px; font-size:15px; color:var(--ink-soft)}
+  .cliff{background:linear-gradient(135deg, rgba(8,145,178,.1), rgba(217,101,72,.08)); border:1px solid var(--line);
+    border-radius:12px; padding:22px; margin:30px 0; font-size:18px}
+  .cliff .next{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:12px; letter-spacing:.18em; color:var(--cyan); display:block; margin-bottom:8px}
+  footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:14px}
+  footer a{color:var(--terra)}
+  @media (max-width:560px){ h1{font-size:34px} body{font-size:16px} .map .hook{display:block; margin-top:2px} }
+  /* bookmark: resume bar + floating save button */
+  .resume-bar{display:none; background:var(--ink); color:var(--paper);
+    border-radius:10px; padding:8px 12px; margin:12px 0; align-items:center; gap:8px; cursor:pointer; font-size:14px}
+  #resume-text{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; flex:1}
+  .resume-bar .go{color:var(--amber); font-weight:700; white-space:nowrap}
+  .resume-bar .x{margin-left:auto; background:none; border:none; color:#D8D2C4; font-size:16px; cursor:pointer; padding:0 2px}
+  .bm-fab{position:fixed; right:12px; bottom:12px; z-index:60; width:44px; height:44px; border-radius:50%;
+    background:var(--ink); color:var(--paper); border:none; font-size:20px; cursor:pointer;
+    box-shadow:0 4px 16px rgba(0,0,0,.25)}
+  .bm-fab:hover{background:var(--terra)}
+  /* night list menu: tap 🔖 to jump to any night */
+  .bm-menu{display:none; position:fixed; right:12px; top:64px; z-index:70; width:min(340px, calc(100vw - 24px));
+    max-height:min(70vh, 560px); overflow-y:auto; background:var(--paper); color:var(--ink);
+    border:1px solid var(--line); border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,.28); padding:6px 0}
+  .bm-menu.open{display:block}
+  .bm-menu h4{margin:6px 16px 4px; font-size:13px; letter-spacing:.14em; color:var(--muted); display:flex; justify-content:space-between; align-items:center}
+  .bm-menu h4 button{background:none; border:none; font-size:16px; cursor:pointer; color:var(--muted); padding:2px 6px}
+  .bm-row{display:flex; gap:10px; align-items:baseline; width:100%; text-align:left; background:none; border:none;
+    padding:10px 16px; font-size:15px; font-family:inherit; color:var(--ink); cursor:pointer; border-top:1px solid var(--line)}
+  .bm-row:hover{background:rgba(217,101,72,.07)}
+  .bm-row .no{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--muted); flex:0 0 62px}
+  .bm-row .t{flex:1; min-width:0}
+  .bm-row .t small{display:block; color:var(--muted); font-size:12px; margin-top:1px}
+  .bm-row .st{font-family:"JetBrains Mono",ui-monospace,monospace; font-size:11px; color:var(--terra); white-space:nowrap}
+  .bm-row.soon{opacity:.55; cursor:default}
+  .bm-row.soon:hover{background:none}
+  .bm-row.soon .st{color:var(--muted)}
+  .bm-row.now{background:rgba(217,101,72,.07)}
+  .bm-row.now .no{color:var(--terra); font-weight:700}
+  .map li.done{cursor:pointer}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/">← AISUMMONER</a>
+    <span class="lang-toggle">
+      <button class="lang-btn active" data-m="bi" onclick="setLang('bi')">中英</button>
+      <button class="lang-btn" data-m="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-m="cn" onclick="setLang('cn')">中文</button>
+    </span>
+    <span>NIGHT 1 / 14</span>
+  </div>
+
+  <div class="resume-bar" id="resume-bar" onclick="goResume()">
+    <span>📖</span><span id="resume-text"></span><span class="go">继续 →</span>
+    <button class="x" title="清除书签" onclick="event.stopPropagation(); clearBookmark()">✕</button>
+  </div>
+
+  <div class="kicker">DAVID DEUTSCH · INTERVIEWS · EDITED BY LOGAN CHIPKIN · 2026 · A READER'S GUIDE · 中英对照</div>
+  <h1>《大胆猜想》第一卷<span class="en">Bold Conjectures, Volume I, in fourteen nights</span></h1>
+  <p class="sub lang-en">You own this book, but you couldn't finish it — <b>that's not your fault</b>. Fourteen interviews, transcribed from spoken conversations — brilliant ideas, but no single story, no narrative thread, just one fascinating question after another. This site retells the book as fourteen nights of stories, ten minutes a night. Finish one night, and you'll want to know what happens the next.</p>
+  <p class="sub lang-cn">你手里有这本书，却读不下去——<b>不是你的问题</b>。十四篇访谈，都是口头对话的文字记录——想法精彩，但没有一条故事线，只有一个接一个迷人的问题。这站把书写成十四夜故事，每夜十分钟，读完一夜，你会想知道下一夜发生什么。</p>
+  <div class="meta">
+    <span class="pill">14 interviews</span>
+    <a class="pill hot" href="#night1">Night 1 · 今夜可读</a><span class="pill">一夜一章 · 每夜 10 分钟</span>
+    <span class="pill">中英对照 · EN / 中文</span>
+  </div>
+  <a class="cta" href="#night1"><span class="lang-en">Start Night 1 ↓</span><span class="lang-cn">开始第一夜 ↓</span></a>
+
+  <hr class="sep">
+
+  <h2><span class="en">WHY YOU STOPPED</span>为什么读不下去</h2>
+  <p class="lede lang-en">First, let's be clear: not finishing it isn't a willpower problem. It's a problem with how the book is written.</p>
+  <p class="lede lang-cn">先说清楚：读不下去不是意志力问题，是这本书的写法问题。</p>
+  <div class="why">
+    <div class="row">
+      <div class="lang-en"><b>01｜Many voices, no single story.</b> It is a compendium of interviews, transcribed from spoken conversations — fourteen interviewers, fourteen directions, no narrative thread to follow from one page to the next.</div>
+      <div class="lang-cn"><b>01｜很多声音，没有一条故事线。</b>这是一本访谈合集，是口头对话的文字记录——十四位采访者，十四个方向，从一页到下一页没有故事线可跟。</div>
+      <div class="fix lang-en">→ fix: one interview, one night, retold as a story. Tonight: a coin toss that splits the world.</div>
+      <div class="fix lang-cn">→ fix：一篇访谈一夜，讲成一个故事。今夜：一次抛硬币，分裂了世界。</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>02｜Spoken, not written.</b> Deutsch thinks aloud in conversation — ideas arrive mid-sentence, half-finished, interrupted by the next question. You finish an interview unsure what the main point was.</div>
+      <div class="lang-cn"><b>02｜是说出来的，不是写出来的。</b>Deutsch 在对话里边想边说——想法半句冒出来、没说完，就被下一个问题打断。读完一篇访谈，你说不清重点到底是什么。</div>
+      <div class="fix lang-en">→ fix: every night distills one interview to one question and one answer, with a checkpoint at the end. If you can explain it back, you pass.</div>
+      <div class="fix lang-cn">→ fix：每夜把一篇访谈提炼成一个问题、一个答案，结尾有检查点。能讲回来，才算过。</div>
+    </div>
+    <div class="row">
+      <div class="lang-en"><b>03｜Too long, no end in sight.</b> Fourteen interviews of transcripts — by interview 2 you can barely remember interview 1.</div>
+      <div class="lang-cn"><b>03｜太长，看不到头。</b>十四篇访谈的文字记录——读到第二篇，第一篇已经记不清了。</div>
+      <div class="fix lang-en">→ fix: a map of 14 nights, ten minutes each, progress you can see. Finish tonight and you're 1/14 done.</div>
+      <div class="fix lang-cn">→ fix：14 夜地图，每夜十分钟，进度看得见。今夜读完，你就走了 1/14。</div>
+    </div>
+  </div>
+
+  <hr class="sep">
+
+  <h2><span class="en">HOW IT WORKS</span>读法</h2>
+  <div class="how">
+    <div class="step"><div class="n">1</div><div><div class="lang-en"><b>One night, one interview.</b> Ten minutes each, no greed.</div><div class="lang-cn"><b>一夜一篇。</b>每夜只读一篇访谈的内容，十分钟，不贪多。</div></div></div>
+    <div class="step"><div class="n">2</div><div><div class="lang-en"><b>Every night ends on a cliffhanger.</b> Like One Thousand and One Nights — the story stops at the crucial moment, and the answer comes next night.</div><div class="lang-cn"><b>每夜结尾一个悬念。</b>像一千零一夜一样——故事讲到最关键处停住，下一夜才揭晓。</div></div></div>
+    <div class="step"><div class="n">3</div><div><div class="lang-en"><b>Pass the checkpoint before the next night.</b> Three questions; answer them before moving on. That's your rule: understand it 70–80% before it counts.</div><div class="lang-cn"><b>先过检查点，再进下一夜。</b>三道题，答得上来再往下走。这是你的规则：看懂 7788 才算过。</div></div></div>
+    <div class="step"><div class="n">4</div><div><div class="lang-en"><b>English terms stay in English.</b> Multiverse, differentiation, interference, knowledge, constructor theory — these words look the same in the book, so you can find them there.</div><div class="lang-cn"><b>英文术语保留原文。</b>multiverse、differentiation、interference、knowledge、constructor theory——这些词在书里就是这个样子，对照书找得到。</div></div></div>
+  </div>
+
+  <hr class="sep">
+
+  <h2 id="map"><span class="en">THE MAP · 14 NIGHTS</span>十四夜地图</h2>
+  <p class="lede lang-en">All 14 interviews, one night each. One lamp is lit tonight.</p>
+  <p class="lede lang-cn">全书 14 篇访谈，一篇一夜。今夜亮起一盏灯。</p>
+    <ol class="map">
+    <li class="done" onclick="location.hash='#night1'"><span class="no">NIGHT 01</span><span><span class="t">Robert Lawrence Kuhn: Closer To Truth<span class="cn">罗伯特·劳伦斯·库恩：走近真相</span></span><span class="hook lang-en">What does quantum theory mean — and what is ultimate reality? The first question is the strangest one.</span><span class="hook-cn lang-cn">量子理论是什么意思——终极实在又是什么？第一个问题就是最奇怪的那个。</span></span><span class="st">今夜可读</span></li>
+    <li><span class="no">NIGHT 02</span><span><span class="t">Micah Redding: Humanity's Infinite Reach<span class="cn">迈卡·雷丁：人类无限的 reach</span></span><span class="hook lang-en">How far can human knowledge reach — and is there any limit at all?</span><span class="hook-cn lang-cn">人类的知识能走多远——有没有尽头？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 03</span><span><span class="t">John Horgan: A Plan to Dye One's Whiskers Green<span class="cn">约翰·霍根：把胡子染绿的计划</span></span><span class="hook lang-en">A conversation that starts with a plan to dye one's whiskers green — and goes wherever Deutsch's curiosity leads.</span><span class="hook-cn lang-cn">一场从"把胡子染绿的计划"开始的对话——跟着 Deutsch 的好奇心走到哪里算哪里。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 04</span><span><span class="t">Logan Chipkin: Constructor Theory's application to information theory and beyond<span class="cn">洛根·奇普金：构造理论在信息论中的应用</span></span><span class="hook lang-en">What is constructor theory — and what does it say about information?</span><span class="hook-cn lang-cn">构造理论是什么——它对信息说了什么？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 05</span><span><span class="t">Bruce Nielson: Theory of Anything<span class="cn">布鲁斯·尼尔森：万物理论</span></span><span class="hook lang-en">What would a theory of anything have to explain?</span><span class="hook-cn lang-cn">一种关于一切的理论，必须解释什么？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 06</span><span><span class="t">Sam Kuypers: Musing about Statements, Propositions, and Truth<span class="cn">山姆·凯珀斯：沉思陈述、命题与真理</span></span><span class="hook lang-en">What is the difference between a statement, a proposition, and the truth?</span><span class="hook-cn lang-cn">陈述、命题和真理之间有什么区别？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 07</span><span><span class="t">Tyler Cowen: Multiple Worlds and Our Place in Them<span class="cn">泰勒·考恩：多重世界与我们的位置</span></span><span class="hook lang-en">If there are many worlds, where do we fit in?</span><span class="hook-cn lang-cn">如果有很多世界，我们在其中处于什么位置？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 08</span><span><span class="t">Naval Ravikant: Part 1 – Knowledge Creation and The Human Race<span class="cn">纳瓦尔·拉维坎特：知识创造与人类（上）</span></span><span class="hook lang-en">How is knowledge created — and what does it mean for the human race?</span><span class="hook-cn lang-cn">知识是怎么创造出来的——对人类意味着什么？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 09</span><span><span class="t">Naval Ravikant: Part 2 – Knowledge Creation and The Human Race<span class="cn">纳瓦尔·拉维坎特：知识创造与人类（下）</span></span><span class="hook lang-en">Knowledge creation, continued — with Brett Hall joining the conversation.</span><span class="hook-cn lang-cn">知识创造，下篇——布雷特·霍尔加入对话。</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 10</span><span><span class="t">Allison Duettmann: On Beauty, Knowledge, and Progress<span class="cn">艾莉森·杜特曼：论美、知识与进步</span></span><span class="hook lang-en">Is beauty real — and what does it have to do with knowledge and progress?</span><span class="hook-cn lang-cn">美是真实的吗——它和知识、进步有什么关系？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 11</span><span><span class="t">Charles Bédard: The Nature of Computation, Incompleteness, and Mathematics<span class="cn">查尔斯·贝达尔：计算、不完备与数学的本质</span></span><span class="hook lang-en">What is computation — and what can mathematics never prove?</span><span class="hook-cn lang-cn">计算是什么——数学永远证明不了什么？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 12</span><span><span class="t">Sean Carroll: Science, Complexity, and Explanation<span class="cn">肖恩·卡罗尔：科学、复杂性与解释</span></span><span class="hook lang-en">What makes a scientific explanation good — and what is complexity?</span><span class="hook-cn lang-cn">什么样的科学解释才是好的——复杂性又是什么？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 13</span><span><span class="t">Arjun Khemani: Free-Will, Taking Children Seriously, and Anarcho-Capitalism<span class="cn">阿琼·凯马尼：自由意志、认真对待孩子与无政府资本主义</span></span><span class="hook lang-en">Do we have free will — and what does taking children seriously have to do with it?</span><span class="hook-cn lang-cn">我们有自由意志吗——认真对待孩子和它有什么关系？</span></span><span class="st soon">待续</span></li>
+    <li><span class="no">NIGHT 14</span><span><span class="t">Peter Boghossian: Fermi Paradox, Ideological Contagion, and More<span class="cn">彼得·博格西安：费米悖论、意识形态传染及其他</span></span><span class="hook lang-en">Where is everybody — and how do bad ideas spread like a contagion?</span><span class="hook-cn lang-cn">大家都在哪里——坏想法怎么像传染病一样传播？</span></span><span class="st soon">待续</span></li>
+  </ol>
+
+  <hr class="sep" id="night1">
+
+  <span class="night-tag">NIGHT 01 · 第一夜</span>
+  <h2 style="margin-top:14px"><span class="en">INTERVIEW 01 · ROBERT LAWRENCE KUHN: CLOSER TO TRUTH</span>罗伯特·劳伦斯·库恩：走近真相</h2>
+  <p class="lede lang-en">Tonight answers just one question: <b>what does quantum theory mean — and what is ultimate reality?</b> The answer starts with a coin toss that splits the world.</p>
+  <p class="lede lang-cn">今夜只回答一个问题：<b>量子理论是什么意思——终极实在又是什么？</b>答案从一次抛硬币开始，那次抛硬币分裂了世界。</p>
+
+  <div class="scene" id="n1-s1">
+    <h3><span class="sc">SCENE 1 · OPENING</span>A coin toss splits the world<span class="h-cn lang-cn">一次抛硬币，分裂了世界</span></h3>
+    <p class="lang-en">Robert Lawrence Kuhn opens with the difficulty itself. The many-worlds picture of quantum theory: innumerable different universes, continuously branching. It is, he says, very difficult to understand.</p>
+    <p class="lang-cn">罗伯特·劳伦斯·库恩一上来就直说难处。量子理论的多世界图像：无数个不同的宇宙，不断分支。他说，这非常难理解。</p>
+    <p class="lang-en">Deutsch corrects the picture at once. The universes do not branch or split. They <span class="term">differentiate</span>. At the beginning of time, they may all have been identical — and physical processes, following the laws of quantum mechanics, made them different from each other. The total number stays constant. What grows, very rapidly, is the degree of differentiation between them.</p>
+    <p class="lang-cn">Deutsch 马上纠正了这个图像。宇宙不是分支、不是分裂，而是<span class="term">分化（differentiate）</span>。在时间之初，它们可能全都一模一样——物理过程遵循量子力学定律，让它们彼此不同。总数不变，变的是它们之间的分化程度，而且分化得非常快。</p>
+    <p class="lang-en">And that growth is what we call the arrow of time. Time's one-way flow is not a separate ingredient of reality. It is what increasing differentiation looks like, from the inside.</p>
+    <p class="lang-cn">而这种增长，就是我们说的<b>时间之箭</b>。时间单向流逝不是实在里另外一种配料，它是分化不断加深、从内部看起来的样子。</p>
+    <p class="lang-en">Take a coin toss. Once the coin lands, the version of you that saw heads and the version that saw tails no longer interact — their effect on each other becomes exponentially small, immeasurable. But it never goes away. On the microscopic scale, those interactions are still there, and they matter: quantum theory calls them <span class="term">interference</span>.</p>
+    <p class="lang-cn">拿抛硬币来说。硬币落地之后，看到正面的那个你和看到反面的那个你不再相互作用——它们对彼此的影响变得指数级微小，测不出来。但它永远不会消失。在微观尺度上，这些相互作用还在，而且很重要：量子理论称之为<span class="term">干涉（interference）</span>。</p>
+  </div>
+
+  <div class="scene" id="n1-s2">
+    <h3><span class="sc">SCENE 2 · THE STORY</span>Which one is the real me?<span class="h-cn lang-cn">哪一个才是真的我？</span></h3>
+    <p class="lang-en">Kuhn asks the question anyone would ask. If there are many copies of me, which one is the real me? How can there be more than one "I," when I have a single, unitary consciousness?</p>
+    <p class="lang-cn">库恩问了任何人都会问的问题：如果有很多个我，哪一个才是真的我？我只有一个统一的意识，怎么会有不止一个"我"？</p>
+    <p class="lang-en">Deutsch's answer is that philosophers have been asking the same question about time since time immemorial. Is the "I" of ten years ago — who did something embarrassing that I would never do today — really me? If a criminal repents, is it the same person, and should that person be punished? These are all questions about whether entities at different times are the same entity.</p>
+    <p class="lang-cn">Deutsch 的回答是：哲学家们关于时间，早就问过同一个问题。十年前的那个"我"——做了件让我尴尬、今天绝不会做的事——真的是我吗？一个罪犯悔改了，还是同一个人吗，还该受罚吗？这些问题全都是：不同时间的实体，是不是同一个实体。</p>
+    <p class="lang-en">And here is the startling part. In the approximate theories that might be like quantum gravity, different times of the same universe appear in the theory in exactly the same way as different universes at the same time. There is no fundamental difference between them. Yesterday's universe is the same kind of object as an alternative universe today.</p>
+    <p class="lang-cn">惊人的部分在这里。在那些可能像量子引力理论的近似理论里，同一个宇宙的不同时间，和同一时间的不同宇宙，在理论里以完全相同的方式出现。它们之间没有根本区别。昨天的宇宙和今天的另一个宇宙，是同一种东西。</p>
+    <p class="lang-en">So the flow of time is an <span class="term">emergent</span> property of the multiverse. The multiverse is the name the theory gives to the whole of physical reality — a very complex object, not described by ordinary numbers like "three cats," but by mathematical entities that describe vast numbers of objects at the same time, in the same formalism, and their interactions with each other. We cannot think of the multiverse as being in time. Time is a feature of the multiverse.</p>
+    <p class="lang-cn">所以时间流逝是多重宇宙的<span class="term">涌现（emergent）</span>属性。多重宇宙是这个理论给整个物理实在起的名字——一个非常复杂的对象，不是用"三只猫"这样的普通数字描述的，而是用数学实体描述的：同一套形式同时描述无数个对象，以及它们之间的相互作用。我们不能把多重宇宙想成"在时间里"，时间是多重宇宙的一个特征。</p>
+  </div>
+
+  <div class="scene" id="n1-s3">
+    <h3><span class="sc">SCENE 3 · THE TURN</span>There is no "ultimate reality" to find<span class="h-cn lang-cn">没有"终极实在"可找</span></h3>
+    <p class="lang-en">Kuhn then asks the biggest question of all: what is ultimate reality? Deutsch refuses the question. He does not attempt to find ultimate reality, he says, because it is a kind of chimera. Start with problems. Start with what we know. Then try to make it more fundamental than that.</p>
+    <p class="lang-cn">库恩接着问了最大的问题：终极实在是什么？Deutsch 拒绝了这个问题。他说，他并不试图寻找终极实在，因为那是一种幻兽（chimera）。从问题出发，从我们知道的东西出发，然后试着让它更根本。</p>
+    <p class="lang-en">What does "fundamental" mean, then? A fundamental idea is one that is needed in the explanation of many other ideas, many other phenomena. The most fundamental ones we know are the ones needed in the explanation of practically everything. And Deutsch picked out four: <span class="term">quantum physics</span>, the <span class="term">theory of evolution</span>, the <span class="term">theory of computation</span>, and the <span class="term">theory of knowledge</span> — four strands forming one unified fabric of reality, where none of them can be understood without the other three.</p>
+    <p class="lang-cn">那"根本"是什么意思？一个根本的想法，是解释许多别的想法、许多别的现象时需要的想法。我们知道的最根本的想法，是解释几乎一切时都需要的想法。Deutsch 挑出了四个：<span class="term">量子物理学</span>、<span class="term">进化论</span>、<span class="term">计算理论</span>和<span class="term">知识论</span>——四根线织成一块统一的实在之布，其中任何一根都离不开另外三根，无法单独理解。</p>
+    <p class="lang-en">At first sight they look like different kinds of things. Three of the four seem tied to us humans, or to life on Earth, while the fourth is universal. But the closer you look, the more you realize you cannot understand any of them without the others. They are all intimately related — and each of them has been underestimated, accepted in its own field but not taken seriously as part of people's worldview. People accept quantum theory but not its parallel universes. People accept the universality of computation but not that it implies artificial intelligence is possible.</p>
+    <p class="lang-cn">乍一看，它们像是不同种类的东西。四根线里有三根似乎和人类、和地球上的生命有关，只有一根是普遍的。但越仔细看，越发现不理解另外几根，就理解不了其中任何一根。它们紧密相连——而且每一根都被低估了：在各自的领域里被接受，却没有被认真当作世界观的一部分。人们接受量子理论，却不接受它的平行宇宙；人们接受计算的普遍性，却不接受它意味着人工智能是可能的。</p>
+    <p class="lang-en">One claim about ultimate reality looks for a final answer, one stays with problems. Tap a card to see which — and why.</p>
+    <p class="lang-cn">关于终极实在，一个说法在找最终答案，一个留在问题里。点开卡片，看哪个是、为什么。</p>
+    <div class="quiz">
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>A.</b> "Ultimate reality is one final theory that explains everything, once and for all — find it, and the search is over."</div>
+        <div class="lang-cn"><b>A.</b> "终极实在就是一个最终理论，一次性解释一切——找到了它，探索就结束了。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-bad">Wrong.</span> Deutsch says he does not attempt to find ultimate reality because it is a kind of chimera. Start with problems and with what we know. "Fundamental" does not mean final — it means needed in the explanation of practically everything else.</div>
+        <div class="a lang-cn"><span class="verdict-bad">错。</span>Deutsch 说他并不试图寻找终极实在，因为那是一种幻兽。从问题出发，从我们知道的东西出发。"根本"不是"最终"，而是"解释几乎一切时都需要它"。</div>
+      </div>
+      <div class="qcard" onclick="this.classList.toggle('open')">
+        <div class="lang-en"><b>B.</b> "The most fundamental ideas are the ones needed to explain practically everything — and Deutsch's four strands (quantum physics, evolution, computation, knowledge) cannot be understood without each other."</div>
+        <div class="lang-cn"><b>B.</b> "最根本的想法，是解释几乎一切时都需要的想法——而 Deutsch 的四根线（量子物理学、进化论、计算理论、知识论）离不开彼此，无法单独理解。"</div>
+        <div class="tap lang-en">Tap to see the verdict ↓</div>
+        <div class="tap lang-cn">点开看检测结果 ↓</div>
+        <div class="a lang-en"><span class="verdict-good">Right.</span> That is the fabric of reality: four strands, each fundamental, none understandable without the other three. The test of a fundamental idea is how much else it is needed to explain.</div>
+        <div class="a lang-cn"><span class="verdict-good">对。</span>这就是实在之布：四根线，每根都根本，任何一根都离不开另外三根。检验一个想法是否根本，要看解释别的东西时有多需要它。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene" id="n1-s4">
+    <h3><span class="sc">SCENE 4 · THE CONTRAST</span>Is the cosmos a computer?<span class="h-cn lang-cn">宇宙是一台计算机吗？</span></h3>
+    <p class="lang-en">Computation, Deutsch says, is built into the laws of physics at a fundamental level. Many people hear that and jump to a conclusion: the reason mathematics works so well in physics is that the world is a computer, and we are just programs running in it — a simulation.</p>
+    <p class="lang-cn">Deutsch 说，计算在最根本的层面上就内嵌于物理定律。很多人一听就跳到一个结论：数学在物理学里这么好用，是因为世界就是一台计算机，我们只是里面跑的程序——一场模拟。</p>
+    <p class="lang-en">That misses the whole point, he says. The simulation story needs a notion of what is or is not computable that sits outside the physical world — set by God, or something, to be a certain set, which is why our universe only instantiates those relationships. That does not solve the problem. You may as well have said that God set up just our universe with those relationships. Kuhn's reply: eliminate the middleman.</p>
+    <p class="lang-cn">他说，那完全搞错了重点。模拟的说法需要一个"什么可算、什么不可算"的概念，放在物理世界之外——由上帝或什么设定好是某一套，所以我们的宇宙只实例化了那些关系。这没有解决问题，还不如直接说上帝就是这样设定了我们的宇宙。库恩接了一句：去掉中间商。</p>
+    <p class="lang-en">The real lesson is stranger and more exciting. A <span class="term">universal computer</span> can be built <i>within</i> the universe. The set of all its possible motions — that is, the set of all possible programs that could be programmed into it — is in one-to-one correspondence with the set of all possible motions of anything. That is telling us something about the universe from the inside: something about what laws of nature actually are.</p>
+    <p class="lang-cn">真正的教训更奇怪，也更激动人心。一台<span class="term">通用计算机（universal computer）</span>可以在宇宙<i>内部</i>造出来。它所有可能的运动的集合——也就是能编进它的所有程序的集合——与任何东西所有可能的运动的集合一一对应。这是在从内部告诉我们关于宇宙的事：关于自然定律到底是什么。</p>
+    <p class="lang-en">And computation was not always seen as physics. When Babbage and then Turing built the theory in the 1930s, it was invented as a branch of mathematics, to study mathematical proofs. The mathematicians were applying their intuition about physical objects without knowing it — they thought about computing as making marks on squares of paper, and as Feynman remarked, they thought they understood paper. But paper, like everything else, obeys quantum mechanics. The theory of computation is the theory of quantum computation, and that is a theory of physics.</p>
+    <p class="lang-cn">而计算并不一直被看作物理学。巴贝奇、然后是图灵在 1930 年代建立这个理论时，它是作为数学的一个分支被发明的，用来研究数学证明。数学家们在不知不觉中运用着他们对物理对象的直觉——他们把计算想成在纸格上做记号，用费曼的话说，他们以为自己懂纸。但纸和一切东西一样，都服从量子力学。计算理论就是量子计算理论，而那是物理学理论。</p>
+  </div>
+
+  <div class="scene" id="n1-s5">
+    <h3><span class="sc">SCENE 5 · THE RISE</span>A few thousand qubits beat the visible universe<span class="h-cn lang-cn">几千个量子比特胜过整个可见宇宙</span></h3>
+    <p class="lang-en">So what does the quantum part add? For certain types of calculation, a quantum computer can work exponentially faster than any classical computer. A small quantum computer with a few thousand qubits — the quantum analogue of bits — could perform more computations simultaneously than could be performed by the entire visible universe, if it was all made into classical computers. And "more" is an understatement: exponentially more. But only for certain types of computation — and quantum computers are not slower for any computation, because a quantum computer can simulate a classical one.</p>
+    <p class="lang-cn">那么量子那部分加了什么？对某些类型的计算，量子计算机可以比任何经典计算机指数级更快。一台只有几千个量子比特（qubit，比特的量子对应物）的小量子计算机，能同时做的计算，比整个可见宇宙全都变成经典计算机能做的还要多。而且"更多"还是说轻了：是指数级更多。但只对某些类型的计算——而且量子计算机对任何计算都不更慢，因为量子计算机可以模拟经典计算机。</p>
+    <p class="lang-en">That is why the quantum is so strange: it is not a weirder kind of ordinary physics. It changes what computation itself is. And computation, remember, is one of the four strands — which brings us to the fourth strand, knowledge. Of all the transformations the laws of physics permit — from hot to cold, from a block of marble into a statue — the overwhelming majority only happen if the right knowledge is present. Knowledge is information that can do things: adaptations in living things are a form of knowledge, so DNA embodies knowledge, human brains embody knowledge, books and computers and the internet embody knowledge.</p>
+    <p class="lang-cn">这就是量子为什么这么奇怪：它不是一种更怪的普通物理学，它改变了计算本身是什么。而计算，记得吗，是四根线之一——这就把我们带到第四根线，知识。在物理定律允许的所有变化里——从热到冷、从一块大理石到一尊雕像——绝大多数只有在正确的知识在场时才会发生。知识是能做事的信息：生物体内的适应是一种知识，所以 DNA 承载着知识，人脑承载着知识，书、计算机、互联网都承载着知识。</p>
+    <p class="lang-en">That is why knowledge is a fundamental thing in the physical world — and why this book exists. The fourteen interviews in this volume are fourteen windows onto the same thing: knowledge, what it can do, and how far it can reach. The next night asks the question that follows naturally: if knowledge is fundamental, is there any limit to it at all? <b>Night 2: Micah Redding — humanity's infinite reach.</b></p>
+    <p class="lang-cn">这就是为什么知识是物理世界里一个根本的东西——也是这本书存在的原因。这卷书里的十四篇访谈，是看向同一件事的十四扇窗：知识、知识能做什么、知识能走多远。下一夜问的是自然而然接下来的问题：如果知识是根本的，它有没有尽头？<b>第二夜：迈卡·雷丁——人类无限的 reach。</b></p>
+  </div>
+
+  <div class="takeaway">
+    <h4>TAKEAWAY · 今夜带走三句</h4>
+    <ol>
+      <li><span class="lang-en">Universes do not branch or split — they differentiate. The rapidly growing differentiation is the arrow of time, and the flow of time is an emergent property of the multiverse.</span><span class="t-cn lang-cn">宇宙不是分支、不是分裂，而是分化。分化程度的快速增长就是时间之箭，时间流逝是多重宇宙的涌现属性。</span></li>
+      <li><span class="lang-en">"Ultimate reality" is a chimera. "Fundamental" means needed in the explanation of practically everything — and Deutsch's four strands (quantum physics, evolution, computation, knowledge) cannot be understood without each other.</span><span class="t-cn lang-cn">"终极实在"是一种幻兽。"根本"的意思是解释几乎一切时都需要它——而 Deutsch 的四根线（量子物理学、进化论、计算理论、知识论）离不开彼此，无法单独理解。</span></li>
+      <li><span class="lang-en">Knowledge is fundamental: most transformations the laws of physics allow only happen if the right knowledge is present. And a universal computer can be built inside the universe — the world is not a simulation running on one.</span><span class="t-cn lang-cn">知识是根本的：物理定律允许的大多数变化，只有在正确的知识在场时才会发生。而通用计算机可以在宇宙内部造出来——世界不是跑在一台计算机上的模拟。</span></li>
+    </ol>
+  </div>
+
+  <div class="highlights">
+    <h4>HIGHLIGHTS · 十二句重点亮点</h4>
+    <ol>
+      <li><span class="lang-en">Kuhn's opening difficulty: innumerable universes, continuously branching — very difficult to understand.</span><span class="cn lang-cn">库恩开场的难处：无数个宇宙、不断分支——非常难理解。</span></li>
+      <li><span class="lang-en">They do not branch or split; they differentiate — at the beginning of time they may all have been identical.</span><span class="cn lang-cn">它们不是分支、不是分裂，而是分化——在时间之初，它们可能全都一模一样。</span></li>
+      <li><span class="lang-en">The total number of distinct universes is finite, though enormous; the total number of universes is infinite — the multiverse keeps subdividing itself without limit.</span><span class="cn lang-cn">不同宇宙的总数是有限的，尽管大得惊人；宇宙的总数是无限的——多重宇宙不断细分，没有尽头。</span></li>
+      <li><span class="lang-en">After a coin toss, the two versions stop interacting — the effect becomes exponentially small, but it never goes away; on the microscopic scale it is interference.</span><span class="cn lang-cn">抛硬币之后，两个版本不再相互作用——影响变得指数级微小，但永远不会消失；在微观尺度上，它就是干涉。</span></li>
+      <li><span class="lang-en">"Which one is the real me?" is the same question philosophers asked about time: is the me of ten years ago really me?</span><span class="cn lang-cn">"哪一个才是真的我？"和哲学家关于时间问过的问题是同一个：十年前的那个我，真的是我吗？</span></li>
+      <li><span class="lang-en">There is no fundamental difference between different times of the same universe and different universes at the same time.</span><span class="cn lang-cn">同一个宇宙的不同时间，和同一时间的不同宇宙之间，没有根本区别。</span></li>
+      <li><span class="lang-en">The flow of time is an emergent property of the multiverse — time is a feature of the multiverse, not something the multiverse sits in.</span><span class="cn lang-cn">时间流逝是多重宇宙的涌现属性——时间是多重宇宙的一个特征，不是多重宇宙坐在里面的东西。</span></li>
+      <li><span class="lang-en">Ultimate reality is a chimera — start with problems, start with what you know.</span><span class="cn lang-cn">终极实在是一种幻兽——从问题出发，从你知道的东西出发。</span></li>
+      <li><span class="lang-en">The four strands of the fabric of reality: quantum physics, the theory of evolution, the theory of computation, and the theory of knowledge.</span><span class="cn lang-cn">实在之布的四根线：量子物理学、进化论、计算理论、知识论。</span></li>
+      <li><span class="lang-en">Knowledge is information that can do things — DNA embodies it, brains embody it, books and computers embody it.</span><span class="cn lang-cn">知识是能做事的信息——DNA 承载它，大脑承载它，书和计算机承载它。</span></li>
+      <li><span class="lang-en">The world is not a computer running a simulation — that needs computability set from outside physics; the real lesson is that a universal computer can be built inside the universe.</span><span class="cn lang-cn">世界不是跑在一台计算机上的模拟——那需要把可算性放在物理世界之外设定；真正的教训是通用计算机可以在宇宙内部造出来。</span></li>
+      <li><span class="lang-en">A weak quantum computer with a few thousand qubits could do more computations at once than the entire visible universe made into classical computers.</span><span class="cn lang-cn">一台只有几千个量子比特的弱量子计算机，能同时做的计算比整个可见宇宙全变成经典计算机还要多。</span></li>
+    </ol>
+  </div>
+
+  <h2 id="n1-check"><span class="en">CHECKPOINT · CAN YOU EXPLAIN IT BACK?</span>检查点 · 能讲回来吗？</h2>
+  <p class="lede lang-en">Your rule: understand it 70–80% before it counts. Three questions — answer them before the next night. Tap to check.</p>
+  <p class="lede lang-cn">你的规则：看懂 7788 才算过。三道题，答得上来再进下一夜。点开对答案。</p>
+  <details class="check"><summary><span class="lang-en">01｜What does Deutsch mean when he says universes "differentiate" rather than "branch" — and what is the arrow of time in this picture?</span><span class="lang-cn">01｜Deutsch 说宇宙是"分化"而不是"分支"，是什么意思——在这个图像里，时间之箭是什么？</span></summary>
+    <div class="ans lang-en">The universes may all have been identical at the beginning; physical processes made them different from each other. The total number stays constant, but the degree of differentiation grows very rapidly — and that growth is what we call the arrow of time. After a coin toss, the versions stop interacting (the effect becomes exponentially small, never zero); on the microscopic scale those interactions are interference.</div>
+    <div class="ans lang-cn">宇宙在时间之初可能全都一模一样，物理过程让它们彼此不同。总数不变，但分化程度增长得非常快——这种增长就是我们说的时间之箭。抛硬币之后，两个版本不再相互作用（影响变得指数级微小，永远不为零）；在微观尺度上，这些相互作用就是干涉。</div></details>
+  <details class="check"><summary><span class="lang-en">02｜Why does Deutsch call "ultimate reality" a chimera — and what does "fundamental" mean to him instead?</span><span class="lang-cn">02｜为什么 Deutsch 说"终极实在"是一种幻兽——"根本"在他那里是什么意思？</span></summary>
+    <div class="ans lang-en">He does not attempt to find ultimate reality; start with problems and with what we know, then try to make it more fundamental. A fundamental idea is one needed in the explanation of many other ideas and phenomena — the most fundamental are needed to explain practically everything. His four: quantum physics, evolution, computation, and knowledge, none understandable without the other three.</div>
+    <div class="ans lang-cn">他并不试图寻找终极实在；从问题出发，从我们知道的东西出发，然后试着让它更根本。一个根本的想法，是解释许多别的想法和现象时需要的想法——最根本的，是解释几乎一切时都需要的。他的四个：量子物理学、进化论、计算理论、知识论，任何一个都离不开另外三个。</div></details>
+  <details class="check"><summary><span class="lang-en">03｜Why is "we are living in a simulation" the wrong lesson to draw from quantum computation — and what is the right one?</span><span class="lang-cn">03｜为什么"我们活在一场模拟里"是从量子计算得出的错误教训——正确的教训是什么？</span></summary>
+    <div class="ans lang-en">The simulation story needs computability set from outside the physical world — by God or something — which solves nothing; you may as well say God set up the universe that way. The real lesson: a universal computer can be built within the universe, and all its possible programs correspond one-to-one with all possible motions of anything — telling us, from the inside, what laws of nature are.</div>
+    <div class="ans lang-cn">模拟的说法需要把可算性放在物理世界之外设定——由上帝或什么设定——这什么都没解决，还不如直接说上帝就是这样设定了宇宙。真正的教训是：通用计算机可以在宇宙内部造出来，它所有可能的程序与任何东西所有可能的运动一一对应——从内部告诉我们，自然定律到底是什么。</div></details>
+
+  <div class="cliff">
+    <span class="next">→ NEXT · NIGHT 2：MICAH REDDING: HUMANITY'S INFINITE REACH</span>
+    <p class="lang-en" style="margin:0">The multiverse is the whole of physical reality, and knowledge is a fundamental part of it — the kind of information that can do things. But how far can knowledge go? Is there any limit to what humans can understand, create, become? <b>Next night: Micah Redding — humanity's infinite reach.</b></p>
+    <p class="lang-cn" style="margin:8px 0 0">多重宇宙就是整个物理实在，而知识是其中根本的一部分——那种能做事的信息。但知识能走多远？人类能理解、能创造、能成为的东西，有没有尽头？<b>下一夜：迈卡·雷丁——人类无限的 reach。</b></p>
+  </div>
+
+  <p style="margin-top:22px"><a class="cta" href="#map"><span class="lang-en">Next night → Night 2 · Micah Redding: Humanity's Infinite Reach (coming soon)</span><span class="lang-cn">下一夜 → 第二夜 · 迈卡·雷丁：人类无限的 reach（待续）</span></a></p>
+
+
+  <footer>
+    <p class="lang-en"><i>Bold Conjectures, Volume I: Select Interviews of David Deutsch</i> · David Deutsch, interviews, edited by Logan Chipkin · Conjecture Institute · January 2, 2026. This guide is a companion, not a substitute — read it alongside the book for the best effect. Book page: <a href="https://www.conjectureinstitute.org/assets/books/Bold-Conjectures-Volume-I.pdf">Conjecture Institute (free PDF)</a></p>
+    <p class="lang-cn">《Bold Conjectures, Volume I: Select Interviews of David Deutsch》· David Deutsch，访谈，Logan Chipkin 编 · Conjecture Institute · 2026 年 1 月 2 日。本指南是伴读，不是替代品——对照书读，效果最好。书页：<a href="https://www.conjectureinstitute.org/assets/books/Bold-Conjectures-Volume-I.pdf">Conjecture Institute（免费 PDF）</a></p>
+    <p>A reader's guide by Conjurer Lab · AISummoner · Night 1 of 14 · 中英对照</p>
+  </footer>
+
+
+</div>
+<button class="bm-fab" id="bm-btn" title="夜晚列表：点开跳转任意一夜" onclick="toggleNightList()">🔖</button>
+<div class="bm-menu" id="bm-menu" role="dialog" aria-label="夜晚列表"></div>
+<script>
+  // bookmark: save reading position, resume next visit
+  var BM_KEY = 'bc-bookmark';
+  var BM_SKIP = {progress:1, 'resume-bar':1, 'resume-text':1, 'bm-btn':1, 'bm-menu':1};
+  // dynamic anchors: every id on the page except the UI chrome above.
+  // New nights (night4, n4-s1...) are picked up automatically, no list to maintain.
+  function anchorEls(){
+    var out = [];
+    document.querySelectorAll('[id]').forEach(function(el){
+      if(!BM_SKIP[el.id]) out.push(el);
+    });
+    return out;
+  }
+  function nearestAnchor(){
+    var y = window.scrollY + 120, best = 'night1';
+    anchorEls().forEach(function(el){
+      if(el.getBoundingClientRect().top + window.scrollY <= y) best = el.id;
+    });
+    return best;
+  }
+  function labelFor(id){
+    var el = document.getElementById(id);
+    if(!el) return id;
+    var h = el.querySelector('h2,h3');
+    if(!h && el.tagName === 'HR'){
+      var n = el.nextElementSibling;
+      while(n && !/^H[23]$/.test(n.tagName)) n = n.nextElementSibling;
+      h = n;
+    }
+    h = h || el;
+    var t = (h.textContent || '').replace(/\s+/g, ' ').trim();
+    return t ? t.slice(0, 42) : id;
+  }
+  function saveBookmark(){
+    var id = nearestAnchor();
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+    var b = document.getElementById('bm-btn');
+    if(b){ b.textContent = '✓'; setTimeout(function(){ b.textContent = '🔖'; }, 1500); }
+  }
+
+  // night list menu: tap 🔖 to see all nights, jump to any published one.
+  // Built from the map rows, so new nights appear automatically, no list to maintain.
+  function currentNightNum(){
+    var id = nearestAnchor();
+    var m = id.match(/^night(\d+)/) || id.match(/^n(\d+)-/);
+    return m ? parseInt(m[1], 10) : 0;
+  }
+  function buildNightMenu(){
+    var menu = document.getElementById('bm-menu');
+    if(!menu) return;
+    var esc = function(t){ return (t || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+    var html = '<h4>全部夜晚 <button onclick="closeNightList()" aria-label="关闭">✕</button></h4>';
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        html += '<button class="bm-row" onclick="goResume(); closeNightList();"><span class="no">上次读到</span><span class="t">' + esc(data.label) + '</span><span class="st">继续 →</span></button>';
+      }
+    }catch(e){}
+    html += '<button class="bm-row" onclick="saveBookmark(); closeNightList();"><span class="no">📌</span><span class="t">收藏此处<small>下次打开直接回到这里</small></span><span class="st">保存</span></button>';
+    var now = currentNightNum();
+    document.querySelectorAll('.map li').forEach(function(li){
+      var no = li.querySelector('.no');
+      var t = li.querySelector('.t');
+      var st = li.querySelector('.st');
+      if(!no || !t) return;
+      var num = parseInt((no.textContent || '').replace(/\D/g, ''), 10) || 0;
+      var done = li.classList.contains('done');
+      var cnEl = t.querySelector('.cn');
+      var cn = cnEl ? cnEl.textContent : '';
+      var title = (t.textContent || '').replace(cn, '').trim();
+      var stTxt = st ? st.textContent.trim() : '';
+      var cls = 'bm-row' + (done ? '' : ' soon') + (num === now && num > 0 ? ' now' : '');
+      var click = done ? ' onclick="goNight(' + num + ')"' : '';
+      html += '<button class="' + cls + '"' + click + '><span class="no">' + esc(no.textContent.trim()) + '</span><span class="t">' + esc(title) + (cn ? '<small>' + esc(cn) + '</small>' : '') + '</span><span class="st">' + esc(stTxt) + '</span></button>';
+    });
+    menu.innerHTML = html;
+  }
+  function goNight(n){
+    closeNightList();
+    var el = document.getElementById('night' + n);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  }
+  function toggleNightList(){
+    var menu = document.getElementById('bm-menu');
+    if(!menu) return;
+    if(menu.classList.contains('open')){ closeNightList(); return; }
+    buildNightMenu();
+    menu.classList.add('open');
+  }
+  function closeNightList(){
+    var menu = document.getElementById('bm-menu');
+    if(menu) menu.classList.remove('open');
+  }
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('bm-menu');
+    if(!menu || !menu.classList.contains('open')) return;
+    var btn = document.getElementById('bm-btn');
+    if(menu.contains(e.target) || (btn && btn.contains(e.target))) return;
+    closeNightList();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeNightList();
+  });
+
+  function showResume(data){
+    var bar = document.getElementById('resume-bar');
+    if(!bar || !data) return;
+    bar.style.display = 'flex';
+    var t = document.getElementById('resume-text');
+    if(t) t.textContent = '上次读到：' + data.label;
+  }
+  function goResume(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data && data.id){
+        var el = document.getElementById(data.id);
+        if(el) el.scrollIntoView({behavior:'smooth'});
+      }
+    }catch(e){}
+  }
+  function clearBookmark(){
+    try{ localStorage.removeItem(BM_KEY); }catch(e){}
+    lastSaved = '';
+    var bar = document.getElementById('resume-bar');
+    if(bar) bar.style.display = 'none';
+  }
+  // auto-save: reading position follows you, no tap needed.
+  // Only runs after the reader scrolls, so opening the page never clobbers the saved spot.
+  var lastSaved = '';
+  function autoSave(){
+    var id = nearestAnchor();
+    if(id === lastSaved) return;
+    lastSaved = id;
+    var data = {id:id, label:labelFor(id), t:new Date().toISOString().slice(0,10)};
+    try{ localStorage.setItem(BM_KEY, JSON.stringify(data)); }catch(e){}
+    showResume(data);
+  }
+  var saveTimer = null;
+  window.addEventListener('scroll', function(){
+    if(saveTimer) return;
+    saveTimer = setTimeout(function(){ saveTimer = null; autoSave(); }, 1200);
+  }, {passive:true});
+  window.addEventListener('DOMContentLoaded', function(){
+    try{
+      var data = JSON.parse(localStorage.getItem(BM_KEY) || 'null');
+      if(data){ showResume(data); if(data.id) lastSaved = data.id; }
+    }catch(e){}
+    if(location.hash){
+      setTimeout(autoSave, 800);
+    }
+  });
+</script>
+<script>
+  // language toggle: bi (both) / en / cn
+  function setLang(m){
+    document.documentElement.setAttribute('data-lang', m);
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-m') === m);
+    });
+  }
+  // progress bar follows scroll
+  var bar = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? (h.scrollTop / max) : 0;
+    bar.style.width = (11 + p * 89) + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+</script>
+</body>
+</html>
